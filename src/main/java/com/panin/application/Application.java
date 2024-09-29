@@ -5,15 +5,28 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
+import com.panin.HibernateUtil;
 import com.panin.application.form.LoginForm;
 import com.panin.application.form.MainForm;
+import com.panin.entidades.Producto;
 
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import raven.toast.Notifications;
 
@@ -21,6 +34,7 @@ import raven.toast.Notifications;
  *
  * @author Raven
  */
+
 public class Application extends javax.swing.JFrame {
 
     private static Application app;
@@ -95,6 +109,27 @@ public class Application extends javax.swing.JFrame {
             //  app.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             app.setVisible(true);
         });
+        
+        
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//
+//		session.beginTransaction();
+//	        
+//		Producto p = new Producto();
+//		
+//		Calendar cal = Calendar.getInstance();
+//		Date utilDate = new Date();
+//		cal.setTime(utilDate);
+//		cal.set(Calendar.MILLISECOND, 0);
+//
+//		p.setDescripcion("Nuevo");
+//		p.setPrecioProduccion(0);
+//		p.setPrecioVenta(0);
+//
+//		session.save(p);
+//		session.getTransaction().commit();
+
+	
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
