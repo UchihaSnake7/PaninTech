@@ -1,0 +1,13 @@
+ mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\flatlaf-3.4.1.jar -DgroupId=com.raven -DartifactId=flatlaf -Dversion=3.4.1 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+  mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\flatlaf-extras-3.4.1.jar -DgroupId=com.raven -DartifactId=flatlaf-extras -Dversion=3.4.1 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\flatlaf-fonts-roboto-2.137.jar -DgroupId=com.raven -DartifactId=flatlaf-fonts-roboto -Dversion=2.137 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+ mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\jsvg-1.4.0.jar -DgroupId=com.raven -DartifactId=jsvg -Dversion=1.4.0 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\swing-toast-notifications-1.0.2.jar -DgroupId=com.raven -DartifactId=swing-toast-notifications -Dversion=1.0.2 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+ mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\miglayout-core.jar -DgroupId=com.raven -DartifactId=miglayout-core -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
+
+  mvn install:install-file -Dfile=C:\Users\ricke\workspace\PaninTech\lib\miglayout-swing.jar -DgroupId=com.raven -DartifactId=miglayout-swing -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=lib
