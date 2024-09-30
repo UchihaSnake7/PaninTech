@@ -9,9 +9,10 @@ import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
+import com.panin.application.form.other.formprueba;
+import com.panin.application.form.other.FormCambio;
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -72,7 +73,7 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((var index, var subIndex, var action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());
@@ -88,7 +89,18 @@ public class MainForm extends JLayeredPane {
                 else {
                     action.cancel();
                 }
-            } else if (index == 9) {
+            } else if (index == 2) {
+                 if (subIndex == 1) {
+                   Application.showForm(new formprueba());
+                } else if (subIndex == 2) {
+                 Application.showForm(new FormCambio());
+                } else if (subIndex == 3) {
+                    Application.showForm(new FormCrearInsumo());
+                
+                }
+               
+            }
+            else if (index == 9) {
                 Application.logout();
             } else {
                 action.cancel();

@@ -53,12 +53,12 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         panel = new javax.swing.JPanel();
-
+        jLabel1 = new javax.swing.JLabel();
 
         jScrollPane1.setBorder(null);
 
-//        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png"))); // NOI18N
-    
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -66,14 +66,14 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addContainerGap(308, Short.MAX_VALUE)
-  
+                .addComponent(jLabel1)
                 .addGap(291, 291, 291))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(134, 134, 134)
-
+                .addComponent(jLabel1)
                 .addContainerGap(251, Short.MAX_VALUE))
         );
 
@@ -99,7 +99,7 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
