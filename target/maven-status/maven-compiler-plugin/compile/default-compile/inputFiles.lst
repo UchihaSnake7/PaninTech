@@ -2,9 +2,9 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\Logi
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\exceptions\PreexistingEntityException.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\PaninTech\App.java
-C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controlador\ControladorProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\MainForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
@@ -14,8 +14,11 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\Pane
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\Menu.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\Application.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ProductoJpaController.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\Card.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\exceptions\IllegalOrphanException.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
@@ -29,6 +32,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\othe
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Producto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItem.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\exceptions\NonexistentEntityException.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java

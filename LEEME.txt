@@ -1,0 +1,7 @@
+He dejado ejemplos en la calse "Application" sobre como se puede ingresar y obtener elementos de la base de datos, lo harenmos mediante clases "Controladores" 
+que tendran los metodos con la logica de que se hara que dichos datos. Estaremos usando Hibernate 6 unicamente yq ue no requerimos complicarnos de mas utilizando
+EJBS, session beans, facades, etc. Unicamente necesitamos abrir una session con el utilitario de Hibernate (clase creada en java) y ejecutar los query de nuestras entidades.
+
+Para crear entidades lo mas rapido es suar netbeans, ubicarse en la carpeta correspondiente y seleccionar "New > Entity CLasses From Database", se abrira una ventana 
+donde se les solicitara los dtaos para conectarse a la base de datos, tambien agregue al repositorio una carpeta llamada SQL donde estan los scripts basicos
+para la creacion de la base de dtaos de panin, iremos actualizando dicho archivo a medida que avanza el proyecto.
