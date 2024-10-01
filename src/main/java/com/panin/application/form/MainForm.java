@@ -25,6 +25,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.form.productos.FormMostrarProductos;
 
 /**
  *
@@ -77,6 +78,9 @@ public class MainForm extends JLayeredPane {
             if (index == 0) {
                 Application.showForm(new FormDashboard());
             } else if (index == 1) {
+                /*
+                Insumos
+                */
                 if (subIndex == 1) {
                     Application.showForm(new FormIngresarInsumo());
                 } else if (subIndex == 2) {
@@ -88,7 +92,16 @@ public class MainForm extends JLayeredPane {
                 else {
                     action.cancel();
                 }
-            } else if (index == 9) {
+            }else if (index == 2) {
+                
+                 /*
+                Productos
+                */
+                if (subIndex == 1) {
+                    Application.showForm(new FormMostrarProductos());
+                }
+            
+            }else if (index == 9) {
                 Application.logout();
             } else {
                 action.cancel();

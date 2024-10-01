@@ -122,9 +122,9 @@ public class Application extends javax.swing.JFrame {
        
         
 //      Ejemplo de como llamar al controlador encargado de obtener los datos de la tabla producto  
-        ControladorProductos cp = new ControladorProductos();
-        List<Producto> productos = new ArrayList<Producto>();
-        productos = cp.obtenerProductos();
+//        ControladorProductos cp = new ControladorProductos();
+//        List<Producto> productos = new ArrayList<Producto>();
+//        productos = cp.obtenerProductos();
         
         /*
          * Hay que cerrar la session que se abrio en el controlador, este ejemplo es solo ilustrativo

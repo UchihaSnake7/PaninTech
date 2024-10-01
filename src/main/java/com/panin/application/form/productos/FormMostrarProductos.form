@@ -18,12 +18,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="formMostrarInsumos1" max="32767" attributes="0"/>
-                  <Component id="searchHeader21" pref="905" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="searchHeader21" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Component id="formVistaProductos1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -31,9 +29,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="searchHeader21" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="formMostrarInsumos1" pref="553" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="formVistaProductos1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,7 +39,7 @@
   <SubComponents>
     <Component class="com.panin.application.utilities.SearchHeader2" name="searchHeader21">
     </Component>
-    <Component class="com.panin.application.form.insumos.FormMostrarInsumos" name="formMostrarInsumos1">
+    <Component class="com.panin.application.form.productos.FormVistaProductos" name="formVistaProductos1">
     </Component>
   </SubComponents>
 </Form>

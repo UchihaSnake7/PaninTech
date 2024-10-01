@@ -74,7 +74,21 @@ create table producto
     descripcion       varchar(100) not null,
     precio_produccion decimal      null comment 'El precio de produccion en $',
     precio_venta      DECIMAL      null comment 'El precio de venta estimado en $',
+    ruta_imagen       varchar(200)
+
     constraint producto_pk
         primary key (id)
 );
+
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (1, 'Pan frances', 0, 0, '/imagenes/productos/pan_frances.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (2, 'Pan piñita', 0, 0, '/imagenes/productos/pan_piñita.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (3, 'Pan canilla', 0, 0, '/imagenes/productos/pan_canilla.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (5, 'Pan campesino', 0, 0, '/imagenes/productos/pan_campesino.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (6, 'Pan de arequipe', 0, 0, '/imagenes/productos/pan_arequipe.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (7, 'Pan de guayaba', 0, 0, '/imagenes/productos/pan_guayaba.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (8, 'Pan de queso', 0, 0, '/imagenes/productos/pan_queso.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (9, 'Golfeado', 0, 0, '/imagenes/productos/golfeado.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (10, 'Pasta seca', 0, 0, '/imagenes/productos/pan_frances.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (11, 'Queso', 0, 0, '/imagenes/productos/quesito.png');
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (12, 'Torta', 0, 0, '/imagenes/productos/torta.png');
 

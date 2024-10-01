@@ -18,6 +18,7 @@ com\panin\application\form\insumos\Card$2.class
 com\panin\db\ConexionDB.class
 com\panin\application\form\other\DefaultForm.class
 com\panin\PaninTech\App.class
+com\panin\application\form\productos\FormVistaProductos.class
 com\panin\application\Application.class
 com\panin\application\form\other\FormIngresarInsumo.class
 com\panin\menu\MenuItem.class
@@ -26,6 +27,7 @@ com\panin\application\form\other\FormDashboard.class
 com\panin\application\form\insumos\Card$3.class
 com\panin\application\utilities\ScrollBar.class
 com\panin\application\form\insumos\Model_Card.class
+com\panin\application\utilities\SearchHeaderFinalBeanInfo.class
 com\panin\menu\Menu.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\form\other\FormIngresarInsumoold.class
@@ -41,6 +43,7 @@ com\panin\application\form\PanelLogin.class
 com\panin\menu\MenuAction.class
 com\panin\application\form\insumos\CardDescription.class
 com\panin\controladores\ControladorProductos.class
+com\panin\application\form\productos\FormMostrarProductos.class
 com\panin\menu\MenuAnimation$1.class
 com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\HibernateUtil.class
@@ -48,4 +51,5 @@ com\panin\application\utilities\SearchHeader2.class
 com\panin\menu\PopupSubmenu.class
 com\panin\application\form\other\FormDashboard$1.class
 com\panin\application\utilities\FormObjetoInsumo.class
+com\panin\application\utilities\SearchHeaderFinal.class
 com\panin\application\form\MainForm.class
