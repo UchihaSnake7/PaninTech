@@ -13,8 +13,10 @@
       <property name="connection.password">root</property>  
       <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>  
       
-            <mapping class="com.panin.entidades.Producto"/>  
-
+<!--      Sintaxis para mapear entidades directamente-->
+      <mapping class="com.panin.entidades.Producto"/>  
+      
+<!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->
 <!--      <mapping resource="Producto.hbm.xml"/>  -->
    </session-factory>  
 </hibernate-configuration>

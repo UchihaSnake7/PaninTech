@@ -9,6 +9,7 @@ import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
+import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
 
@@ -77,6 +78,9 @@ public class MainForm extends JLayeredPane {
             if (index == 0) {
                 Application.showForm(new FormDashboard());
             } else if (index == 1) {
+                /*
+                Insumos
+                */
                 if (subIndex == 1) {
                     Application.showForm(new FormIngresarInsumo());
                 } else if (subIndex == 2) {
@@ -88,7 +92,16 @@ public class MainForm extends JLayeredPane {
                 else {
                     action.cancel();
                 }
-            } else if (index == 9) {
+            }else if (index == 2) {
+                
+                 /*
+                Productos
+                */
+                if (subIndex == 1) {
+                    Application.showForm(new FormMostrarProductos());
+                }
+            
+            }else if (index == 9) {
                 Application.logout();
             } else {
                 action.cancel();

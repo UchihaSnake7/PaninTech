@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.panin</groupId>
 	<artifactId>PaninTech</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>PaninTech</name>
 	<description>Demo project for Spring Boot</description>
 	

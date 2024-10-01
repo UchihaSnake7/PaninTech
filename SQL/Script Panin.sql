@@ -78,3 +78,14 @@ create table producto
         primary key (id)
 );
 
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (1, 'Pan frances', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (2, 'Pan piñita', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (3, 'Pan canilla', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (5, 'Pan campesino', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (6, 'Pan de arequipe', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (7, 'Pan de guayaba', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (8, 'Pan de queso', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (9, 'Golfeado', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (10, 'Pasta seca', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (11, 'Queso', 0, 0);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta) VALUES (12, 'Torta', 0, 0);

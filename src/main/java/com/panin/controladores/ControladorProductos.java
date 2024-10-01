@@ -46,11 +46,13 @@ public class ControladorProductos {
 //                session.close();
                 
                 return query.getResultList();
-		
-		
-		
-
+	}
+	
+	
+	public void cerrarSesion() {
+		 session.close();
 		
 	}
+	
 
 }
