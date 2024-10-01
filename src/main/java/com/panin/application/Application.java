@@ -8,13 +8,21 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.panin.HibernateUtil;
 import com.panin.application.form.LoginForm;
 import com.panin.application.form.MainForm;
+import com.panin.controladores.ControladorProductos;
 import com.panin.entidades.Producto;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -40,8 +48,8 @@ public class Application extends javax.swing.JFrame {
     private static Application app;
     private final MainForm mainForm;
     private final LoginForm loginForm;
-
-    public Application() {
+    
+     public Application() {
         initComponents();
         setSize(new Dimension(1366, 768));
         setLocationRelativeTo(null);
@@ -99,7 +107,8 @@ public class Application extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
+    @SuppressWarnings("deprecation")
+	public static void main(String args[]) {
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("raven.theme");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
@@ -110,24 +119,29 @@ public class Application extends javax.swing.JFrame {
             app.setVisible(true);
         });
         
+       
         
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//
-//		session.beginTransaction();
-//	        
+//      Ejemplo de como llamar al controlador encargado de obtener los datos de la tabla producto  
+        ControladorProductos cp = new ControladorProductos();
+        List<Producto> productos = new ArrayList<Producto>();
+        productos = cp.obtenerProductos();
+        
+        /*
+         * Hay que cerrar la session que se abrio en el controlador, este ejemplo es solo ilustrativo
+         */
+		
 //		Producto p = new Producto();
-//		
-//		Calendar cal = Calendar.getInstance();
-//		Date utilDate = new Date();
-//		cal.setTime(utilDate);
-//		cal.set(Calendar.MILLISECOND, 0);
-//
+
 //		p.setDescripcion("Nuevo");
 //		p.setPrecioProduccion(0);
-//		p.setPrecioVenta(0);
-//
+//		p.setPrecioVenta(0);  
 //		session.save(p);
 //		session.getTransaction().commit();
+//		session.close();
+        
+        /*
+         * Con el codigo de arriba podemos guardar un nuevo producto en db, seria cuestion de crear un metodo en el respectivo controlador
+         */
 
 	
     }

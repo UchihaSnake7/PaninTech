@@ -12,6 +12,9 @@
       <property name="connection.username">root</property>  
       <property name="connection.password">root</property>  
       <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>  
-      <mapping resource="Producto.hbm.xml"/>  
+      
+            <mapping class="com.panin.entidades.Producto"/>  
+
+<!--      <mapping resource="Producto.hbm.xml"/>  -->
    </session-factory>  
 </hibernate-configuration>
