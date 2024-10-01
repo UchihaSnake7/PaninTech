@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 21
+Build-Jdk-Spec: 22
 Implementation-Title: PaninTech
 Implementation-Version: 0.0.1-SNAPSHOT
 Main-Class: com.panin.application.Application

@@ -1,5 +1,6 @@
 com\panin\application\form\other\FormInbox.class
 com\panin\application\form\other\FormRead.class
+com\panin\entidades\Insumo.class
 com\panin\menu\MenuEvent.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\application\form\MainForm$MainFormLayout.class
@@ -39,6 +40,7 @@ com\panin\menu\LightDarkMode$LightDarkModeLayout.class
 com\panin\application\form\PanelLogin.class
 com\panin\menu\MenuAction.class
 com\panin\application\form\insumos\CardDescription.class
+com\panin\controladores\ControladorProductos.class
 com\panin\menu\MenuAnimation$1.class
 com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\HibernateUtil.class

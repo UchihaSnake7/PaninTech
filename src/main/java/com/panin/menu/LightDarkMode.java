@@ -50,8 +50,8 @@ public class LightDarkMode extends JPanel {
         putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:999;"
                 + "background:$Menu.lightdark.background");
-        buttonLight = new JButton("Luminoso", new ImageIcon(getClass().getResource("/raven/icon/png/sol.png")));
-        buttonDark = new JButton("Oscuro", new ImageIcon(getClass().getResource("/raven/icon/png/luna.png")));
+        buttonLight = new JButton("Luminoso", new ImageIcon(getClass().getResource("/imagenes/sol.png")));
+        buttonDark = new JButton("Oscuro", new ImageIcon(getClass().getResource("/imagenes/luna.png")));
         buttonLighDark = new JButton();
         buttonLighDark.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:999;"
@@ -103,9 +103,9 @@ public class LightDarkMode extends JPanel {
         addStyle(buttonLight, !isDark);
         addStyle(buttonDark, isDark);
         if (isDark) {
-            buttonLighDark.setIcon(new ImageIcon(getClass().getResource("/raven/icon/png/logo.png")));
+            buttonLighDark.setIcon(new ImageIcon(getClass().getResource("/imagenes/logo.png")));
         } else {
-            buttonLighDark.setIcon(new ImageIcon(getClass().getResource("/raven/icon/png/logo.png")));
+            buttonLighDark.setIcon(new ImageIcon(getClass().getResource("/imagenes/logo.png")));
         }
     }
 
