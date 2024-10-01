@@ -45,15 +45,10 @@ public class FormMostrarProductos extends javax.swing.JPanel {
 		
 //	    	System.out.println("\nProducto = " + producto.getDescripcion());
 	    	
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos/pan_frances.png")), producto.getDescripcion(), "", "Descripcion"), getBackground()));
+	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground()));
 
 	    }
       
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png")), "Mantequilla", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/3.png")), "Huevos", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
 //        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
 
         panel.revalidate();

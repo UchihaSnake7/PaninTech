@@ -48,6 +48,8 @@ public class Producto implements Serializable {
     private double precioProduccion;
     @Column(name = "precio_venta")
     private double precioVenta;
+    @Column(name = "ruta_imagen")
+    private String rutaImagen;
 
     public Producto() {
     }
@@ -92,8 +94,16 @@ public class Producto implements Serializable {
     public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
+    
+    public String getRutaImagen() {
+		return rutaImagen;
+	}
 
-    @Override
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
