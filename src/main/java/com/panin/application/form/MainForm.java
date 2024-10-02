@@ -1,17 +1,5 @@
 package com.panin.application.form;
 
-import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
-import com.formdev.flatlaf.util.UIScale;
-
-import com.panin.application.Application;
-import com.panin.application.form.insumos.FormCrearInsumo;
-import com.panin.application.form.other.FormDashboard;
-import com.panin.application.form.other.FormIngresarInsumoold;
-import com.panin.application.form.other.FormRead;
-import com.panin.menu.Menu;
-import com.panin.menu.MenuAction;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -20,12 +8,22 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.util.UIScale;
+import com.panin.application.Application;
+import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.form.other.FormRead;
 import com.panin.application.form.productos.FormMostrarProductos;
+import com.panin.menu.Menu;
 
 /**
  *
@@ -73,7 +71,7 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((var index, var subIndex, var action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());
