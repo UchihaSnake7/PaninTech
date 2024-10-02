@@ -4,9 +4,6 @@
  */
 package com.panin.entidades;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,13 +18,12 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.Date;
 
-/**
- *
- * @author USUARIO
- */
+
 @Entity
-@Table(name = "insumo", catalog = "panin", schema = "")
+@Table(name = "insumo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Insumo.findAll", query = "SELECT i FROM Insumo i"),

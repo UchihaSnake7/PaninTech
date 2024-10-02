@@ -1,5 +1,19 @@
 package com.panin.application.form;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.util.UIScale;
+
+import com.panin.application.Application;
+import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.other.FormDashboard;
+import com.panin.application.form.other.FormIngresarInsumoold;
+import com.panin.application.form.other.FormRead;
+import com.panin.application.form.productos.FormMostrarProductos;
+import com.panin.application.form.other.formprueba;
+import com.panin.application.form.other.FormCambio;
+import com.panin.menu.Menu;
+import com.panin.menu.MenuAction;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -8,23 +22,12 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
-import com.formdev.flatlaf.util.UIScale;
-import com.panin.application.Application;
-import com.panin.application.form.insumos.FormCrearInsumo;
-import com.panin.application.form.other.FormCambio;
-import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumo;
-import com.panin.application.form.other.FormRead;
 import com.panin.application.form.productos.FormMostrarProductos;
-import com.panin.menu.Menu;
 
 /**
  *
@@ -79,42 +82,45 @@ public class MainForm extends JLayeredPane {
             } else if (index == 1) {
                 /*
                 Insumos
-                 */
+                */
                 if (subIndex == 1) {
                     Application.showForm(new FormIngresarInsumo());
                 } else if (subIndex == 2) {
                     Application.showForm(new FormRead());
                 } else if (subIndex == 3) {
                     Application.showForm(new FormCrearInsumo());
-
-                } else {
+                
+                }    
+                else {
                     action.cancel();
                 }
-            } else if (index == 2) {
-
-                /*
+            }else if (index == 2) {
+                
+                 /*
                 Productos
-                 */
+                */
                 if (subIndex == 1) {
                     Application.showForm(new FormMostrarProductos());
                 }
-
+            
             } else if (index == 3) {
-
-                /*
-                Tasa de cambio
-                 */
-                if (subIndex == 1) {
-                    Application.showForm(new FormCambio());
-                }} else if (index == 9) {
-                    Application.logout();
-                } else {
-                    action.cancel();
+                 if (subIndex == 1) {
+                   Application.showForm(new formprueba());
+                } else if (subIndex == 2) {
+                 Application.showForm(new FormCambio());
+                } else if (subIndex == 3) {
+                    Application.showForm(new FormCrearInsumo());
+                
                 }
-            });
+               
+            }
+            else if (index == 9) {
+                Application.logout();
+            } else {
+                action.cancel();
+            }
+        });
     }
-
-    
 
     private void setMenuFull(boolean full) {
         String icon;

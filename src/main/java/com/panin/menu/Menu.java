@@ -30,8 +30,13 @@ public class Menu extends JPanel {
         {"~INVENTARIO~"},
         {"Insumos","Ingresar", "Cambiar Precio", "Crear Insumo"},
         {"Productos","Ver Productos","Calcular Precio", "Crear Producto"},
+
           {"~TASA DE CAMNBIO~"},
           {"Tasa de cambio","Visualización","Actualizar"},
+
+        {"~TASA DE CAMBIO~"},
+        {"prueba","1", "2 Precio", "3 "},
+
 //        {"Chat"},
 //        {"Calendar"},
 //        {"~COMPONENT~"},
