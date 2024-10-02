@@ -13,12 +13,12 @@ import java.awt.RenderingHints;
  *
  * @author ricke
  */
-public class SearchHeader2 extends javax.swing.JPanel {
+public class SearchHeaderFinal extends javax.swing.JPanel {
 
     /**
      * Creates new form SearchHeader2
      */
-    public SearchHeader2() {
+    public SearchHeaderFinal() {
         initComponents();
         setOpaque(false);
     }

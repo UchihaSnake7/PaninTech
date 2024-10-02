@@ -16,6 +16,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import com.panin.application.Application;
+
 
 /**
  *
@@ -45,36 +47,35 @@ public class Card extends javax.swing.JPanel {
     public void setColorFont(Color colorFont) {
         this.colorFont = colorFont;
     }
-private final Model_Card data;
+    private final Model_Card data;
     private Color colorBack = Color.BLACK;
     private Color colorFont = Color.WHITE;
     private final Timer timer;
     private final Timer timerStop;
     private final CardDescription cardDescription;
-    private int y = 140;
+    private int y = 50;
     private int speed = 3;
     private boolean showing = false;
 
-     
- public Card(Model_Card data, Color color) {
+    public Card(Model_Card data, Color color) {
         this.data = data;
         colorBack = getBackground();
-        
+
         initComponents();
         lblIcon.setIcon(data.getIcon());
         setOpaque(false);
         cardDescription = new CardDescription(data.getTitle(), data.getDescription());
         cardDescription.setLocation(0, y);
-        setPreferredSize(new Dimension(150, 100));
-        cardDescription.setSize(new Dimension(150, 100));
+        setPreferredSize(new Dimension(140, 100));
+        cardDescription.setSize(new Dimension(140, 100));
         add(cardDescription);
         timer = new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (showing) {
                     y -= speed;
-                    if (y <= 50) {
-                        y = 50;
+                    if (y <= 30) {
+                        y = 30;
                         cardDescription.setLocation(0, y);
                         timer.stop();
                     } else {
@@ -82,8 +83,8 @@ private final Model_Card data;
                     }
                 } else {
                     y += speed;
-                    if (y >= 140) {
-                        y = 140;
+                    if (y >= 50) {
+                        y = 50;
                         cardDescription.setLocation(0, y);
                         timer.stop();
                     } else {
@@ -113,11 +114,17 @@ private final Model_Card data;
             public void mouseExited(MouseEvent me) {
                 timerStop.start();
             }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Application.showForm(new PanelIngresarInsumo(data));
+            }
         });
     }
+
     @Override
     protected void paintComponent(Graphics grphcs) {
-         Graphics2D g2 = (Graphics2D) grphcs;
+        Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //        System.out.println(getBackground().getRGB());
         GradientPaint g = new GradientPaint(0, 0, getBackground(), 0, getHeight(), getBackground());
@@ -139,8 +146,6 @@ private final Model_Card data;
     private void initComponents() {
 
         lblIcon = new javax.swing.JLabel();
-
-//        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panin/imagenes/insumos/1.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -9,9 +9,12 @@ import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
+<<<<<<< HEAD
 import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.application.form.other.formprueba;
 import com.panin.application.form.other.FormCambio;
+=======
+>>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
 import java.awt.BorderLayout;
@@ -27,6 +30,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.form.productos.FormMostrarProductos;
 
 /**
  *

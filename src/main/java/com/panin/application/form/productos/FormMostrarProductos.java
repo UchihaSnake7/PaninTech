@@ -4,20 +4,6 @@
  */
 package com.panin.application.form.productos;
 
-import com.panin.application.form.insumos.*;
-import java.awt.Scrollbar;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import com.panin.application.utilities.ScrollBar;
-import com.panin.application.utilities.WrapLayout;
-import com.panin.controladores.ControladorProductos;
-import com.panin.entidades.Producto;
-
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author USUARIO
@@ -25,35 +11,11 @@ import java.util.List;
 public class FormMostrarProductos extends javax.swing.JPanel {
 
     /**
-     * Creates new form FormMostrarInsumos
+     * Creates new form FormMostrarProductos
      */
     public FormMostrarProductos() {
         initComponents();
-        init();
-    }
-
-    private void init() {
-        panel.setLayout(new WrapLayout(WrapLayout.LEADING));
-        jScrollPane1.setVerticalScrollBar(new ScrollBar());
-        
-        ControladorProductos cp = new ControladorProductos();
-	    List<Producto> productos = new ArrayList<Producto>();
-	    productos = cp.obtenerProductos();
-	    cp.cerrarSesion();
-	    
-	    for (Producto producto : productos) {
-		
-//	    	System.out.println("\nProducto = " + producto.getDescripcion());
-	    	
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground()));
-
-	    }
-      
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-
-        panel.revalidate();
-        panel.repaint();
-
+        searchHeader21.setBackground(getBackground());
     }
 
     /**
@@ -65,45 +27,33 @@ public class FormMostrarProductos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        panel = new javax.swing.JPanel();
-
-        jScrollPane1.setBorder(null);
-
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(panel);
+        searchHeader21 = new com.panin.application.utilities.SearchHeader2();
+        formVistaProductos1 = new com.panin.application.form.productos.FormVistaProductos();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-                .addGap(30, 30, 30))
+                .addContainerGap()
+                .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(formVistaProductos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addGap(22, 22, 22)
+                .addComponent(searchHeader21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formVistaProductos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panel;
+    private com.panin.application.form.productos.FormVistaProductos formVistaProductos1;
+    private com.panin.application.utilities.SearchHeader2 searchHeader21;
     // End of variables declaration//GEN-END:variables
 }

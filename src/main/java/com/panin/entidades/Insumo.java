@@ -23,10 +23,17 @@ import java.util.Date;
 
 /**
  *
+<<<<<<< HEAD
  * @author argenis javier
  */
 @Entity
 @Table(name = "insumo")
+=======
+ * @author USUARIO
+ */
+@Entity
+@Table(name = "insumo", catalog = "panin", schema = "")
+>>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Insumo.findAll", query = "SELECT i FROM Insumo i"),
@@ -41,12 +48,20 @@ public class Insumo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+<<<<<<< HEAD
     @Column(name = "id")
+=======
+    @Column(name = "id", nullable = false)
+>>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
+<<<<<<< HEAD
     @Column(name = "descripcion")
+=======
+    @Column(name = "descripcion", nullable = false, length = 100)
+>>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
     private String descripcion;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
@@ -56,7 +71,11 @@ public class Insumo implements Serializable {
     private Date horaCreacion;
     @Basic(optional = false)
     @NotNull
+<<<<<<< HEAD
     @Column(name = "activo")
+=======
+    @Column(name = "activo", nullable = false)
+>>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
     private boolean activo;
 
     public Insumo() {

@@ -39,9 +39,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="panin.application.utilities.SearchHeader2" name="searchHeader21">
+    <Component class="com.panin.application.utilities.SearchHeader2" name="searchHeader21">
     </Component>
-    <Component class="panin.application.form.insumos.FormMostrarInsumos" name="formMostrarInsumos1">
+    <Component class="com.panin.application.form.insumos.FormMostrarInsumos" name="formMostrarInsumos1">
     </Component>
   </SubComponents>
 </Form>

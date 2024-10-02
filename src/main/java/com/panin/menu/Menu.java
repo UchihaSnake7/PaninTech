@@ -87,7 +87,7 @@ public class Menu extends JPanel {
                 + "background:$Menu.background;"
                 + "arc:10");
         header = new JLabel(headerName);
-        header.setIcon(new ImageIcon(getClass().getResource("/raven/icon/png/logo.png")));
+        header.setIcon(new ImageIcon(getClass().getResource("/imagenes/logo.png")));
         header.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$Menu.header.font;"
                 + "foreground:$Menu.foreground");
@@ -104,12 +104,12 @@ public class Menu extends JPanel {
                 + "border:null");
         JScrollBar vscroll = scroll.getVerticalScrollBar();
         vscroll.setUnitIncrement(10);
-        vscroll.putClientProperty(FlatClientProperties.STYLE, ""
-                + "width:$Menu.scroll.width;"
-                + "trackInsets:$Menu.scroll.trackInsets;"
-                + "thumbInsets:$Menu.scroll.thumbInsets;"
-                + "background:$Menu.ScrollBar.background;"
-                + "thumb:$Menu.ScrollBar.thumb");
+//        vscroll.putClientProperty(FlatClientProperties.STYLE, ""
+//                + "width:$Menu.scroll.width;"
+//                + "trackInsets:$Menu.scroll.trackInsets;"
+//                + "thumbInsets:$Menu.scroll.thumbInsets;"
+//                + "background:$Menu.ScrollBar.background;"
+//                + "thumb:$Menu.ScrollBar.thumb");
         createMenu();
         lightDarkMode = new LightDarkMode();
         toolBarAccentColor = new ToolBarAccentColor(this);
