@@ -85,7 +85,7 @@ public class FormVistaProductos extends javax.swing.JPanel {
 	    
 	    for (Producto producto : productos) {
 		
-	    	System.out.println("\nProducto = " + producto.getDescripcion());
+//	    	System.out.println("\nProducto = " + producto.getDescripcion());
 	    	
 	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground()));
 

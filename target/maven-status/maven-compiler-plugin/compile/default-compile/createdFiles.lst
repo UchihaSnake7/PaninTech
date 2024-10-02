@@ -44,10 +44,7 @@ com\panin\application\form\PanelLogin.class
 com\panin\menu\MenuAction.class
 com\panin\application\form\insumos\CardDescription.class
 com\panin\controladores\ControladorProductos.class
-<<<<<<< HEAD
-=======
 com\panin\application\form\productos\FormMostrarProductos.class
->>>>>>> 776dc718ddb636b23659d3fe8faaebd9b7d96171
 com\panin\menu\MenuAnimation$1.class
 com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\HibernateUtil.class
