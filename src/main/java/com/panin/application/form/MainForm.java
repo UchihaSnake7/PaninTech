@@ -9,10 +9,14 @@ import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
+<<<<<<< HEAD
 import com.panin.application.form.productos.FormMostrarProductos;
+=======
+import com.panin.application.form.other.formprueba;
+import com.panin.application.form.other.FormCambio;
+>>>>>>> 82aba45fab51052e804b8a7fa06171881828af42
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -73,7 +77,7 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((var index, var subIndex, var action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());
@@ -92,6 +96,7 @@ public class MainForm extends JLayeredPane {
                 else {
                     action.cancel();
                 }
+<<<<<<< HEAD
             }else if (index == 2) {
                 
                  /*
@@ -102,6 +107,20 @@ public class MainForm extends JLayeredPane {
                 }
             
             }else if (index == 9) {
+=======
+            } else if (index == 2) {
+                 if (subIndex == 1) {
+                   Application.showForm(new formprueba());
+                } else if (subIndex == 2) {
+                 Application.showForm(new FormCambio());
+                } else if (subIndex == 3) {
+                    Application.showForm(new FormCrearInsumo());
+                
+                }
+               
+            }
+            else if (index == 9) {
+>>>>>>> 82aba45fab51052e804b8a7fa06171881828af42
                 Application.logout();
             } else {
                 action.cancel();
