@@ -92,3 +92,61 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (11, 'Queso', 0, 0, '/imagenes/productos/quesito.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (12, 'Torta', 0, 0, '/imagenes/productos/torta.png');
 
+  CREATE TABLE tipo_medida (
+  id_tipo_medida INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+INSERT INTO tipo_medida (nombre)
+VALUES
+  ('masa'),
+  ('longitud'),
+  ('unidad'),
+  ('volumen');
+
+
+CREATE TABLE unidad_medida (
+  id_unidad INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  abreviatura VARCHAR(10),
+  sistema VARCHAR(20),
+  id_tipo INT,
+     FOREIGN KEY (id_tipo) REFERENCES tipo_medida(id_tipo_medida)
+);
+
+INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
+VALUES
+  ('gramo', 'g', 'métrico', 1),
+  ('litro', 'L', 'métrico', 4),
+  ('metro', 'm', 'métrico', 2),
+  ('unidad', 'un', 'unidad', 3);
+
+CREATE TABLE conversion (
+  id_conversion INT PRIMARY KEY AUTO_INCREMENT,
+  unidad_base_id INT,
+  unidad_derivada_id INT,
+  factor_conversion DECIMAL(10,5) NOT NULL,
+  FOREIGN KEY (unidad_base_id) REFERENCES unidad_medida(id_unidad),
+  FOREIGN KEY (unidad_derivada_id) REFERENCES unidad_medida(id_unidad)
+);
+
+
+INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
+VALUES
+  ('kilogramo', 'kg', 'métrico', 1),
+  ('hectogramo', 'hg', 'métrico', 1),
+  ('decagramo', 'dag', 'métrico', 1),
+  ('decigramo', 'dg', 'métrico', 1),
+  ('centigramo', 'cg', 'métrico', 1),
+  ('miligramo', 'mg', 'métrico', 1);
+
+INSERT INTO conversion (unidad_base_id, unidad_derivada_id, factor_conversion)
+VALUES
+  (1, 5, 0.001),  -- 1 gramo = 0.001 kilogramos
+  (1, 6, 0.01),  -- 1 gramo = 0.01 hectogramos
+  (1, 7, 0.1),   -- 1 gramo = 0.1 decagramos
+  (1, 8, 10),   -- 1 gramo = 10 decigramos
+  (1, 9, 100),  -- 1 gramo = 100 centigramos
+  (1, 10, 1000); -- 1 gramo = 1000 miligramos
+
+

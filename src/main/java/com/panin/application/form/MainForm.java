@@ -19,6 +19,7 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.util.UIScale;
 import com.panin.application.Application;
 import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.other.FormCambio;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.other.FormRead;
@@ -78,34 +79,42 @@ public class MainForm extends JLayeredPane {
             } else if (index == 1) {
                 /*
                 Insumos
-                */
+                 */
                 if (subIndex == 1) {
                     Application.showForm(new FormIngresarInsumo());
                 } else if (subIndex == 2) {
                     Application.showForm(new FormRead());
                 } else if (subIndex == 3) {
                     Application.showForm(new FormCrearInsumo());
-                
-                }    
-                else {
+
+                } else {
                     action.cancel();
                 }
-            }else if (index == 2) {
-                
-                 /*
+            } else if (index == 2) {
+
+                /*
                 Productos
-                */
+                 */
                 if (subIndex == 1) {
                     Application.showForm(new FormMostrarProductos());
                 }
-            
-            }else if (index == 9) {
-                Application.logout();
-            } else {
-                action.cancel();
-            }
-        });
+
+            } else if (index == 3) {
+
+                /*
+                Tasa de cambio
+                 */
+                if (subIndex == 1) {
+                    Application.showForm(new FormCambio());
+                }} else if (index == 9) {
+                    Application.logout();
+                } else {
+                    action.cancel();
+                }
+            });
     }
+
+    
 
     private void setMenuFull(boolean full) {
         String icon;
