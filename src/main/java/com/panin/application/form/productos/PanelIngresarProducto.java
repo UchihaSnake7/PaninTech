@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.panin.application.form.insumos;
+package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.form.other.Model_Card;
 
 
 /**
  *
  * @author USUARIO
  */
-public class PanelIngresarInsumo extends javax.swing.JPanel {
+public class PanelIngresarProducto extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelIngresarProducto
      */
-    public PanelIngresarInsumo() {
+    public PanelIngresarProducto() {
 //        jIcon.setIcon(data.getIcon());
 //        System.out.println(data.getTitle());
 //        initComponents();
@@ -28,7 +29,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         setLayout(new MigLayout("al center center"));
     }
 
-    public PanelIngresarInsumo(Model_Card data) {
+    public PanelIngresarProducto(Model_Card data) {
 //        jIcon.setIcon(data.getIcon());
         System.out.println(data.getTitle());
         initComponents();
@@ -181,7 +182,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
-        Application.showForm(new FormIngresarInsumo());
+        Application.showForm(new FormMostrarProductos());
     }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed

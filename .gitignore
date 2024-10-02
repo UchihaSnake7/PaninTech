@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-# *.jar
+*.jar
 *.war
 *.nar
 *.ear
@@ -34,8 +34,8 @@ replay_pid*
 /build/
 /dist/
 
-PaninTech-0.0.1-SNAPSHOT.jar
-PaninTech-0.0.1-SNAPSHOT.jar.original
+# PaninTech-0.0.1-SNAPSHOT.jar
+# PaninTech-0.0.1-SNAPSHOT.jar.original
 /nbproject/
 /target/
 /bin/

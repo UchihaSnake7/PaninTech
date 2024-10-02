@@ -4,8 +4,9 @@
  */
 package com.panin.application.form.productos;
 
-import com.panin.application.form.insumos.Card;
-import com.panin.application.form.insumos.Model_Card;
+
+import com.panin.application.form.other.Card;
+import com.panin.application.form.other.Model_Card;
 import com.panin.application.utilities.ScrollBar;
 import com.panin.application.utilities.ScrollBar;
 import com.panin.application.utilities.WrapLayout;
@@ -21,7 +22,8 @@ import java.util.List;
  */
 public class FormVistaProductos extends javax.swing.JPanel {
 
-    /**
+    private static final long serialVersionUID = 1L;
+	/**
      * Creates new form FormVistaProductos
      */
     public FormVistaProductos() {
@@ -83,11 +85,13 @@ public class FormVistaProductos extends javax.swing.JPanel {
 	    productos = cp.obtenerProductos();
 	    cp.cerrarSesion();
 	    
+	    String formClass = "PanelIngresarProducto";
+	    
 	    for (Producto producto : productos) {
 		
 //	    	System.out.println("\nProducto = " + producto.getDescripcion());
 	    	
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground()));
+	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground(), formClass));
 
 	    }
       
