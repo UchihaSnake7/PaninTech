@@ -9,12 +9,9 @@ import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
-<<<<<<< HEAD
 import com.panin.application.form.productos.FormMostrarProductos;
-=======
 import com.panin.application.form.other.formprueba;
 import com.panin.application.form.other.FormCambio;
->>>>>>> 82aba45fab51052e804b8a7fa06171881828af42
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
 import java.awt.BorderLayout;
@@ -96,7 +93,6 @@ public class MainForm extends JLayeredPane {
                 else {
                     action.cancel();
                 }
-<<<<<<< HEAD
             }else if (index == 2) {
                 
                  /*
@@ -106,9 +102,7 @@ public class MainForm extends JLayeredPane {
                     Application.showForm(new FormMostrarProductos());
                 }
             
-            }else if (index == 9) {
-=======
-            } else if (index == 2) {
+            } else if (index == 3) {
                  if (subIndex == 1) {
                    Application.showForm(new formprueba());
                 } else if (subIndex == 2) {
@@ -120,7 +114,6 @@ public class MainForm extends JLayeredPane {
                
             }
             else if (index == 9) {
->>>>>>> 82aba45fab51052e804b8a7fa06171881828af42
                 Application.logout();
             } else {
                 action.cancel();

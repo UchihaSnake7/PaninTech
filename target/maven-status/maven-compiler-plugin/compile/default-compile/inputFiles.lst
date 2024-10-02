@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\MainFormProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
@@ -6,6 +5,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\PaninTech\App.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\MainForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
@@ -22,6 +22,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\Control
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Insumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\CardDescription.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\HibernateUtil.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
@@ -38,45 +39,4 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuAction.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
-=======
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\PaninTech\App.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\TextArea.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Producto.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\db\ConexionDB.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\PanelLogin.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuAction.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\HibernateUtil.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuItem.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Insumo.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\MainForm.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\CardDescription.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\Card.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\Application.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormRead.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\Menu.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\FormCrearInsumo.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorProductos.java
-C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
->>>>>>> 82aba45fab51052e804b8a7fa06171881828af42
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
