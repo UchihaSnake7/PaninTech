@@ -21,9 +21,6 @@ import com.panin.application.form.other.Model_Card;
 import com.panin.application.form.productos.PanelIngresarProducto;
 import com.panin.application.form.insumos.PanelIngresarInsumo;
 
-
-
-
 /**
  *
  * @author USUARIO
@@ -122,16 +119,16 @@ public class Card extends javax.swing.JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-            	
-            	switch (formClass) {
-				case ("PanelIngresarProducto"): {
-					
-					 Application.showForm(new PanelIngresarProducto(data));
-					 break;
-				}
-				default:
-					throw new IllegalArgumentException("Valor no esperado: " + formClass);
-				}
+
+                switch (formClass) {
+                    case ("PanelIngresarProducto"): {
+
+                        Application.showForm(new PanelIngresarProducto(data));
+                        break;
+                    }
+                    default:
+                        throw new IllegalArgumentException("Valor no esperado: " + formClass);
+                }
 //                Application.showForm(new PanelIngresarProducto(data));
 
             }
@@ -166,21 +163,20 @@ public class Card extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblIcon)
-                .addContainerGap(21, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(lblIcon)
+                                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblIcon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblIcon)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblIcon;

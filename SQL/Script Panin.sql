@@ -149,4 +149,13 @@ VALUES
   (1, 9, 100),  -- 1 gramo = 100 centigramos
   (1, 10, 1000); -- 1 gramo = 1000 miligramos
 
+alter table insumo
+    add ruta_imagen varchar(30) null;
+alter table insumo
+    add id_tipo_medida int null;
+
+alter table insumo
+    add constraint insumo_tipo_medida_fk
+        foreign key (id_tipo_medida) references tipo_medida(id_tipo_medida) ;
+
 

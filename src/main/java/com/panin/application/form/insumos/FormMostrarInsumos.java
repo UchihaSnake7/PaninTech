@@ -9,8 +9,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import com.panin.application.utilities.ScrollBar;
 import com.panin.application.utilities.WrapLayout;
+import com.panin.controladores.ControladorInsumos;
+import com.panin.entidades.Insumo;
+import com.panin.application.form.other.Card;
+import com.panin.application.form.other.Model_Card;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,13 +36,17 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         panel.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
       
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png")), "Mantequilla", "", "Descripcion"), getBackground()));
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/3.png")), "Huevos", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
+        ControladorInsumos ci = new ControladorInsumos();
+	    List<Insumo> insumos = new ArrayList<Insumo>();
+	    insumos = ci.obtenerInsumos();
+	    ci.cerrarSesion();
+	    
+	    String formClass = "PanelIngresarProducto";
+	    
+	    for (Insumo insumo : insumos) {
+	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass));
 
+	    }
         panel.revalidate();
         panel.repaint();
 

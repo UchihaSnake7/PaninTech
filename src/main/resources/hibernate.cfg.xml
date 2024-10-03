@@ -10,11 +10,13 @@
       <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>  
       <property name="connection.url">jdbc:mysql://localhost:3306/panin</property>  
       <property name="connection.username">root</property>  
-      <property name="connection.password">root</property>  
+      <property name="connection.password">12345</property>  
       <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>  
       
 <!--      Sintaxis para mapear entidades directamente-->
       <mapping class="com.panin.entidades.Producto"/>  
+      <mapping class="com.panin.entidades.Insumo"/>  
+      <mapping class="com.panin.entidades.TipoMedida"/>  
       
 <!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->
 <!--      <mapping resource="Producto.hbm.xml"/>  -->
