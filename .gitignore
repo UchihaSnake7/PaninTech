@@ -31,6 +31,7 @@ replay_pid*
 /nbproject/private/
 /build/
 /dist/
+/lib/
 
 # PaninTech-0.0.1-SNAPSHOT.jar
 # PaninTech-0.0.1-SNAPSHOT.jar.original
@@ -39,8 +40,5 @@ replay_pid*
 /bin/
 
 /src/main/resources/hibernate.cfg
-/target
-/target
 /target/maven-archiver
-target/classes/hibernate.cfg.xml
-/target
+/target/classes/hibernate.cfg.xml
