@@ -31,25 +31,27 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         initComponents();
         init();
     }
-
+    
     private void init() {
         panel.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
-      
+        
         ControladorInsumos ci = new ControladorInsumos();
-	    List<Insumo> insumos = new ArrayList<Insumo>();
-	    insumos = ci.obtenerInsumos();
-	    ci.cerrarSesion();
-	    
-	    String formClass = "PanelIngresarProducto";
-	    
-	    for (Insumo insumo : insumos) {
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass));
-
-	    }
+        List<Insumo> insumos = new ArrayList<Insumo>();
+        insumos = ci.obtenerInsumos();
+        ci.cerrarSesion();
+        
+        String formClass = "PanelIngresarProducto";
+        
+        for (Insumo insumo : insumos) {
+            Card card = new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass);
+            card.setInsumo(insumo);
+            panel.add(card);
+            
+        }
         panel.revalidate();
         panel.repaint();
-
+        
     }
 
     /**
