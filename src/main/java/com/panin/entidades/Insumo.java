@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
@@ -34,7 +36,8 @@ import java.util.Date;
     @NamedQuery(name = "Insumo.findByDescripcion", query = "SELECT i FROM Insumo i WHERE i.descripcion = :descripcion"),
     @NamedQuery(name = "Insumo.findByFechaCreacion", query = "SELECT i FROM Insumo i WHERE i.fechaCreacion = :fechaCreacion"),
     @NamedQuery(name = "Insumo.findByHoraCreacion", query = "SELECT i FROM Insumo i WHERE i.horaCreacion = :horaCreacion"),
-    @NamedQuery(name = "Insumo.findByActivo", query = "SELECT i FROM Insumo i WHERE i.activo = :activo")})
+    @NamedQuery(name = "Insumo.findByActivo", query = "SELECT i FROM Insumo i WHERE i.activo = :activo"),
+    @NamedQuery(name = "Insumo.findByRutaImagen", query = "SELECT i FROM Insumo i WHERE i.rutaImagen = :rutaImagen")})
 public class Insumo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,6 +61,12 @@ public class Insumo implements Serializable {
     @NotNull
     @Column(name = "activo", nullable = false)
     private boolean activo;
+    @Size(max = 30)
+    @Column(name = "ruta_imagen", length = 30)
+    private String rutaImagen;
+    @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
+    @ManyToOne
+    private TipoMedida idTipoMedida;
 
     public Insumo() {
     }
@@ -110,6 +119,22 @@ public class Insumo implements Serializable {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    public TipoMedida getIdTipoMedida() {
+        return idTipoMedida;
+    }
+
+    public void setIdTipoMedida(TipoMedida idTipoMedida) {
+        this.idTipoMedida = idTipoMedida;
     }
 
     @Override

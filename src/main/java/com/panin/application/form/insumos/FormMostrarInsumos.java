@@ -9,8 +9,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import com.panin.application.utilities.ScrollBar;
 import com.panin.application.utilities.WrapLayout;
+import com.panin.controladores.ControladorInsumos;
+import com.panin.entidades.Insumo;
+import com.panin.application.form.other.Card;
+import com.panin.application.form.other.Model_Card;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -25,21 +31,27 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         initComponents();
         init();
     }
-
+    
     private void init() {
         panel.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
-      
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png")), "Mantequilla", "", "Descripcion"), getBackground()));
-        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/3.png")), "Huevos", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
-
+        
+        ControladorInsumos ci = new ControladorInsumos();
+        List<Insumo> insumos = new ArrayList<Insumo>();
+        insumos = ci.obtenerInsumos();
+        ci.cerrarSesion();
+        
+        String formClass = "PanelIngresarProducto";
+        
+        for (Insumo insumo : insumos) {
+            Card card = new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass);
+            card.setInsumo(insumo);
+            panel.add(card);
+            
+        }
         panel.revalidate();
         panel.repaint();
-
+        
     }
 
     /**
@@ -54,27 +66,17 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         panel = new javax.swing.JPanel();
 
-
         jScrollPane1.setBorder(null);
-
-//        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/2.png"))); // NOI18N
-    
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(308, Short.MAX_VALUE)
-  
-                .addGap(291, 291, 291))
+            .addGap(0, 685, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-
-                .addContainerGap(251, Short.MAX_VALUE))
+            .addGap(0, 430, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(panel);
@@ -99,7 +101,6 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables

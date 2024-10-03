@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-# *.jar
+*.jar
 *.war
 *.nar
 *.ear
@@ -28,14 +28,19 @@ replay_pid*
 
 *.project
 *.classpath
-=======
->>>>>>> 3687715d4115e9984dd1648e51c6d2c56c4a85cc
 /nbproject/private/
 /build/
 /dist/
 
-PaninTech-0.0.1-SNAPSHOT.jar
-PaninTech-0.0.1-SNAPSHOT.jar.original
+# PaninTech-0.0.1-SNAPSHOT.jar
+# PaninTech-0.0.1-SNAPSHOT.jar.original
 /nbproject/
 /target/
 /bin/
+
+/src/main/resources/hibernate.cfg
+/target
+/target
+/target/maven-archiver
+target/classes/hibernate.cfg.xml
+/target
