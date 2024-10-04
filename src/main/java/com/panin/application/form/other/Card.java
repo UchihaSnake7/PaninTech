@@ -20,6 +20,7 @@ import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.form.productos.PanelIngresarProducto;
 import com.panin.application.form.insumos.PanelIngresarInsumo;
+import com.panin.entidades.Insumo;
 
 /**
  *
@@ -58,6 +59,15 @@ public class Card extends javax.swing.JPanel {
     private int y = 50;
     private int speed = 3;
     private boolean showing = false;
+    private Insumo insumo;
+
+    public Insumo getInsumo() {
+        return insumo;
+    }
+
+    public void setInsumo(Insumo insumo) {
+        this.insumo = insumo;
+    }
 
     public Card(Model_Card data, Color color, String formClass) {
         this.data = data;
