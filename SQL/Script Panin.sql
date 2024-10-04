@@ -116,10 +116,10 @@ CREATE TABLE unidad_medida (
 
 INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
 VALUES
-  ('gramo', 'g', 'métrico', 1),
-  ('litro', 'L', 'métrico', 4),
-  ('metro', 'm', 'métrico', 2),
-  ('unidad', 'un', 'unidad', 3);
+  ('Gramo', 'g', 'métrico', 1),
+  ('Litro', 'L', 'métrico', 4),
+  ('Metro', 'm', 'métrico', 2),
+  ('Unidad', 'un', 'unidad', 3);
 
 CREATE TABLE conversion (
   id_conversion INT PRIMARY KEY AUTO_INCREMENT,
@@ -133,8 +133,8 @@ CREATE TABLE conversion (
 
 INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
 VALUES
-  ('kilogramo', 'kg', 'métrico', 1),
-  ('hectogramo', 'hg', 'métrico', 1),
+  ('kilogramo', 'Kg', 'métrico', 1),
+  ('hectogramo', 'Hg', 'métrico', 1),
   ('decagramo', 'dag', 'métrico', 1),
   ('decigramo', 'dg', 'métrico', 1),
   ('centigramo', 'cg', 'métrico', 1),
