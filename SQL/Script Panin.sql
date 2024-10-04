@@ -99,10 +99,10 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 
 INSERT INTO tipo_medida (nombre)
 VALUES
-  ('masa'),
-  ('longitud'),
-  ('unidad'),
-  ('volumen');
+  ('Masa'),
+  ('Longitud'),
+  ('Unidad'),
+  ('Volumen');
 
 
 CREATE TABLE unidad_medida (
@@ -157,5 +157,8 @@ alter table insumo
 alter table insumo
     add constraint insumo_tipo_medida_fk
         foreign key (id_tipo_medida) references tipo_medida(id_tipo_medida) ;
+
+alter table insumo
+    modify ruta_imagen varchar(100) null;
 
 

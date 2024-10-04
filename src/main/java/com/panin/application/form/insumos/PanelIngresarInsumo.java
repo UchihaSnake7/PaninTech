@@ -8,7 +8,11 @@ import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
-
+import com.panin.application.form.other.Model_Card;
+import com.panin.controladores.ControladorInsumos;
+import com.panin.entidades.Insumo;
+import com.panin.entidades.UnidadMedida;
+import org.hibernate.Hibernate;
 
 /**
  *
@@ -28,13 +32,18 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         setLayout(new MigLayout("al center center"));
     }
 
-    public PanelIngresarInsumo(Model_Card data) {
+    public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
 //        jIcon.setIcon(data.getIcon());
-        System.out.println(data.getTitle());
+//        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
+        ControladorInsumos ci = new ControladorInsumos();
+        System.out.println(insumo.getIdTipoMedida().getUnidadMedidaCollection());
         initComponents();
         jTitle.setText(data.getTitle());
         jIcon.setIcon(data.getIcon());
-
+        for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
+            String medida = item.getNombre() + '-' + item.getAbreviatura();
+            jUnidad.addItem(medida);
+        }
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -58,7 +67,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 + "background:$Login.background;"
                 + "arc:50;");
 
-       setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
+        setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
     }
 
     /**
@@ -102,8 +111,6 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Unidad de Medida:");
-
-        jUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jBtnAtras.setText("Atrás");
         jBtnAtras.addActionListener(new java.awt.event.ActionListener() {

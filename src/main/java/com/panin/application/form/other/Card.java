@@ -129,11 +129,17 @@ public class Card extends javax.swing.JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                System.out.println(formClass);
                 switch (formClass) {
                     case ("PanelIngresarProducto"): {
 
                         Application.showForm(new PanelIngresarProducto(data));
+                        break;
+                    }
+                    
+                    case ("PanelIngresarInsumo"): {
+
+                        Application.showForm(new PanelIngresarInsumo(data, insumo));
                         break;
                     }
                     default:

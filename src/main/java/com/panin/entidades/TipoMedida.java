@@ -5,11 +5,15 @@
 package com.panin.entidades;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -34,17 +38,22 @@ import java.util.Collection;
     @NamedQuery(name = "TipoMedida.findByNombre", query = "SELECT t FROM TipoMedida t WHERE t.nombre = :nombre")})
 public class TipoMedida implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
+    @OneToMany(mappedBy = "idTipo", fetch=FetchType.EAGER)
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @CollectionTable(name = "unidad_medida", joinColumns = @JoinColumn(name = "id_tipo"))
+    private Collection<UnidadMedida> unidadMedidaCollection ;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_medida", nullable = false)
     private Integer idTipoMedida;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "nombre", nullable = false, length = 50)
-    private String nombre;
     @OneToMany(mappedBy = "idTipoMedida")
     private Collection<Insumo> insumoCollection;
 
@@ -68,13 +77,6 @@ public class TipoMedida implements Serializable {
         this.idTipoMedida = idTipoMedida;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     @XmlTransient
     public Collection<Insumo> getInsumoCollection() {
@@ -108,6 +110,23 @@ public class TipoMedida implements Serializable {
     @Override
     public String toString() {
         return "com.panin.entidades.TipoMedida[ idTipoMedida=" + idTipoMedida + " ]";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @XmlTransient
+    public Collection<UnidadMedida> getUnidadMedidaCollection() {
+        return unidadMedidaCollection;
+    }
+
+    public void setUnidadMedidaCollection(Collection<UnidadMedida> unidadMedidaCollection) {
+        this.unidadMedidaCollection = unidadMedidaCollection;
     }
     
 }
