@@ -47,7 +47,28 @@ public class FormCrearInsumoN extends javax.swing.JPanel {
 
         }
 
-        textoHint1.setText("Ingrese Descripción");
+        textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jAtras.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jComboBoxUnidad.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jCrear.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jLabel1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jListUnidad.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jNombre.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jUnidadMedida.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+
+        textoHint1.setHint("Ingrese Descripción");
         panel.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:50;");
@@ -103,28 +124,25 @@ public class FormCrearInsumoN extends javax.swing.JPanel {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addComponent(jAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addGap(15, 15, 15)
                         .addComponent(jCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
-                                .addGap(12, 12, 12))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jNombre)
-                                    .addComponent(jUnidadMedida))
-                                .addGap(50, 50, 50)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxUnidad, 0, 161, Short.MAX_VALUE)
-                                    .addComponent(textoHint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(29, 29, 29))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jNombre)
+                            .addComponent(jUnidadMedida))
+                        .addGap(50, 50, 50)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxUnidad, 0, 161, Short.MAX_VALUE)
+                            .addComponent(textoHint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -138,10 +156,10 @@ public class FormCrearInsumoN extends javax.swing.JPanel {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel1)))
-                        .addGap(76, 76, 76)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(9, 9, 9)))
+                        .addGap(50, 50, 50)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jNombre)
                             .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

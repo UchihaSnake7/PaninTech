@@ -161,4 +161,10 @@ alter table insumo
 alter table insumo
     modify ruta_imagen varchar(100) null;
 
+alter table insumo
+    modify id_tipo_medida int not null;
+
+drop table insumo_cantidad;
+drop table insumo_precio;
+
 

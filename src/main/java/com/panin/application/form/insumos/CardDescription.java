@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.panin.application.form.insumos;
+
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Path2D;
-
 
 /**
  *
@@ -19,22 +20,25 @@ public class CardDescription extends javax.swing.JPanel {
     /**
      * Creates new form CardDescription
      */
-    
-      public CardDescription(String title, String description) {
+    public CardDescription(String title, String description) {
         initComponents();
         setOpaque(false);
-          txt.setBackground(new Color(0, 0, 0, 0));
+        txt.setBackground(new Color(0, 0, 0, 0));
         lblTitle.setText(title);
         lblTitle.setForeground(Color.BLACK);
+//        lblTitle.putClientProperty(FlatClientProperties.STYLE, ""
+//                + "background:$Meunu.foreground;");
+//        txt.putClientProperty(FlatClientProperties.STYLE, ""
+//                + "background:$Menu.foreground;");
 //        txt.setText(title);
         txt.setForeground(Color.BLACK);
     }
+
     public CardDescription() {
         initComponents();
     }
 
-    
-        @Override
+    @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -47,6 +51,7 @@ public class CardDescription extends javax.swing.JPanel {
         g2.fill(f);
         super.paintComponent(grphcs);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
