@@ -4,6 +4,10 @@
  */
 package com.panin.application.form.productos;
 
+import com.panin.controladores.ControladorInsumos;
+import com.panin.entidades.Insumo;
+import java.util.List;
+
 /**
  *
  * @author ricke
@@ -15,6 +19,29 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
      */
     public frameIngresarInsumoReceta() {
         initComponents();
+        init();
+       
+
+    }
+    
+    public void init(){
+        
+        
+        ControladorInsumos ci = new ControladorInsumos();
+        
+        List<Insumo> insumos = ci.obtenerInsumos();
+        
+        for (Insumo insumo : insumos) {
+        	
+        	System.out.println("Insumo: " + insumo.getDescripcion());
+			
+		}
+        
+        
+        this.setVisible(true);
+        this.setResizable(false);
+        
+        
     }
 
     /**
@@ -26,19 +53,83 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelFormularioInsumo = new javax.swing.JPanel();
+        labelTituloForm = new javax.swing.JLabel();
+        comboboxInsumos = new javax.swing.JComboBox<>();
+        labelTituloIngrediente = new javax.swing.JLabel();
+        labelTituloMedida = new javax.swing.JLabel();
+        labelMedida = new javax.swing.JLabel();
+        labelTituloCantidad = new javax.swing.JLabel();
+        textFieldCantidad = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+        labelTituloForm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelTituloForm.setText("Ingrese los datos de insumo");
+
+        comboboxInsumos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        labelTituloIngrediente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelTituloIngrediente.setText("Ingrediente");
+
+        labelTituloMedida.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelTituloMedida.setText("Medida");
+
+        labelMedida.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelMedida.setText("Medida");
+
+        labelTituloCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelTituloCantidad.setText("Cantidad");
+
+        textFieldCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        textFieldCantidad.setText("cantidad");
+
+        javax.swing.GroupLayout panelFormularioInsumoLayout = new javax.swing.GroupLayout(panelFormularioInsumo);
+        panelFormularioInsumo.setLayout(panelFormularioInsumoLayout);
+        panelFormularioInsumoLayout.setHorizontalGroup(
+            panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(labelTituloForm, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                        .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(labelTituloIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)
+                        .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addComponent(labelTituloMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(labelTituloCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addComponent(labelMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+        panelFormularioInsumoLayout.setVerticalGroup(
+            panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(labelTituloForm)
+                .addGap(68, 68, 68)
+                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTituloIngrediente)
+                    .addComponent(labelTituloMedida)
+                    .addComponent(labelTituloCantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboboxInsumos)
+                    .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelMedida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -47,14 +138,14 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -64,39 +155,46 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frameIngresarInsumoReceta().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new frameIngresarInsumoReceta().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> comboboxInsumos;
+    private javax.swing.JLabel labelMedida;
+    private javax.swing.JLabel labelTituloCantidad;
+    private javax.swing.JLabel labelTituloForm;
+    private javax.swing.JLabel labelTituloIngrediente;
+    private javax.swing.JLabel labelTituloMedida;
+    private javax.swing.JPanel panelFormularioInsumo;
+    private javax.swing.JTextField textFieldCantidad;
     // End of variables declaration//GEN-END:variables
 }

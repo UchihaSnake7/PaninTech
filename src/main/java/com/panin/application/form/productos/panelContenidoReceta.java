@@ -67,6 +67,7 @@ public class panelContenidoReceta extends javax.swing.JPanel {
         scroll = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
+        botonAbrirFrameFormularioInsumo = new javax.swing.JButton();
 
         scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -103,25 +104,46 @@ public class panelContenidoReceta extends javax.swing.JPanel {
         scroll.setViewportView(table);
         table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        botonAbrirFrameFormularioInsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/agregar.png"))); // NOI18N
+        botonAbrirFrameFormularioInsumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbrirFrameFormularioInsumoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(separador)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(separador)
+                .addGap(86, 86, 86))
             .addComponent(scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonAbrirFrameFormularioInsumo)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonAbrirFrameFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAbrirFrameFormularioInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirFrameFormularioInsumoActionPerformed
+        // TODO add your handling code here:}
+        new frameIngresarInsumoReceta();
+    }//GEN-LAST:event_botonAbrirFrameFormularioInsumoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAbrirFrameFormularioInsumo;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable table;
