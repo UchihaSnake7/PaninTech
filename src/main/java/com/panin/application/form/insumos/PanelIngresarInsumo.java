@@ -12,13 +12,28 @@ import com.panin.application.form.other.Model_Card;
 import com.panin.controladores.ControladorInsumos;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.UnidadMedida;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import org.hibernate.Hibernate;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.ParseException;
+import java.util.List;
+import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author USUARIO
  */
 public class PanelIngresarInsumo extends javax.swing.JPanel {
+
 
     /**
      * Creates new form PanelIngresarProducto
@@ -33,28 +48,50 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }
 
     public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
+//        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
 //        jIcon.setIcon(data.getIcon());
 //        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
         ControladorInsumos ci = new ControladorInsumos();
         System.out.println(insumo.getIdTipoMedida().getUnidadMedidaCollection());
+
+//         modeloComboBoxUnidadMedida = new ModeloComboBoxUnidadMedida((List<UnidadMedida>) insumo.getIdTipoMedida().getUnidadMedidaCollection());
         initComponents();
         jTitle.setText(data.getTitle());
         jIcon.setIcon(data.getIcon());
+
+//        jUnidad.setModel(modeloComboBoxUnidadMedida);
         for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
-            String medida = item.getNombre() + '-' + item.getAbreviatura();
-            jUnidad.addItem(medida);
+            jUnidad.addItem(item);
         }
+
+        UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
+        if (medidaSeleccionada != null) {
+            lblUnidad.setText(medidaSeleccionada.getNombre());
+        }
+
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
+        lblUnidad.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
 
-        jTextCantidad.putClientProperty(FlatClientProperties.STYLE, ""
+        textoCantidad.setHint("Ingrese Cantidad...");
+
+        textoCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
+        textoCantidad.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+
+        textoHint1.setHint("Ingrese Precio...");
+        textoHint1.setHorizontalAlignment(SwingConstants.RIGHT);
+        textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
 
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
 
         jUnidad.putClientProperty(FlatClientProperties.STYLE, ""
@@ -63,11 +100,19 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 + "foreground:$Menu.foreground;");
         jBtnOk.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
+        panel.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:50;");
 
+//        int x = (getWidth() + 50 - panel.getWidth()) / 2;
+//        int y = (getHeight() - panel.getHeight()) / 2;
+//        
+//        panel.setLocation(x, y);
+//        setLayout(new MigLayout("al center center"));
         setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
+
+        verificarIngresoNumero();
+        actualizarUnidadMedida(insumo);
     }
 
     /**
@@ -79,8 +124,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextCantidad = new javax.swing.JTextField();
+        panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jBtnOk = new javax.swing.JButton();
         jIcon = new javax.swing.JLabel();
@@ -88,13 +132,10 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jUnidad = new javax.swing.JComboBox<>();
         jBtnAtras = new javax.swing.JButton();
-
-        jTextCantidad.setText("Cantidad...");
-        jTextCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCantidadActionPerformed(evt);
-            }
-        });
+        lblUnidad = new javax.swing.JLabel();
+        textoCantidad = new com.panin.application.utilities.TextoHint();
+        textoHint1 = new com.panin.application.utilities.TextoHint();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cantidad:");
@@ -112,6 +153,12 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Unidad de Medida:");
 
+        jUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUnidadActionPerformed(evt);
+            }
+        });
+
         jBtnAtras.setText("Atrás");
         jBtnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,70 +166,96 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBtnAtras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+        lblUnidad.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblUnidad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        textoCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoCantidadActionPerformed(evt);
+            }
+        });
+
+        textoHint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoHint1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Precio");
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBtnOk, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(jTextCantidad)
-                            .addComponent(jUnidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jBtnOk, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                .addComponent(jUnidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textoCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textoHint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jIcon)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTitle)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addContainerGap(64, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jIcon)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addComponent(jTitle)
                         .addGap(9, 9, 9)))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(31, 31, 31)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(9, 9, 9)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(textoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUnidad)
+                .addGap(19, 19, 19)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jBtnOk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1)))
-                .addGap(62, 62, 62))
+                    .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(162, 162, 162))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(187, 187, 187))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -195,9 +268,17 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnOkActionPerformed
 
-    private void jTextCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadActionPerformed
+    private void textoHint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoHint1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCantidadActionPerformed
+    }//GEN-LAST:event_textoHint1ActionPerformed
+
+    private void textoCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoCantidadActionPerformed
+
+    private void jUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUnidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jUnidadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -206,9 +287,75 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private javax.swing.JLabel jIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextCantidad;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jTitle;
-    private javax.swing.JComboBox<String> jUnidad;
+    private javax.swing.JComboBox<UnidadMedida> jUnidad;
+    private javax.swing.JLabel lblUnidad;
+    private javax.swing.JPanel panel;
+    private com.panin.application.utilities.TextoHint textoCantidad;
+    private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables
+
+    private void verificarIngresoNumero() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//textoCantidad.addKeyListener(new KeyAdapter() {
+        textoCantidad.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                if (!(Character.isDigit(c)) && c != ',') {
+                    ke.consume();
+                } else {
+                    // Permitir solo un punto decimal
+                    if (c == ',' && textoCantidad.getText().contains(",")) {
+                        ke.consume();
+                    } else {
+                        // Limitar a 12 caracteres
+                        if (textoCantidad.getText().length() >= 10) {
+                            ke.consume();
+                        }
+                    }
+                }
+            }
+
+            public void keyReleased(KeyEvent e) {
+            }
+
+            public void keyPressed(KeyEvent e) {
+            }
+        }
+        );
+
+        textoHint1.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                if (!(Character.isDigit(c)) && c != ',') {
+                    ke.consume();
+                } else {
+                    // Permitir solo un punto decimal
+                    if (c == ',' && textoHint1.getText().contains(",")) {
+                        ke.consume();
+                    } else {
+                        // Limitar a 12 caracteres
+                        if (textoHint1.getText().length() >= 10) {
+                            ke.consume();
+                        }
+                    }
+                }
+
+            }
+        });
+
+    }
+
+    private void actualizarUnidadMedida(Insumo insumo) {
+        jUnidad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
+                lblUnidad.setText(medidaSeleccionada.getNombre());
+
+            }
+        });
+    }
+
 }

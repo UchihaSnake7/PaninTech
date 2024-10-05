@@ -155,7 +155,9 @@ public class UnidadMedida implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.UnidadMedida[ idUnidad=" + idUnidad + " ]";
+        return getAbreviatura();
     }
     
 }
+
+
