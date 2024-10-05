@@ -61,7 +61,7 @@ public class Producto implements Serializable {
     private tipoProducto tipo;
     
     @Column(name = "id_receta")
-    private int idReceta;
+    private Integer idReceta;
     
 
     public Producto() {
