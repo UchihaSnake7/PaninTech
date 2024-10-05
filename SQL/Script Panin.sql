@@ -80,6 +80,16 @@ create table producto
         primary key (id)
 );
 
+alter table producto
+    add tipo ENUM ('Çomprado', 'Elaborado') null;
+
+alter table producto
+    add id_receta int null;
+
+alter table producto
+    add constraint producto_recetas_id_receta_fk
+        foreign key (id_receta) references recetas (id_receta);
+
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (1, 'Pan frances', 0, 0, '/imagenes/productos/pan_frances.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (2, 'Pan piñita', 0, 0, '/imagenes/productos/pan_piñita.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (3, 'Pan canilla', 0, 0, '/imagenes/productos/pan_canilla.png');
@@ -158,4 +168,21 @@ alter table insumo
     add constraint insumo_tipo_medida_fk
         foreign key (id_tipo_medida) references tipo_medida(id_tipo_medida) ;
 
+
+
+CREATE TABLE recetas (
+  id_receta INT PRIMARY KEY AUTO_INCREMENT,
+  nombre_receta VARCHAR(100),
+  tiempo_preparacion TIME,
+  instrucciones TEXT
+);
+
+CREATE TABLE insumo_recetas (
+  id_insumo_receta INT PRIMARY KEY AUTO_INCREMENT,
+  id_receta INT,
+  id_insumo INT,
+  cantidad DECIMAL(10,2),
+  FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
+  FOREIGN KEY (id_insumo) REFERENCES insumo(id)
+);
 
