@@ -21,6 +21,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -56,7 +57,7 @@ public class Insumo implements Serializable {
     private Date fechaCreacion;
     @Column(name = "hora_creacion")
     @Temporal(TemporalType.TIME)
-    private Date horaCreacion;
+    private Time horaCreacion;
     @Basic(optional = false)
     @NotNull
     @Column(name = "activo", nullable = false)
@@ -105,11 +106,11 @@ public class Insumo implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getHoraCreacion() {
+    public Time getHoraCreacion() {
         return horaCreacion;
     }
 
-    public void setHoraCreacion(Date horaCreacion) {
+    public void setHoraCreacion(Time horaCreacion) {
         this.horaCreacion = horaCreacion;
     }
 

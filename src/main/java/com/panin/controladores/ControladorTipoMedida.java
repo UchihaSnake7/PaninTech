@@ -6,6 +6,8 @@ package com.panin.controladores;
 
 import com.panin.HibernateUtil;
 import com.panin.entidades.Insumo;
+import com.panin.entidades.TipoMedida;
+import com.panin.entidades.UnidadMedida;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 import org.hibernate.Session;
@@ -20,23 +22,24 @@ public class ControladorTipoMedida {
 
     public ControladorTipoMedida() {
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-        session.beginTransaction();
 
     }
 
     //Ejemplo de metodo para obtener todos los productos de la db
-//    public List<Insumo> obtenerInsumos() {
-//        List<Insumo> insumos;
-//
-//        TypedQuery query = session.getNamedQuery("Insumo.findAll");
-//        insumos = query.getResultList();
-//
-//        session.getTransaction().commit();
-//        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-////                session.close();
-//
-//        return query.getResultList();
-//    }
+    public List<TipoMedida> obtenerTipoMedida() {
+        session.beginTransaction();
+        List<TipoMedida> tiposMedida;
+
+        TypedQuery query = session.getNamedQuery("TipoMedida.findAll");
+        tiposMedida = query.getResultList();
+
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+        session.close();
+        return tiposMedida;
+
+    }
 
     public void cerrarSesion() {
         session.close();

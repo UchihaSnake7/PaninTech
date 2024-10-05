@@ -20,12 +20,12 @@ public class ControladorInsumos {
 
     public ControladorInsumos() {
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-        session.beginTransaction();
 
     }
 
     //Ejemplo de metodo para obtener todos los productos de la db
     public List<Insumo> obtenerInsumos() {
+        session.beginTransaction();
         List<Insumo> insumos;
 
         TypedQuery query = session.getNamedQuery("Insumo.findAll");
@@ -34,8 +34,22 @@ public class ControladorInsumos {
         session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                session.close();
+        session.close();
+        return insumos;
+    }
 
-        return query.getResultList();
+    public boolean save(Insumo insumo) {
+        try {
+            session.beginTransaction();
+            session.save(insumo);
+            System.out.println(session.getTransaction().getStatus());
+            session.close();
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     public void cerrarSesion() {

@@ -6,6 +6,7 @@ import com.formdev.flatlaf.util.UIScale;
 
 import com.panin.application.Application;
 import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.insumos.crear.FormCrearInsumoN;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
@@ -88,7 +89,7 @@ public class MainForm extends JLayeredPane {
                 } else if (subIndex == 2) {
                     Application.showForm(new FormRead());
                 } else if (subIndex == 3) {
-                    Application.showForm(new FormCrearInsumo());
+                    Application.showForm(new FormCrearInsumoN());
                 
                 }    
                 else {

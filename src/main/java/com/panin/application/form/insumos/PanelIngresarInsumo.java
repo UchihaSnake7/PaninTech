@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
 import javax.swing.SwingConstants;
@@ -33,7 +34,6 @@ import javax.swing.text.MaskFormatter;
  * @author USUARIO
  */
 public class PanelIngresarInsumo extends javax.swing.JPanel {
-
 
     /**
      * Creates new form PanelIngresarProducto
@@ -48,6 +48,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }
 
     public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
+        
+         NumberFormat format = NumberFormat.getNumberInstance();
+             
 //        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
 //        jIcon.setIcon(data.getIcon());
 //        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
@@ -302,46 +305,47 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         textoCantidad.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();
-                if (!(Character.isDigit(c)) && c != ',') {
+                String text = textoCantidad.getText();
+
+                // Permitir números, coma y signo negativo al inicio
+                if (!Character.isDigit(c)) {
                     ke.consume();
-                } else {
-                    // Permitir solo un punto decimal
-                    if (c == ',' && textoCantidad.getText().contains(",")) {
-                        ke.consume();
-                    } else {
-                        // Limitar a 12 caracteres
-                        if (textoCantidad.getText().length() >= 10) {
-                            ke.consume();
-                        }
-                    }
+                    return;
                 }
-            }
+                   if (text.length() >= 10) {
+                    ke.consume();
+                    return;
+                }
 
-            public void keyReleased(KeyEvent e) {
+           
             }
-
-            public void keyPressed(KeyEvent e) {
-            }
-        }
-        );
+        });
 
         textoHint1.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();
-                if (!(Character.isDigit(c)) && c != ',') {
+                String text = textoHint1.getText();
+
+                // Permitir números, coma y signo negativo al inicio
+                if (!(Character.isDigit(c) || c == ',')) {
                     ke.consume();
-                } else {
-                    // Permitir solo un punto decimal
-                    if (c == ',' && textoHint1.getText().contains(",")) {
-                        ke.consume();
-                    } else {
-                        // Limitar a 12 caracteres
-                        if (textoHint1.getText().length() >= 10) {
-                            ke.consume();
-                        }
-                    }
+                    return;
+                }
+                    if (text.length() >= 12) {
+                    ke.consume();
+                    return;
                 }
 
+                // Permitir solo una coma
+                if (c == ',' && text.contains(",")) {
+                    ke.consume();
+                }
+
+                // Limitar a cuatro decimales
+                int index = text.indexOf(',');
+                if (index >= 0 && text.length() - index - 1 > 3) {
+                    ke.consume();
+                }
             }
         });
 

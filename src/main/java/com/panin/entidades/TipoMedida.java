@@ -109,7 +109,7 @@ public class TipoMedida implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.TipoMedida[ idTipoMedida=" + idTipoMedida + " ]";
+        return this.nombre;
     }
 
     public String getNombre() {
