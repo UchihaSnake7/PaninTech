@@ -7,6 +7,8 @@ package com.panin.entidades;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +19,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+
+import com.panin.application.utilities.tipoProducto;
+
 
 /**
  *
@@ -50,6 +55,14 @@ public class Producto implements Serializable {
     private double precioVenta;
     @Column(name = "ruta_imagen")
     private String rutaImagen;
+    
+    @Column(columnDefinition = "ENUM('Comprado', 'Elaborado')")
+    @Enumerated(EnumType.STRING)
+    private tipoProducto tipo;
+    
+    @Column(name = "id_receta")
+    private Integer idReceta;
+    
 
     public Producto() {
     }
@@ -101,6 +114,24 @@ public class Producto implements Serializable {
 
 	public void setRutaImagen(String rutaImagen) {
 		this.rutaImagen = rutaImagen;
+	}
+	
+	
+
+	public tipoProducto getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(tipoProducto tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getIdReceta() {
+		return idReceta;
+	}
+
+	public void setIdReceta(int idReceta) {
+		this.idReceta = idReceta;
 	}
 
 	@Override
