@@ -6,9 +6,11 @@ import com.formdev.flatlaf.util.UIScale;
 
 import com.panin.application.Application;
 import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.insumos.crear.FormCrearInsumoN;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
+import com.panin.application.form.productos.FormAgregarNuevoProducto;
 import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.application.form.other.formprueba;
 import com.panin.application.form.other.FormCambio;
@@ -28,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.productos.FormMostrarProductos;
+import com.panin.application.form.productos.PanelNuevoProducto;
 
 /**
  *
@@ -88,7 +91,7 @@ public class MainForm extends JLayeredPane {
                 } else if (subIndex == 2) {
                     Application.showForm(new FormRead());
                 } else if (subIndex == 3) {
-                    Application.showForm(new FormCrearInsumo());
+                    Application.showForm(new FormCrearInsumoN());
                 
                 }    
                 else {
@@ -99,10 +102,22 @@ public class MainForm extends JLayeredPane {
                  /*
                 Productos
                 */
-                if (subIndex == 1) {
-                    Application.showForm(new FormMostrarProductos());
-                }
-            
+            	switch (subIndex) {
+				case 1: {
+					
+					 Application.showForm(new FormMostrarProductos());
+					 break;
+					 }
+				case 3: {
+					
+					 Application.showForm(new PanelNuevoProducto());
+					 break;
+					 }
+				default:
+					throw new IllegalArgumentException("Valor no esperado: " + subIndex);
+				}
+            	
+               
             } else if (index == 3) {
                  if (subIndex == 1) {
                    Application.showForm(new formprueba());

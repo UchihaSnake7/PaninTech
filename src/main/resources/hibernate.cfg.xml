@@ -15,7 +15,14 @@
       
 <!--      Sintaxis para mapear entidades directamente-->
       <mapping class="com.panin.entidades.Producto"/>  
-      
+      <mapping class="com.panin.entidades.Insumo"/>
+      <mapping class="com.panin.entidades.TipoMedida"/>    
+      <mapping class="com.panin.entidades.UnidadMedida"/> 
+      <mapping class="com.panin.entidades.Conversion"/>
+      <mapping class="com.panin.entidades.ComprasInsumo"/>  
+      <mapping class="com.panin.entidades.Conversion"/> 
+  
+          
 <!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->
 <!--      <mapping resource="Producto.hbm.xml"/>  -->
    </session-factory>  

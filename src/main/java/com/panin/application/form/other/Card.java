@@ -20,9 +20,7 @@ import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.form.productos.PanelIngresarProducto;
 import com.panin.application.form.insumos.PanelIngresarInsumo;
-
-
-
+import com.panin.entidades.Insumo;
 
 /**
  *
@@ -61,6 +59,15 @@ public class Card extends javax.swing.JPanel {
     private int y = 50;
     private int speed = 3;
     private boolean showing = false;
+    private Insumo insumo;
+
+    public Insumo getInsumo() {
+        return insumo;
+    }
+
+    public void setInsumo(Insumo insumo) {
+        this.insumo = insumo;
+    }
 
     public Card(Model_Card data, Color color, String formClass) {
         this.data = data;
@@ -122,16 +129,22 @@ public class Card extends javax.swing.JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-            	
-            	switch (formClass) {
-				case ("PanelIngresarProducto"): {
-					
-					 Application.showForm(new PanelIngresarProducto(data));
-					 break;
-				}
-				default:
-					throw new IllegalArgumentException("Valor no esperado: " + formClass);
-				}
+                System.out.println(formClass);
+                switch (formClass) {
+                    case ("PanelIngresarProducto"): {
+
+                        Application.showForm(new PanelIngresarProducto(data));
+                        break;
+                    }
+                    
+                    case ("PanelIngresarInsumo"): {
+
+                        Application.showForm(new PanelIngresarInsumo(data, insumo));
+                        break;
+                    }
+                    default:
+                        throw new IllegalArgumentException("Valor no esperado: " + formClass);
+                }
 //                Application.showForm(new PanelIngresarProducto(data));
 
             }
@@ -166,21 +179,20 @@ public class Card extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblIcon)
-                .addContainerGap(21, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(lblIcon)
+                                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblIcon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblIcon)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblIcon;

@@ -80,6 +80,16 @@ create table producto
         primary key (id)
 );
 
+alter table producto
+    add tipo ENUM ('Çomprado', 'Elaborado') null;
+
+alter table producto
+    add id_receta int null;
+
+alter table producto
+    add constraint producto_recetas_id_receta_fk
+        foreign key (id_receta) references recetas (id_receta);
+
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (1, 'Pan frances', 0, 0, '/imagenes/productos/pan_frances.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (2, 'Pan piñita', 0, 0, '/imagenes/productos/pan_piñita.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (3, 'Pan canilla', 0, 0, '/imagenes/productos/pan_canilla.png');
@@ -91,4 +101,97 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (10, 'Pasta seca', 0, 0, '/imagenes/productos/pan_frances.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (11, 'Queso', 0, 0, '/imagenes/productos/quesito.png');
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen) VALUES (12, 'Torta', 0, 0, '/imagenes/productos/torta.png');
+
+  CREATE TABLE tipo_medida (
+  id_tipo_medida INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+INSERT INTO tipo_medida (nombre)
+VALUES
+  ('Masa'),
+  ('Longitud'),
+  ('Unidad'),
+  ('Volumen');
+
+
+CREATE TABLE unidad_medida (
+  id_unidad INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  abreviatura VARCHAR(10),
+  sistema VARCHAR(20),
+  id_tipo INT,
+     FOREIGN KEY (id_tipo) REFERENCES tipo_medida(id_tipo_medida)
+);
+
+INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
+VALUES
+  ('Gramo', 'g', 'métrico', 1),
+  ('Litro', 'L', 'métrico', 4),
+  ('Metro', 'm', 'métrico', 2),
+  ('Unidad', 'un', 'unidad', 3);
+
+CREATE TABLE conversion (
+  id_conversion INT PRIMARY KEY AUTO_INCREMENT,
+  unidad_base_id INT,
+  unidad_derivada_id INT,
+  factor_conversion DECIMAL(10,5) NOT NULL,
+  FOREIGN KEY (unidad_base_id) REFERENCES unidad_medida(id_unidad),
+  FOREIGN KEY (unidad_derivada_id) REFERENCES unidad_medida(id_unidad)
+);
+
+
+INSERT INTO unidad_medida (nombre, abreviatura, sistema, id_tipo)
+VALUES
+  ('kilogramo', 'Kg', 'métrico', 1),
+  ('hectogramo', 'Hg', 'métrico', 1),
+  ('decagramo', 'dag', 'métrico', 1),
+  ('decigramo', 'dg', 'métrico', 1),
+  ('centigramo', 'cg', 'métrico', 1),
+  ('miligramo', 'mg', 'métrico', 1);
+
+INSERT INTO conversion (unidad_base_id, unidad_derivada_id, factor_conversion)
+VALUES
+  (1, 5, 0.001),  -- 1 gramo = 0.001 kilogramos
+  (1, 6, 0.01),  -- 1 gramo = 0.01 hectogramos
+  (1, 7, 0.1),   -- 1 gramo = 0.1 decagramos
+  (1, 8, 10),   -- 1 gramo = 10 decigramos
+  (1, 9, 100),  -- 1 gramo = 100 centigramos
+  (1, 10, 1000); -- 1 gramo = 1000 miligramos
+
+alter table insumo
+    add ruta_imagen varchar(30) null;
+alter table insumo
+    add id_tipo_medida int null;
+
+alter table insumo
+    add constraint insumo_tipo_medida_fk
+        foreign key (id_tipo_medida) references tipo_medida(id_tipo_medida) ;
+
+alter table insumo
+    modify ruta_imagen varchar(100) null;
+
+alter table insumo
+    modify id_tipo_medida int not null;
+
+drop table insumo_cantidad;
+drop table insumo_precio;
+
+
+
+CREATE TABLE recetas (
+  id_receta INT PRIMARY KEY AUTO_INCREMENT,
+  nombre_receta VARCHAR(100),
+  tiempo_preparacion TIME,
+  instrucciones TEXT
+);
+
+CREATE TABLE insumo_recetas (
+  id_insumo_receta INT PRIMARY KEY AUTO_INCREMENT,
+  id_receta INT,
+  id_insumo INT,
+  cantidad DECIMAL(10,2),
+  FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
+  FOREIGN KEY (id_insumo) REFERENCES insumo(id)
+);
 

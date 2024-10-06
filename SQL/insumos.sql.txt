@@ -1,0 +1,10 @@
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (1, 'Harina de Trigo', '2024-10-03', '19:48:23', 1, '/imagenes/insumos/harina.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (2, 'Azucar', '2024-10-05', '17:08:58.640000', 0, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (3, 'Huevos', '2024-10-05', '17:15:28.405000', 0, '/imagenes/insumos/default.png', 3);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (4, 'Leche líquida', '2024-10-05', '17:26:00.237000', 1, '/imagenes/insumos/default.png', 4);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (5, 'Leche en Polvo', '2024-10-05', '17:30:40.700000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (6, 'Levadura', '2024-10-05', '20:39:05.623000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (7, 'Mantequilla', '2024-10-05', '20:39:19.840000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (8, 'Sal', '2024-10-05', '20:39:28.438000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (9, 'Vainilla', '2024-10-05', '20:39:35.848000', 1, '/imagenes/insumos/default.png', 4);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (10, 'Queso', '2024-10-05', '20:39:53.557000', 1, '/imagenes/insumos/default.png', 1);
