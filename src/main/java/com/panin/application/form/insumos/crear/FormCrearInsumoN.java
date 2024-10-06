@@ -210,6 +210,8 @@ public class FormCrearInsumoN extends javax.swing.JPanel {
             ControladorInsumos controladorInsumo = new ControladorInsumos();
             if (controladorInsumo.save(insumo)) {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Insumo Creado con Exito!!");
+                textoHint1.setText("");
+                textoHint1.setHint("Ingrese descripción...");
             } else {
                 Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error al crear Insumo");
             }

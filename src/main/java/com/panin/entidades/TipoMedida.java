@@ -112,13 +112,6 @@ public class TipoMedida implements Serializable {
         return this.nombre;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     @XmlTransient
     public Collection<UnidadMedida> getUnidadMedidaCollection() {
@@ -127,6 +120,14 @@ public class TipoMedida implements Serializable {
 
     public void setUnidadMedidaCollection(Collection<UnidadMedida> unidadMedidaCollection) {
         this.unidadMedidaCollection = unidadMedidaCollection;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

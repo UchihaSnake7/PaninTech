@@ -5,6 +5,7 @@
 package com.panin.entidades;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,14 +15,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -41,23 +45,14 @@ import java.util.Date;
     @NamedQuery(name = "Insumo.findByRutaImagen", query = "SELECT i FROM Insumo i WHERE i.rutaImagen = :rutaImagen")})
 public class Insumo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "descripcion", nullable = false, length = 100)
     private String descripcion;
-    @Column(name = "fecha_creacion")
-    @Temporal(TemporalType.DATE)
-    private Date fechaCreacion;
     @Column(name = "hora_creacion")
     @Temporal(TemporalType.TIME)
-    private Time horaCreacion;
+    private Date horaCreacion;
     @Basic(optional = false)
     @NotNull
     @Column(name = "activo", nullable = false)
@@ -65,6 +60,18 @@ public class Insumo implements Serializable {
     @Size(max = 30)
     @Column(name = "ruta_imagen", length = 30)
     private String rutaImagen;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "insumo")
+    private Collection<ComprasInsumo> comprasInsumoCollection;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+    @Column(name = "fecha_creacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaCreacion;
     @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
     @ManyToOne
     private TipoMedida idTipoMedida;
@@ -90,13 +97,6 @@ public class Insumo implements Serializable {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -107,20 +107,13 @@ public class Insumo implements Serializable {
     }
 
     public Time getHoraCreacion() {
-        return horaCreacion;
+        return (Time) horaCreacion;
     }
 
     public void setHoraCreacion(Time horaCreacion) {
-        this.horaCreacion = horaCreacion;
+        this.horaCreacion = (Time) horaCreacion;
     }
 
-    public boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
 
     public String getRutaImagen() {
         return rutaImagen;
@@ -161,6 +154,36 @@ public class Insumo implements Serializable {
     @Override
     public String toString() {
         return "com.panin.entidades.Insumo[ id=" + id + " ]";
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+  
+    public void setHoraCreacion(Date horaCreacion) {
+        this.horaCreacion = horaCreacion;
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    @XmlTransient
+    public Collection<ComprasInsumo> getComprasInsumoCollection() {
+        return comprasInsumoCollection;
+    }
+
+    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
+        this.comprasInsumoCollection = comprasInsumoCollection;
     }
     
 }
