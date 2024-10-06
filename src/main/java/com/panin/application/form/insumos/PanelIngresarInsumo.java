@@ -12,6 +12,8 @@ import com.panin.application.form.other.Model_Card;
 import com.panin.controladores.ControladorInsumos;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.UnidadMedida;
+import com.toedter.calendar.JTextFieldDateEditor;
+import com.toedter.calendar.MinMaxDateEvaluator;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import org.hibernate.Hibernate;
@@ -25,6 +27,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
@@ -48,9 +52,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }
 
     public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
-        
-         NumberFormat format = NumberFormat.getNumberInstance();
-             
+
+        NumberFormat format = NumberFormat.getNumberInstance();
+
 //        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
 //        jIcon.setIcon(data.getIcon());
 //        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
@@ -114,6 +118,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        setLayout(new MigLayout("al center center"));
         setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
 
+        validarCalendario();
         verificarIngresoNumero();
         actualizarUnidadMedida(insumo);
     }
@@ -192,6 +197,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Precio");
 
+        jDateChooser2.setMaxSelectableDate(new java.util.Date(4102462862000L));
+        jDateChooser2.setMinSelectableDate(new java.util.Date(1704085262000L));
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Fecha de compra");
 
@@ -200,14 +208,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jIcon)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTitle))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -215,29 +218,32 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                             .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jUnidad, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)
-                                .addComponent(textoCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(textoHint1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(jIcon)
+                        .addGap(25, 25, 25)))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTitle)
+                    .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jUnidad, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)
+                        .addComponent(textoCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textoHint1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jIcon)
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(jTitle)
+                        .addGap(29, 29, 29)))
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -332,12 +338,11 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                     ke.consume();
                     return;
                 }
-                   if (text.length() >= 10) {
+                if (text.length() >= 10) {
                     ke.consume();
                     return;
                 }
 
-           
             }
         });
 
@@ -351,7 +356,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                     ke.consume();
                     return;
                 }
-                    if (text.length() >= 12) {
+                if (text.length() >= 12) {
                     ke.consume();
                     return;
                 }
@@ -382,4 +387,29 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         });
     }
 
+    private void validarCalendario() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        Calendar min = Calendar.getInstance();
+//        min.add(Calendar.DAY_OF_MONTH, 30);
+//        Calendar max = Calendar.getInstance();
+//        max.add(Calendar.DAY_OF_MONTH, 10);
+//        RangeEvaluator re = new RangeEvaluator();
+//        re.setMinSelectableDate(min.getTime());
+//        re.setMaxSelectableDate(max.getTime());
+//        jDateChooser2.getJCalendar().setMinSelectableDate(min.getTime());
+//        jDateChooser2.getJCalendar().setMaxSelectableDate(max.getTime());
+//        ((JTextFieldDateEditor) jDateChooser2.getDateEditor()).setEditable(false);
+
+        jDateChooser2.setMaxSelectableDate(new Date());
+
+    }
+
+}
+
+class RangeEvaluator extends MinMaxDateEvaluator {
+
+    @Override
+    public boolean isInvalid(Date date) {
+        return !super.isInvalid(date);
+    }
 }
