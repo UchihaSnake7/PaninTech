@@ -74,7 +74,7 @@ create table producto
     descripcion       varchar(100) not null,
     precio_produccion decimal      null comment 'El precio de produccion en $',
     precio_venta      DECIMAL      null comment 'El precio de venta estimado en $',
-    ruta_imagen       varchar(200)
+    ruta_imagen       varchar(200),
 
     constraint producto_pk
         primary key (id)
