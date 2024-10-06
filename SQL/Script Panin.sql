@@ -80,6 +80,13 @@ create table producto
         primary key (id)
 );
 
+CREATE TABLE recetas (
+  id_receta INT PRIMARY KEY AUTO_INCREMENT,
+  nombre_receta VARCHAR(100),
+  tiempo_preparacion TIME,
+  instrucciones TEXT
+);
+
 alter table producto
     add tipo ENUM ('Çomprado', 'Elaborado') null;
 
@@ -179,12 +186,7 @@ drop table insumo_precio;
 
 
 
-CREATE TABLE recetas (
-  id_receta INT PRIMARY KEY AUTO_INCREMENT,
-  nombre_receta VARCHAR(100),
-  tiempo_preparacion TIME,
-  instrucciones TEXT
-);
+
 
 CREATE TABLE insumo_recetas (
   id_insumo_receta INT PRIMARY KEY AUTO_INCREMENT,
