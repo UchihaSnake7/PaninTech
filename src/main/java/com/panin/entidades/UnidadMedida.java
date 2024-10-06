@@ -44,17 +44,20 @@ public class UnidadMedida implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre")
     private String nombre;
     @Size(max = 10)
-    @Column(name = "abreviatura", length = 10)
+    @Column(name = "abreviatura")
     private String abreviatura;
     @Size(max = 20)
-    @Column(name = "sistema", length = 20)
+    @Column(name = "sistema")
     private String sistema;
     @Column(name = "unidad_base")
     private Boolean unidadBase;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
+¿
+    @OneToMany(mappedBy = "unidadMedida")
+    private Collection<InsumoRecetas> insumoRecetasCollection;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
     private Collection<ComprasInsumo> comprasInsumoCollection;
 
     private static final long serialVersionUID = 1L;
@@ -181,12 +184,21 @@ public class UnidadMedida implements Serializable {
         this.sistema = sistema;
     }
 
+
     public Boolean getUnidadBase() {
         return unidadBase;
     }
 
     public void setUnidadBase(Boolean unidadBase) {
         this.unidadBase = unidadBase;
+
+    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
+        return insumoRecetasCollection;
+    }
+
+    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
+        this.insumoRecetasCollection = insumoRecetasCollection;
+
     }
 
 }

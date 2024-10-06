@@ -4,9 +4,16 @@
  */
 package com.panin.application.form.productos;
 
+import com.panin.application.utilities.TextoHint;
 import com.panin.controladores.ControladorInsumos;
+import com.panin.dto.formAgregarInsumoProductoDTO;
 import com.panin.entidades.Insumo;
+import com.panin.entidades.UnidadMedida;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,10 +21,14 @@ import java.util.List;
  */
 public class frameIngresarInsumoReceta extends javax.swing.JFrame {
 
+    
+    public formAgregarInsumoProductoDTO dtoAgregarInsumo = new formAgregarInsumoProductoDTO();
+//    public javax.swing.JPanel panel;
     /**
      * Creates new form frameIngresarInsumoReceta
      */
-    public frameIngresarInsumoReceta() {
+    public frameIngresarInsumoReceta( javax.swing.JPanel panel ) {
+//        this.panel = panel;
         initComponents();
         init();
        
@@ -26,16 +37,18 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     
     public void init(){
         
-        
+        textFieldCantidad.setHint("Ingrese cantidad...");
         ControladorInsumos ci = new ControladorInsumos();
         
         List<Insumo> insumos = ci.obtenerInsumos();
         
         for (Insumo insumo : insumos) {
         	
-        	System.out.println("Insumo: " + insumo.getDescripcion());
-			
-		}
+//        	System.out.println("Insumo: " + insumo.getDescripcion());
+		comboboxInsumos.addItem(insumo);	
+	}
+        
+       
         
         
         this.setVisible(true);
@@ -58,16 +71,21 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         comboboxInsumos = new javax.swing.JComboBox<>();
         labelTituloIngrediente = new javax.swing.JLabel();
         labelTituloMedida = new javax.swing.JLabel();
-        labelMedida = new javax.swing.JLabel();
         labelTituloCantidad = new javax.swing.JLabel();
-        textFieldCantidad = new javax.swing.JTextField();
+        botonAceptar = new javax.swing.JButton();
+        comboboxMedida = new javax.swing.JComboBox<>();
+        textFieldCantidad = new com.panin.application.utilities.TextoHint();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTituloForm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelTituloForm.setText("Ingrese los datos de insumo");
+        labelTituloForm.setText("Ingrese los datos de la receta");
 
-        comboboxInsumos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboboxInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxInsumosActionPerformed(evt);
+            }
+        });
 
         labelTituloIngrediente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloIngrediente.setText("Ingrediente");
@@ -75,14 +93,22 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         labelTituloMedida.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloMedida.setText("Medida");
 
-        labelMedida.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelMedida.setText("Medida");
-
         labelTituloCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloCantidad.setText("Cantidad");
 
-        textFieldCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        textFieldCantidad.setText("cantidad");
+        botonAceptar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarActionPerformed(evt);
+            }
+        });
+
+        comboboxMedida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxMedidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFormularioInsumoLayout = new javax.swing.GroupLayout(panelFormularioInsumo);
         panelFormularioInsumo.setLayout(panelFormularioInsumoLayout);
@@ -96,21 +122,25 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
                     .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
                         .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
                                 .addGap(76, 76, 76)
-                                .addComponent(labelTituloIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(44, 44, 44)
+                                .addComponent(labelTituloIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)
+                                .addComponent(labelTituloMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addComponent(labelTituloMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
+                                .addGap(59, 59, 59)
+                                .addComponent(botonAceptar))
+                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
                                 .addComponent(labelTituloCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addComponent(labelMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(39, 39, 39)
+                                .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         panelFormularioInsumoLayout.setVerticalGroup(
@@ -124,12 +154,13 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
                     .addComponent(labelTituloMedida)
                     .addComponent(labelTituloCantidad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboboxInsumos)
-                    .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelMedida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(botonAceptar)
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,18 +170,59 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboboxMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxMedidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxMedidaActionPerformed
+
+    private void comboboxInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxInsumosActionPerformed
+        // TODO add your handling code here:
+        
+         comboboxMedida.removeAllItems();
+         Insumo insumoSeleccionado = (Insumo) comboboxInsumos.getSelectedItem();
+        
+        if (insumoSeleccionado != null) {
+            
+            for (UnidadMedida ud : insumoSeleccionado.getIdTipoMedida().getUnidadMedidaCollection()) {
+            comboboxMedida.addItem(ud);	
+            }
+        
+         }
+    }//GEN-LAST:event_comboboxInsumosActionPerformed
+
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
+        // TODO add your handling code here:
+        
+        Insumo insumo = (Insumo) comboboxInsumos.getSelectedItem();
+        UnidadMedida ud = (UnidadMedida) comboboxMedida.getSelectedItem();
+        double cantidad = Double.parseDouble( textFieldCantidad.getText() );
+        
+        dtoAgregarInsumo.setInsumo(insumo);
+        dtoAgregarInsumo.setUnidadMedidad(ud);
+        dtoAgregarInsumo.setCantidad(cantidad);
+        
+        
+        
+        
+        
+        this.dispose();
+        
+        
+        
+        
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,15 +258,139 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    public formAgregarInsumoProductoDTO getDtoAgregarInsumo() {
+        return dtoAgregarInsumo;
+    }
+
+    public void setDtoAgregarInsumo(formAgregarInsumoProductoDTO dtoAgregarInsumo) {
+        this.dtoAgregarInsumo = dtoAgregarInsumo;
+    }
+
+//    public JPanel getPanel() {
+//        return panel;
+//    }
+//
+//    public void setPanel(JPanel panel) {
+//        this.panel = panel;
+//    }
+
+    public JButton getBotonAceptar() {
+        return botonAceptar;
+    }
+
+    public void setBotonAceptar(JButton botonAceptar) {
+        this.botonAceptar = botonAceptar;
+    }
+
+    public JComboBox<Insumo> getComboboxInsumos() {
+        return comboboxInsumos;
+    }
+
+    public void setComboboxInsumos(JComboBox<Insumo> comboboxInsumos) {
+        this.comboboxInsumos = comboboxInsumos;
+    }
+
+    public JComboBox<UnidadMedida> getComboboxMedida() {
+        return comboboxMedida;
+    }
+
+    public void setComboboxMedida(JComboBox<UnidadMedida> comboboxMedida) {
+        this.comboboxMedida = comboboxMedida;
+    }
+
+    public JLabel getLabelTituloCantidad() {
+        return labelTituloCantidad;
+    }
+
+    public void setLabelTituloCantidad(JLabel labelTituloCantidad) {
+        this.labelTituloCantidad = labelTituloCantidad;
+    }
+
+    public JLabel getLabelTituloForm() {
+        return labelTituloForm;
+    }
+
+    public void setLabelTituloForm(JLabel labelTituloForm) {
+        this.labelTituloForm = labelTituloForm;
+    }
+
+    public JLabel getLabelTituloIngrediente() {
+        return labelTituloIngrediente;
+    }
+
+    public void setLabelTituloIngrediente(JLabel labelTituloIngrediente) {
+        this.labelTituloIngrediente = labelTituloIngrediente;
+    }
+
+    public JLabel getLabelTituloMedida() {
+        return labelTituloMedida;
+    }
+
+    public void setLabelTituloMedida(JLabel labelTituloMedida) {
+        this.labelTituloMedida = labelTituloMedida;
+    }
+
+    public JPanel getPanelFormularioInsumo() {
+        return panelFormularioInsumo;
+    }
+
+    public void setPanelFormularioInsumo(JPanel panelFormularioInsumo) {
+        this.panelFormularioInsumo = panelFormularioInsumo;
+    }
+
+    public TextoHint getTextFieldCantidad() {
+        return textFieldCantidad;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(frameIngresarInsumoReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new frameIngresarInsumoReceta().setVisible(true);
+//            }
+//        });
+//    }
+    public void setTextFieldCantidad(TextoHint textFieldCantidad) {
+        this.textFieldCantidad = textFieldCantidad;
+    }    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboboxInsumos;
-    private javax.swing.JLabel labelMedida;
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JComboBox<Insumo> comboboxInsumos;
+    private javax.swing.JComboBox<UnidadMedida> comboboxMedida;
     private javax.swing.JLabel labelTituloCantidad;
     private javax.swing.JLabel labelTituloForm;
     private javax.swing.JLabel labelTituloIngrediente;
     private javax.swing.JLabel labelTituloMedida;
     private javax.swing.JPanel panelFormularioInsumo;
-    private javax.swing.JTextField textFieldCantidad;
+    private com.panin.application.utilities.TextoHint textFieldCantidad;
     // End of variables declaration//GEN-END:variables
 }

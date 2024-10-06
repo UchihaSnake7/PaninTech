@@ -43,10 +43,18 @@ public class ControladorProductos {
                 
                 return query.getResultList();
 	}
+        
+         public void crearProducto(Producto producto){
+            
+            session.save(producto);
+            
+        }
 	
 	
 	public void cerrarSesion() {
-		 session.close();
+            
+//            session.getTransaction().commit();
+            session.close();
 		
 	}
 	
