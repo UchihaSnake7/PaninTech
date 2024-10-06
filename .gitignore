@@ -39,8 +39,6 @@ replay_pid*
 /target/
 /bin/
 
-/src/main/resources/hibernate.cfg
+# /src/main/resources/hibernate.cfg
 /target/maven-archiver
-/target/classes/hibernate.cfg.xml
-target/classes/hibernate.cfg.xml
 /target
