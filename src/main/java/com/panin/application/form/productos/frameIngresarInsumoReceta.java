@@ -4,6 +4,7 @@
  */
 package com.panin.application.form.productos;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.utilities.TextoHint;
 import com.panin.controladores.ControladorInsumos;
 import com.panin.dto.formAgregarInsumoProductoDTO;
@@ -16,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import raven.toast.Notifications;
 
 /**
  *
@@ -39,6 +41,13 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     
     public void init(){
         
+        panelFormularioInsumo.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.background;"
+                + "arc:50;");
+        
+        botonAceptar.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        
         textFieldCantidad.setHint("Ingrese cantidad...");
         ControladorInsumos ci = new ControladorInsumos();
         
@@ -51,6 +60,10 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
 	}
         
         verificarIngresoNumero();
+        
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Ingrese los datos de la receta");
         this.setVisible(true);
         this.setResizable(false);
         
@@ -65,6 +78,7 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelEstilo = new javax.swing.JPanel();
         panelFormularioInsumo = new javax.swing.JPanel();
         labelTituloForm = new javax.swing.JLabel();
         comboboxInsumos = new javax.swing.JComboBox<>();
@@ -78,7 +92,6 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTituloForm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelTituloForm.setText("Ingrese los datos de la receta");
 
         comboboxInsumos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +153,7 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panelFormularioInsumoLayout.setVerticalGroup(
             panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,26 +170,40 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
                     .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(botonAceptar)
                 .addGap(46, 46, 46))
+        );
+
+        javax.swing.GroupLayout panelEstiloLayout = new javax.swing.GroupLayout(panelEstilo);
+        panelEstilo.setLayout(panelEstiloLayout);
+        panelEstiloLayout.setHorizontalGroup(
+            panelEstiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEstiloLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        panelEstiloLayout.setVerticalGroup(
+            panelEstiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEstiloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -212,14 +239,9 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         dtoAgregarInsumo.setUnidadMedidad(ud);
         dtoAgregarInsumo.setCantidad(cantidad);
         
-        
-        
-        
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Datos ingresados con exitos");
         
         this.dispose();
-        
-        
-        
         
     }//GEN-LAST:event_botonAceptarActionPerformed
 
@@ -441,6 +463,7 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     private javax.swing.JLabel labelTituloForm;
     private javax.swing.JLabel labelTituloIngrediente;
     private javax.swing.JLabel labelTituloMedida;
+    private javax.swing.JPanel panelEstilo;
     private javax.swing.JPanel panelFormularioInsumo;
     private com.panin.application.utilities.TextoHint textFieldCantidad;
     // End of variables declaration//GEN-END:variables

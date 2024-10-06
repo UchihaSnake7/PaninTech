@@ -42,6 +42,7 @@ public class panelContenidoReceta extends javax.swing.JPanel {
         };
         modelTable = new DefaultTableModel(columnas, 0);
         table.setModel(modelTable);
+        
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$Table.background"

@@ -17,6 +17,7 @@ import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
 import java.math.BigDecimal;
+import raven.toast.Notifications;
 
 
 /**
@@ -212,7 +213,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         
-        System.out.print("\nEntro a evento del boton ok ");
+//        System.out.print("\nEntro a evento del boton ok ");
 
         
         if(comboboxTipoProducto.getSelectedItem().equals("Elaborado")){
@@ -256,6 +257,9 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
          
          cp.crearProducto(p);
          cp.cerrarSesion();
+         
+         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
+
             
         }
         
