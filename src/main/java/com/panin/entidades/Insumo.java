@@ -48,18 +48,20 @@ public class Insumo implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "descripcion", nullable = false, length = 100)
+    @Column(name = "descripcion")
     private String descripcion;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "activo")
+    private boolean activo;
+    @Size(max = 30)
+    @Column(name = "ruta_imagen")
+    private String rutaImagen;
+    @OneToMany(mappedBy = "idInsumo")
+    private Collection<InsumoRecetas> insumoRecetasCollection;
     @Column(name = "hora_creacion")
     @Temporal(TemporalType.TIME)
     private Date horaCreacion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "activo", nullable = false)
-    private boolean activo;
-    @Size(max = 30)
-    @Column(name = "ruta_imagen", length = 30)
-    private String rutaImagen;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "insumo")
     private Collection<ComprasInsumo> comprasInsumoCollection;
 
@@ -153,7 +155,23 @@ public class Insumo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.Insumo[ id=" + id + " ]";
+        return this.descripcion;
+    }
+
+
+  
+    public void setHoraCreacion(Date horaCreacion) {
+        this.horaCreacion = horaCreacion;
+    }
+
+
+    @XmlTransient
+    public Collection<ComprasInsumo> getComprasInsumoCollection() {
+        return comprasInsumoCollection;
+    }
+
+    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
+        this.comprasInsumoCollection = comprasInsumoCollection;
     }
 
     public String getDescripcion() {
@@ -164,11 +182,6 @@ public class Insumo implements Serializable {
         this.descripcion = descripcion;
     }
 
-  
-    public void setHoraCreacion(Date horaCreacion) {
-        this.horaCreacion = horaCreacion;
-    }
-
     public boolean getActivo() {
         return activo;
     }
@@ -177,13 +190,15 @@ public class Insumo implements Serializable {
         this.activo = activo;
     }
 
+   
+
     @XmlTransient
-    public Collection<ComprasInsumo> getComprasInsumoCollection() {
-        return comprasInsumoCollection;
+    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
+        return insumoRecetasCollection;
     }
 
-    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
-        this.comprasInsumoCollection = comprasInsumoCollection;
+    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
+        this.insumoRecetasCollection = insumoRecetasCollection;
     }
     
 }

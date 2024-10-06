@@ -195,3 +195,9 @@ CREATE TABLE insumo_recetas (
   FOREIGN KEY (id_insumo) REFERENCES insumo(id)
 );
 
+alter table insumo_recetas
+    add unidad_medida int null;
+
+alter table insumo_recetas
+    add constraint insumo_recetas_unidad_medida_id_unidad_fk
+        foreign key (unidad_medida) references unidad_medida (id_unidad);

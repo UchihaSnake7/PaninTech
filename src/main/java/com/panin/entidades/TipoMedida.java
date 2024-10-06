@@ -41,7 +41,7 @@ public class TipoMedida implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre")
     private String nombre;
     @OneToMany(mappedBy = "idTipo", fetch=FetchType.EAGER)
 //    @ElementCollection(fetch = FetchType.EAGER)

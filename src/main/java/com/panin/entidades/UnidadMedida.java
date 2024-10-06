@@ -42,14 +42,16 @@ public class UnidadMedida implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre")
     private String nombre;
     @Size(max = 10)
-    @Column(name = "abreviatura", length = 10)
+    @Column(name = "abreviatura")
     private String abreviatura;
     @Size(max = 20)
-    @Column(name = "sistema", length = 20)
+    @Column(name = "sistema")
     private String sistema;
+    @OneToMany(mappedBy = "unidadMedida")
+    private Collection<InsumoRecetas> insumoRecetasCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
     private Collection<ComprasInsumo> comprasInsumoCollection;
 
@@ -139,6 +141,16 @@ public class UnidadMedida implements Serializable {
         return getAbreviatura();
     }
 
+
+    @XmlTransient
+    public Collection<ComprasInsumo> getComprasInsumoCollection() {
+        return comprasInsumoCollection;
+    }
+
+    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
+        this.comprasInsumoCollection = comprasInsumoCollection;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -164,12 +176,12 @@ public class UnidadMedida implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ComprasInsumo> getComprasInsumoCollection() {
-        return comprasInsumoCollection;
+    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
+        return insumoRecetasCollection;
     }
 
-    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
-        this.comprasInsumoCollection = comprasInsumoCollection;
+    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
+        this.insumoRecetasCollection = insumoRecetasCollection;
     }
     
 }

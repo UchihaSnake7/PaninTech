@@ -5,6 +5,13 @@
 package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.dto.formAgregarInsumoProductoDTO;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,29 +22,36 @@ public class panelContenidoReceta extends javax.swing.JPanel {
     /**
      * Creates new form panelContenidoReceta
      */
+    private List<formAgregarInsumoProductoDTO> listaDTO = new ArrayList<formAgregarInsumoProductoDTO>();
+    private DefaultTableModel modelTable;
+    
     public panelContenidoReceta() {
+        
         initComponents();
         init();
         
     }
     
-    public panelContenidoReceta obtenerPanel(){
+    public panelContenidoReceta obtenerPanel() {
         return this;
     }
-
-    public void init(){
-        
+    
+    public void init() {
+        String[] columnas = new String[]{
+            "Insumo", "Medida", "Cantidad"
+        };
+        modelTable = new DefaultTableModel(columnas, 0);
+        table.setModel(modelTable);
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$Table.background"
         );
         
-        
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
                 + "pressedBackground:null;"
-//                + "separatorColor:$TableHeader.background;"
+                //                + "separatorColor:$TableHeader.background;"
                 + "font:bold;"
         );
         
@@ -45,16 +59,14 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
                 + "intercellSpacing:0,1;"
-//                + "separatorColor:$TableHeader.background;"
+                //                + "separatorColor:$TableHeader.background;"
                 + "cellFocusColor:$TableHeader.hoverBackground;"
                 + "selectionBackground:$TableHeader.hoverBackground;"
                 + "selectionForeground:$Table.foreground;"
-
         );
         
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,8 +150,37 @@ public class panelContenidoReceta extends javax.swing.JPanel {
 
     private void botonAbrirFrameFormularioInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirFrameFormularioInsumoActionPerformed
         // TODO add your handling code here:}
-        new frameIngresarInsumoReceta();
+        frameIngresarInsumoReceta frame = new frameIngresarInsumoReceta(this);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                String dato1 = frame.getName();
+                System.out.println(".windowClosed()");
+                System.out.println("Desde panel receta recibo " + frame.getDtoAgregarInsumo().getInsumo());
+                modelTable.addRow(new Object[]{frame.getDtoAgregarInsumo().getInsumo(), frame.getDtoAgregarInsumo().getUnidadMedidad(), frame.getDtoAgregarInsumo().getCantidad()});
+                
+                listaDTO.add(frame.getDtoAgregarInsumo());
+            }
+        });
     }//GEN-LAST:event_botonAbrirFrameFormularioInsumoActionPerformed
+    
+    public JTable getTable() {
+        return table;
+    }
+    
+    public void setTable(JTable table) {
+        this.table = table;
+    }
+
+    public List<formAgregarInsumoProductoDTO> getListaDTO() {
+        return listaDTO;
+    }
+
+    public void setListaDTO(List<formAgregarInsumoProductoDTO> listaDTO) {
+        this.listaDTO = listaDTO;
+    }
+    
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
