@@ -54,10 +54,10 @@ public class UnidadMedida implements Serializable {
     private String sistema;
     @Column(name = "unidad_base")
     private Boolean unidadBase;
-¿
+
     @OneToMany(mappedBy = "unidadMedida")
     private Collection<InsumoRecetas> insumoRecetasCollection;
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
     private Collection<ComprasInsumo> comprasInsumoCollection;
 
     private static final long serialVersionUID = 1L;
@@ -73,7 +73,6 @@ public class UnidadMedida implements Serializable {
     private Collection<Conversion> conversionCollection;
     @OneToMany(mappedBy = "unidadDerivadaId")
     private Collection<Conversion> conversionCollection1;
-
 
     public boolean isUnidadBase() {
         return unidadBase;
@@ -150,7 +149,6 @@ public class UnidadMedida implements Serializable {
         return getAbreviatura();
     }
 
-
     @XmlTransient
     public Collection<ComprasInsumo> getComprasInsumoCollection() {
         return comprasInsumoCollection;
@@ -184,13 +182,13 @@ public class UnidadMedida implements Serializable {
         this.sistema = sistema;
     }
 
-
     public Boolean getUnidadBase() {
         return unidadBase;
     }
 
     public void setUnidadBase(Boolean unidadBase) {
         this.unidadBase = unidadBase;
+    }
 
     public Collection<InsumoRecetas> getInsumoRecetasCollection() {
         return insumoRecetasCollection;
