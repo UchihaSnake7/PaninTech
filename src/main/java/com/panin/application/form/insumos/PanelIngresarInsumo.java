@@ -131,6 +131,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         validarCalendario();
         verificarIngresoNumero();
         actualizarUnidadMedida(insumo);
+        panelRegistrosInsumos1.iniciar(insumo);
     }
 
     /**
@@ -157,6 +158,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
+        panelRegistrosInsumos1 = new com.panin.application.form.insumos.panelRegistrosInsumos();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cantidad:");
@@ -246,7 +248,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addComponent(jIcon)
@@ -284,15 +286,19 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -354,6 +360,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                     textoHint1.setHint("Ingrese Precio...");
                     textoCantidad.setText("");
                     textoCantidad.setHint("Ingrese Cantidad...");
+                    panelRegistrosInsumos1.agregarCompra(compraInsumo);
                 } else {
                     Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error al crear compra");
                 }
@@ -393,6 +400,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private javax.swing.JComboBox<UnidadMedida> jUnidad;
     private javax.swing.JLabel lblUnidad;
     private javax.swing.JPanel panel;
+    private com.panin.application.form.insumos.panelRegistrosInsumos panelRegistrosInsumos1;
     private com.panin.application.utilities.TextoHint textoCantidad;
     private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables

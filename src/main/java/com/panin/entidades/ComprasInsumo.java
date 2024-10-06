@@ -36,7 +36,9 @@ import java.util.Date;
     @NamedQuery(name = "ComprasInsumo.findById", query = "SELECT c FROM ComprasInsumo c WHERE c.id = :id"),
     @NamedQuery(name = "ComprasInsumo.findByFecha", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha = :fecha"),
     @NamedQuery(name = "ComprasInsumo.findByCantidad", query = "SELECT c FROM ComprasInsumo c WHERE c.cantidad = :cantidad"),
-    @NamedQuery(name = "ComprasInsumo.findByPrecio", query = "SELECT c FROM ComprasInsumo c WHERE c.precio = :precio")})
+    @NamedQuery(name = "ComprasInsumo.findByPrecio", query = "SELECT c FROM ComprasInsumo c WHERE c.precio = :precio"),
+    @NamedQuery(name = "ComprasInsumo.findByInsumo", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo")
+})
 public class ComprasInsumo implements Serializable {
 
     private static final long serialVersionUID = 1L;
