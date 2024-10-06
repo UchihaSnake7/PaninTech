@@ -9,9 +9,15 @@ import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.other.Model_Card;
+import com.panin.controladores.ControladorComprasInsumos;
+import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorInsumos;
+import com.panin.controladores.ControladorUnidadMedida;
+import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.UnidadMedida;
+import com.toedter.calendar.JTextFieldDateEditor;
+import com.toedter.calendar.MinMaxDateEvaluator;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import org.hibernate.Hibernate;
@@ -23,11 +29,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.Time;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
+import raven.toast.Notifications;
 
 /**
  *
@@ -46,11 +58,11 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        jIcon.setIcon(data.getIcon());
         setLayout(new MigLayout("al center center"));
     }
-
+    
     public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
         
-         NumberFormat format = NumberFormat.getNumberInstance();
-             
+        NumberFormat format = NumberFormat.getNumberInstance();
+        this.insumoC = insumo;
 //        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
 //        jIcon.setIcon(data.getIcon());
 //        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
@@ -66,12 +78,12 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
             jUnidad.addItem(item);
         }
-
+        
         UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
         if (medidaSeleccionada != null) {
             lblUnidad.setText(medidaSeleccionada.getNombre());
         }
-
+        
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -80,28 +92,30 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 + "foreground:$Menu.foreground;");
         lblUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         textoCantidad.setHint("Ingrese Cantidad...");
-
+        
         textoCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
         textoCantidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         textoHint1.setHint("Ingrese Precio...");
         textoHint1.setHorizontalAlignment(SwingConstants.RIGHT);
         textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         jUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jBtnAtras.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jBtnOk.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$Menu.foreground;");
+        jDateChooser2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         panel.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
@@ -113,7 +127,8 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        panel.setLocation(x, y);
 //        setLayout(new MigLayout("al center center"));
         setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
-
+        
+        validarCalendario();
         verificarIngresoNumero();
         actualizarUnidadMedida(insumo);
     }
@@ -192,6 +207,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Precio");
 
+        jDateChooser2.setMaxSelectableDate(new java.util.Date(4102462862000L));
+        jDateChooser2.setMinSelectableDate(new java.util.Date(1704085262000L));
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Fecha de compra");
 
@@ -200,14 +218,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jIcon)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTitle))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -215,29 +228,32 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                             .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jUnidad, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)
-                                .addComponent(textoCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(textoHint1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(jIcon)
+                        .addGap(25, 25, 25)))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTitle)
+                    .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jUnidad, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)
+                        .addComponent(textoCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textoHint1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jIcon)
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(jTitle)
+                        .addGap(29, 29, 29)))
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -285,7 +301,69 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
+        String precio = textoHint1.getText();
+        String cantidad = textoCantidad.getText();
+        precio = precio.replace(",", ".");
+        cantidad = cantidad.replace(",", ".");
+        
+        try {
+            
+            if (textoHint1.getText() == null || precio.length() == 0 || textoHint1.getText().equals(" ")) {
+                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese el Precio del Insumo...");
+            } else if (textoCantidad.getText() == null || cantidad.length() == 0 || textoCantidad.getText().equals(" ")) {
+                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la cantidad commprada...");
+            } else if (jDateChooser2.getDate() == null) {
+                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la fecha de compra...");
+            } else {
+                
+                ControladorUnidadMedida cmd = new ControladorUnidadMedida();
+                UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
+                UnidadMedida umb;
+                BigDecimal cantidadCalculada = new BigDecimal(cantidad);
+                BigDecimal precioCalculado = new BigDecimal(precio);
+                System.out.println("Cantidad " + cantidad);
+                System.out.println("Cantidad Calculada: " + cantidadCalculada);
+                
+                if (!um.isUnidadBase()) {
+                    ControladorConversion cc = new ControladorConversion();
+                    umb = cmd.obtenerUnidadBase(um);
+                    System.out.println("Unidad base: " + umb.getNombre());
+                    BigDecimal factorConversion = cc.obtenerUnidadBase(um, umb).getFactorConversion();
+                    System.out.println(factorConversion);
+                    
+                    cantidadCalculada = cantidadCalculada.multiply(factorConversion);
+                    System.out.println(cantidadCalculada);
+                    
+                } else {
+                    umb = um;
+                }
+                precioCalculado = precioCalculado.divide(cantidadCalculada, 6, RoundingMode.HALF_UP);
+                ComprasInsumo compraInsumo = new ComprasInsumo();
+                compraInsumo.setInsumo(insumoC);
+                compraInsumo.setPrecio(precioCalculado);
+                compraInsumo.setCantidad(cantidadCalculada);
+                compraInsumo.setFecha(jDateChooser2.getDate());
+                compraInsumo.setUnidadMedidaId(umb);
+                compraInsumo.setHora(new Time(new Date().getTime()));
+                System.out.println(compraInsumo);
+                
+                ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
+                if (controladorComprasInsumos.save(compraInsumo)) {
+                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Compra Registrada con Exito!");
+                    textoHint1.setText("");
+                    textoHint1.setHint("Ingrese Precio...");
+                    textoCantidad.setText("");
+                    textoCantidad.setHint("Ingrese Cantidad...");
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error al crear compra");
+                }
+                
+            }
+        } catch (Exception e) {
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno del sistema");
+            System.err.println(e);
+        }
+
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void textoHint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoHint1ActionPerformed
@@ -318,7 +396,16 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private com.panin.application.utilities.TextoHint textoCantidad;
     private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables
-
+    private Insumo insumoC;
+    
+    public Insumo getInsumoC() {
+        return insumoC;
+    }
+    
+    public void setInsumoC(Insumo insumoC) {
+        this.insumoC = insumoC;
+    }
+    
     private void verificarIngresoNumero() {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 //textoCantidad.addKeyListener(new KeyAdapter() {
@@ -328,30 +415,11 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 String text = textoCantidad.getText();
 
                 // Permitir números, coma y signo negativo al inicio
-                if (!Character.isDigit(c)) {
-                    ke.consume();
-                    return;
-                }
-                   if (text.length() >= 10) {
-                    ke.consume();
-                    return;
-                }
-
-           
-            }
-        });
-
-        textoHint1.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textoHint1.getText();
-
-                // Permitir números, coma y signo negativo al inicio
                 if (!(Character.isDigit(c) || c == ',')) {
                     ke.consume();
                     return;
                 }
-                    if (text.length() >= 12) {
+                if (text.length() >= 12) {
                     ke.consume();
                     return;
                 }
@@ -368,18 +436,72 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 }
             }
         });
+        
+        textoHint1.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                String text = textoHint1.getText();
 
+                // Permitir números, coma y signo negativo al inicio
+                if (!(Character.isDigit(c) || c == ',')) {
+                    ke.consume();
+                    return;
+                }
+                if (text.length() >= 12) {
+                    ke.consume();
+                    return;
+                }
+
+                // Permitir solo una coma
+                if (c == ',' && text.contains(",")) {
+                    ke.consume();
+                }
+
+                // Limitar a cuatro decimales
+                int index = text.indexOf(',');
+                if (index >= 0 && text.length() - index - 1 > 3) {
+                    ke.consume();
+                }
+            }
+        });
+        
     }
-
+    
     private void actualizarUnidadMedida(Insumo insumo) {
         jUnidad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
                 lblUnidad.setText(medidaSeleccionada.getNombre());
-
+                
             }
         });
     }
+    
+    private void validarCalendario() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        Calendar min = Calendar.getInstance();
+//        min.add(Calendar.DAY_OF_MONTH, 30);
+//        Calendar max = Calendar.getInstance();
+//        max.add(Calendar.DAY_OF_MONTH, 10);
+//        RangeEvaluator re = new RangeEvaluator();
+//        re.setMinSelectableDate(min.getTime());
+//        re.setMaxSelectableDate(max.getTime());
+//        jDateChooser2.getJCalendar().setMinSelectableDate(min.getTime());
+//        jDateChooser2.getJCalendar().setMaxSelectableDate(max.getTime());
+//        ((JTextFieldDateEditor) jDateChooser2.getDateEditor()).setEditable(false);
 
+        jDateChooser2.setDate(new Date());
+        jDateChooser2.setMaxSelectableDate(new Date());
+        
+    }
+    
+}
+
+class RangeEvaluator extends MinMaxDateEvaluator {
+    
+    @Override
+    public boolean isInvalid(Date date) {
+        return !super.isInvalid(date);
+    }
 }

@@ -30,8 +30,16 @@ import java.math.BigDecimal;
 @NamedQueries({
     @NamedQuery(name = "Conversion.findAll", query = "SELECT c FROM Conversion c"),
     @NamedQuery(name = "Conversion.findByIdConversion", query = "SELECT c FROM Conversion c WHERE c.idConversion = :idConversion"),
-    @NamedQuery(name = "Conversion.findByFactorConversion", query = "SELECT c FROM Conversion c WHERE c.factorConversion = :factorConversion")})
+    @NamedQuery(name = "Conversion.findByFactorConversion", query = "SELECT c FROM Conversion c WHERE c.factorConversion = :factorConversion"),
+    @NamedQuery(name = "Conversion.findByConversionUnidadBase", query = "SELECT c FROM Conversion c WHERE c.unidadBaseId = :unidadBase and c.unidadDerivadaId = :unidadDerivada")}
+)
 public class Conversion implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "factor_conversion", nullable = false, precision = 10, scale = 5)
+    private BigDecimal factorConversion;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,11 +47,6 @@ public class Conversion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_conversion", nullable = false)
     private Integer idConversion;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "factor_conversion", nullable = false, precision = 10, scale = 5)
-    private BigDecimal factorConversion;
     @JoinColumn(name = "unidad_base_id", referencedColumnName = "id_unidad")
     @ManyToOne
     private UnidadMedida unidadBaseId;
@@ -119,5 +122,5 @@ public class Conversion implements Serializable {
     public String toString() {
         return "com.panin.entidades.Conversion[ idConversion=" + idConversion + " ]";
     }
-    
+
 }
