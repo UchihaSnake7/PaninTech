@@ -5,6 +5,7 @@
 package com.panin.entidades;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,12 +39,6 @@ import java.util.Collection;
     @NamedQuery(name = "UnidadMedida.findBySistema", query = "SELECT u FROM UnidadMedida u WHERE u.sistema = :sistema")})
 public class UnidadMedida implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_unidad", nullable = false)
-    private Integer idUnidad;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -55,6 +50,15 @@ public class UnidadMedida implements Serializable {
     @Size(max = 20)
     @Column(name = "sistema", length = 20)
     private String sistema;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
+    private Collection<ComprasInsumo> comprasInsumoCollection;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_unidad", nullable = false)
+    private Integer idUnidad;
     @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo_medida")
     @ManyToOne
     private TipoMedida idTipo;
@@ -83,29 +87,6 @@ public class UnidadMedida implements Serializable {
         this.idUnidad = idUnidad;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getAbreviatura() {
-        return abreviatura;
-    }
-
-    public void setAbreviatura(String abreviatura) {
-        this.abreviatura = abreviatura;
-    }
-
-    public String getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(String sistema) {
-        this.sistema = sistema;
-    }
 
     public TipoMedida getIdTipo() {
         return idTipo;
@@ -156,6 +137,39 @@ public class UnidadMedida implements Serializable {
     @Override
     public String toString() {
         return getAbreviatura();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
+
+    public String getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
+
+    @XmlTransient
+    public Collection<ComprasInsumo> getComprasInsumoCollection() {
+        return comprasInsumoCollection;
+    }
+
+    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
+        this.comprasInsumoCollection = comprasInsumoCollection;
     }
     
 }
