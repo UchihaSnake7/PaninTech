@@ -9,6 +9,8 @@ import com.panin.controladores.ControladorInsumos;
 import com.panin.dto.formAgregarInsumoProductoDTO;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.UnidadMedida;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -48,12 +50,9 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
 		comboboxInsumos.addItem(insumo);	
 	}
         
-       
-        
-        
+        verificarIngresoNumero();
         this.setVisible(true);
         this.setResizable(false);
-        
         
     }
 
@@ -382,6 +381,58 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
     }    
     
 
+    private void verificarIngresoNumero() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//textoCantidad.addKeyListener(new KeyAdapter() {
+        textFieldCantidad.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                String text = textFieldCantidad.getText();
+
+                // Permitir números, coma y signo negativo al inicio
+                if (!Character.isDigit(c)) {
+                    ke.consume();
+                    return;
+                }
+                   if (text.length() >= 10) {
+                    ke.consume();
+                    return;
+                }
+
+           
+            }
+        });
+
+        textFieldCantidad.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                String text = textFieldCantidad.getText();
+
+                // Permitir números, coma y signo negativo al inicio
+                if (!(Character.isDigit(c) || c == ',')) {
+                    ke.consume();
+                    return;
+                }
+                    if (text.length() >= 12) {
+                    ke.consume();
+                    return;
+                }
+
+                // Permitir solo una coma
+                if (c == ',' && text.contains(",")) {
+                    ke.consume();
+                }
+
+                // Limitar a cuatro decimales
+                int index = text.indexOf(',');
+                if (index >= 0 && text.length() - index - 1 > 3) {
+                    ke.consume();
+                }
+            }
+        });
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JComboBox<Insumo> comboboxInsumos;

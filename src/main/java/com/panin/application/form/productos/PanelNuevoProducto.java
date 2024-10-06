@@ -73,6 +73,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     
     public void init(){
     
+        descripcionProducto.setHint("Ingrese el nombre del producto...");
         panelTabla.add(new panelContenidoReceta());
 }
 
@@ -86,22 +87,15 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        descripcionProducto = new javax.swing.JTextField();
         jBtnOk = new javax.swing.JButton();
         jIcon = new javax.swing.JLabel();
         jTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         comboboxTipoProducto = new javax.swing.JComboBox<>();
         jBtnAtras = new javax.swing.JButton();
+        descripcionProducto = new com.panin.application.utilities.TextoHint();
         panelTabla = new javax.swing.JPanel();
         panelContenidoReceta1 = new com.panin.application.form.productos.panelContenidoReceta();
-
-        descripcionProducto.setText("Ingrese el nombre del producto");
-        descripcionProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descripcionProductoActionPerformed(evt);
-            }
-        });
 
         jBtnOk.setText("Ingresar");
         jBtnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +140,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                         .addComponent(jIcon)
                         .addGap(18, 18, 18)
                         .addComponent(jTitle))
-                    .addComponent(descripcionProducto, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(descripcionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,9 +152,9 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jTitle)
                         .addGap(9, 9, 9)))
-                .addGap(40, 40, 40)
+                .addGap(34, 34, 34)
                 .addComponent(descripcionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboboxTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,14 +284,10 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jBtnOkActionPerformed
 
-    private void descripcionProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descripcionProductoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboboxTipoProducto;
-    private javax.swing.JTextField descripcionProducto;
+    private com.panin.application.utilities.TextoHint descripcionProducto;
     private javax.swing.JButton jBtnAtras;
     private javax.swing.JButton jBtnOk;
     private javax.swing.JLabel jIcon;
