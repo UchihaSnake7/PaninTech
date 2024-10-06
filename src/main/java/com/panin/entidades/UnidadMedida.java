@@ -36,7 +36,9 @@ import java.util.Collection;
     @NamedQuery(name = "UnidadMedida.findByIdUnidad", query = "SELECT u FROM UnidadMedida u WHERE u.idUnidad = :idUnidad"),
     @NamedQuery(name = "UnidadMedida.findByNombre", query = "SELECT u FROM UnidadMedida u WHERE u.nombre = :nombre"),
     @NamedQuery(name = "UnidadMedida.findByAbreviatura", query = "SELECT u FROM UnidadMedida u WHERE u.abreviatura = :abreviatura"),
-    @NamedQuery(name = "UnidadMedida.findBySistema", query = "SELECT u FROM UnidadMedida u WHERE u.sistema = :sistema")})
+    @NamedQuery(name = "UnidadMedida.findBySistema", query = "SELECT u FROM UnidadMedida u WHERE u.sistema = :sistema"),
+    @NamedQuery(name = "UnidadMedida.findByBase", query = "SELECT u FROM UnidadMedida u WHERE u.unidadBase = :unidadBase and idTipo = :idTipo")
+})
 public class UnidadMedida implements Serializable {
 
     @Basic(optional = false)
@@ -50,6 +52,8 @@ public class UnidadMedida implements Serializable {
     @Size(max = 20)
     @Column(name = "sistema", length = 20)
     private String sistema;
+    @Column(name = "unidad_base")
+    private Boolean unidadBase;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadMedidaId")
     private Collection<ComprasInsumo> comprasInsumoCollection;
 
@@ -66,6 +70,11 @@ public class UnidadMedida implements Serializable {
     private Collection<Conversion> conversionCollection;
     @OneToMany(mappedBy = "unidadDerivadaId")
     private Collection<Conversion> conversionCollection1;
+
+
+    public boolean isUnidadBase() {
+        return unidadBase;
+    }
 
     public UnidadMedida() {
     }
@@ -86,7 +95,6 @@ public class UnidadMedida implements Serializable {
     public void setIdUnidad(Integer idUnidad) {
         this.idUnidad = idUnidad;
     }
-
 
     public TipoMedida getIdTipo() {
         return idTipo;
@@ -139,6 +147,16 @@ public class UnidadMedida implements Serializable {
         return getAbreviatura();
     }
 
+
+    @XmlTransient
+    public Collection<ComprasInsumo> getComprasInsumoCollection() {
+        return comprasInsumoCollection;
+    }
+
+    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
+        this.comprasInsumoCollection = comprasInsumoCollection;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -163,15 +181,12 @@ public class UnidadMedida implements Serializable {
         this.sistema = sistema;
     }
 
-    @XmlTransient
-    public Collection<ComprasInsumo> getComprasInsumoCollection() {
-        return comprasInsumoCollection;
+    public Boolean getUnidadBase() {
+        return unidadBase;
     }
 
-    public void setComprasInsumoCollection(Collection<ComprasInsumo> comprasInsumoCollection) {
-        this.comprasInsumoCollection = comprasInsumoCollection;
+    public void setUnidadBase(Boolean unidadBase) {
+        this.unidadBase = unidadBase;
     }
-    
+
 }
-
-

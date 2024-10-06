@@ -8,3 +8,16 @@ INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (8, 'Sal', '2024-10-05', '20:39:28.438000', 1, '/imagenes/insumos/default.png', 1);
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (9, 'Vainilla', '2024-10-05', '20:39:35.848000', 1, '/imagenes/insumos/default.png', 4);
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (10, 'Queso', '2024-10-05', '20:39:53.557000', 1, '/imagenes/insumos/default.png', 1);
+
+
+alter table unidad_medida
+    add unidad_base tinyint null;
+
+alter table compras_insumo
+    modify cantidad double not null;
+alter table compras_insumo
+    modify precio decimal(10, 6) not null;
+
+alter table compras_insumo
+    add hora time null;
+
