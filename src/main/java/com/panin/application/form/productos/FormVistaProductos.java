@@ -102,16 +102,12 @@ public class FormVistaProductos extends javax.swing.JPanel {
                  
                  if(producto.getTipo().toString().equalsIgnoreCase("Elaborado")){
                      
-
                      /*TODO
                       * Todos los productos elaborados DEBEN tener una receta asociada
                       */
-//                    System.out.print("Entro if Elaborado " );
                     
-//                     receta = String.valueOf(producto.getIdReceta());
                     r = cr.obtenerRecetaPorId(producto.getIdReceta());
                     
-//                    System.out.print("\nReceta = " + r.getNombreReceta());
                     listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
                     
                     for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
@@ -124,15 +120,8 @@ public class FormVistaProductos extends javax.swing.JPanel {
                     	
                     	listaInsumosReceta.add(dto);
                     	
-                    	
                     }
                     
-                    
-                    /*TODO
-                     * Agregar la logica para obetenr la lista de insumos y enviarlos en el Model_Card
-                     */
-                    
-
                  }
                 
 	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", producto.getTipo().toString(), listaInsumosReceta), getBackground(), formClass));

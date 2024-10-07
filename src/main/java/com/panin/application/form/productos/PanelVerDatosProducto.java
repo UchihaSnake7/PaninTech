@@ -5,6 +5,7 @@
 package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.dto.formAgregarInsumoProductoDTO;
 
@@ -165,6 +166,11 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
         );
 
         botonAtras.setText("Atras");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
 
         nombreProducto.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
 
@@ -230,6 +236,11 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        // TODO add your handling code here:
+        Application.showForm(new FormVistaProductos());
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -65,6 +65,9 @@ public class Model_Card {
         this.description = descripcion;
     }
     
+    /*
+    Este model card fue creado para desplegar la vista de productos
+    */
     public Model_Card(Icon icon, String title, String values, String descripcion, List<formAgregarInsumoProductoDTO> listaInsumo) {
         this.icon = icon;
         this.title = title;
