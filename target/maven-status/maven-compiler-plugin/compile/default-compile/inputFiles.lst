@@ -1,7 +1,9 @@
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\PaninTech\App.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorTasa.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\TextArea.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Producto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorUnidadMedida.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\CardDescription.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinal.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\db\ConexionDB.java
@@ -23,6 +25,7 @@ C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\ap
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\Card.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearInsumoN.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\PanelIngresarInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\Application.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
@@ -34,6 +37,7 @@ C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\co
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\PanelIngresarProducto.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\Model_Card.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
@@ -44,6 +48,9 @@ C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\ap
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Conversion.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Tasa.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\HibernateUtil.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
@@ -53,6 +60,7 @@ C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\ap
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Recetas.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
 C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java

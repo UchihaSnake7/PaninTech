@@ -3,9 +3,20 @@ package com.panin.application.form.other;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Component;
 import java.awt.Container;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
 import java.awt.LayoutManager;
+import com.panin.controladores.ControladorTasa;
+import com.panin.entidades.Tasa;
+import com.panin.controladores.ControladorProductos;
+import java.sql.Time;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 /**
  *
  * @author Raven
@@ -24,6 +35,18 @@ public class FormCambio extends javax.swing.JPanel {
     }
     
     private void init() {
+        ControladorTasa cr = new ControladorTasa();
+        List<Tasa> Tasas = new ArrayList<Tasa>();
+       Tasas =  cr.obtenerTasas();
+       cr.cerrarSesion();
+       Tasa R = Tasas.get(Tasas.size() - 1);
+      
+       cambio.setText(String.valueOf(R.getTasa()));
+       System.out.println("Fecha: " + R.getFecha());
+  
+       jLabel3.setText( R.getFecha().toString());
+      
+       
         setLayout(new CambioLayout());
     Cambio.putClientProperty(FlatClientProperties.STYLE, ""  +"background:$Login.background;" + "arc:20");
     }
@@ -34,10 +57,11 @@ public class FormCambio extends javax.swing.JPanel {
 
         Cambio = new javax.swing.JPanel();
         lb = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        actulizacionC = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cambio = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         Cambio.setBackground(new java.awt.Color(60, 78, 102));
@@ -55,6 +79,8 @@ public class FormCambio extends javax.swing.JPanel {
 
         jLabel1.setText("$");
 
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout CambioLayout = new javax.swing.GroupLayout(Cambio);
         Cambio.setLayout(CambioLayout);
         CambioLayout.setHorizontalGroup(
@@ -65,29 +91,35 @@ public class FormCambio extends javax.swing.JPanel {
                         .addGap(157, 157, 157)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CambioLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(actulizacionC, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(226, 226, 226))
             .addGroup(CambioLayout.createSequentialGroup()
                 .addGap(238, 238, 238)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CambioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(340, 340, 340))
         );
         CambioLayout.setVerticalGroup(
             CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CambioLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actulizacionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
@@ -122,6 +154,24 @@ public class FormCambio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Tasa r = new Tasa();
+       float valor = Float.parseFloat(actulizacionC.getText());
+       r.setTasa(valor);
+    //   String fechaString = "2024-10-07 02:22:05.000000";
+    //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    //LocalDateTime fechaLocalDateTime = LocalDateTime.parse(fechaString, formatter);
+    //Date fecha = Date.from(fechaLocalDateTime.atZone(ZoneId.systemDefault()).toInstant());
+       Date fecha = new Date();
+       
+         r.setFecha(fecha);
+         ControladorTasa cr = new ControladorTasa();
+         cr.crearTasa(r);
+         cr.cerrarSesion();
+     
+        
+     
+       
+       
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -174,11 +224,12 @@ public class FormCambio extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cambio;
+    private javax.swing.JTextField actulizacionC;
+    private javax.swing.JTextField cambio;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lb;
     // End of variables declaration//GEN-END:variables
 }

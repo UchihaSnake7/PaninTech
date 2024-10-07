@@ -21,6 +21,9 @@
       <mapping class="com.panin.entidades.Conversion"/>
       <mapping class="com.panin.entidades.ComprasInsumo"/>  
       <mapping class="com.panin.entidades.Conversion"/> 
+      <mapping class="com.panin.entidades.Recetas"/>  
+      <mapping class="com.panin.entidades.InsumoRecetas"/> 
+      <mapping class="com.panin.entidades.Tasa"/> 
   
           
 <!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->
