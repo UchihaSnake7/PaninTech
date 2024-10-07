@@ -22,11 +22,26 @@ public class ControladorComprasInsumos {
     public ControladorComprasInsumos() {
     }
 
-    public List<ComprasInsumo> obtenerInsumos() {
+    public List<ComprasInsumo> obtenerComprasInsumos() {
         session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
         TypedQuery query = session.getNamedQuery("ComprasInsumo.findAll");
+        comprasInsumos = query.getResultList();
+
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+        session.close();
+        return comprasInsumos;
+    }
+
+    public List<ComprasInsumo> obtenerComprasdeUnInsumo(Insumo insumo) {
+        session.beginTransaction();
+        List<ComprasInsumo> comprasInsumos;
+
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumo");
+        query.setParameter("insumo", insumo);
         comprasInsumos = query.getResultList();
 
         session.getTransaction().commit();
