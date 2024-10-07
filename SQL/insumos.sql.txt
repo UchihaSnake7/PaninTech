@@ -8,3 +8,71 @@ INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (8, 'Sal', '2024-10-05', '20:39:28.438000', 1, '/imagenes/insumos/default.png', 1);
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (9, 'Vainilla', '2024-10-05', '20:39:35.848000', 1, '/imagenes/insumos/default.png', 4);
 INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (10, 'Queso', '2024-10-05', '20:39:53.557000', 1, '/imagenes/insumos/default.png', 1);
+
+
+alter table unidad_medida
+    add unidad_base tinyint null;
+
+alter table compras_insumo
+    modify cantidad double not null;
+alter table compras_insumo
+    modify precio decimal(10, 6) not null;
+
+alter table compras_insumo
+    add hora time null;
+
+DELETE FROM panin.unidad_medida;
+DELETE FROM panin.conversion;
+
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (1, 'gramo', 'g', 'métrico', 1, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (2, 'litro', 'L', 'métrico', 4, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (3, 'metro', 'm', 'métrico', 2, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (4, 'unidad', '1', 'unidad', 3, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (5, 'kilogramo', 'Kg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (6, 'hectogramo', 'Hg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (7, 'decagramo', 'dag', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (8, 'decigramo', 'dg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (9, 'centigramo', 'cg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (10, 'miligramo', 'mg', 'métrico', 1, 0);
+
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES
+(11, 'Kilolitro', 'Kl', 'métrico', 4, 0),
+(12, 'Hectolitro', 'hl', 'métrico', 4, 0),
+(13, 'Decalitro', 'dal', 'métrico', 4, 0),
+(14, 'Decilitro', 'dl', 'métrico', 4, 0),
+(15, 'Centilitro', 'cl', 'métrico', 4, 0),
+(16, 'Mililitro', 'ml', 'métrico', 4, 0),
+(17, 'Media Docena', '6', 'métrico', 3, 0),
+(18, 'Docena', '12', 'métrico', 3, 0)
+;
+
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 5, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 6, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 7, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 8, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 9, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 10, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (5, 1, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (6, 1, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (7, 1, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (8, 1, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (9, 1, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (10, 1, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES
+(2, 11, 0.001),
+(2, 12, 0.01),
+(2, 13, 0.1),
+(2, 14, 10),
+(2, 15, 100),
+(2, 16, 1000),
+(11, 2, 1000),
+(12, 2, 100),
+(13, 2, 10),
+(14, 2, 0.1),
+(15, 2, 0.01),
+(16, 2, 0.001);
+
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (3, 17, 6);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (3, 18, 12);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 3, 0.1667);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 3, 0.0833);

@@ -21,6 +21,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -35,7 +36,9 @@ import java.util.Date;
     @NamedQuery(name = "ComprasInsumo.findById", query = "SELECT c FROM ComprasInsumo c WHERE c.id = :id"),
     @NamedQuery(name = "ComprasInsumo.findByFecha", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha = :fecha"),
     @NamedQuery(name = "ComprasInsumo.findByCantidad", query = "SELECT c FROM ComprasInsumo c WHERE c.cantidad = :cantidad"),
-    @NamedQuery(name = "ComprasInsumo.findByPrecio", query = "SELECT c FROM ComprasInsumo c WHERE c.precio = :precio")})
+    @NamedQuery(name = "ComprasInsumo.findByPrecio", query = "SELECT c FROM ComprasInsumo c WHERE c.precio = :precio"),
+    @NamedQuery(name = "ComprasInsumo.findByInsumo", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo")
+})
 public class ComprasInsumo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,10 +52,14 @@ public class ComprasInsumo implements Serializable {
     @Column(name = "fecha", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fecha;
+
+    @Column(name = "hora", nullable = true)
+    @Temporal(TemporalType.TIME)
+    private Time hora;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cantidad", nullable = false)
-    private int cantidad;
+    private BigDecimal cantidad;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
@@ -72,7 +79,7 @@ public class ComprasInsumo implements Serializable {
         this.id = id;
     }
 
-    public ComprasInsumo(Integer id, Date fecha, int cantidad, BigDecimal precio) {
+    public ComprasInsumo(Integer id, Date fecha, BigDecimal cantidad, BigDecimal precio) {
         this.id = id;
         this.fecha = fecha;
         this.cantidad = cantidad;
@@ -95,11 +102,11 @@ public class ComprasInsumo implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getCantidad() {
+    public BigDecimal getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(BigDecimal cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -147,9 +154,17 @@ public class ComprasInsumo implements Serializable {
         return true;
     }
 
+    public Time getHora() {
+        return hora;
+    }
+
+    public void setHora(Time hora) {
+        this.hora = hora;
+    }
+
     @Override
     public String toString() {
         return "com.panin.entidades.ComprasInsumo[ id=" + id + " ]";
     }
-    
+
 }
