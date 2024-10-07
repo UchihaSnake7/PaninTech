@@ -34,8 +34,8 @@ public class ControladorProductos {
 	public List<Producto> obtenerProductos() {
 		List<Producto> productos;
 			
-			    TypedQuery query = session.getNamedQuery("Producto.findAll");   
-		        productos = query.getResultList();
+                TypedQuery query = session.getNamedQuery("Producto.findAll");   
+		productos = query.getResultList();
 	       
                 session.getTransaction().commit();
                 //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion

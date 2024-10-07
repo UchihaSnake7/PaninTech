@@ -7,7 +7,9 @@ package com.panin.controladores;
 import com.panin.HibernateUtil;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Recetas;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -15,16 +17,24 @@ import org.hibernate.Session;
  */
 public class ControladorReceta {
     
-    
-    
      Session session = HibernateUtil.getSessionFactory().openSession();
-
 	
 	public ControladorReceta(){
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
 		session.beginTransaction();
 
 	}
+        
+        public Recetas obtenerRecetaPorId(int idReceta){
+            Recetas r = new Recetas();
+            
+           Query query = session.getNamedQuery("Recetas.findByIdReceta"); 
+           query.setParameter("idReceta", idReceta);
+           r = (Recetas) query.getSingleResult();
+            
+           return r;
+            
+        }
         
         public int crearReceta(Recetas receta){
             
