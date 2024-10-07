@@ -94,7 +94,7 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Insumo", "Medida", "Cantidad"
+                "Ingrediente", "Medida", "Cantidad"
             }
         ) {
             Class[] types = new Class [] {

@@ -12,7 +12,11 @@ import com.panin.application.utilities.ScrollBar;
 import com.panin.application.utilities.WrapLayout;
 import com.panin.application.utilities.WrapLayout;
 import com.panin.controladores.ControladorProductos;
+import com.panin.controladores.ControladorReceta;
+import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
+import com.panin.entidades.Recetas;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,19 +88,57 @@ public class FormVistaProductos extends javax.swing.JPanel {
 	    List<Producto> productos = new ArrayList<Producto>();
 	    productos = cp.obtenerProductos();
 	    cp.cerrarSesion();
+            
+        ControladorReceta cr = new ControladorReceta();
 	    
-	    String formClass = "PanelIngresarProducto";
+	    String formClass = "PanelVerDatosProducto";
+	    List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>() ;
 	    
 	    for (Producto producto : productos) {
 		
-//	    	System.out.println("\nProducto = " + producto.getDescripcion());
-//                System.out.println("\nProducto = " + producto.getTipo());
-	    	
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", "Descripcion"), getBackground(), formClass));
+
+//                 String receta = "";
+                Recetas r = new Recetas();
+                 
+                 if(producto.getTipo().toString().equalsIgnoreCase("Elaborado")){
+                     
+
+                     /*TODO
+                      * Todos los productos elaborados DEBEN tener una receta asociada
+                      */
+//                    System.out.print("Entro if Elaborado " );
+                    
+//                     receta = String.valueOf(producto.getIdReceta());
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+                    
+//                    System.out.print("\nReceta = " + r.getNombreReceta());
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+                    
+                    for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+                    	
+                    	formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+                    	
+                    	dto.setCantidad(ir.getCantidad().doubleValue());
+                    	dto.setInsumo(ir.getIdInsumo());
+                    	dto.setUnidadMedidad(ir.getUnidadMedida());
+                    	
+                    	listaInsumosReceta.add(dto);
+                    	
+                    	
+                    }
+                    
+                    
+                    /*TODO
+                     * Agregar la logica para obetenr la lista de insumos y enviarlos en el Model_Card
+                     */
+                    
+
+                 }
+                
+	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", producto.getTipo().toString(), listaInsumosReceta), getBackground(), formClass));
 
 	    }
-      
-//        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource("/imagenes/insumos/1.png")), "Harina de Trigo", "", "Descripcion"), getBackground()));
+	    cr.cerrarSesion();
 
         panel.revalidate();
         panel.repaint();

@@ -20,6 +20,7 @@ import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.form.productos.PanelIngresarProducto;
 import com.panin.application.form.insumos.PanelIngresarInsumo;
+import com.panin.application.form.productos.PanelVerDatosProducto;
 import com.panin.entidades.Insumo;
 
 /**
@@ -134,6 +135,12 @@ public class Card extends javax.swing.JPanel {
                     case ("PanelIngresarProducto"): {
 
                         Application.showForm(new PanelIngresarProducto(data));
+                        break;
+                    }
+                    
+                     case ("PanelVerDatosProducto"): {
+
+                        Application.showForm(new PanelVerDatosProducto(data));
                         break;
                     }
                     

@@ -4,6 +4,10 @@
  */
 package com.panin.application.form.other;
 
+import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.Insumo;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Icon;
 
 /**
@@ -43,8 +47,15 @@ public class Model_Card {
     public void setDescription(String descripcion) {
         this.description = descripcion;
     }
+    public List<formAgregarInsumoProductoDTO> getListaInsumo() {
+		return listaInsumo;
+	}
 
-    public Model_Card() {
+	public void setListaInsumo(List<formAgregarInsumoProductoDTO> listaInsumo) {
+		this.listaInsumo = listaInsumo;
+	}
+
+	public Model_Card() {
     }
 
     public Model_Card(Icon icon, String title, String values, String descripcion) {
@@ -54,10 +65,20 @@ public class Model_Card {
         this.description = descripcion;
     }
     
+    public Model_Card(Icon icon, String title, String values, String descripcion, List<formAgregarInsumoProductoDTO> listaInsumo) {
+        this.icon = icon;
+        this.title = title;
+        this.values = values;
+        this.description = descripcion;
+        this.listaInsumo = listaInsumo;
+    }
+    
     
     Icon icon ;
     String title;
     String values;
     String description;
+    
+    List<formAgregarInsumoProductoDTO> listaInsumo = new ArrayList<formAgregarInsumoProductoDTO>();
     
 }
