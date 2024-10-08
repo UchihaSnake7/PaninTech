@@ -47,7 +47,7 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
               
               for(formAgregarInsumoProductoDTO dto : data.getListaInsumo()) {
             	  
-                System.out.print("|nInsumo: " + dto.getInsumo().getDescripcion());
+//                System.out.print("|nInsumo: " + dto.getInsumo().getDescripcion());
                 
                 modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
 
@@ -81,21 +81,24 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
 //        );
 
             tablaIngredientes.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
-                    + "height:30;"
-                    + "hoverBackground:null;"
-                    + "pressedBackground:null;"
-                    //                + "separatorColor:$TableHeader.background;"
-                    + "font:bold;"
+                + "height:30;"
+                + "hoverBackground:null;"
+                + "pressedBackground:null;"
+                //                + "dropLineShortColor:$Menu.background;"
+                + "font:bold;"
+                + "background:$Menu.background;"
             );
 
             tablaIngredientes.putClientProperty(FlatClientProperties.STYLE, ""
-                    + "rowHeight:30;"
-                    + "showHorizontalLines:true;"
-                    + "intercellSpacing:0,1;"
-                    //                + "separatorColor:$TableHeader.background;"
-                    + "cellFocusColor:$TableHeader.hoverBackground;"
-                    + "selectionBackground:$TableHeader.hoverBackground;"
-                    + "selectionForeground:$Table.foreground;"
+                + "rowHeight:30;"
+                + "showHorizontalLines:true;"
+                + "showVerticalLines:true;"
+                + "intercellSpacing:0,1;"
+                //                + "dropLineShortColor:$Menu.background;"
+                + "cellFocusColor:$TableHeader.hoverBackground;"
+                + "selectionBackground:$TableHeader.hoverBackground;"
+                + "selectionForeground:$Table.foreground;"
+                + "background:$Login.background;"
             );
               
 //              setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));

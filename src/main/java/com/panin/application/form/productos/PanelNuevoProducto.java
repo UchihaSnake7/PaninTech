@@ -29,14 +29,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     /**
      * Creates new form PanelIngresarProducto
      */
-//    public PanelNuevoProducto() {
-////        jIcon.setIcon(data.getIcon());
-////        System.out.println(data.getTitle());
-////        initComponents();
-////        jTitle.setText(data.getTitle());
-////        jIcon.setIcon(data.getIcon());
-//        setLayout(new MigLayout("al center center"));
-//    }
+
 
     public PanelNuevoProducto() {
 //        jIcon.setIcon(data.getIcon());
@@ -127,11 +120,10 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                         .addComponent(jIcon)
                         .addGap(18, 18, 18)
                         .addComponent(jTitle))
-                    .addComponent(descripcionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,9 +141,9 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboboxTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
@@ -206,9 +198,6 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         ControladorReceta cr = new ControladorReceta();
         int idReceta = cr.crearReceta(r);
         
-         System.out.print("\nidReceta: " + idReceta);
-
-        
         for(formAgregarInsumoProductoDTO dto : panelContenidoReceta1.getListaDTO()){
             
 //            System.out.print("\nInsumo: " + dto.getInsumo().getDescripcion());
@@ -241,7 +230,6 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
          cp.cerrarSesion();
          
          Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
-
             
         }
         

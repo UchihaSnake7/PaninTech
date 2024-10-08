@@ -3,6 +3,7 @@ package com.panin.application.form;
 import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
+import com.panin.application.frameConfiguracion;
 
 /**
  *
@@ -42,20 +43,25 @@ public class LoginForm extends javax.swing.JPanel {
         lbPass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         cmdLogin = new javax.swing.JButton();
+        botonConfig = new javax.swing.JButton();
 
+        lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("Inicio de Sesion");
+        lbTitle.setText("Login");
         panelLogin1.add(lbTitle);
 
+        lbUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbUser.setText("Usuario");
         panelLogin1.add(lbUser);
         panelLogin1.add(txtUser);
 
+        lbPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbPass.setText("Contraseña");
         panelLogin1.add(lbPass);
         panelLogin1.add(txtPass);
 
-        cmdLogin.setText("Ingresar");
+        cmdLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cmdLogin.setText("Identificarse");
         cmdLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdLoginActionPerformed(evt);
@@ -63,21 +69,31 @@ public class LoginForm extends javax.swing.JPanel {
         });
         panelLogin1.add(cmdLogin);
 
+        botonConfig.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/config.png"))); // NOI18N
+        botonConfig.setText("Configuración");
+        botonConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConfigActionPerformed(evt);
+            }
+        });
+        panelLogin1.add(botonConfig);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+                .addContainerGap(220, Short.MAX_VALUE)
                 .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
+                .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -85,7 +101,13 @@ public class LoginForm extends javax.swing.JPanel {
         Application.login();
     }//GEN-LAST:event_cmdLoginActionPerformed
 
+    private void botonConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfigActionPerformed
+        // TODO add your handling code here:
+        new frameConfiguracion().setVisible(true);
+    }//GEN-LAST:event_botonConfigActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonConfig;
     private javax.swing.JButton cmdLogin;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbTitle;

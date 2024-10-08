@@ -52,18 +52,21 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 + "height:30;"
                 + "hoverBackground:null;"
                 + "pressedBackground:null;"
-                //                + "separatorColor:$TableHeader.background;"
+                //                + "dropLineShortColor:$Menu.background;"
                 + "font:bold;"
+                + "background:$Menu.background;"
         );
         
         table.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
+                + "showVerticalLines:true;"
                 + "intercellSpacing:0,1;"
-                //                + "separatorColor:$TableHeader.background;"
+                //                + "dropLineShortColor:$Menu.background;"
                 + "cellFocusColor:$TableHeader.hoverBackground;"
                 + "selectionBackground:$TableHeader.hoverBackground;"
                 + "selectionForeground:$Table.foreground;"
+                + "background:$Login.background;"
         );
         
     }
