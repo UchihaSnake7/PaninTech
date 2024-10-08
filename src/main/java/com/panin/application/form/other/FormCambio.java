@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
 /**
  *
  * @author Raven
@@ -28,27 +29,30 @@ public class FormCambio extends javax.swing.JPanel {
         init();
         lb.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
-         jLabel1.putClientProperty(FlatClientProperties.STYLE, ""
+        jLabel1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
-            jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
+        jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
     }
-    
+
     private void init() {
         ControladorTasa cr = new ControladorTasa();
-        List<Tasa> Tasas = new ArrayList<Tasa>();
-       Tasas =  cr.obtenerTasas();
-       cr.cerrarSesion();
-       Tasa R = Tasas.get(Tasas.size() - 1);
-      
-       cambio.setText(String.valueOf(R.getTasa()));
-       System.out.println("Fecha: " + R.getFecha());
-  
-       jLabel3.setText( R.getFecha().toString());
-      
-       
+        List<Tasa> tasas = new ArrayList<Tasa>();
+        tasas = cr.obtenerTasas();
+        cr.cerrarSesion();
+
+        if (tasas.size() > 0) {
+            Tasa r = tasas.get(tasas.size() - 1);
+            cambio.setText(String.valueOf(r.getTasa()));
+            System.out.println("Fecha: " + r.getFecha());
+            jLabel3.setText(r.getFecha().toString());
+        } else {
+            cambio.setText("");
+            jLabel3.setText("");
+        }
+
         setLayout(new CambioLayout());
-    Cambio.putClientProperty(FlatClientProperties.STYLE, ""  +"background:$Login.background;" + "arc:20");
+        Cambio.putClientProperty(FlatClientProperties.STYLE, "" + "background:$Login.background;" + "arc:20");
     }
 
     @SuppressWarnings("unchecked")
@@ -155,74 +159,66 @@ public class FormCambio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Tasa r = new Tasa();
-       float valor = Float.parseFloat(actulizacionC.getText());
-       r.setTasa(valor);
-    //   String fechaString = "2024-10-07 02:22:05.000000";
-    //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
-    //LocalDateTime fechaLocalDateTime = LocalDateTime.parse(fechaString, formatter);
-    //Date fecha = Date.from(fechaLocalDateTime.atZone(ZoneId.systemDefault()).toInstant());
-       Date fecha = new Date();
-       
-         r.setFecha(fecha);
-         ControladorTasa cr = new ControladorTasa();
-         cr.crearTasa(r);
-         cr.cerrarSesion();
-     
-        
-     
-       
-       
-       
+        Tasa r = new Tasa();
+        float valor = Float.parseFloat(actulizacionC.getText());
+        r.setTasa(valor);
+        //   String fechaString = "2024-10-07 02:22:05.000000";
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        //LocalDateTime fechaLocalDateTime = LocalDateTime.parse(fechaString, formatter);
+        //Date fecha = Date.from(fechaLocalDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        Date fecha = new Date();
+
+        r.setFecha(fecha);
+        ControladorTasa cr = new ControladorTasa();
+        cr.crearTasa(r);
+        cr.cerrarSesion();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    
     private class CambioLayout implements LayoutManager {
 
         @Override
         public void addLayoutComponent(String name, Component comp) {
-         
+
         }
 
         @Override
         public void removeLayoutComponent(Component comp) {
-           
+
         }
 
         @Override
         public Dimension preferredLayoutSize(Container parent) {
-                synchronized (parent.getTreeLock()) {
+            synchronized (parent.getTreeLock()) {
                 return new Dimension(5, 5);
             }
         }
 
         @Override
         public Dimension minimumLayoutSize(Container parent) {
-                synchronized (parent.getTreeLock()) {
+            synchronized (parent.getTreeLock()) {
                 return new Dimension(5, 5);
             }
-       
+
         }
 
         @Override
         public void layoutContainer(Container parent) {
-           synchronized (parent.getTreeLock()) {
-               int width = parent.getWidth();
-               int heigth = parent.getHeight();
-               int CambioWidth=560;
-               int CambioHeigth= Cambio.getPreferredSize().height;
-               int x = (width-CambioWidth)/2;
-               int y = (heigth-CambioHeigth)/2;
-               Cambio.setBounds(x, y, CambioWidth, CambioHeigth);
-                       
-              
+            synchronized (parent.getTreeLock()) {
+                int width = parent.getWidth();
+                int heigth = parent.getHeight();
+                int CambioWidth = 560;
+                int CambioHeigth = Cambio.getPreferredSize().height;
+                int x = (width - CambioWidth) / 2;
+                int y = (heigth - CambioHeigth) / 2;
+                Cambio.setBounds(x, y, CambioWidth, CambioHeigth);
+
             }
         }
-        
-        
-      }  
-    
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cambio;
     private javax.swing.JTextField actulizacionC;
