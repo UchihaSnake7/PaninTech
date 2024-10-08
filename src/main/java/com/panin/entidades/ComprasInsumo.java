@@ -39,7 +39,7 @@ import java.util.Date;
     @NamedQuery(name = "ComprasInsumo.findByPrecio", query = "SELECT c FROM ComprasInsumo c WHERE c.precio = :precio"),
     @NamedQuery(name = "ComprasInsumo.findByInsumo", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo")
 })
-public class ComprasInsumo implements Serializable {
+public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -165,6 +165,12 @@ public class ComprasInsumo implements Serializable {
     @Override
     public String toString() {
         return "com.panin.entidades.ComprasInsumo[ id=" + id + " ]";
+    }
+
+    @Override
+    public int compareTo(ComprasInsumo o) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getFecha().compareTo(o.getFecha()); // Por ejemplo, comparar por fecha
     }
 
 }

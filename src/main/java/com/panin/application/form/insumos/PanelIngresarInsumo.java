@@ -58,9 +58,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        jIcon.setIcon(data.getIcon());
         setLayout(new MigLayout("al center center"));
     }
-    
+
     public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
-        
+
         NumberFormat format = NumberFormat.getNumberInstance();
         this.insumoC = insumo;
 //        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
@@ -78,12 +78,12 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
             jUnidad.addItem(item);
         }
-        
+
         UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
         if (medidaSeleccionada != null) {
             lblUnidad.setText(medidaSeleccionada.getNombre());
         }
-        
+
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -92,23 +92,23 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 + "foreground:$Menu.foreground;");
         lblUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         textoCantidad.setHint("Ingrese Cantidad...");
-        
+
         textoCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
         textoCantidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         textoHint1.setHint("Ingrese Precio...");
         textoHint1.setHorizontalAlignment(SwingConstants.RIGHT);
         textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         jUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jBtnAtras.putClientProperty(FlatClientProperties.STYLE, ""
@@ -127,7 +127,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        panel.setLocation(x, y);
 //        setLayout(new MigLayout("al center center"));
         setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
-        
+
         validarCalendario();
         verificarIngresoNumero();
         actualizarUnidadMedida(insumo);
@@ -248,7 +248,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addComponent(jIcon)
@@ -277,7 +277,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -296,7 +296,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(1, 1, 1)
                 .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -311,9 +311,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         String cantidad = textoCantidad.getText();
         precio = precio.replace(",", ".");
         cantidad = cantidad.replace(",", ".");
-        
+
         try {
-            
+
             if (textoHint1.getText() == null || precio.length() == 0 || textoHint1.getText().equals(" ")) {
                 Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese el Precio del Insumo...");
             } else if (textoCantidad.getText() == null || cantidad.length() == 0 || textoCantidad.getText().equals(" ")) {
@@ -321,25 +321,21 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
             } else if (jDateChooser2.getDate() == null) {
                 Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la fecha de compra...");
             } else {
-                
+
                 ControladorUnidadMedida cmd = new ControladorUnidadMedida();
                 UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
                 UnidadMedida umb;
                 BigDecimal cantidadCalculada = new BigDecimal(cantidad);
                 BigDecimal precioCalculado = new BigDecimal(precio);
-                System.out.println("Cantidad " + cantidad);
-                System.out.println("Cantidad Calculada: " + cantidadCalculada);
-                
+
                 if (!um.isUnidadBase()) {
                     ControladorConversion cc = new ControladorConversion();
                     umb = cmd.obtenerUnidadBase(um);
-                    System.out.println("Unidad base: " + umb.getNombre());
+
                     BigDecimal factorConversion = cc.obtenerUnidadBase(um, umb).getFactorConversion();
-                    System.out.println(factorConversion);
-                    
+
                     cantidadCalculada = cantidadCalculada.multiply(factorConversion);
-                    System.out.println(cantidadCalculada);
-                    
+
                 } else {
                     umb = um;
                 }
@@ -351,8 +347,8 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 compraInsumo.setFecha(jDateChooser2.getDate());
                 compraInsumo.setUnidadMedidaId(umb);
                 compraInsumo.setHora(new Time(new Date().getTime()));
-                System.out.println(compraInsumo);
-                
+             
+
                 ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
                 if (controladorComprasInsumos.save(compraInsumo)) {
                     Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Compra Registrada con Exito!");
@@ -364,7 +360,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 } else {
                     Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error al crear compra");
                 }
-                
+
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno del sistema");
@@ -405,15 +401,15 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables
     private Insumo insumoC;
-    
+
     public Insumo getInsumoC() {
         return insumoC;
     }
-    
+
     public void setInsumoC(Insumo insumoC) {
         this.insumoC = insumoC;
     }
-    
+
     private void verificarIngresoNumero() {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 //textoCantidad.addKeyListener(new KeyAdapter() {
@@ -444,7 +440,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 }
             }
         });
-        
+
         textoHint1.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();
@@ -472,20 +468,20 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 }
             }
         });
-        
+
     }
-    
+
     private void actualizarUnidadMedida(Insumo insumo) {
         jUnidad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
                 lblUnidad.setText(medidaSeleccionada.getNombre());
-                
+
             }
         });
     }
-    
+
     private void validarCalendario() {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 //        Calendar min = Calendar.getInstance();
@@ -501,13 +497,13 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 
         jDateChooser2.setDate(new Date());
         jDateChooser2.setMaxSelectableDate(new Date());
-        
+
     }
-    
+
 }
 
 class RangeEvaluator extends MinMaxDateEvaluator {
-    
+
     @Override
     public boolean isInvalid(Date date) {
         return !super.isInvalid(date);
