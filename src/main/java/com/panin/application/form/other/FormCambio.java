@@ -64,8 +64,8 @@ public class FormCambio extends javax.swing.JPanel {
         actulizacionC = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        cambio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        cambio = new com.panin.application.utilities.TextoHint();
         jLabel2 = new javax.swing.JLabel();
 
         Cambio.setBackground(new java.awt.Color(60, 78, 102));
@@ -98,9 +98,9 @@ public class FormCambio extends javax.swing.JPanel {
                     .addGroup(CambioLayout.createSequentialGroup()
                         .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                         .addGap(32, 32, 32)))
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cambio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actulizacionC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(actulizacionC, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(150, 150, 150))
             .addGroup(CambioLayout.createSequentialGroup()
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,11 +117,11 @@ public class FormCambio extends javax.swing.JPanel {
             .addGroup(CambioLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel3)
-                .addGap(49, 49, 49)
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(52, 52, 52)
+                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(43, 43, 43)
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(actulizacionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,7 +222,7 @@ public class FormCambio extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cambio;
     private javax.swing.JTextField actulizacionC;
-    private javax.swing.JTextField cambio;
+    private com.panin.application.utilities.TextoHint cambio;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
