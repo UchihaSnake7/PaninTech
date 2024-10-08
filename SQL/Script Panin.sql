@@ -10,6 +10,14 @@ create table insumo
     constraint insumo_pk
         primary key (id)
 )
+
+
+CREATE TABLE tasa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tasa FLOAT NOT NULL,
+    fecha DATE,
+
+);
     comment 'Tabla donde s eguardan los insumos de panin';
 
 
