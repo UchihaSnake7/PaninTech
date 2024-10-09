@@ -297,8 +297,8 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -332,7 +332,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                     ControladorConversion cc = new ControladorConversion();
                     umb = cmd.obtenerUnidadBase(um);
 
-                    BigDecimal factorConversion = cc.obtenerUnidadBase(um, umb).getFactorConversion();
+                    BigDecimal factorConversion = cc.obtenerFactorConversion(um, umb).getFactorConversion();
 
                     cantidadCalculada = cantidadCalculada.multiply(factorConversion);
 

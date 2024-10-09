@@ -8,6 +8,7 @@ import com.panin.HibernateUtil;
 import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.Insumo;
 import jakarta.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -63,6 +64,56 @@ public class ControladorComprasInsumos {
             return false;
         }
 
+    }
+
+    public List<ComprasInsumo> obtenerComprasDesde(Insumo insumo, Date date) {
+        session.beginTransaction();
+        List<ComprasInsumo> comprasInsumos;
+
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoDesde");
+        query.setParameter("insumo", insumo);
+        query.setParameter("desde", date);
+        comprasInsumos = query.getResultList();
+
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+        session.close();
+        return comprasInsumos;
+    }
+
+    public List<ComprasInsumo> obtenerComprasDesdeHasta(Insumo insumo, Date date, Date hasta) {
+        session.beginTransaction();
+        List<ComprasInsumo> comprasInsumos;
+
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoFechas");
+        query.setParameter("insumo", insumo);
+        query.setParameter("desde", date);
+        query.setParameter("hasta", hasta);
+        comprasInsumos = query.getResultList();
+
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+        session.close();
+        return comprasInsumos;
+    }
+    
+        public List<ComprasInsumo> obtenerComprasHasta(Insumo insumo, Date hasta) {
+        session.beginTransaction();
+        List<ComprasInsumo> comprasInsumos;
+
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoHasta");
+        query.setParameter("insumo", insumo);
+      
+        query.setParameter("hasta", hasta);
+        comprasInsumos = query.getResultList();
+
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+        session.close();
+        return comprasInsumos;
     }
 }
 

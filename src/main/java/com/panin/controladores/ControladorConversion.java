@@ -39,7 +39,7 @@ public class ControladorConversion {
 
     }
 
-    public Conversion obtenerUnidadBase(UnidadMedida base, UnidadMedida derivada) {
+    public Conversion obtenerFactorConversion(UnidadMedida base, UnidadMedida derivada) {
         session.beginTransaction();
         List<Conversion> Conversion;
 

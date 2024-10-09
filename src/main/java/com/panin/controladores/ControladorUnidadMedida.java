@@ -40,7 +40,13 @@ public class ControladorUnidadMedida {
     }
 
     public UnidadMedida obtenerUnidadBase(UnidadMedida unidadMedida) {
-        session.beginTransaction();
+        try {
+            session.beginTransaction();
+        } catch (Exception e) {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+        }
+
         List<UnidadMedida> UnidadesMedida;
 
         TypedQuery query = session.getNamedQuery("UnidadMedida.findByBase");

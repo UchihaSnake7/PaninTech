@@ -36,8 +36,8 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="panel" min="-2" pref="295" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="panelRegistrosInsumos1" min="-2" pref="268" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="panelRegistrosInsumos1" min="-2" pref="255" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
