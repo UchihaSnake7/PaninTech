@@ -158,6 +158,24 @@ public class UnidadMedida implements Serializable {
         this.comprasInsumoCollection = comprasInsumoCollection;
     }
 
+
+    public Boolean getUnidadBase() {
+        return unidadBase;
+    }
+
+    public void setUnidadBase(Boolean unidadBase) {
+        this.unidadBase = unidadBase;
+    }
+
+    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
+        return insumoRecetasCollection;
+    }
+
+    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
+        this.insumoRecetasCollection = insumoRecetasCollection;
+
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -180,23 +198,6 @@ public class UnidadMedida implements Serializable {
 
     public void setSistema(String sistema) {
         this.sistema = sistema;
-    }
-
-    public Boolean getUnidadBase() {
-        return unidadBase;
-    }
-
-    public void setUnidadBase(Boolean unidadBase) {
-        this.unidadBase = unidadBase;
-    }
-
-    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
-        return insumoRecetasCollection;
-    }
-
-    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
-        this.insumoRecetasCollection = insumoRecetasCollection;
-
     }
 
 }

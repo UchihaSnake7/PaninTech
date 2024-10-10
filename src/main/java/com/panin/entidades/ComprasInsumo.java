@@ -47,30 +47,33 @@ import java.util.Date;
 })
 public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cantidad", precision = 20, scale = 6)
+    private BigDecimal cantidad;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "precio", precision = 10, scale = 6)
+    private BigDecimal precio;
+    @Column(name = "hora")
+    @Temporal(TemporalType.TIME)
+    private Date hora;
+    @JoinColumn(name = "marca_insumo", referencedColumnName = "id")
+    @ManyToOne
+    private MarcaInsumo marcaInsumo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fecha", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
-
-    @Column(name = "hora", nullable = true)
-    @Temporal(TemporalType.TIME)
-    private Time hora;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "cantidad", nullable = false)
-    private BigDecimal cantidad;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "precio", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precio;
     @JoinColumn(name = "insumo", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Insumo insumo;
@@ -100,29 +103,6 @@ public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
         this.id = id;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public BigDecimal getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(BigDecimal cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
 
     public Insumo getInsumo() {
         return insumo;
@@ -160,13 +140,6 @@ public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
         return true;
     }
 
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
-    }
 
     @Override
     public String toString() {
@@ -177,6 +150,46 @@ public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
     public int compareTo(ComprasInsumo o) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         return this.getFecha().compareTo(o.getFecha()); // Por ejemplo, comparar por fecha
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public BigDecimal getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(BigDecimal cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
+    }
+
+    public MarcaInsumo getMarcaInsumo() {
+        return marcaInsumo;
+    }
+
+    public void setMarcaInsumo(MarcaInsumo marcaInsumo) {
+        this.marcaInsumo = marcaInsumo;
     }
 
 }
