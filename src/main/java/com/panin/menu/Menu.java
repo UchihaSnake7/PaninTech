@@ -28,14 +28,14 @@ public class Menu extends JPanel {
         {"~INICIO~"},
         {"Inicio"},
         {"~INVENTARIO~"},
-        {"Insumos","Compra de Insumo", "Reporte de Compra", "Crear Insumo"},
+        {"Insumos","Compra de Insumo", "Reporte de Compra de Insumos", "Crear Insumo"},
         {"Productos","Ver Productos","Calcular Precio", "Crear Producto"},
 
           {"~TASA DE CAMNBIO~"},
           {"Tasa de cambio","Visualización","Actualizar"},
-
-        {"~TASA DE CAMBIO~"},
-        {"prueba","1", "2 Precio", "3 "},
+//
+//        {"~TASA DE CAMBIO~"},
+//        {"prueba","1", "2 Precio", "3 "},
 
 //        {"Chat"},
 //        {"Calendar"},

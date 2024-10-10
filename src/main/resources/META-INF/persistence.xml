@@ -3,8 +3,16 @@
   <persistence-unit name="com.panin_PaninTech_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.panin.entidades.Insumo</class>
+<<<<<<< HEAD
     <class>com.panin.entidades.Tasa</class>
     <class>com.panin.entidades.TableName</class>
+=======
+    <class>com.panin.entidades.TipoMedida</class>
+    <class>com.panin.entidades.Conversion</class>
+    <class>com.panin.entidades.UnidadMedida</class>
+    <class>com.panin.entidades.ComprasInsumo</class>
+    <class>com.panin.entidades.MarcaInsumo</class>
+>>>>>>> 228622de739e507bad201b2a2b5266ac189a7d41
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/panin?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -174,6 +174,18 @@ public class Insumo implements Serializable {
         this.comprasInsumoCollection = comprasInsumoCollection;
     }
 
+
+   
+
+    @XmlTransient
+    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
+        return insumoRecetasCollection;
+    }
+
+    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
+        this.insumoRecetasCollection = insumoRecetasCollection;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -189,16 +201,4 @@ public class Insumo implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-   
-
-    @XmlTransient
-    public Collection<InsumoRecetas> getInsumoRecetasCollection() {
-        return insumoRecetasCollection;
-    }
-
-    public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
-        this.insumoRecetasCollection = insumoRecetasCollection;
-    }
-    
 }
