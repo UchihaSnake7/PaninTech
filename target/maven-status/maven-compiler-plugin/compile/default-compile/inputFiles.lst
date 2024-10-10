@@ -35,6 +35,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\othe
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Recetas.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuAction.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
@@ -60,6 +61,8 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\Applicati
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\frameConfiguracion.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Tasa.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\MarcaInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\HibernateUtil.java

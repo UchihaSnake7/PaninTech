@@ -79,7 +79,7 @@ create table if not exists insumo
     constraint insumo_tipo_medida_fk
         foreign key (id_tipo_medida) references tipo_medida (id_tipo_medida)
 )
-    comment 'Tabla donde s eguardan los insumos de panin';
+    comment 'Tabla donde se guardan los insumos de panin';
 
 create table if not exists unidad_medida
 (

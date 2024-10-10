@@ -32,6 +32,7 @@ import javax.swing.border.EmptyBorder;
 import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.application.form.productos.PanelNuevoProducto;
+import com.panin.application.form.productos.panelCalcularPrecioProducto;
 
 /**
  *
@@ -107,6 +108,11 @@ public class MainForm extends JLayeredPane {
 				case 1: {
 					
 					 Application.showForm(new FormMostrarProductos());
+					 break;
+					 }
+                                case 2: {
+					
+					 Application.showForm(new panelCalcularPrecioProducto());
 					 break;
 					 }
 				case 3: {
