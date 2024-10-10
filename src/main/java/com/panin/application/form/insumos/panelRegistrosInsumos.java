@@ -344,7 +344,7 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         jComboxUnidades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Cambio de medida");
+//                System.out.println("Cambio de medida");
                 modelTable.setRowCount(0);
                 actualizarLista();
             }
