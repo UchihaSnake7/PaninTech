@@ -64,6 +64,7 @@ com\panin\application\utilities\WrapLayout.class
 com\panin\menu\MenuAnimation.class
 com\panin\menu\ToolBarAccentColor.class
 com\panin\application\form\insumos\PanelIngresarInsumo$7.class
+com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$4.class
 com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorConversion.class
@@ -82,6 +83,7 @@ com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\form\other\FormIngresarInsumoold.class
 com\panin\application\form\insumos\PanelIngresarInsumo.class
+com\panin\application\form\insumos\panelRegistrosInsumos$5.class
 com\panin\menu\MenuItem$MenuLayout.class
 com\panin\entidades\UnidadMedida.class
 com\panin\application\form\LoginForm.class
@@ -99,6 +101,7 @@ com\panin\application\form\other\Card$2.class
 com\panin\application\form\PanelLogin.class
 com\panin\application\form\insumos\RangeEvaluator.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
+com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
 com\panin\application\form\productos\FormAgregarNuevoProducto.class
 com\panin\controladores\ControladorProductos.class

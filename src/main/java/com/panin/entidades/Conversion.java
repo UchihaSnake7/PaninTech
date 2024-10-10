@@ -25,7 +25,7 @@ import java.math.BigDecimal;
  * @author USUARIO
  */
 @Entity
-@Table(name = "conversion", catalog = "panin", schema = "")
+@Table(name = "conversion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Conversion.findAll", query = "SELECT c FROM Conversion c"),

@@ -33,7 +33,7 @@ import java.util.Date;
  * @author USUARIO
  */
 @Entity
-@Table(name = "insumo", catalog = "panin", schema = "")
+@Table(name = "insumo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Insumo.findAll", query = "SELECT i FROM Insumo i"),
