@@ -21,6 +21,7 @@ public class ControladorComprasInsumos {
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorComprasInsumos() {
+         session.beginTransaction();
     }
 
     public List<ComprasInsumo> obtenerComprasInsumos() {
@@ -49,6 +50,26 @@ public class ControladorComprasInsumos {
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                session.close();
         session.close();
+        return comprasInsumos;
+    }
+    
+        public void cerrarSesion(){
+            session.close();
+        }
+    
+      public ComprasInsumo obtenerComprasdeUnInsumoUnico(Insumo insumo) {
+//        session.beginTransaction();
+        ComprasInsumo comprasInsumos;
+
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumo");
+        query.setParameter("insumo", insumo);
+        query.setMaxResults(1);
+        comprasInsumos = (ComprasInsumo) query.getSingleResult();
+
+//        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+//        session.close();
         return comprasInsumos;
     }
 

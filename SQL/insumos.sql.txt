@@ -76,3 +76,38 @@ INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_convers
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (3, 18, 12);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 3, 0.1667);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 3, 0.0833);
+
+alter table compras_insumo
+    alter column marca_insumo set default 1;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = true
+WHERE t.id_unidad = 2;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = false
+WHERE t.id_unidad = 5;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = false
+WHERE t.id_unidad = 7;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = true
+WHERE t.id_unidad = 4;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = false
+WHERE t.id_unidad = 8;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = false
+WHERE t.id_unidad = 9;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = false
+WHERE t.id_unidad = 10;
+
+UPDATE panin.unidad_medida t
+SET t.unidad_base = true
+WHERE t.id_unidad = 1;

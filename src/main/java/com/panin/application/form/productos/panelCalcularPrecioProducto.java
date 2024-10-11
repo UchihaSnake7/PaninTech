@@ -5,12 +5,15 @@
 package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.controladores.ControladorComprasInsumos;
 import com.panin.controladores.ControladorProductos;
 import com.panin.controladores.ControladorReceta;
 import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -191,11 +194,12 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
                     .addComponent(labelPrecio)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPrecioTotal)
-                    .addComponent(botonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCalcular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelPrecioTotal)))
                 .addGap(10, 10, 10))
         );
 
@@ -237,6 +241,10 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         int cantidad = Integer.valueOf(textFieldCantidad.getText());
         int cantidadReceta = r.getCantidad();
         double cantidadCalculada = 0.0;
+        double precioTotal = 0;
+        double precio = 0.0;
+        
+        ControladorComprasInsumos cpi = new ControladorComprasInsumos();
          
         if(cantidadReceta > cantidad){
             cantidadCalculada = cantidadReceta / cantidad;
@@ -250,6 +258,8 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         }
         
          r = cr.obtenerRecetaPorId(producto.getIdReceta());
+//         List<InsumoRecetas> lir =  (List<InsumoRecetas>) r.getInsumoRecetasCollection();
+//         cr.cerrarSesion();
          modelTable.setRowCount(0);
 
         for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
@@ -262,10 +272,30 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
                     	
                listaInsumosReceta.add(dto);
                
+               ComprasInsumo ci = cpi.obtenerComprasdeUnInsumoUnico(ir.getIdInsumo());
+               
+               
+//               System.out.print("\nci.getPrecio() " + ci.getPrecio().toString());
+//               System.out.print("\nir.getCantidad() " + ir.getCantidad().toString());
+//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()) " + ci.getPrecio().multiply(ir.getCantidad()).toString());
+//
+//               System.out.print("\ncantidadCalculada " + cantidadCalculada);
+//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)) " + ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)));
+
+
+               precioTotal = (ci.getPrecio().multiply(ir.getCantidad())).multiply(BigDecimal.valueOf(cantidadCalculada)).doubleValue();
+               
+//               System.out.print("\nprecioTotal " + precioTotal);
+
+               
                modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
 
                     	
             }
+        cr.cerrarSesion();
+        BigDecimal bd = new BigDecimal(precioTotal);
+//        System.out.print("Precio Toal: " + bd.doubleValue());
+        labelPrecioTotal.setText(String.valueOf(bd.doubleValue()));
          
     }//GEN-LAST:event_botonCalcularActionPerformed
 
