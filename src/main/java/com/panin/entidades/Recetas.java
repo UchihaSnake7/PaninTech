@@ -54,6 +54,8 @@ public class Recetas implements Serializable {
     private Date tiempoPreparacion;
     @OneToMany(mappedBy = "idReceta")
     private Collection<InsumoRecetas> insumoRecetasCollection;
+    @Column(name = "cantidad")
+    private Integer cantidad;
 
     public Recetas() {
     }
@@ -94,6 +96,16 @@ public class Recetas implements Serializable {
     public void setInsumoRecetasCollection(Collection<InsumoRecetas> insumoRecetasCollection) {
         this.insumoRecetasCollection = insumoRecetasCollection;
     }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
 
     @Override
     public int hashCode() {

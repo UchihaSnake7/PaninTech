@@ -29,7 +29,7 @@ import java.util.Date;
  * @author USUARIO
  */
 @Entity
-@Table(name = "compras_insumo", catalog = "panin", schema = "")
+@Table(name = "compras_insumo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ComprasInsumo.findAll", query = "SELECT c FROM ComprasInsumo c"),
@@ -44,6 +44,9 @@ import java.util.Date;
     @NamedQuery(name = "ComprasInsumo.findByFechas", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha between :desde and :hasta"),
     @NamedQuery(name = "ComprasInsumo.findByDesde", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha >= :desde"),
     @NamedQuery(name = "ComprasInsumo.findByHasta", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha <= :hasta"),
+    
+    @NamedQuery(name = "ComprasInsumo.findByInsumoUnico", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo ORDER BY c.fecha DESC"),
+
 })
 public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {
 

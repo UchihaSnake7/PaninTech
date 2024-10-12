@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.panin.HibernateUtil;
+import com.panin.application.utilities.tipoProducto;
 import com.panin.db.ConexionDB;
 import com.panin.entidades.Producto;
 import jakarta.persistence.EntityManager;
@@ -35,6 +36,21 @@ public class ControladorProductos {
 		List<Producto> productos;
 			
                 TypedQuery query = session.getNamedQuery("Producto.findAll");   
+		productos = query.getResultList();
+	       
+                session.getTransaction().commit();
+                //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+                
+                return query.getResultList();
+	}
+        
+        public List<Producto> obtenerProductosElaborados() {
+		List<Producto> productos;
+			
+                TypedQuery query = session.getNamedQuery("Producto.findByTipo"); 
+                query.setParameter("tipo", tipoProducto.Elaborado);
+
 		productos = query.getResultList();
 	       
                 session.getTransaction().commit();

@@ -347,6 +347,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 compraInsumo.setFecha(jDateChooser2.getDate());
                 compraInsumo.setUnidadMedidaId(umb);
                 compraInsumo.setHora(new Time(new Date().getTime()));
+  
              
 
                 ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();

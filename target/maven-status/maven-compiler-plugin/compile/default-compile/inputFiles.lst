@@ -9,10 +9,13 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuIt
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelContenidoReceta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
@@ -68,6 +71,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Recetas.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\Card.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Insumo.java

@@ -31,7 +31,7 @@ public class ControladorReceta {
            Query query = session.getNamedQuery("Recetas.findByIdReceta"); 
            query.setParameter("idReceta", idReceta);
            r = (Recetas) query.getSingleResult();
-            
+           
            return r;
             
         }

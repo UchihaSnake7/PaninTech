@@ -30,7 +30,7 @@ import java.util.Collection;
  * @author USUARIO
  */
 @Entity
-@Table(name = "tipo_medida", catalog = "panin", schema = "")
+@Table(name = "tipo_medida")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoMedida.findAll", query = "SELECT t FROM TipoMedida t"),

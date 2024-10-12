@@ -35,7 +35,11 @@ import com.panin.application.utilities.tipoProducto;
     @NamedQuery(name = "Producto.findById", query = "SELECT p FROM Producto p WHERE p.id = :id"),
     @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion"),
     @NamedQuery(name = "Producto.findByPrecioProduccion", query = "SELECT p FROM Producto p WHERE p.precioProduccion = :precioProduccion"),
-    @NamedQuery(name = "Producto.findByPrecioVenta", query = "SELECT p FROM Producto p WHERE p.precioVenta = :precioVenta")})
+    @NamedQuery(name = "Producto.findByPrecioVenta", query = "SELECT p FROM Producto p WHERE p.precioVenta = :precioVenta"),
+    @NamedQuery(name = "Producto.findByTipo", query = "SELECT p FROM Producto p WHERE p.tipo = :tipo")
+
+})
+
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -156,7 +160,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.Producto[ id=" + id + " ]";
+        return this.descripcion;
     }
     
 }
