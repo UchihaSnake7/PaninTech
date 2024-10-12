@@ -241,7 +241,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         }
 
         String[] columnas = new String[]{
-            "Insumo", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
+            "Insumo", "Marca", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
         modelTable = new DefaultTableModel(columnas, 0);
         this.table.setModel(modelTable);
 
@@ -295,6 +295,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         modelTable.setRowCount(0);
         listaCompras.sort(Collections.reverseOrder());
         UnidadMedida medidaSeleccionada;
+
         if (jComboBoxUnidad.getSelectedItem() != null) {
             medidaSeleccionada = (UnidadMedida) jComboBoxUnidad.getSelectedItem();
         } else {
@@ -308,6 +309,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         String hora;
 
         for (ComprasInsumo fila : listaCompras) {
+            String marca = "NA";
             ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
             ControladorConversion controladorConversion = new ControladorConversion();
             BigDecimal precioCalculado = fila.getPrecio();
@@ -329,11 +331,14 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
 //                System.out.println("Medida seleccionada " + unidadAbreviatura);
             }
 
+            if (fila.getMarcaInsumo() != null) {
+                marca = fila.getMarcaInsumo().getNombre();
+            }
             String strDate = formatter.format(fila.getFecha());
             String strHora = formatter.format(fila.getHora());
             BigDecimal redondeado = precioCalculado.setScale(1, RoundingMode.HALF_UP);
             double valorDouble = redondeado.doubleValue();
-            modelTable.addRow(new Object[]{fila.getInsumo(), cantidadCalculada.toString(), unidadAbreviatura, valorDouble, strDate, hora,});
+            modelTable.addRow(new Object[]{fila.getInsumo(), marca, cantidadCalculada.toString(), unidadAbreviatura, valorDouble, strDate, hora,});
         }
 
         // Convertir a double

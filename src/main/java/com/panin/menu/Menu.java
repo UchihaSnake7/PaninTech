@@ -28,7 +28,7 @@ public class Menu extends JPanel {
         {"~INICIO~"},
         {"Inicio"},
         {"~INVENTARIO~"},
-        {"Insumos","Compra de Insumo", "Reporte de Compra de Insumos", "Crear Insumo"},
+        {"Insumos","Compra de Insumo", "Reporte de Compra de Insumos", "Reporte Marcas", "Crear Insumo", "Crear Marca"},
         {"Productos","Ver Productos","Calcular Precio", "Crear Producto"},
 
           {"~TASA DE CAMNBIO~"},

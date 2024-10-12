@@ -118,7 +118,7 @@ public class MarcaInsumo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.MarcaInsumo[ id=" + id + " ]";
+        return this.nombre;
     }
     
 }

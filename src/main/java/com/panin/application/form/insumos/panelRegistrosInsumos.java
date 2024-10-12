@@ -93,9 +93,10 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         // Para alinear a la derecha o centrar
         table.getColumnModel().getColumn(0).setCellRenderer(rendererCentrado);
         table.getColumnModel().getColumn(1).setCellRenderer(rendererCentrado);
-        table.getColumnModel().getColumn(3).setCellRenderer(rendererCentrado);
-        table.getColumnModel().getColumn(2).setCellRenderer(rendererDerecha);
-        table.getColumnModel().getColumn(4).setCellRenderer(rendererDerecha);
+        table.getColumnModel().getColumn(2).setCellRenderer(rendererCentrado);
+        table.getColumnModel().getColumn(4).setCellRenderer(rendererCentrado);
+        table.getColumnModel().getColumn(3).setCellRenderer(rendererDerecha);
+        table.getColumnModel().getColumn(5).setCellRenderer(rendererDerecha);
 //        renderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         // Aplicar el renderizador a todas las columnas (puedes especificarlo por columna)
@@ -110,7 +111,7 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
 
     public panelRegistrosInsumos() {
         String[] columnas = new String[]{
-            "Fecha", "Hora", "Cantidad", "Unidad Medida", "Precio"
+            "Fecha", "Hora", "Marca", "Cantidad", "Unidad Medida", "Precio"
         };
         modelTable = new DefaultTableModel(columnas, 0);
         initComponents();
@@ -309,6 +310,7 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         String hora;
 
         for (ComprasInsumo fila : listaInsumos) {
+            String marca = "NA";
             ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
             ControladorConversion controladorConversion = new ControladorConversion();
             BigDecimal precioCalculado = fila.getPrecio();
@@ -330,11 +332,15 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
 //                System.out.println("Medida seleccionada " + unidadAbreviatura);
             }
 
+            if (fila.getMarcaInsumo() != null) {
+                marca = fila.getMarcaInsumo().getNombre();
+            }
+
             String strDate = formatter.format(fila.getFecha());
             String strHora = formatter.format(fila.getHora());
             BigDecimal redondeado = precioCalculado.setScale(1, RoundingMode.HALF_UP);
             double valorDouble = redondeado.doubleValue();
-            modelTable.addRow(new Object[]{strDate, hora, cantidadCalculada.toString(), unidadAbreviatura, valorDouble});
+            modelTable.addRow(new Object[]{strDate, hora, marca, cantidadCalculada.toString(), unidadAbreviatura, valorDouble});
         }
 
         // Convertir a double

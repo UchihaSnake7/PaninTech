@@ -7,7 +7,9 @@ import com.formdev.flatlaf.util.UIScale;
 import com.panin.application.Application;
 import com.panin.application.form.insumos.FormCrearInsumo;
 import com.panin.application.form.insumos.crear.FormCrearInsumoN;
+import com.panin.application.form.insumos.crear.FormCrearMarcaInsumoN;
 import com.panin.application.form.insumos.reportecompra.FormReporteComprasInsumos;
+import com.panin.application.form.insumos.reportecompra.FormReporteMarcasInsumo;
 import com.panin.application.form.other.FormDashboard;
 import com.panin.application.form.other.FormIngresarInsumoold;
 import com.panin.application.form.other.FormRead;
@@ -87,56 +89,57 @@ public class MainForm extends JLayeredPane {
             } else if (index == 1) {
                 /*
                 Insumos
-                */
+                 */
                 if (subIndex == 1) {
                     Application.showForm(new FormIngresarInsumo());
                 } else if (subIndex == 2) {
                     Application.showForm(new FormReporteComprasInsumos());
                 } else if (subIndex == 3) {
+                    Application.showForm(new FormReporteMarcasInsumo());
+                } else if (subIndex == 4) {
                     Application.showForm(new FormCrearInsumoN());
-                
-                }    
-                else {
+
+                } else if (subIndex == 5) {
+                    Application.showForm(new FormCrearMarcaInsumoN());
+                } else {
                     action.cancel();
                 }
-            }else if (index == 2) {
-                
-                 /*
+            } else if (index == 2) {
+
+                /*
                 Productos
-                */
-            	switch (subIndex) {
-				case 1: {
-					
-					 Application.showForm(new FormMostrarProductos());
-					 break;
-					 }
-                                case 2: {
-					
-					 Application.showForm(new panelCalcularPrecioProducto());
-					 break;
-					 }
-				case 3: {
-					
-					 Application.showForm(new PanelNuevoProducto());
-					 break;
-					 }
-				default:
-					throw new IllegalArgumentException("Valor no esperado: " + subIndex);
-				}
-            	
-               
+                 */
+                switch (subIndex) {
+                    case 1: {
+
+                        Application.showForm(new FormMostrarProductos());
+                        break;
+                    }
+                    case 2: {
+
+                        Application.showForm(new panelCalcularPrecioProducto());
+                        break;
+                    }
+                    case 3: {
+
+                        Application.showForm(new PanelNuevoProducto());
+                        break;
+                    }
+                    default:
+                        throw new IllegalArgumentException("Valor no esperado: " + subIndex);
+                }
+
             } else if (index == 3) {
-                 if (subIndex == 1) {
-                   Application.showForm(new formprueba());
+                if (subIndex == 1) {
+                    Application.showForm(new formprueba());
                 } else if (subIndex == 2) {
-                 Application.showForm(new FormCambio());
+                    Application.showForm(new FormCambio());
                 } else if (subIndex == 3) {
                     Application.showForm(new FormCrearInsumo());
-                
+
                 }
-               
-            }
-            else if (index == 9) {
+
+            } else if (index == 9) {
                 Application.logout();
             } else {
                 action.cancel();

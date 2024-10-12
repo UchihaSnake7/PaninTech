@@ -21,7 +21,7 @@ public class ControladorComprasInsumos {
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorComprasInsumos() {
-         session.beginTransaction();
+//         session.beginTransaction();
     }
 
     public List<ComprasInsumo> obtenerComprasInsumos() {

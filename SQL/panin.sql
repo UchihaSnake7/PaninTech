@@ -213,3 +213,5 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (11, 'Queso', 0, 0, '/imagenes/productos/quesito.png', null, null);
 INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (12, 'Torta', 0, 0, '/imagenes/productos/torta.png', null, null);
 
+INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (1, 'NA', 1);
+INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (2, 'La Hacienda', 1);
