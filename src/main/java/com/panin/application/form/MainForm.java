@@ -6,6 +6,7 @@ import com.formdev.flatlaf.util.UIScale;
 
 import com.panin.application.Application;
 import com.panin.application.form.insumos.FormCrearInsumo;
+import com.panin.application.form.insumos.FormVerInsumos;
 import com.panin.application.form.insumos.crear.FormCrearInsumoN;
 import com.panin.application.form.insumos.crear.FormCrearMarcaInsumoN;
 import com.panin.application.form.insumos.reportecompra.FormReporteComprasInsumos;
@@ -86,24 +87,30 @@ public class MainForm extends JLayeredPane {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());
-            } else if (index == 1) {
-                /*
-                Insumos
-                 */
-                if (subIndex == 1) {
-                    Application.showForm(new FormIngresarInsumo());
-                } else if (subIndex == 2) {
-                    Application.showForm(new FormReporteComprasInsumos());
-                } else if (subIndex == 3) {
-                    Application.showForm(new FormReporteMarcasInsumo());
-                } else if (subIndex == 4) {
-                    Application.showForm(new FormCrearInsumoN());
-
-                } else if (subIndex == 5) {
-                    Application.showForm(new FormCrearMarcaInsumoN());
-                } else {
-                    action.cancel();
+            } else if (index == 1) { //Insumos
+                switch (subIndex) {
+                    case 1:
+                       Application.showForm(new FormVerInsumos());
+                        break;
+                    case 2:
+                        Application.showForm(new FormIngresarInsumo());
+                        break;
+                    case 3:
+                        Application.showForm(new FormReporteComprasInsumos());
+                        break;
+                    case 4:
+                        Application.showForm(new FormReporteMarcasInsumo());
+                        break;
+                    case 5:
+                        Application.showForm(new FormCrearInsumoN());
+                        break;
+                    case 6:
+                        Application.showForm(new FormCrearMarcaInsumoN());
+                        break;
+                    default:
+                        Application.showForm(new FormIngresarInsumo());
                 }
+
             } else if (index == 2) {
 
                 /*

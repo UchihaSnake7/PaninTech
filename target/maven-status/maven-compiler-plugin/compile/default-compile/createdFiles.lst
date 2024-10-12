@@ -1,6 +1,8 @@
+com\panin\application\utilities\TableActionCellEditor.class
 com\panin\application\form\insumos\panelRegistrosInsumos$1.class
 com\panin\application\form\other\FormRead.class
 com\panin\entidades\Insumo.class
+com\panin\application\form\insumos\FormVerInsumos.class
 com\panin\menu\MenuEvent.class
 com\panin\dto\formAgregarInsumoProductoDTO.class
 com\panin\application\form\productos\PanelVerDatosProducto.class
@@ -10,11 +12,11 @@ com\panin\controladores\ControladorComprasInsumos.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
 com\panin\application\form\other\FormCambio.class
+com\panin\application\utilities\TableActionCellRender.class
 com\panin\application\form\other\FormCambio$1.class
 com\panin\application\form\productos\panelContenidoReceta$2.class
 com\panin\application\utilities\SearchHeader.class
 com\panin\application\form\productos\PanelNuevoProducto.class
-com\panin\menu\Menu$MenuLayout.class
 com\panin\controladores\ControladorTasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
 com\panin\menu\PopupSubmenu$MenuLayout.class
@@ -33,6 +35,7 @@ com\panin\application\form\productos\FormIngresarProducto.class
 com\panin\application\frameConfiguracion.class
 com\panin\application\utilities\ScrollBar.class
 com\panin\application\form\insumos\panelRegistrosInsumos$2.class
+com\panin\application\utilities\PanelAction$1.class
 com\panin\application\form\insumos\Model_Card.class
 com\panin\application\form\insumos\PanelIngresarInsumo$5.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$1.class
@@ -47,6 +50,7 @@ com\panin\application\form\productos\frameIngresarInsumoReceta.class
 com\panin\application\form\insumos\PanelIngresarInsumo$3.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
+com\panin\application\form\insumos\FormVerInsumos$1.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$1.class
 com\panin\controladores\ControladorMarcaInsumo.class
 com\panin\menu\MenuAction.class
@@ -56,6 +60,7 @@ com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\application\form\insumos\PanelIngresarInsumo$2.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$1.class
 com\panin\menu\PopupSubmenu.class
+com\panin\application\utilities\PanelAction$3.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$2.class
@@ -74,7 +79,9 @@ com\panin\application\form\other\Card$3.class
 com\panin\application\form\productos\PanelIngresarProducto.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\menu\MenuAnimation.class
+com\panin\application\utilities\TableActionEvent.class
 com\panin\menu\ToolBarAccentColor.class
+com\panin\application\form\insumos\FormVerInsumos$2.class
 com\panin\application\form\insumos\PanelIngresarInsumo$7.class
 com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$4.class
@@ -85,6 +92,7 @@ com\panin\application\form\LoginForm$2.class
 com\panin\application\utilities\SearchText.class
 com\panin\menu\LightDarkMode.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$1.class
+com\panin\application\utilities\PanelAction$2.class
 com\panin\db\ConexionDB.class
 com\panin\application\form\other\DefaultForm.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.class
@@ -96,6 +104,7 @@ com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\entidades\MarcaInsumo.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\form\other\FormIngresarInsumoold.class
+com\panin\application\utilities\ActionButton.class
 com\panin\application\form\insumos\PanelIngresarInsumo.class
 com\panin\application\form\insumos\panelRegistrosInsumos$5.class
 com\panin\menu\MenuItem$MenuLayout.class
@@ -108,6 +117,7 @@ com\panin\application\form\productos\PanelVerDatosProducto$2.class
 com\panin\application\utilities\ModernScrollBarUI$InvisibleScrollBarButton.class
 com\panin\menu\ToolBarAccentColor$AccentColorIcon.class
 com\panin\application\utilities\ModernScrollBarUI.class
+com\panin\application\utilities\PanelAction.class
 com\panin\menu\LightDarkMode$LightDarkModeLayout.class
 com\panin\application\form\insumos\panelRegistrosInsumos.class
 com\panin\entidades\Recetas.class
@@ -130,6 +140,7 @@ com\panin\application\form\productos\panelContenidoReceta.class
 com\panin\entidades\InsumoRecetas.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$1.class
 com\panin\application\form\other\FormDashboard$1.class
+com\panin\application\utilities\ActionButton$1.class
 com\panin\application\frameConfiguracion$1.class
 com\panin\application\form\MainForm.class
 com\panin\entidades\ComprasInsumo.class

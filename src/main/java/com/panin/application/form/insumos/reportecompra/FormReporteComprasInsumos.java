@@ -272,6 +272,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         );
 
         table.setEnabled(false);
+     
 
     }
 

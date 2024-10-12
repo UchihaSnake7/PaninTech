@@ -28,25 +28,22 @@ public class Menu extends JPanel {
         {"~INICIO~"},
         {"Inicio"},
         {"~INVENTARIO~"},
-        {"Insumos","Compra de Insumo", "Reporte de Compra de Insumos", "Reporte Marcas", "Crear Insumo", "Crear Marca"},
-        {"Productos","Ver Productos","Calcular Precio", "Crear Producto"},
-
-          {"~TASA DE CAMNBIO~"},
-          {"Tasa de cambio","Visualización","Actualizar"},
-//
-//        {"~TASA DE CAMBIO~"},
-//        {"prueba","1", "2 Precio", "3 "},
-
-//        {"Chat"},
-//        {"Calendar"},
-//        {"~COMPONENT~"},
-//        {"Advanced UI", "Cropper", "Owl Carousel", "Sweet Alert"},
-//        {"Forms", "Basic Elements", "Advanced Elements", "Editors", "Wizard"},
-//        {"~OTHER~"},
-//        {"Charts", "Apex", "Flot", "Peity", "Sparkline"},
-//        {"Icons", "Feather Icons", "Flag Icons", "Mdi Icons"},
-//        {"Special Pages", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"},
-//        {"Logout"}
+        {"Insumos", "Ver Insumos", "Compra de Insumo", "Reporte de Compra de Insumos", "Reporte Marcas", "Crear Insumo", "Crear Marca"},
+        {"Productos", "Ver Productos", "Calcular Precio", "Crear Producto"},
+        {"~TASA DE CAMNBIO~"},
+        {"Tasa de cambio", "Visualización", "Actualizar"}, //
+    //        {"~TASA DE CAMBIO~"},
+    //        {"prueba","1", "2 Precio", "3 "},
+    //        {"Chat"},
+    //        {"Calendar"},
+    //        {"~COMPONENT~"},
+    //        {"Advanced UI", "Cropper", "Owl Carousel", "Sweet Alert"},
+    //        {"Forms", "Basic Elements", "Advanced Elements", "Editors", "Wizard"},
+    //        {"~OTHER~"},
+    //        {"Charts", "Apex", "Flot", "Peity", "Sparkline"},
+    //        {"Icons", "Feather Icons", "Flag Icons", "Mdi Icons"},
+    //        {"Special Pages", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"},
+    //        {"Logout"}
     };
 
     public boolean isMenuFull() {
