@@ -164,3 +164,52 @@ create index id_tipo
     on unidad_medida (id_tipo);
 
 
+INSERT INTO panin.tipo_medida (id_tipo_medida, nombre) VALUES (1, 'Masa');
+INSERT INTO panin.tipo_medida (id_tipo_medida, nombre) VALUES (2, 'Longitud');
+INSERT INTO panin.tipo_medida (id_tipo_medida, nombre) VALUES (3, 'Unidad');
+INSERT INTO panin.tipo_medida (id_tipo_medida, nombre) VALUES (4, 'Volumen');
+
+
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (1, 'Harina de Trigo', '2024-10-03', '19:48:23', 1, '/imagenes/insumos/harina.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (2, 'Azucar', '2024-10-05', '17:08:58.640000', 0, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (3, 'Huevos', '2024-10-05', '17:15:28.405000', 0, '/imagenes/insumos/default.png', 3);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (4, 'Leche líquida', '2024-10-05', '17:26:00.237000', 1, '/imagenes/insumos/default.png', 4);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (5, 'Leche en Polvo', '2024-10-05', '17:30:40.700000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (6, 'Levadura', '2024-10-05', '20:39:05.623000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (7, 'Mantequilla', '2024-10-05', '20:39:19.840000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (8, 'Sal', '2024-10-05', '20:39:28.438000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (9, 'Vainilla', '2024-10-05', '20:39:35.848000', 1, '/imagenes/insumos/default.png', 4);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (10, 'Queso', '2024-10-05', '20:39:53.557000', 1, '/imagenes/insumos/default.png', 1);
+INSERT INTO panin.insumo (id, descripcion, fecha_creacion, hora_creacion, activo, ruta_imagen, id_tipo_medida) VALUES (11, 'Dulce Arequipe', '2024-10-06', '10:36:11.276000', 1, '/imagenes/insumos/default.png', 4);
+
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (1, 'gramo', 'g', 'métrico', 1, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (2, 'litro', 'L', 'métrico', 4, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (3, 'metro', 'm', 'métrico', 2, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (4, 'unidad', '1', 'unidad', 3, 1);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (5, 'kilogramo', 'Kg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (6, 'hectogramo', 'Hg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (7, 'decagramo', 'dag', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (8, 'decigramo', 'dg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (9, 'centigramo', 'cg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (10, 'miligramo', 'mg', 'métrico', 1, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (11, 'Kilolitro', 'Kl', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (12, 'Hectolitro', 'hl', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (13, 'Decalitro', 'dal', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (14, 'Decilitro', 'dl', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (15, 'Centilitro', 'cl', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (16, 'Mililitro', 'ml', 'métrico', 4, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (17, 'Media Docena', '6', 'métrico', 3, 0);
+INSERT INTO panin.unidad_medida (id_unidad, nombre, abreviatura, sistema, id_tipo, unidad_base) VALUES (18, 'Docena', '12', 'métrico', 3, 0);
+
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (1, 'Pan frances', 0, 0, '/imagenes/productos/pan_frances.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (2, 'Pan piñita', 0, 0, '/imagenes/productos/pan_piñita.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (3, 'Pan canilla', 0, 0, '/imagenes/productos/pan_canilla.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (5, 'Pan campesino', 0, 0, '/imagenes/productos/pan_campesino.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (6, 'Pan de arequipe', 0, 0, '/imagenes/productos/pan_arequipe.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (7, 'Pan de guayaba', 0, 0, '/imagenes/productos/pan_guayaba.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (8, 'Pan de queso', 0, 0, '/imagenes/productos/pan_queso.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (9, 'Golfeado', 0, 0, '/imagenes/productos/golfeado.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (10, 'Pasta seca', 0, 0, '/imagenes/productos/pan_frances.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (11, 'Queso', 0, 0, '/imagenes/productos/quesito.png', null, null);
+INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ruta_imagen, id_receta, tipo) VALUES (12, 'Torta', 0, 0, '/imagenes/productos/torta.png', null, null);
+
