@@ -71,6 +71,7 @@ com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\other\FormInbox.class
 com\panin\application\form\other\Card$3.class
+com\panin\application\form\productos\PanelVerDatosProducto$3.class
 com\panin\application\form\productos\PanelIngresarProducto.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\menu\MenuAnimation.class

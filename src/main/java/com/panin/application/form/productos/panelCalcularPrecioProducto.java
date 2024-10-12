@@ -257,10 +257,10 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
             cantidadCalculada = 1;
         }
         
-         r = cr.obtenerRecetaPorId(producto.getIdReceta());
 //         List<InsumoRecetas> lir =  (List<InsumoRecetas>) r.getInsumoRecetasCollection();
-//         cr.cerrarSesion();
-         modelTable.setRowCount(0);
+
+           cr.abrirSesion();
+           modelTable.setRowCount(0);
 
         for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
                     	

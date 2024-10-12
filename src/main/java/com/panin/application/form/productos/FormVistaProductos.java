@@ -88,7 +88,7 @@ public class FormVistaProductos extends javax.swing.JPanel {
         ControladorProductos cp = new ControladorProductos();
         productos = new ArrayList<Producto>();
         productos = cp.obtenerProductos();
-        cp.cerrarSesion();
+//        cp.cerrarSesion();
 
         ControladorReceta cr = new ControladorReceta();
 
@@ -108,7 +108,6 @@ public class FormVistaProductos extends javax.swing.JPanel {
                       * Todos los productos elaborados DEBEN tener una receta asociada
                      */
                     r = cr.obtenerRecetaPorId(producto.getIdReceta());
-
                     listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
 
                     for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
@@ -122,13 +121,12 @@ public class FormVistaProductos extends javax.swing.JPanel {
                         listaInsumosReceta.add(dto);
 
                     }
-
                 }
             }
-            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta), getBackground(), formClass));
+            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta, producto), getBackground(), formClass));
 
         }
-        cr.cerrarSesion();
+//        cr.cerrarSesion();
 
         panel.revalidate();
         panel.repaint();
@@ -178,10 +176,10 @@ public class FormVistaProductos extends javax.swing.JPanel {
 
                 }
             }
-            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta), getBackground(), formClass));
+            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta, producto), getBackground(), formClass));
 
         }
-         cr.cerrarSesion();
+//         cr.cerrarSesion();
         panel.revalidate();
         panel.repaint();
     }
