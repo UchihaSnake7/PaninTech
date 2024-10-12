@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.application.utilities.tipoProducto;
 import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorProductos;
@@ -66,6 +67,8 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         
         descripcionProducto.setHint("Ingrese el nombre del producto...");
         panelTabla.add(new panelContenidoReceta());
+        
+        VerificarIngresoNumero.verificar(textFieldCantidadPorReceta);
     }
 
     /**
