@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -21,6 +23,24 @@ public class SearchHeader2 extends javax.swing.JPanel {
     public SearchHeader2() {
         initComponents();
         setOpaque(false);
+
+        searchText1.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+              
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+//                  System.out.println("Se ha escrito: " + e.getKeyChar());
+                notificarCambio();
+            }
+        });
     }
 
     /**
@@ -84,7 +104,28 @@ public class SearchHeader2 extends javax.swing.JPanel {
         super.paintComponent(g);
     }
 
+    private BuscadorListener listener;
 
+    public BuscadorListener getListener() {
+        return listener;
+    }
+
+    public void setListener(BuscadorListener listener) {
+        this.listener = listener;
+    }
+
+    public interface BuscadorListener {
+
+        void onTextoIngresado(String texto);
+    }
+
+    // Cuando se detecta un cambio en el texto, notificar al listener
+    private void notificarCambio() {
+//        System.out.println("Notificar " + searchText1.getText());
+        if (listener != null) {
+            listener.onTextoIngresado(searchText1.getText());
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,12 +5,13 @@
 package com.panin.application.form.other;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.utilities.SearchHeader2.BuscadorListener;
 
 /**
  *
  * @author ricke
  */
-public class FormIngresarInsumo extends javax.swing.JPanel {
+public class FormIngresarInsumo extends javax.swing.JPanel implements BuscadorListener {
 
     /**
      * Creates new form FormIngresarI
@@ -19,7 +20,7 @@ public class FormIngresarInsumo extends javax.swing.JPanel {
         
         initComponents();
         searchHeader21.setBackground(getBackground());
-   
+        searchHeader21.setListener(this);
 //		lb.putClientProperty(FlatClientProperties.STYLE, "" + "font:$h1.font");
     }
 
@@ -57,13 +58,21 @@ public class FormIngresarInsumo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-	// Variables declaration - do not modify                     
-	private javax.swing.JLabel lb;
-	private com.panin.application.utilities.SearchHeader sheader;
-	// End of variables declaration                   
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel lb;
+    private com.panin.application.utilities.SearchHeader sheader;
+    // End of variables declaration                   
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private com.panin.application.form.insumos.FormMostrarInsumos formMostrarInsumos1;
     private com.panin.application.utilities.SearchHeader2 searchHeader21;
-    // End of variables declaration//GEN-END:varia
+    // End of variables declaration               
+
+    @Override
+    public void onTextoIngresado(String texto) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        System.out.println("Ingresando" + texto);
+        formMostrarInsumos1.filtrarLista(texto);
+    }
+    
 }

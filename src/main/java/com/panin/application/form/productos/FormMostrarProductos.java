@@ -4,11 +4,13 @@
  */
 package com.panin.application.form.productos;
 
+import com.panin.application.utilities.SearchHeader2;
+
 /**
  *
  * @author USUARIO
  */
-public class FormMostrarProductos extends javax.swing.JPanel {
+public class FormMostrarProductos extends javax.swing.JPanel  implements SearchHeader2.BuscadorListener{
 
     /**
      * Creates new form FormMostrarProductos
@@ -16,6 +18,8 @@ public class FormMostrarProductos extends javax.swing.JPanel {
     public FormMostrarProductos() {
         initComponents();
         searchHeader21.setBackground(getBackground());
+        searchHeader21.setListener(this);
+        
     }
 
     /**
@@ -56,4 +60,9 @@ public class FormMostrarProductos extends javax.swing.JPanel {
     private com.panin.application.form.productos.FormVistaProductos formVistaProductos1;
     private com.panin.application.utilities.SearchHeader2 searchHeader21;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onTextoIngresado(String texto) {
+       formVistaProductos1.filtrarLista(texto);
+    }
 }

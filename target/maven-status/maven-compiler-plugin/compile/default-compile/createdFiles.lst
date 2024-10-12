@@ -22,6 +22,7 @@ com\panin\entidades\TipoMedida.class
 com\panin\application\form\productos\PanelVerDatosProducto$1.class
 com\panin\application\form\productos\PanelNuevoProducto$1.class
 com\panin\application\Application.class
+com\panin\application\utilities\SearchHeader2$BuscadorListener.class
 com\panin\application\form\other\FormIngresarInsumo.class
 com\panin\menu\MenuItem.class
 com\panin\application\form\insumos\FormMostrarInsumos.class
@@ -114,6 +115,7 @@ com\panin\application\form\insumos\PanelIngresarInsumo$6.class
 com\panin\application\form\other\Card$2.class
 com\panin\application\form\PanelLogin.class
 com\panin\application\form\insumos\RangeEvaluator.class
+com\panin\application\utilities\SearchHeader2$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class

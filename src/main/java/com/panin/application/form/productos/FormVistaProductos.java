@@ -4,7 +4,6 @@
  */
 package com.panin.application.form.productos;
 
-
 import com.panin.application.form.other.Card;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.utilities.ScrollBar;
@@ -19,6 +18,7 @@ import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -27,7 +27,8 @@ import java.util.List;
 public class FormVistaProductos extends javax.swing.JPanel {
 
     private static final long serialVersionUID = 1L;
-	/**
+
+    /**
      * Creates new form FormVistaProductos
      */
     public FormVistaProductos() {
@@ -83,51 +84,51 @@ public class FormVistaProductos extends javax.swing.JPanel {
     private void init() {
         panel.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
-        
+
         ControladorProductos cp = new ControladorProductos();
-	    List<Producto> productos = new ArrayList<Producto>();
-	    productos = cp.obtenerProductos();
-	    cp.cerrarSesion();
-            
+        productos = new ArrayList<Producto>();
+        productos = cp.obtenerProductos();
+        cp.cerrarSesion();
+
         ControladorReceta cr = new ControladorReceta();
-	    
-	    String formClass = "PanelVerDatosProducto";
-	    List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>() ;
-	    
-	    for (Producto producto : productos) {
-		
+
+        String formClass = "PanelVerDatosProducto";
+        List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+        for (Producto producto : productos) {
 
 //                 String receta = "";
-                Recetas r = new Recetas();
-                 
-                 if(producto.getTipo().toString().equalsIgnoreCase("Elaborado")){
-                     
-                     /*TODO
-                      * Todos los productos elaborados DEBEN tener una receta asociada
-                      */
-                    
-                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
-                    
-                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
-                    
-                    for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
-                    	
-                    	formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
-                    	
-                    	dto.setCantidad(ir.getCantidad().doubleValue());
-                    	dto.setInsumo(ir.getIdInsumo());
-                    	dto.setUnidadMedidad(ir.getUnidadMedida());
-                    	
-                    	listaInsumosReceta.add(dto);
-                    	
-                    }
-                    
-                 }
-                
-	        panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", producto.getTipo().toString(), listaInsumosReceta), getBackground(), formClass));
+            Recetas r = new Recetas();
+            String tipoProducto = "NA";
+            if (producto.getTipo() != null) {
+                tipoProducto = producto.getTipo().name();
+                if (producto.getTipo().toString().equalsIgnoreCase("Elaborado")) {
 
-	    }
-	    cr.cerrarSesion();
+                    /*TODO
+                      * Todos los productos elaborados DEBEN tener una receta asociada
+                     */
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+
+                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+
+                        dto.setCantidad(ir.getCantidad().doubleValue());
+                        dto.setInsumo(ir.getIdInsumo());
+                        dto.setUnidadMedidad(ir.getUnidadMedida());
+
+                        listaInsumosReceta.add(dto);
+
+                    }
+
+                }
+            }
+            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta), getBackground(), formClass));
+
+        }
+        cr.cerrarSesion();
 
         panel.revalidate();
         panel.repaint();
@@ -137,4 +138,52 @@ public class FormVistaProductos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
+    private List<Producto> productos;
+
+    void filtrarLista(String texto) {
+        panel.removeAll();
+        List<Producto> productosFiltradas = (List<Producto>) productos.stream()
+                .filter(producto -> producto.getDescripcion().toLowerCase().contains(texto.toLowerCase()))
+                .collect(Collectors.toList());
+        ControladorReceta cr = new ControladorReceta();
+
+        String formClass = "PanelVerDatosProducto";
+        List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+        for (Producto producto : productosFiltradas) {
+            Recetas r = new Recetas();
+            String tipoProducto = "NA";
+            if (producto.getTipo() != null) {
+                tipoProducto = producto.getTipo().name();
+                if (producto.getTipo().toString().equalsIgnoreCase("Elaborado")) {
+
+                    /*TODO
+                      * Todos los productos elaborados DEBEN tener una receta asociada
+                     */
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+
+                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+
+                        dto.setCantidad(ir.getCantidad().doubleValue());
+                        dto.setInsumo(ir.getIdInsumo());
+                        dto.setUnidadMedidad(ir.getUnidadMedida());
+
+                        listaInsumosReceta.add(dto);
+
+                    }
+
+                }
+            }
+            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta), getBackground(), formClass));
+
+        }
+         cr.cerrarSesion();
+        panel.revalidate();
+        panel.repaint();
+    }
+
 }

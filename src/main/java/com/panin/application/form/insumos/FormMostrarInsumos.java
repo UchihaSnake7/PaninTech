@@ -13,10 +13,12 @@ import com.panin.controladores.ControladorInsumos;
 import com.panin.entidades.Insumo;
 import com.panin.application.form.other.Card;
 import com.panin.application.form.other.Model_Card;
+import com.panin.application.utilities.SearchHeader2.BuscadorListener;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -31,27 +33,26 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         initComponents();
         init();
     }
-    
+
     private void init() {
         panel.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
-        
+
         ControladorInsumos ci = new ControladorInsumos();
-        List<Insumo> insumos = new ArrayList<Insumo>();
+        insumos = new ArrayList<Insumo>();
         insumos = ci.obtenerInsumos();
         ci.cerrarSesion();
-        
-        String formClass = "PanelIngresarInsumo";
-        
+
         for (Insumo insumo : insumos) {
             Card card = new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass);
             card.setInsumo(insumo);
             panel.add(card);
-            
+
         }
+
         panel.revalidate();
         panel.repaint();
-        
+
     }
 
     /**
@@ -104,4 +105,23 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
+
+    private List<Insumo> insumos;
+    private String formClass = "PanelIngresarInsumo";
+
+    public void filtrarLista(String texto) {
+        panel.removeAll();
+        List<Insumo> insumosFiltradas = (List<Insumo>) insumos.stream()
+                .filter(insumo -> insumo.getDescripcion().toLowerCase().contains(texto.toLowerCase()))
+                .collect(Collectors.toList());
+
+        for (Insumo insumo : insumosFiltradas) {
+            Card card = new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass);
+            card.setInsumo(insumo);
+            panel.add(card);
+
+        }
+        panel.revalidate();
+        panel.repaint();
+    }
 }
