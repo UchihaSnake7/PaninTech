@@ -6,6 +6,7 @@ package com.panin.application.form.other;
 
 import com.panin.dto.formAgregarInsumoProductoDTO;
 import com.panin.entidades.Insumo;
+import com.panin.entidades.Producto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
@@ -58,6 +59,17 @@ public class Model_Card {
 	public Model_Card() {
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+        
+        
+        
     public Model_Card(Icon icon, String title, String values, String descripcion) {
         this.icon = icon;
         this.title = title;
@@ -68,12 +80,13 @@ public class Model_Card {
     /*
     Este model card fue creado para desplegar la vista de productos
     */
-    public Model_Card(Icon icon, String title, String values, String descripcion, List<formAgregarInsumoProductoDTO> listaInsumo) {
+    public Model_Card(Icon icon, String title, String values, String descripcion, List<formAgregarInsumoProductoDTO> listaInsumo, Producto producto) {
         this.icon = icon;
         this.title = title;
         this.values = values;
         this.description = descripcion;
         this.listaInsumo = listaInsumo;
+        this.producto = producto;
     }
     
     
@@ -83,5 +96,6 @@ public class Model_Card {
     String description;
     
     List<formAgregarInsumoProductoDTO> listaInsumo = new ArrayList<formAgregarInsumoProductoDTO>();
+    Producto producto;
     
 }

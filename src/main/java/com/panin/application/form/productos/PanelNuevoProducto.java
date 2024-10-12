@@ -8,17 +8,21 @@ import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.application.utilities.tipoProducto;
+import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorProductos;
 import com.panin.controladores.ControladorReceta;
+import com.panin.controladores.ControladorUnidadMedida;
 import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.Conversion;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
+import com.panin.entidades.UnidadMedida;
 import java.math.BigDecimal;
 import raven.toast.Notifications;
-
 
 /**
  *
@@ -29,15 +33,12 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     /**
      * Creates new form PanelIngresarProducto
      */
-
-
     public PanelNuevoProducto() {
 //        jIcon.setIcon(data.getIcon());
-  
+
         initComponents();
         init();
-  
-
+        
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -47,10 +48,10 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
 
         descripcionProducto.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-
+        
         comboboxTipoProducto.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jBtnOk.putClientProperty(FlatClientProperties.STYLE, ""
@@ -58,16 +59,17 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:50;");
-
-       setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
+        
+        setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
     }
     
-    
-    public void init(){
-    
+    public void init() {
+        
         descripcionProducto.setHint("Ingrese el nombre del producto...");
         panelTabla.add(new panelContenidoReceta());
-}
+        
+        VerificarIngresoNumero.verificar(textFieldCantidadPorReceta);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +88,8 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         comboboxTipoProducto = new javax.swing.JComboBox<>();
         descripcionProducto = new com.panin.application.utilities.TextoHint();
         jTitle1 = new javax.swing.JLabel();
+        labelCantidadPorReceta = new javax.swing.JLabel();
+        textFieldCantidadPorReceta = new com.panin.application.utilities.TextoHint();
         panelTabla = new javax.swing.JPanel();
         panelContenidoReceta1 = new com.panin.application.form.productos.panelContenidoReceta();
 
@@ -100,6 +104,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         jTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/productos.png"))); // NOI18N
         jTitle.setToolTipText("");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Tipo de Producto");
 
@@ -108,10 +113,17 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         jTitle1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTitle1.setText("Nuevo Producto");
 
+        labelCantidadPorReceta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelCantidadPorReceta.setText("Unidades por receta");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -121,16 +133,17 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboboxTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jIcon))
                     .addComponent(descripcionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCantidadPorReceta))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboboxTipoProducto, 0, 123, Short.MAX_VALUE)
+                            .addComponent(textFieldCantidadPorReceta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,13 +160,19 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(comboboxTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboboxTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(jTitle1)))
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(labelCantidadPorReceta)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldCantidadPorReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
@@ -196,76 +215,82 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        
+
 //        System.out.print("\nEntro a evento del boton ok ");
+        if (comboboxTipoProducto.getSelectedItem().equals("Elaborado")) {
+            
+            Recetas r = new Recetas();
+            r.setNombreReceta(descripcionProducto.getText());
+            r.setCantidad(Integer.valueOf(textFieldCantidadPorReceta.getText()));
+            
+            ControladorReceta cr = new ControladorReceta();
+            int idReceta = cr.crearReceta(r);
+            cr.cerrarSesion();
 
-        
-        if(comboboxTipoProducto.getSelectedItem().equals("Elaborado")){
+            for (formAgregarInsumoProductoDTO dto : panelContenidoReceta1.getListaDTO()) {
+
+                //            System.out.print("\nInsumo: " + dto.getInsumo().getDescripcion());
+                //            System.out.print("\nUnidad de medida: " + dto.getUnidadMedidad().getAbreviatura());
+                //            System.out.print("\nCantidad: " + dto.getCantidad());
+                InsumoRecetas ir = new InsumoRecetas();
+                ir.setIdReceta(r);
+                ir.setIdInsumo(dto.getInsumo());
+                ir.setCantidad(new BigDecimal(dto.getCantidad()));
+                ir.setUnidadMedida(dto.getUnidadMedidad());
+                if (!dto.getUnidadMedidad().isUnidadBase()) {
+                    ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
+                    ControladorConversion controladorConversion = new ControladorConversion();
+                    UnidadMedida unidadMedidaBase = controladorUnidadMedida.obtenerUnidadBase(dto.getUnidadMedidad());
+                    Conversion conversion = controladorConversion.obtenerFactorConversion(dto.getUnidadMedidad(),unidadMedidaBase);
+                    ir.setUnidadMedida(unidadMedidaBase);
+                    ir.setCantidad(conversion.getFactorConversion().multiply(new BigDecimal(dto.getCantidad())));
+                }
+
+                cr.agregarInsumoReceta(ir);
+
+
+                
+            }
             
-        Recetas r = new Recetas();
-        r.setNombreReceta(descripcionProducto.getText());
-        
-        ControladorReceta cr = new ControladorReceta();
-        int idReceta = cr.crearReceta(r);
-        
-        for(formAgregarInsumoProductoDTO dto : panelContenidoReceta1.getListaDTO()){
             
-//            System.out.print("\nInsumo: " + dto.getInsumo().getDescripcion());
-//            System.out.print("\nUnidad de medida: " + dto.getUnidadMedidad().getAbreviatura());
-//            System.out.print("\nCantidad: " + dto.getCantidad());
+            Producto p = new Producto();
+            p.setIdReceta(idReceta);
+            p.setTipo(tipoProducto.valueOf(comboboxTipoProducto.getSelectedItem().toString()));
+            p.setDescripcion(descripcionProducto.getText());
+            p.setRutaImagen("/imagenes/utilidad/productos.png");
+            p.setPrecioProduccion(0);
+            p.setPrecioVenta(0);
             
-            InsumoRecetas ir = new InsumoRecetas();
-            ir.setIdReceta(r);
-            ir.setIdInsumo(dto.getInsumo());
-            ir.setCantidad(new BigDecimal(dto.getCantidad()));
-            ir.setUnidadMedida(dto.getUnidadMedidad());
+            ControladorProductos cp = new ControladorProductos();
             
-            cr.agregarInsumoReceta(ir);
+            cp.crearProducto(p);
+            cp.cerrarSesion();
             
-        }
-        
-         cr.cerrarSesion();
-         
-         Producto p = new Producto();
-         p.setIdReceta(idReceta);
-         p.setTipo( tipoProducto.valueOf( comboboxTipoProducto.getSelectedItem().toString()));
-         p.setDescripcion(descripcionProducto.getText());
-         p.setRutaImagen("/imagenes/utilidad/productos.png");
-         p.setPrecioProduccion(0);
-         p.setPrecioVenta(0);
-         
-         ControladorProductos cp = new ControladorProductos();
-         
-         cp.crearProducto(p);
-         cp.cerrarSesion();
-         
-         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
             
-        }
-        
-        else if(comboboxTipoProducto.getSelectedItem().equals("Comprado")){
-            
-         Producto p = new Producto();
+        } else if (comboboxTipoProducto.getSelectedItem().equals("Comprado")) {
+
+//         ControladorReceta cr = new ControladorReceta();
+//         Recetas r = cr.obtenerRecetaPorId(1);
+            Producto p = new Producto();
 //         p.setIdReceta(null);
-         p.setTipo( tipoProducto.valueOf( comboboxTipoProducto.getSelectedItem().toString()));
-         p.setDescripcion(descripcionProducto.getText());
-         p.setRutaImagen("/imagenes/utilidad/productos.png");
-         p.setPrecioProduccion(0);
-         p.setPrecioVenta(0);
-         
-         ControladorProductos cp = new ControladorProductos();
-         
-         cp.crearProducto(p);
-         cp.cerrarSesion();
+            p.setTipo(tipoProducto.valueOf(comboboxTipoProducto.getSelectedItem().toString()));
+            p.setDescripcion(descripcionProducto.getText());
+            p.setRutaImagen("/imagenes/utilidad/productos.png");
+            p.setPrecioProduccion(0);
+            p.setPrecioVenta(0);
+            p.setIdReceta(1);
+            
+            ControladorProductos cp = new ControladorProductos();
+            
+            cp.crearProducto(p);
+            cp.cerrarSesion();
+            
+
             
         }
         
-       
-         
-        
-
-
-        
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
+        Application.showForm(new PanelNuevoProducto());
     }//GEN-LAST:event_jBtnOkActionPerformed
 
 
@@ -278,7 +303,9 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jTitle;
     private javax.swing.JLabel jTitle1;
+    private javax.swing.JLabel labelCantidadPorReceta;
     private com.panin.application.form.productos.panelContenidoReceta panelContenidoReceta1;
     private javax.swing.JPanel panelTabla;
+    private com.panin.application.utilities.TextoHint textFieldCantidadPorReceta;
     // End of variables declaration//GEN-END:variables
 }

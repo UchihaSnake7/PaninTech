@@ -7,10 +7,13 @@ package com.panin.application.form.productos;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
+import com.panin.controladores.ControladorProductos;
 import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.Producto;
 
 import javax.swing.table.DefaultTableModel;
 import net.miginfocom.swing.MigLayout;
+import raven.toast.Notifications;
 
 /**
  *
@@ -23,6 +26,8 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
      */
     
     private DefaultTableModel modelTable;
+    private Producto producto = new Producto();
+    private ControladorProductos cp = new ControladorProductos();
 
     public PanelVerDatosProducto() {
         
@@ -30,7 +35,7 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
     
     public PanelVerDatosProducto(Model_Card data) {
 
-              
+              producto = data.getProducto();
               initComponents(); 
               
               String[] columnas = new String[]{
@@ -125,6 +130,7 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
         nombreProducto = new javax.swing.JLabel();
         iconoProducto = new javax.swing.JLabel();
         tipoProducto = new javax.swing.JLabel();
+        botonEliminarProducto = new javax.swing.JButton();
 
         tablaIngredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,6 +174,7 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonAtras.setText("Atras");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +216,14 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        botonEliminarProducto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonEliminarProducto.setText("Eliminar producto");
+        botonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarProductoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,13 +241,19 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelContenidoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonEliminarProducto)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(panelContenidoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
+                .addComponent(botonEliminarProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,9 +266,22 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
         Application.showForm(new FormVistaProductos());
     }//GEN-LAST:event_botonAtrasActionPerformed
 
+    private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
+        // TODO add your handling code here:
+        
+        cp.borrarProducto(producto);
+        cp.cerrarSesion();
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto borrado con exito");
+        Application.showForm(new FormVistaProductos());
+
+        
+        
+    }//GEN-LAST:event_botonEliminarProductoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonEliminarProducto;
     private javax.swing.JLabel iconoProducto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreProducto;
