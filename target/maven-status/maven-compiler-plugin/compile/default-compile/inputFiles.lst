@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\PanelIngresarInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormIngresarProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
@@ -88,3 +89,177 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\Control
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
+=======
+
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\PanelLogin.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUnidadMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\CardDescription.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\frameIngresarInsumoReceta.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\TextArea.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormCrearInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuItem.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\VerificarIngresoNumero.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TabbedPaneCustom.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelContenidoReceta.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\PaninTech\App.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\MainForm.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\Menu.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTasa.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorProductos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelIngresarProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Producto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionCellEditor.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ActionButton.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormVerInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ShadowsRenderer.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorInsumoReceta.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\PanelAction.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\MarcaInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinal.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormRead.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\frameConfiguracion.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\Model_Card.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Conversion.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelVerDatosProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\Application.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinalBeanInfo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\PanelIngresarInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\CardDescription.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorInsumos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormIngresarProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuAction.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TextoHint.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearInsumoN.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionCellRender.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTipoMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionEvent.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\tipoProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Recetas.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\Card.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Insumo.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Tasa.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\HibernateUtil.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\PaninTech\App.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorTasa.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\TextArea.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Producto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorUnidadMedida.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\CardDescription.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinal.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\db\ConexionDB.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\PanelLogin.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorComprasInsumos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinalBeanInfo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorInsumos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\MarcaInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuAction.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuItem.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Insumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\MainForm.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\Card.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearInsumoN.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\PanelIngresarInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\PanelVerDatosProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\Application.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\FormIngresarProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorProductos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\PanelIngresarProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\Model_Card.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumoold.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\TextoHint.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\panelContenidoReceta.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Conversion.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\Model_Card.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Tasa.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\HibernateUtil.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\tipoProducto.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\productos\frameIngresarInsumoReceta.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\CardDescription.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\entidades\Recetas.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\frameConfiguracion.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\utilities\ModernScrollBarUI.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\other\FormRead.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\menu\Menu.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\controladores\ControladorTipoMedida.java
+C:\Users\argenis javier\OneDrive\Escritorio\PaninTech\src\main\java\com\panin\application\form\insumos\FormCrearInsumo.java
+
+>>>>>>> 63e072d370d50f62cdb8b7ff7d70146566ac779a

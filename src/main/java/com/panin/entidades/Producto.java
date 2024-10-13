@@ -22,7 +22,6 @@ import java.io.Serializable;
 
 import com.panin.application.utilities.tipoProducto;
 
-
 /**
  *
  * @author ricke
@@ -36,7 +35,8 @@ import com.panin.application.utilities.tipoProducto;
     @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion"),
     @NamedQuery(name = "Producto.findByPrecioProduccion", query = "SELECT p FROM Producto p WHERE p.precioProduccion = :precioProduccion"),
     @NamedQuery(name = "Producto.findByPrecioVenta", query = "SELECT p FROM Producto p WHERE p.precioVenta = :precioVenta"),
-    @NamedQuery(name = "Producto.findByTipo", query = "SELECT p FROM Producto p WHERE p.tipo = :tipo")
+    @NamedQuery(name = "Producto.findByTipo", query = "SELECT p FROM Producto p WHERE p.tipo = :tipo"),
+    @NamedQuery(name = "Producto.findByReceta", query = "SELECT p FROM Producto p WHERE p.idReceta = :receta")
 
 })
 
@@ -59,14 +59,13 @@ public class Producto implements Serializable {
     private double precioVenta;
     @Column(name = "ruta_imagen")
     private String rutaImagen;
-    
+
     @Column(columnDefinition = "ENUM('Comprado', 'Elaborado')")
     @Enumerated(EnumType.STRING)
     private tipoProducto tipo;
-    
+
     @Column(name = "id_receta")
     private Integer idReceta;
-    
 
     public Producto() {
     }
@@ -111,34 +110,32 @@ public class Producto implements Serializable {
     public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
-    
+
     public String getRutaImagen() {
-		return rutaImagen;
-	}
+        return rutaImagen;
+    }
 
-	public void setRutaImagen(String rutaImagen) {
-		this.rutaImagen = rutaImagen;
-	}
-	
-	
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
 
-	public tipoProducto getTipo() {
-		return tipo;
-	}
+    public tipoProducto getTipo() {
+        return tipo;
+    }
 
-	public void setTipo(tipoProducto tipo) {
-		this.tipo = tipo;
-	}
+    public void setTipo(tipoProducto tipo) {
+        this.tipo = tipo;
+    }
 
-	public int getIdReceta() {
-		return idReceta;
-	}
+    public int getIdReceta() {
+        return idReceta;
+    }
 
-	public void setIdReceta(int idReceta) {
-		this.idReceta = idReceta;
-	}
+    public void setIdReceta(int idReceta) {
+        this.idReceta = idReceta;
+    }
 
-	@Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -162,5 +159,5 @@ public class Producto implements Serializable {
     public String toString() {
         return this.descripcion;
     }
-    
+
 }
