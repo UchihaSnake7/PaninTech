@@ -133,7 +133,6 @@ com\panin\application\utilities\SearchHeader2$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
-com\panin\application\form\productos\PanelNuevoProducto$4.class
 com\panin\application\form\productos\FormAgregarNuevoProducto.class
 com\panin\controladores\ControladorProductos.class
 com\panin\application\form\productos\FormMostrarProductos.class
