@@ -216,6 +216,31 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (1, 'NA', 1);
 INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (2, 'La Hacienda', 1);
 
+<<<<<<< HEAD
+
+
+
+create table compras_producto
+(
+    id            int auto_increment,
+    fecha         date           null,
+    producto      int            not null,
+    cantidad      decimal(20, 6) null,
+    unidad_medida int            not null,
+    precio        decimal(10, 6) null,
+    hora          time(6)        null,
+    marca         int            not null,
+    constraint compras_producto_pk
+        primary key (id),
+    constraint compras_producto_marca_insumo_id_fk
+        foreign key (marca) references marca_insumo (id),
+    constraint compras_producto_producto_id_fk
+        foreign key (producto) references producto (id),
+    constraint compras_producto_unidad_medida_id_unidad_fk
+        foreign key (unidad_medida) references unidad_medida (id_unidad)
+)
+    comment 'Tabla dondese almacenan los daos d elos productos comprados';
+=======
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 5, 0.00100);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 6, 0.01000);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 7, 0.10000);
@@ -261,3 +286,4 @@ VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
 INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
 
+>>>>>>> 6fe517b305f75a7467d97e4e0e6fcac1626b448b

@@ -22,6 +22,7 @@ com\panin\menu\Menu$MenuLayout.class
 com\panin\controladores\ControladorTasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
 com\panin\menu\PopupSubmenu$MenuLayout.class
+com\panin\application\utilities\ValidadorFormulario.class
 com\panin\entidades\TipoMedida.class
 com\panin\application\form\productos\PanelVerDatosProducto$1.class
 com\panin\application\form\productos\PanelNuevoProducto$1.class
@@ -88,7 +89,11 @@ com\panin\application\form\insumos\PanelIngresarInsumo$7.class
 com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorConversion.class
+
 com\panin\controladores\ControladorInsumoReceta.class
+
+com\panin\application\form\productos\PanelNuevoProducto$3.class
+
 com\panin\application\form\insumos\TextArea.class
 com\panin\application\form\LoginForm$2.class
 com\panin\application\utilities\SearchText.class
@@ -109,6 +114,7 @@ com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class
 com\panin\application\form\other\FormIngresarInsumoold.class
 com\panin\application\utilities\ActionButton.class
+com\panin\application\form\productos\PanelNuevoProducto$2.class
 com\panin\application\form\insumos\PanelIngresarInsumo.class
 com\panin\menu\MenuItem$MenuLayout.class
 com\panin\entidades\UnidadMedida.class

@@ -61,7 +61,7 @@ public class ControladorComprasInsumos {
 //        session.beginTransaction();
         ComprasInsumo comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumo");
+        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoUnico");
         query.setParameter("insumo", insumo);
         query.setMaxResults(1);
         comprasInsumos = (ComprasInsumo) query.getSingleResult();

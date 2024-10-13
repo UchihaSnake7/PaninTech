@@ -90,10 +90,7 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
             }
             
            VerificarIngresoNumero.verificar(textFieldCantidad);
- 
-            
-            
-            
+        
     }
     
     /**
@@ -240,8 +237,8 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         Producto producto = (Producto) combobocProductos.getSelectedItem();
         r = cr.obtenerRecetaPorId(producto.getIdReceta());
         
-        int cantidad = Integer.valueOf(textFieldCantidad.getText());
-        int cantidadReceta = r.getCantidad();
+        double cantidad = Double.valueOf(textFieldCantidad.getText());
+        double cantidadReceta = r.getCantidad();
         double cantidadCalculada = 0.0;
         double precioTotal = 0;
         double precio = 0.0;
@@ -249,7 +246,7 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         ControladorComprasInsumos cpi = new ControladorComprasInsumos();
          
         if(cantidadReceta > cantidad){
-            cantidadCalculada = cantidadReceta / cantidad;
+            cantidadCalculada =  cantidad / cantidadReceta;
         }
         else if(cantidadReceta < cantidad){
             cantidadCalculada = cantidad / cantidadReceta ;
@@ -277,17 +274,17 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
                ComprasInsumo ci = cpi.obtenerComprasdeUnInsumoUnico(ir.getIdInsumo());
                
                
-//               System.out.print("\nci.getPrecio() " + ci.getPrecio().toString());
-//               System.out.print("\nir.getCantidad() " + ir.getCantidad().toString());
-//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()) " + ci.getPrecio().multiply(ir.getCantidad()).toString());
-//
-//               System.out.print("\ncantidadCalculada " + cantidadCalculada);
-//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)) " + ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)));
+               System.out.print("\nci.getPrecio() " + ci.getPrecio().toString());
+               System.out.print("\nir.getCantidad() " + ir.getCantidad().toString());
+               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()) " + ci.getPrecio().multiply(ir.getCantidad()).toString());
+
+               System.out.print("\ncantidadCalculada " + cantidadCalculada);
+               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)) " + ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)));
 
 
                precioTotal = (ci.getPrecio().multiply(ir.getCantidad())).multiply(BigDecimal.valueOf(cantidadCalculada)).doubleValue();
                
-//               System.out.print("\nprecioTotal " + precioTotal);
+               System.out.print("\nprecioTotal " + precioTotal);
 
                
                modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
