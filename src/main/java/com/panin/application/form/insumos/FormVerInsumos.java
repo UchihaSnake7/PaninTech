@@ -5,6 +5,8 @@
 package com.panin.application.form.insumos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
+import com.panin.application.form.insumos.crear.PanelDeInsumo;
 import com.panin.application.form.other.Card;
 import com.panin.application.utilities.SearchHeader2;
 import com.panin.application.utilities.TableActionCellEditor;
@@ -18,7 +20,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import raven.toast.Notifications;
 
 /**
  *
@@ -30,16 +36,16 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
      * Creates new form FormVerInsumo
      */
     public FormVerInsumos() {
-        
+
         String[] columnas = new String[]{
             "Codigo", "Descripcion", "Activo", "Opciones"
-        
+
         };
         modelTable = new DefaultTableModel(columnas, 0) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, true
             };
-            
+
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -111,7 +117,7 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
     // End of variables declaration//GEN-END:variables
   private DefaultTableModel modelTable;
     private List<Insumo> insumos;
-    
+
     private void init() {
         searchHeader21.setListener(this);
 //        this.table.setModel(modelTable );
@@ -119,7 +125,7 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
                 + "arc:25;"
                 + "background:$background"
         );
-        
+
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
@@ -128,7 +134,7 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
                 + "font:bold;"
                 + "background:$Menu.background;"
         );
-        
+
         table.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
@@ -143,34 +149,75 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
 //        table.setEnabled(false);
         actualizarLista();
         table.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRender());
-        
+
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
+
+                ControladorInsumos controladorInsumo = new ControladorInsumos();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
+                Application.showForm(new PanelDeInsumo(insumo, true));
                 System.out.println("Editar " + row);
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-            
+
             @Override
             public void onDelete(int row) {
-                System.out.println("Eliminar " + row);
+                ControladorInsumos controladorInsumo = new ControladorInsumos();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
+
+                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
+                        JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    controladorInsumo.abrirSesion();
+                    if (controladorInsumo.delete(insumo)) {
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
+                        modelTable.removeRow(row);
+                    } else {
+                        insumo.setActivo(false);
+                        controladorInsumo.abrirSesion();
+                        if (controladorInsumo.update(insumo)) {
+                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
+                            actualizarLista();
+                        } else {
+                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
+                        }
+                    }
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
+                }
+
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-            
+
             @Override
             public void onView(int row) {
-                System.out.println("Ver " + row);
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                ControladorInsumos controladorInsumo = new ControladorInsumos();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
+                Application.showForm(new PanelDeInsumo(insumo, false));
+                System.out.println("Editar " + row);
+//                      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         };
         table.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditor(event));
         //        table.setSelectionBackground(getBackground());
         //        table.setSelectionBackground(table.getTableHeader());
 
+        TableColumnModel columnModel = table.getColumnModel();
+        TableColumn columnaCantidad = columnModel.getColumn(0);
+        columnaCantidad.setPreferredWidth(12);
+        columnaCantidad = columnModel.getColumn(1);
+        columnaCantidad.setPreferredWidth(500);
+        columnaCantidad = columnModel.getColumn(2);
+        columnaCantidad.setPreferredWidth(12);
+        columnaCantidad = columnModel.getColumn(3);
+        columnaCantidad.setPreferredWidth(60);
     }
-    
+
     private void actualizarLista() {
-        
+
         modelTable.setRowCount(0);
         ControladorInsumos controladoInsumo = new ControladorInsumos();
         insumos = controladoInsumo.obtenerInsumos();
@@ -179,14 +226,14 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
         for (Insumo fila : insumos) {
             modelTable.addRow(new Object[]{fila.getId().toString(), fila.getDescripcion(), fila.getActivo()});
         }
-        
+
     }
-    
+
     public void filtrarLista(String texto) {
-        
+
         modelTable.setRowCount(0);
         ControladorInsumos controladoInsumo = new ControladorInsumos();
-        
+
         List<Insumo> insumosFiltradas = (List<Insumo>) insumos.stream()
                 .filter(insumo -> insumo.getDescripcion().toLowerCase().contains(texto.toLowerCase()))
                 .collect(Collectors.toList());
@@ -195,13 +242,13 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
         for (Insumo fila : insumosFiltradas) {
             modelTable.addRow(new Object[]{fila.getId().toString(), fila.getDescripcion(), fila.getActivo()});
         }
-        
+
     }
-    
+
     @Override
     public void onTextoIngresado(String texto) {
         filtrarLista(texto);
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
