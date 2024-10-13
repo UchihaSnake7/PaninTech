@@ -216,6 +216,7 @@ INSERT INTO panin.producto (id, descripcion, precio_produccion, precio_venta, ru
 INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (1, 'NA', 1);
 INSERT INTO panin.marca_insumo (id, nombre, activo) VALUES (2, 'La Hacienda', 1);
 
+<<<<<<< HEAD
 
 
 
@@ -239,3 +240,50 @@ create table compras_producto
         foreign key (unidad_medida) references unidad_medida (id_unidad)
 )
     comment 'Tabla dondese almacenan los daos d elos productos comprados';
+=======
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 5, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 6, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 7, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 8, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 9, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (1, 10, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (5, 1, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (6, 1, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (7, 1, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (8, 1, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (9, 1, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (10, 1, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 11, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 12, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 13, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 14, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 15, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (2, 16, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (11, 2, 1000.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (12, 2, 100.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (13, 2, 10.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (14, 2, 0.10000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (15, 2, 0.01000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (16, 2, 0.00100);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 17, 0.16670);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 18, 0.08330);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 4, 6.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 4, 12.00000);
+
+CREATE TABLE configuracion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  clave VARCHAR(100) NOT NULL UNIQUE,
+  valor TEXT,
+  descripcion TEXT
+);
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
+
+>>>>>>> 6fe517b305f75a7467d97e4e0e6fcac1626b448b

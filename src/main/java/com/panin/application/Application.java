@@ -42,14 +42,22 @@ import raven.toast.Notifications;
  *
  * @author Raven
  */
-
 public class Application extends javax.swing.JFrame {
 
     private static Application app;
     private final MainForm mainForm;
     private final LoginForm loginForm;
-    
-     public Application() {
+    public static String User = "UsuarioTest";
+
+    public static String getUser() {
+        return User;
+    }
+
+    public static void setUser(String User) {
+        Application.User = User;
+    }
+
+    public Application() {
         initComponents();
         setSize(new Dimension(1366, 768));
         setLocationRelativeTo(null);
@@ -108,7 +116,7 @@ public class Application extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("deprecation")
-	public static void main(String args[]) {
+    public static void main(String args[]) {
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("raven.theme");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
@@ -118,32 +126,24 @@ public class Application extends javax.swing.JFrame {
             //  app.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
             app.setVisible(true);
         });
-        
-       
-        
+
 //      Ejemplo de como llamar al controlador encargado de obtener los datos de la tabla producto  
 //        ControladorProductos cp = new ControladorProductos();
 //        List<Producto> productos = new ArrayList<Producto>();
 //        productos = cp.obtenerProductos();
-        
         /*
          * Hay que cerrar la session que se abrio en el controlador, este ejemplo es solo ilustrativo
          */
-		
 //		Producto p = new Producto();
-
 //		p.setDescripcion("Nuevo");
 //		p.setPrecioProduccion(0);
 //		p.setPrecioVenta(0);  
 //		session.save(p);
 //		session.getTransaction().commit();
 //		session.close();
-        
         /*
          * Con el codigo de arriba podemos guardar un nuevo producto en db, seria cuestion de crear un metodo en el respectivo controlador
          */
-
-	
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
