@@ -5,11 +5,18 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.ComprasProducto;
+import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
+import com.panin.entidades.Recetas;
 import jakarta.persistence.TypedQuery;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.Session;
 
 /**
@@ -185,5 +192,7 @@ public class ControladorComprasProducto {
         return comprasProductos;
 
     }
+    
+    
     
 }
