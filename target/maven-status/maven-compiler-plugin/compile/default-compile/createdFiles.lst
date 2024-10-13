@@ -141,11 +141,8 @@ com\panin\application\form\productos\panelContenidoReceta.class
 com\panin\entidades\InsumoRecetas.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$1.class
 com\panin\application\form\other\FormDashboard$1.class
-
-com\panin\application\utilities\ActionButton$1.class
-
 com\panin\application\utilities\VerificarIngresoNumero$1.class
-
+com\panin\application\utilities\ActionButton$1.class
 com\panin\application\frameConfiguracion$1.class
 com\panin\application\form\MainForm.class
 com\panin\entidades\ComprasInsumo.class
