@@ -63,7 +63,6 @@ com\panin\menu\PopupSubmenu.class
 com\panin\application\utilities\PanelAction$3.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
-com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$2.class
 com\panin\application\form\other\formprueba.class
 com\panin\application\form\other\CardDescription.class
 com\panin\application\utilities\FormObjetoInsumo.class
@@ -72,6 +71,7 @@ com\panin\application\utilities\SearchHeaderFinal.class
 com\panin\controladores\ControladorInsumos.class
 com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
+com\panin\controladores\ControladorComprasProducto.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\other\FormInbox.class
@@ -119,6 +119,7 @@ com\panin\entidades\Producto.class
 com\panin\application\form\LoginForm$1.class
 com\panin\application\form\productos\PanelVerDatosProducto$2.class
 com\panin\application\utilities\ModernScrollBarUI$InvisibleScrollBarButton.class
+com\panin\entidades\ComprasProducto.class
 com\panin\menu\ToolBarAccentColor$AccentColorIcon.class
 com\panin\application\utilities\ModernScrollBarUI.class
 com\panin\application\utilities\PanelAction.class
@@ -138,6 +139,7 @@ com\panin\controladores\ControladorProductos.class
 com\panin\application\form\productos\FormMostrarProductos.class
 com\panin\HibernateUtil.class
 com\panin\application\form\other\Card.class
+com\panin\application\form\other\FormDashboard$2.class
 com\panin\application\form\productos\PanelIngresarProducto$3.class
 com\panin\application\utilities\SearchHeader2.class
 com\panin\application\form\productos\panelContenidoReceta.class

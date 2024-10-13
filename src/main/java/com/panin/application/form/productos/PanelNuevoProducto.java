@@ -229,11 +229,13 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         
+        ControladorProductos cp = new ControladorProductos();
+
         ValidadorFormulario vf = new ValidadorFormulario(this.panelFormulario);
         vf.buscarCampos();
         if(vf.validarFormulario()){
         
-        
+
         
 //        System.out.print("\nEntro a evento del boton ok ");
         if (comboboxTipoProducto.getSelectedItem().equals("Elaborado")) {
@@ -267,8 +269,6 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
 
                 cr.agregarInsumoReceta(ir);
 
-
-                
             }
             
             
@@ -280,9 +280,15 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
             p.setPrecioProduccion(0);
             p.setPrecioVenta(0);
             
-            ControladorProductos cp = new ControladorProductos();
             
             cp.crearProducto(p);
+
+            BigDecimal precio = cp.calcularPrecioProduccion(p, Integer.valueOf(textFieldCantidadPorReceta.getText()));
+            p.setPrecioProduccion(precio.doubleValue());
+            cp.abrirSesion();
+            cp.actualizarProducto(p);
+
+            
             cp.cerrarSesion();
             
             
@@ -299,7 +305,6 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
             p.setPrecioVenta(0);
             p.setIdReceta(1);
             
-            ControladorProductos cp = new ControladorProductos();
             
             cp.crearProducto(p);
             cp.cerrarSesion();
@@ -309,6 +314,8 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         }
         
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
+        
+        
         Application.showForm(new PanelNuevoProducto());
         
         }
