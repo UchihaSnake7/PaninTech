@@ -9,7 +9,7 @@
       <property name="hbm2ddl.auto">update</property>  
       <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>  
       <property name="connection.url">jdbc:mysql://localhost:3306/panin</property>  
-      <!-- <property name="connection.url">jdbc:mysql://root:nSnUfKkcXSVragDOGbTtrALKhEsPDmNB@autorack.proxy.rlwy.net:47261/railway</property>   -->
+      <!-- <property name="connection.url">jdbc:mysql://root:qWupeJjHvRBtuRWEOqmnOcXPfnWinuno@autorack.proxy.rlwy.net:29817/panin</property>   -->
         <property name="connection.username">root</property>  
      
 

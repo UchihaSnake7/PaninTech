@@ -27,6 +27,7 @@ public class FormReporteMarcasInsumo extends javax.swing.JPanel {
     public FormReporteMarcasInsumo() {
         initComponents();
         init();
+        table.setEnabled(false);
     }
 
     /**
@@ -128,7 +129,7 @@ public class FormReporteMarcasInsumo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println("Desde aca");
+   
         Application.showForm(new FormCrearMarcaInsumoN());
 
     }//GEN-LAST:event_jButton2ActionPerformed

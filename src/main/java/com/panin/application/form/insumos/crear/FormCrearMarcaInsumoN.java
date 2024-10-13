@@ -27,8 +27,7 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
 
         textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        jAtras.putClientProperty(FlatClientProperties.STYLE, ""
-                + "foreground:$Menu.foreground;");
+   
 
         jCrear.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
@@ -65,7 +64,6 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
         jNombre = new javax.swing.JLabel();
         textoHint1 = new com.panin.application.utilities.TextoHint();
         jLabel2 = new javax.swing.JLabel();
-        jAtras = new javax.swing.JButton();
         jCrear = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -74,13 +72,6 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
         jNombre.setText("Nombre");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/marca.png"))); // NOI18N
-
-        jAtras.setText("Atrás");
-        jAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAtrasActionPerformed(evt);
-            }
-        });
 
         jCrear.setText("Crear");
         jCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -94,25 +85,21 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(136, 136, 136))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jNombre)
+                .addGap(39, 39, 39)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(99, 99, 99))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(jCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,17 +109,15 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
                         .addGap(49, 49, 49)
                         .addComponent(jLabel2))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(62, 62, 62)
                         .addComponent(jLabel1)))
                 .addGap(51, 51, 51)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNombre)
                     .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jAtras)
-                    .addComponent(jCrear))
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(jCrear)
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -140,16 +125,16 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,13 +161,8 @@ public class FormCrearMarcaInsumoN extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCrearActionPerformed
 
-    private void jAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAtrasActionPerformed
-//         this.setVisible(false);
-    }//GEN-LAST:event_jAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jAtras;
     private javax.swing.JButton jCrear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

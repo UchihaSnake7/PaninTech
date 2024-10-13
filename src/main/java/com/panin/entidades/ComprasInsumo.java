@@ -45,7 +45,7 @@ import java.util.Date;
     @NamedQuery(name = "ComprasInsumo.findByDesde", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha >= :desde"),
     @NamedQuery(name = "ComprasInsumo.findByHasta", query = "SELECT c FROM ComprasInsumo c WHERE c.fecha <= :hasta"),
     
-    @NamedQuery(name = "ComprasInsumo.findByInsumoUnico", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo ORDER BY c.fecha DESC"),
+    @NamedQuery(name = "ComprasInsumo.findByInsumoUnico", query = "SELECT c FROM ComprasInsumo c WHERE c.insumo = :insumo ORDER BY c.fecha DESC, c.hora DESC"),
 
 })
 public class ComprasInsumo implements Serializable, Comparable<ComprasInsumo> {

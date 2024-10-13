@@ -17,11 +17,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -241,10 +244,28 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         }
 
         String[] columnas = new String[]{
-            "Insumo", "Marca", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
+            "Id Insumo", "Insumo", "Id Compra", "Marca", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
         modelTable = new DefaultTableModel(columnas, 0);
         this.table.setModel(modelTable);
-
+        TableColumnModel columnModel = table.getColumnModel();
+        TableColumn columnaCantidad = columnModel.getColumn(0);
+        columnaCantidad.setPreferredWidth(12);
+        columnaCantidad = columnModel.getColumn(2);
+        columnaCantidad.setPreferredWidth(12);
+        columnaCantidad = columnModel.getColumn(5);
+        columnaCantidad.setPreferredWidth(20);
+        columnaCantidad = columnModel.getColumn(7);
+        columnaCantidad.setPreferredWidth(20);
+        columnaCantidad = columnModel.getColumn(8);
+        columnaCantidad.setPreferredWidth(15);
+        columnaCantidad = columnModel.getColumn(4);
+        columnaCantidad.setPreferredWidth(30);
+        columnaCantidad = columnModel.getColumn(6);
+        columnaCantidad.setPreferredWidth(30);
+        columnaCantidad = columnModel.getColumn(1);
+        columnaCantidad.setPreferredWidth(180);
+         columnaCantidad = columnModel.getColumn(3);
+        columnaCantidad.setPreferredWidth(140);
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$background"
@@ -309,12 +330,15 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         String hora;
 
         for (ComprasInsumo fila : listaCompras) {
+            DecimalFormat df = new DecimalFormat("#,##0.00");
             String marca = "NA";
             ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
             ControladorConversion controladorConversion = new ControladorConversion();
             BigDecimal precioCalculado = fila.getPrecio();
             BigDecimal cantidadCalculada = fila.getCantidad();
             String unidadAbreviatura = fila.getUnidadMedidaId().toString();
+            String cantidadFormateada;
+            String precioFormateado;
             hora = fila.getHora().toString();
             if (fila.getUnidadMedidaId().isUnidadBase()) {
                 precioCalculado = precioCalculado.multiply(fila.getCantidad());
@@ -338,7 +362,9 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
             String strHora = formatter.format(fila.getHora());
             BigDecimal redondeado = precioCalculado.setScale(1, RoundingMode.HALF_UP);
             double valorDouble = redondeado.doubleValue();
-            modelTable.addRow(new Object[]{fila.getInsumo(), marca, cantidadCalculada.toString(), unidadAbreviatura, valorDouble, strDate, hora,});
+            cantidadFormateada = df.format(cantidadCalculada.doubleValue());
+            precioFormateado = df.format(valorDouble);
+            modelTable.addRow(new Object[]{fila.getInsumo().getId().toString(), fila.getInsumo(), fila.getId().toString(), marca, cantidadFormateada, unidadAbreviatura, valorDouble, strDate, hora,});
         }
 
         // Convertir a double
