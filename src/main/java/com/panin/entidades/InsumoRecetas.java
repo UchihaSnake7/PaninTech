@@ -29,7 +29,9 @@ import java.math.BigDecimal;
 @NamedQueries({
     @NamedQuery(name = "InsumoRecetas.findAll", query = "SELECT i FROM InsumoRecetas i"),
     @NamedQuery(name = "InsumoRecetas.findByIdInsumoReceta", query = "SELECT i FROM InsumoRecetas i WHERE i.idInsumoReceta = :idInsumoReceta"),
-    @NamedQuery(name = "InsumoRecetas.findByCantidad", query = "SELECT i FROM InsumoRecetas i WHERE i.cantidad = :cantidad")})
+    @NamedQuery(name = "InsumoRecetas.findByCantidad", query = "SELECT i FROM InsumoRecetas i WHERE i.cantidad = :cantidad"),
+    @NamedQuery(name = "InsumoRecetas.findByInsumo", query = "SELECT i FROM InsumoRecetas i WHERE i.idInsumo = :insumo")
+})
 public class InsumoRecetas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -122,5 +124,5 @@ public class InsumoRecetas implements Serializable {
     public String toString() {
         return "com.panin.entidades.InsumoRecetas[ idInsumoReceta=" + idInsumoReceta + " ]";
     }
-    
+
 }
