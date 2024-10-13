@@ -90,10 +90,7 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
             }
             
            VerificarIngresoNumero.verificar(textFieldCantidad);
- 
-            
-            
-            
+        
     }
     
     /**
