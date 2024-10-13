@@ -1,6 +1,7 @@
 package com.panin.application.form.other;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
 import java.awt.Component;
 import java.awt.Container;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import raven.toast.Notifications;
 
 /**
  *
@@ -41,7 +43,7 @@ public class FormCambio extends javax.swing.JPanel {
         tasas = cr.obtenerTasas();
         cr.cerrarSesion();
 
-        if (tasas.size() > 0) {
+        if (!tasas.isEmpty()) {
             Tasa r = tasas.get(tasas.size() - 1);
             cambio.setText(String.valueOf(r.getTasa()));
             System.out.println("Fecha: " + r.getFecha());
@@ -172,8 +174,10 @@ public class FormCambio extends javax.swing.JPanel {
         ControladorTasa cr = new ControladorTasa();
         cr.crearTasa(r);
         cr.cerrarSesion();
-
-
+        
+      
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Tasa actulizada con exito");
+         Application.showForm(new FormDashboard());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private class CambioLayout implements LayoutManager {
