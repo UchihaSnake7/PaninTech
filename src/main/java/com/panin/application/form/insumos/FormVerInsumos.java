@@ -5,6 +5,8 @@
 package com.panin.application.form.insumos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.form.other.Card;
+import com.panin.application.utilities.SearchHeader2;
 import com.panin.application.utilities.TableActionCellEditor;
 import com.panin.application.utilities.TableActionCellRender;
 import com.panin.application.utilities.TableActionEvent;
@@ -13,29 +15,31 @@ import com.panin.controladores.ControladorMarcaInsumo;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.MarcaInsumo;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author USUARIO
  */
-public class FormVerInsumos extends javax.swing.JPanel {
+public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.BuscadorListener {
 
     /**
      * Creates new form FormVerInsumo
      */
     public FormVerInsumos() {
-
+        
         String[] columnas = new String[]{
             "Codigo", "Descripcion", "Activo", "Opciones"
-
+        
         };
         modelTable = new DefaultTableModel(columnas, 0) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, true
             };
-
+            
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
@@ -106,15 +110,16 @@ public class FormVerInsumos extends javax.swing.JPanel {
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
   private DefaultTableModel modelTable;
-
+    private List<Insumo> insumos;
+    
     private void init() {
-
+        searchHeader21.setListener(this);
 //        this.table.setModel(modelTable );
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$background"
         );
-
+        
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
@@ -123,7 +128,7 @@ public class FormVerInsumos extends javax.swing.JPanel {
                 + "font:bold;"
                 + "background:$Menu.background;"
         );
-
+        
         table.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
@@ -138,20 +143,20 @@ public class FormVerInsumos extends javax.swing.JPanel {
 //        table.setEnabled(false);
         actualizarLista();
         table.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRender());
-
+        
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
                 System.out.println("Editar " + row);
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
+            
             @Override
             public void onDelete(int row) {
                 System.out.println("Eliminar " + row);
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
+            
             @Override
             public void onView(int row) {
                 System.out.println("Ver " + row);
@@ -163,17 +168,40 @@ public class FormVerInsumos extends javax.swing.JPanel {
         //        table.setSelectionBackground(table.getTableHeader());
 
     }
-
+    
     private void actualizarLista() {
-
+        
         modelTable.setRowCount(0);
         ControladorInsumos controladoInsumo = new ControladorInsumos();
-        List<Insumo> insumos = controladoInsumo.obtenerInsumos();
+        insumos = controladoInsumo.obtenerInsumos();
 //        marcas.sort(Collections.reverseOrder());
 
         for (Insumo fila : insumos) {
             modelTable.addRow(new Object[]{fila.getId().toString(), fila.getDescripcion(), fila.getActivo()});
         }
-
+        
     }
+    
+    public void filtrarLista(String texto) {
+        
+        modelTable.setRowCount(0);
+        ControladorInsumos controladoInsumo = new ControladorInsumos();
+        
+        List<Insumo> insumosFiltradas = (List<Insumo>) insumos.stream()
+                .filter(insumo -> insumo.getDescripcion().toLowerCase().contains(texto.toLowerCase()))
+                .collect(Collectors.toList());
+//        marcas.sort(Collections.reverseOrder());
+
+        for (Insumo fila : insumosFiltradas) {
+            modelTable.addRow(new Object[]{fila.getId().toString(), fila.getDescripcion(), fila.getActivo()});
+        }
+        
+    }
+    
+    @Override
+    public void onTextoIngresado(String texto) {
+        filtrarLista(texto);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }

@@ -240,9 +240,24 @@ INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_convers
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (14, 2, 0.10000);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (15, 2, 0.01000);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (16, 2, 0.00100);
-INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 17, 6.00000);
-INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 18, 12.00000);
-INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 4, 0.16670);
-INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 4, 0.08330);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 17, 0.16670);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (4, 18, 0.08330);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 4, 6.00000);
+INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 4, 12.00000);
 
+CREATE TABLE configuracion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  clave VARCHAR(100) NOT NULL UNIQUE,
+  valor TEXT,
+  descripcion TEXT
+);
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
+
+INSERT INTO panin.configuracion (clave, valor, descripcion)
+VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
 
