@@ -9,6 +9,7 @@ com\panin\application\form\productos\PanelVerDatosProducto.class
 com\panin\application\utilities\ShadowsRenderer.class
 com\panin\application\form\MainForm$MainFormLayout.class
 com\panin\entidades\Conversion.class
+com\panin\controladores\ControladorComprasProductos.class
 com\panin\controladores\ControladorComprasInsumos.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
