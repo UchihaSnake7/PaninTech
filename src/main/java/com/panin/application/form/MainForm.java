@@ -132,6 +132,11 @@ public class MainForm extends JLayeredPane {
                         Application.showForm(new PanelNuevoProducto());
                         break;
                     }
+                    case 4: {
+
+//                        Application.showForm();
+                        break;
+                    }
                     default:
                         throw new IllegalArgumentException("Valor no esperado: " + subIndex);
                 }

@@ -6,11 +6,6 @@ package com.panin.application.form.productos;
 
 import com.panin.application.form.other.Card;
 import com.panin.application.form.other.Model_Card;
-import com.panin.application.form.other.VistaProductos;
-import com.panin.application.utilities.ScrollBar;
-import com.panin.application.utilities.ScrollBar;
-import com.panin.application.utilities.WrapLayout;
-import com.panin.application.utilities.WrapLayout;
 import com.panin.controladores.ControladorProductos;
 import com.panin.controladores.ControladorReceta;
 import com.panin.dto.formAgregarInsumoProductoDTO;
@@ -19,28 +14,26 @@ import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
- * @author USUARIO
+ * @author ricke
  */
-public class FormVistaProductos extends javax.swing.JPanel {
-
-    private static final long serialVersionUID = 1L;
-    VistaProductos vp = new VistaProductos();
-
+public class panelMostrarProductos extends javax.swing.JPanel {
 
     /**
-     * Creates new form FormVistaProductos
+     * Creates new form panelMostrarProductos
      */
-    public FormVistaProductos() {
+    public panelMostrarProductos() {
         initComponents();
         init();
-        jScrollPane1.setBorder(null);
-
     }
 
+    
+    public void init(){
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,11 +50,11 @@ public class FormVistaProductos extends javax.swing.JPanel {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(panel);
@@ -78,23 +71,62 @@ public class FormVistaProductos extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(54, 54, 54)
                 .addComponent(jScrollPane1)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void init() {
-        panel.setLayout(new WrapLayout(WrapLayout.LEADING));
-        jScrollPane1.setVerticalScrollBar(new ScrollBar());
+    public void mostrarProductos(String clase){
         
         ControladorProductos cp = new ControladorProductos();
         productos = new ArrayList<Producto>();
         productos = cp.obtenerProductos();
-        
-        vp.mostrarProductos(panel, productos, "PanelVerDatosProducto", "Elaborado", false);
+//        cp.cerrarSesion();
+
+        ControladorReceta cr = new ControladorReceta();
+
+        String formClass = clase;
+        List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+        for (Producto producto : productos) {
+
+//                 String receta = "";
+            Recetas r = new Recetas();
+            String tipoProducto = "NA";
+            if (producto.getTipo() != null) {
+                tipoProducto = producto.getTipo().name();
+                if (producto.getTipo().toString().equalsIgnoreCase("Elaborado")) {
+
+                    /*TODO
+                      * Todos los productos elaborados DEBEN tener una receta asociada
+                     */
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+
+                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+
+                        dto.setCantidad(ir.getCantidad().doubleValue());
+                        dto.setInsumo(ir.getIdInsumo());
+                        dto.setUnidadMedidad(ir.getUnidadMedida());
+
+                        listaInsumosReceta.add(dto);
+
+                    }
+                }
+            }
+            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta, producto), getBackground(), formClass));
+
+        }
+//        cr.cerrarSesion();
+
+        panel.revalidate();
+        panel.repaint();
         
     }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -102,11 +134,6 @@ public class FormVistaProductos extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private List<Producto> productos;
 
-    void filtrarLista(String texto) {
-        panel.removeAll();
-        
-        vp.mostrarProductos(panel, productos, "PanelVerDatosProducto", "Elaborado", true, texto);
 
-    }
 
 }

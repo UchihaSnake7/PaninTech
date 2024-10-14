@@ -5,6 +5,7 @@ com\panin\application\form\other\FormRead.class
 com\panin\entidades\Insumo.class
 com\panin\application\form\insumos\FormVerInsumos.class
 com\panin\menu\MenuEvent.class
+com\panin\dto\formAgregarInsumoProductoDTO.class
 com\panin\application\form\productos\PanelVerDatosProducto.class
 com\panin\application\utilities\ShadowsRenderer.class
 com\panin\application\form\MainForm$MainFormLayout.class
@@ -13,6 +14,7 @@ com\panin\controladores\ControladorComprasProductos.class
 com\panin\controladores\ControladorComprasInsumos.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
+com\panin\application\form\productos\panelMostrarProductos.class
 com\panin\application\form\other\FormCambio.class
 com\panin\application\utilities\TableActionCellRender.class
 com\panin\application\form\other\FormCambio$1.class
@@ -64,6 +66,7 @@ com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\application\form\insumos\PanelIngresarInsumo$2.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$1.class
 com\panin\menu\PopupSubmenu.class
+com\panin\application\form\other\VistaProductos.class
 com\panin\application\utilities\PanelAction$3.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
@@ -77,6 +80,7 @@ com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
 com\panin\controladores\ControladorComprasProducto.class
 com\panin\controladores\ControladorTipoMedida.class
+com\panin\application\utilities\TextoHint.class
 com\panin\application\form\other\FormInbox.class
 com\panin\application\form\other\Card$3.class
 com\panin\application\form\productos\PanelVerDatosProducto$3.class
