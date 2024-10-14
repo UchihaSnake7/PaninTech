@@ -41,13 +41,16 @@ public class ControladorProductos {
         session.beginTransaction();
 
         List<Producto> productos;
+        
+         TypedQuery query = session.getNamedQuery("Producto.findAll");
+        productos = query.getResultList();
 
-<<<<<<< HEAD
-            session.save(producto);
-            
-             session.getTransaction().commit();
+        session.getTransaction().commit();
+        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+        session.close();
 
-            
+        return productos;
+          
         }
          
           public void actualizarProducto(Producto producto){
@@ -158,15 +161,7 @@ public class ControladorProductos {
             session = HibernateUtil.getSessionFactory().openSession();
 
 //            session.beginTransaction();
-=======
-        TypedQuery query = session.getNamedQuery("Producto.findAll");
-        productos = query.getResultList();
-
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-        session.close();
-
-        return productos;
+       
     }
 
     public List<Producto> obtenerProductosElaborados() {
@@ -213,32 +208,7 @@ public class ControladorProductos {
 
     }
 
-    public void borrarProducto(Producto producto) {
-
-        session.beginTransaction();
-
-        session.delete(producto);
-
-        session.getTransaction().commit();
-
-        if (producto.getTipo().toString().equalsIgnoreCase("Elaborado")) {
-
-            ControladorReceta cr = new ControladorReceta();
-            Recetas r = cr.obtenerRecetaPorId(producto.getIdReceta());
-            cr.borrarReceta(r);
-        }
-
-    }
->>>>>>> 63e072d370d50f62cdb8b7ff7d70146566ac779a
-
-    public void abrirSesion() {
-
-        session = HibernateUtil.getSessionFactory().openSession();
-
-        session.beginTransaction();
-
-    }
-
+   
     public void cerrarSesion() {
 
         session.close();
