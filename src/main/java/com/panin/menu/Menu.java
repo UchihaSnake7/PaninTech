@@ -31,7 +31,11 @@ public class Menu extends JPanel {
         {"Insumos", "Ver Insumos", "Compra de Insumo", "Reporte de Compra de Insumos", "Reporte Marcas", "Crear Insumo", "Crear Marca"},
         {"Productos", "Ver Productos", "Calcular Precio", "Crear Producto"},
         {"~TASA DE CAMNBIO~"},
-        {"Tasa de cambio", "Visualización", "Actualizar"}, //
+        {"Tasa de cambio", "Visualización", "Actualizar"},
+        {"~Area Personal~"},
+        {"Configuracion", "Crear Usuario", "Cambiar Clave"},
+        
+//
     //        {"~TASA DE CAMBIO~"},
     //        {"prueba","1", "2 Precio", "3 "},
     //        {"Chat"},

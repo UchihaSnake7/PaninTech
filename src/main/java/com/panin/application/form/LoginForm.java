@@ -4,7 +4,10 @@ import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.frameConfiguracion;
-
+import com.panin.controladores.ControladorUsuario;
+import com.panin.entidades.Usuario;
+import java.util.List;
+import raven.toast.Notifications;
 /**
  *
  * @author Raven
@@ -43,7 +46,6 @@ public class LoginForm extends javax.swing.JPanel {
         lbPass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         cmdLogin = new javax.swing.JButton();
-        botonConfig = new javax.swing.JButton();
 
         lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,16 +71,6 @@ public class LoginForm extends javax.swing.JPanel {
         });
         panelLogin1.add(cmdLogin);
 
-        botonConfig.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        botonConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/config.png"))); // NOI18N
-        botonConfig.setText("Configuración");
-        botonConfig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConfigActionPerformed(evt);
-            }
-        });
-        panelLogin1.add(botonConfig);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,16 +90,35 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
+        String  user = txtUser.getText();
+        String password = String.valueOf(txtPass.getPassword());
+  
+        ControladorUsuario cr = new ControladorUsuario();
+        List<Usuario> listaUsuarios;
+        
+        listaUsuarios = cr.obtenerUsuarios();
+         boolean usuarioEncontrado = false;
+
+    for (Usuario usuarioBD : listaUsuarios) {
+        if (usuarioBD.getUsername().equals(user) &&
+            usuarioBD.getContrasena().equals(password)) {
+            Application.setUser(usuarioBD);
+            usuarioEncontrado = true;
+            break;
+        }
+    }
+     if (usuarioEncontrado) {
+        // El usuario y la contraseña son válidos, iniciar sesión
         Application.login();
+        
+    } else {
+        // Mostrar un mensaje de error indicando que las credenciales son incorrectas
+         Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Usuario o Clave equivocada");
+    }
+   
     }//GEN-LAST:event_cmdLoginActionPerformed
 
-    private void botonConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfigActionPerformed
-        // TODO add your handling code here:
-        new frameConfiguracion().setVisible(true);
-    }//GEN-LAST:event_botonConfigActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonConfig;
     private javax.swing.JButton cmdLogin;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbTitle;
