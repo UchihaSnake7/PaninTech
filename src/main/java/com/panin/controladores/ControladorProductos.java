@@ -31,18 +31,15 @@ public class ControladorProductos {
 
     public ControladorProductos() {
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-//		session.beginTransaction();
+        session.beginTransaction();
 
     }
 
     //Ejemplo de metodo para obtener todos los productos de la db
     public List<Producto> obtenerProductos() {
-
-        session.beginTransaction();
-
         List<Producto> productos;
         
-         TypedQuery query = session.getNamedQuery("Producto.findAll");
+        TypedQuery query = session.getNamedQuery("Producto.findAll");
         productos = query.getResultList();
 
         session.getTransaction().commit();
@@ -81,6 +78,16 @@ public class ControladorProductos {
             
         }
 	
+         
+         
+    public void abrirSesion() {
+
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        session.beginTransaction();
+
+    }
+         
      public BigDecimal calcularPrecioProduccion(Producto producto, double cantidad, DefaultTableModel... modelTable ){
 
         this.cerrarSesion();
@@ -154,20 +161,8 @@ public class ControladorProductos {
 
         return bd;
     }
-         
-         
-	public void abrirSesion(){
-            
-            session = HibernateUtil.getSessionFactory().openSession();
-
-//            session.beginTransaction();
-       
-    }
-
+     
     public List<Producto> obtenerProductosElaborados() {
-
-        session.beginTransaction();
-
         List<Producto> productos;
 
         TypedQuery query = session.getNamedQuery("Producto.findByTipo");
@@ -177,13 +172,29 @@ public class ControladorProductos {
 
         session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
+//                session.close();
+
+        return query.getResultList();
+    }
+
+    public void crearProducto(Producto producto) {
+
+        session.save(producto);
+
+    }
+
+    public void cerrarSesion() {
+
+//            session.getTransaction().commit();
         session.close();
 
-        return productos;
     }
 
     public Producto obtenerProductoByReceta(Recetas receta) {
 
+        if (!session.getTransaction().getStatus().equals("ACTIVA")) {
+            session = HibernateUtil.getSessionFactory().openSession();
+        }
         session.beginTransaction();
 
         Producto producto;
@@ -198,21 +209,6 @@ public class ControladorProductos {
         session.close();
 
         return producto;
-    }
-
-    public void crearProducto(Producto producto) {
-
-        session.beginTransaction();
-
-        session.save(producto);
-
-    }
-
-   
-    public void cerrarSesion() {
-
-        session.close();
-
     }
 
 }
