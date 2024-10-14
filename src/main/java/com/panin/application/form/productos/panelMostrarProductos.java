@@ -79,52 +79,7 @@ public class panelMostrarProductos extends javax.swing.JPanel {
 
     public void mostrarProductos(String clase){
         
-        ControladorProductos cp = new ControladorProductos();
-        productos = new ArrayList<Producto>();
-        productos = cp.obtenerProductos();
-//        cp.cerrarSesion();
-
-        ControladorReceta cr = new ControladorReceta();
-
-        String formClass = clase;
-        List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
-
-        for (Producto producto : productos) {
-
-//                 String receta = "";
-            Recetas r = new Recetas();
-            String tipoProducto = "NA";
-            if (producto.getTipo() != null) {
-                tipoProducto = producto.getTipo().name();
-                if (producto.getTipo().toString().equalsIgnoreCase("Elaborado")) {
-
-                    /*TODO
-                      * Todos los productos elaborados DEBEN tener una receta asociada
-                     */
-                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
-                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
-
-                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
-
-                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
-
-                        dto.setCantidad(ir.getCantidad().doubleValue());
-                        dto.setInsumo(ir.getIdInsumo());
-                        dto.setUnidadMedidad(ir.getUnidadMedida());
-
-                        listaInsumosReceta.add(dto);
-
-                    }
-                }
-            }
-            panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", tipoProducto, listaInsumosReceta, producto), getBackground(), formClass));
-
-        }
-//        cr.cerrarSesion();
-
-        panel.revalidate();
-        panel.repaint();
-        
+       
     }
     
     
