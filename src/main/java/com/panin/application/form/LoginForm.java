@@ -102,7 +102,6 @@ public class LoginForm extends javax.swing.JPanel {
 
     for (Usuarios usuarioBD : listaUsuarios) {
         
-        
         if (usuarioBD.getUsername().equals(user) &&
             usuarioBD.getContrasena().equals(password)) {
             Application.setUser(usuarioBD);
