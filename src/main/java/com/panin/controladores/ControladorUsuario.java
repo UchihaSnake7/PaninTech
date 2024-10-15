@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.db.ConexionDB;
 import com.panin.entidades.Usuarios;
 import jakarta.persistence.EntityManager;
@@ -20,12 +21,12 @@ public class ControladorUsuario {
 //	ConexionDB conexionDB;
 //       @PersistenceContext(unitName = "com.panin_PaninTech")
 //       private EntityManager em;
-       Session session = HibernateUtil.getSessionFactory().openSession();
+//       Session session = HibernateUtil.getSessionFactory().openSession();
 
 	
 	public ControladorUsuario(){
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-		session.beginTransaction();
+//		 Application.session.beginTransaction();
 
 	}
 	
@@ -33,28 +34,30 @@ public class ControladorUsuario {
 	//Ejemplo de metodo para obtener todos los productos de la db
 	public List<Usuarios> obtenerUsuarios() {
 		List<Usuarios> Usuario;
+                
+                Application.session.beginTransaction();
 			
-                     TypedQuery query = session.getNamedQuery("Usuarios.findAll");   
+                     TypedQuery query =  Application.session.getNamedQuery("Usuarios.findAll");   
 		        Usuario = query.getResultList();
 	       
-                session.getTransaction().commit();
+                  Application.session.getTransaction().commit();
                 //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
+//                 Application.session.close();
                  
                 return query.getResultList();
 	}
         
          public void crearUsuario(Usuarios usuario){
             
-            session.save(usuario);
+              Application.session.save(usuario);
             
         }
 	
 	
 	public void cerrarSesion() {
             
-//            session.getTransaction().commit();
-            session.close();
+//             Application.session.getTransaction().commit();
+             Application.session.close();
 		
 	}
 	

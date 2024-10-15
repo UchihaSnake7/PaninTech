@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.UnidadMedida;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
@@ -16,40 +17,39 @@ import org.hibernate.Session;
  */
 public class ControladorUnidadMedida {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorUnidadMedida() {
-//		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
 
     }
 
     public List<UnidadMedida> obtenerTipoMedida() {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<UnidadMedida> UnidadesMedida;
 
-        TypedQuery query = session.getNamedQuery("UnidadMedida.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("UnidadMedida.findAll");
 
         UnidadesMedida = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+     
         return UnidadesMedida;
 
     }
 
     public UnidadMedida obtenerUnidadBase(UnidadMedida unidadMedida) {
-        try {
-            session.beginTransaction();
-        } catch (Exception e) {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-        }
+//        try {
+//             Application.session.beginTransaction();
+//        } catch (Exception e) {
+//            session = HibernateUtil.getSessionFactory().openSession();
+//             Application.session.beginTransaction();
+//        }
+        
+        Application.session.beginTransaction();
 
         List<UnidadMedida> UnidadesMedida;
 
-        TypedQuery query = session.getNamedQuery("UnidadMedida.findByBase");
+        TypedQuery query =  Application.session.getNamedQuery("UnidadMedida.findByBase");
         query.setParameter("unidadBase", true);
         query.setParameter("idTipo", unidadMedida.getIdTipo());
         UnidadesMedida = query.getResultList();
@@ -57,15 +57,14 @@ public class ControladorUnidadMedida {
         if (UnidadesMedida.size() == 0) {
             UnidadesMedida.add(unidadMedida);
         }
-        session.getTransaction().commit();
+         Application.session.getTransaction().commit();
 
-        session.close();
         return UnidadesMedida.get(0);
 
     }
 
     public void cerrarSesion() {
-        session.close();
+//         Application.session.close();
 
     }
 }

@@ -34,15 +34,11 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                 + "font:$h1.font");
         jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
-   
         lb1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
     }
 
     private void init() {
-
-
-       
 
         setLayout(new CambioLayout());
         Cambio.putClientProperty(FlatClientProperties.STYLE, "" + "background:$Login.background;" + "arc:20");
@@ -172,7 +168,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
             cr.setActivo(true);
             ControladorUsuario ct = new ControladorUsuario();
             ct.crearUsuario(cr);
-            ct.cerrarSesion();
+//            ct.cerrarSesion();
             Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Tasa actulizada con exito");
             Application.showForm(new FormDashboard());
     }//GEN-LAST:event_jButton1ActionPerformed

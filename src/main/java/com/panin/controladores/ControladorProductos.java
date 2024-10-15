@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.application.utilities.tipoProducto;
 import com.panin.db.ConexionDB;
 import com.panin.dto.formAgregarInsumoProductoDTO;
@@ -24,27 +25,22 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControladorProductos {
 
-//	ConexionDB conexionDB;
-//       @PersistenceContext(unitName = "com.panin_PaninTech")
-//       private EntityManager em;
-    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorProductos() {
-//		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-        session.beginTransaction();
 
     }
 
     //Ejemplo de metodo para obtener todos los productos de la db
     public List<Producto> obtenerProductos() {
+        Application.session.beginTransaction();
+
         List<Producto> productos;
         
-        TypedQuery query = session.getNamedQuery("Producto.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("Producto.findAll");
         productos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-        session.close();
+        Application.session.getTransaction().commit();
+      
 
         return productos;
           
@@ -52,22 +48,22 @@ public class ControladorProductos {
          
           public void actualizarProducto(Producto producto){
             
-            session.beginTransaction();
+             Application.session.beginTransaction();
 
-            session.update(producto);
+             Application.session.update(producto);
             
-            session.getTransaction().commit();
+             Application.session.getTransaction().commit();
 
             
         }
          
          public void borrarProducto(Producto producto){
             		
-            session.beginTransaction();
+             Application.session.beginTransaction();
             
-            session.delete(producto);
+             Application.session.delete(producto);
                         
-            session.getTransaction().commit();
+             Application.session.getTransaction().commit();
             
             if(producto.getTipo().toString().equalsIgnoreCase("Elaborado")){
                 
@@ -82,15 +78,15 @@ public class ControladorProductos {
          
     public void abrirSesion() {
 
-        session = HibernateUtil.getSessionFactory().openSession();
-
-        session.beginTransaction();
+//         Application.session = HibernateUtil.getSessionFactory().openSession();
+//
+//         Application.session.beginTransaction();
 
     }
          
      public BigDecimal calcularPrecioProduccion(Producto producto, double cantidad, DefaultTableModel... modelTable ){
 
-        this.cerrarSesion();
+//        this.cerrarSesion();
         List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
         
         ControladorReceta cr = new ControladorReceta();
@@ -117,7 +113,7 @@ public class ControladorProductos {
         
 //         List<InsumoRecetas> lir =  (List<InsumoRecetas>) r.getInsumoRecetasCollection();
 
-           cr.abrirSesion();
+//           cr.abrirSesion();
            
            if(modelTable.length > 0 ){
               modelTable[0].setRowCount(0);
@@ -163,50 +159,48 @@ public class ControladorProductos {
     }
      
     public List<Producto> obtenerProductosElaborados() {
+        
+        Application.session.beginTransaction();
         List<Producto> productos;
 
-        TypedQuery query = session.getNamedQuery("Producto.findByTipo");
+        TypedQuery query =  Application.session.getNamedQuery("Producto.findByTipo");
         query.setParameter("tipo", tipoProducto.Elaborado);
 
         productos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
+         Application.session.getTransaction().commit();
 
         return query.getResultList();
     }
 
     public void crearProducto(Producto producto) {
 
-        session.save(producto);
+         Application.session.save(producto);
 
     }
 
     public void cerrarSesion() {
 
-//            session.getTransaction().commit();
-        session.close();
+//             Application.session.getTransaction().commit();
+//         Application.session.close();
 
     }
 
     public Producto obtenerProductoByReceta(Recetas receta) {
 
-        if (!session.getTransaction().getStatus().equals("ACTIVA")) {
-            session = HibernateUtil.getSessionFactory().openSession();
-        }
-        session.beginTransaction();
+//        if (! Application.session.getTransaction().getStatus().equals("ACTIVA")) {
+//            session = HibernateUtil.getSessionFactory().openSession();
+//        }
+         Application.session.beginTransaction();
 
         Producto producto;
 
-        TypedQuery query = session.getNamedQuery("Producto.findByReceta");
+        TypedQuery query =  Application.session.getNamedQuery("Producto.findByReceta");
         query.setParameter("receta", receta.getIdReceta());
 
         producto = (Producto) query.getSingleResult();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-        session.close();
+         Application.session.getTransaction().commit();
 
         return producto;
     }

@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.Insumo;
 import jakarta.persistence.TypedQuery;
@@ -18,67 +19,62 @@ import org.hibernate.Session;
  */
 public class ControladorComprasInsumos {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+//    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorComprasInsumos() {
-//         session.beginTransaction();
+//          Application.session.beginTransaction();
     }
 
     public List<ComprasInsumo> obtenerComprasInsumos() {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findAll");
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+  
+//         Application.session.close();
         return comprasInsumos;
     }
 
     public List<ComprasInsumo> obtenerComprasdeUnInsumo(Insumo insumo) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumo");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByInsumo");
         query.setParameter("insumo", insumo);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+      
         return comprasInsumos;
     }
     
         public void cerrarSesion(){
-            session.close();
+             Application.session.close();
         }
     
       public ComprasInsumo obtenerComprasdeUnInsumoUnico(Insumo insumo) {
-//        session.beginTransaction();
         ComprasInsumo comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoUnico");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByInsumoUnico");
         query.setParameter("insumo", insumo);
         query.setMaxResults(1);
         comprasInsumos = (ComprasInsumo) query.getSingleResult();
 
-//        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-//        session.close();
+       
         return comprasInsumos;
     }
 
     public boolean save(ComprasInsumo compra) {
         try {
-            session.beginTransaction();
-            session.save(compra);
-            System.out.println(session.getTransaction().getStatus());
-            session.close();
+             Application.session.beginTransaction();
+             Application.session.save(compra);
+            System.out.println( Application.session.getTransaction().getStatus());
+             Application.session.close();
             return true;
 
         } catch (Exception e) {
@@ -88,106 +84,101 @@ public class ControladorComprasInsumos {
     }
 
     public List<ComprasInsumo> obtenerComprasDesde(Insumo insumo, Date date) {
-        session.beginTransaction();
+        
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoDesde");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByInsumoDesde");
         query.setParameter("insumo", insumo);
         query.setParameter("desde", date);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+        
+         
         return comprasInsumos;
     }
 
     public List<ComprasInsumo> obtenerComprasDesdeHasta(Insumo insumo, Date date, Date hasta) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoFechas");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByInsumoFechas");
         query.setParameter("insumo", insumo);
         query.setParameter("desde", date);
         query.setParameter("hasta", hasta);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+      
         return comprasInsumos;
     }
 
     public List<ComprasInsumo> obtenerComprasHasta(Insumo insumo, Date hasta) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByInsumoHasta");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByInsumoHasta");
         query.setParameter("insumo", insumo);
 
         query.setParameter("hasta", hasta);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+     
         return comprasInsumos;
     }
 
     public List<ComprasInsumo> obtenerComprasInsumosFecha(Date desde, Date hasta) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByFechas");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByFechas");
         query.setParameter("desde", desde);
 
         query.setParameter("hasta", hasta);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+      
+         
         return comprasInsumos;
     }
 
     public List<ComprasInsumo> obtenerComprasInsumosHasta(Date hasta) {
-        session.beginTransaction();
+        
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByHasta");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByHasta");
 
         query.setParameter("hasta", hasta);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+      
         return comprasInsumos;
 
     }
 
     public List<ComprasInsumo> obtenerComprasInsumosDesde(Date desde) {
-        session.beginTransaction();
+        
+        Application.session.beginTransaction();
         List<ComprasInsumo> comprasInsumos;
 
-        TypedQuery query = session.getNamedQuery("ComprasInsumo.findByDesde");
+        TypedQuery query =  Application.session.getNamedQuery("ComprasInsumo.findByDesde");
 
         query.setParameter("desde", desde);
         comprasInsumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+     
         return comprasInsumos;
 
     }
 }
 
-//Ejemplo de metodo para obtener todos los productos de la db
 

@@ -297,7 +297,7 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         cp.borrarProducto(producto);
-        cp.cerrarSesion();
+//        cp.cerrarSesion();
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto borrado con exito");
         Application.showForm(new FormMostrarProductos());
 

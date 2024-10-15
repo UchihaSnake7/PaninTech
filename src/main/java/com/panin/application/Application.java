@@ -49,6 +49,9 @@ public class Application extends javax.swing.JFrame {
     private final MainForm mainForm;
     private final LoginForm loginForm;
     public static Usuarios User;
+    public static Session session = HibernateUtil.getSessionFactory().openSession();
+
+    
 
     public static Usuarios getUser() {
         return User;

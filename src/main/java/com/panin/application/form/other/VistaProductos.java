@@ -39,17 +39,11 @@ public class VistaProductos {
         }
         else if( !filtrar )
         {
-//            ControladorProductos cp = new ControladorProductos();
-//            productos = new ArrayList<Producto>();
-//            productos = cp.obtenerProductos();
             
             listaFinal.addAll(productos);
-            
-//            ControladorReceta cr = new ControladorReceta();
 
         }
         
-//        cp.cerrarSesion();
 
         String formClass = clase;
 
@@ -59,33 +53,9 @@ public class VistaProductos {
 
         for (Producto producto : listaFinal) {
 
-//            Recetas r = new Recetas();
-//            String tipoProducto = "NA";
-//            if (producto.getTipo() != null) {
-//                tipoProducto = producto.getTipo().name();
-//                if (producto.getTipo().toString().equalsIgnoreCase(ipoProducto)) {
-//
-//                 
-//                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
-//                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
-//
-//                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
-//
-//                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
-//
-//                        dto.setCantidad(ir.getCantidad().doubleValue());
-//                        dto.setInsumo(ir.getIdInsumo());
-//                        dto.setUnidadMedidad(ir.getUnidadMedida());
-//
-//                        listaInsumosReceta.add(dto);
-//
-//                    }
-//                }
-//            }
             panel.add(new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(producto.getRutaImagen())), producto.getDescripcion(), "", producto.getTipo().toString(), producto), panel.getBackground(), formClass));
 
         }
-//        cr.cerrarSesion();
 
         panel.revalidate();
         panel.repaint();

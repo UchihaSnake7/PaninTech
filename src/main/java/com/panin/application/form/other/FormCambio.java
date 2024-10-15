@@ -41,7 +41,7 @@ public class FormCambio extends javax.swing.JPanel {
         ControladorTasa cr = new ControladorTasa();
         List<Tasa> tasas = new ArrayList<Tasa>();
         tasas = cr.obtenerTasas();
-        cr.cerrarSesion();
+//        cr.cerrarSesion();
 
         if (!tasas.isEmpty()) {
             Tasa r = tasas.get(tasas.size() - 1);
@@ -173,7 +173,7 @@ public class FormCambio extends javax.swing.JPanel {
         r.setFecha(fecha);
         ControladorTasa cr = new ControladorTasa();
         cr.crearTasa(r);
-        cr.cerrarSesion();
+//        cr.cerrarSesion();
         
       
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Tasa actulizada con exito");
