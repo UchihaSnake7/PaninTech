@@ -7,6 +7,7 @@ import com.panin.application.frameConfiguracion;
 import com.panin.controladores.ControladorUsuario;
 import com.panin.entidades.Usuarios;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 import raven.toast.Notifications;
 /**
  *
@@ -91,21 +92,26 @@ public class LoginForm extends javax.swing.JPanel {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         String  user = txtUser.getText();
-        String password = String.valueOf(txtPass.getPassword());
-  
-       
+        
+         String claveE= encriptarclave(String.valueOf(txtPass.getPassword()));
+            
+           // String hashedPassword = hash.getResult();
+           
         ControladorUsuario cr = new ControladorUsuario();
         List<Usuarios> listaUsuarios;
         
         listaUsuarios = cr.obtenerUsuarios();
-        boolean usuarioEncontrado = false;
+        boolean usuarioEncontrado = true;
+        System.out.println("Clave encriptada: " + claveE);
 
     for (Usuarios usuarioBD : listaUsuarios) {
+        System.out.println("entro en el for " );
         
         if (usuarioBD.getUsername().equals(user) &&
-            usuarioBD.getContrasena().equals(password)) {
+            usuarioBD.getContrasena().equals(claveE)) {
             Application.setUser(usuarioBD);
             usuarioEncontrado = true;
+            System.out.println("cambio en el if" );
             break;
         }
     }
@@ -120,6 +126,10 @@ public class LoginForm extends javax.swing.JPanel {
    
     }//GEN-LAST:event_cmdLoginActionPerformed
 
+     private String encriptarclave(String clave) {
+      String hash = DigestUtils.md5Hex(clave);
+        return hash;  
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdLogin;
     private javax.swing.JLabel lbPass;

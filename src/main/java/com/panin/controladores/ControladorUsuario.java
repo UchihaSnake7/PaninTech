@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-
+import org.apache.commons.codec.digest.DigestUtils;
 import com.panin.HibernateUtil;
 import com.panin.application.Application;
 import com.panin.db.ConexionDB;
@@ -60,6 +60,11 @@ public class ControladorUsuario {
              Application.session.close();
 		
 	}
+      
+        
+      
+       
+   
 	
 
 }
