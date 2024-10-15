@@ -18,6 +18,7 @@ import com.panin.application.form.productos.FormAgregarNuevoProducto;
 import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.application.form.other.formprueba;
 import com.panin.application.form.other.FormCambio;
+import com.panin.application.form.FormCrearUsuario;
 import com.panin.menu.Menu;
 import com.panin.menu.MenuAction;
 import java.awt.BorderLayout;
@@ -151,7 +152,14 @@ public class MainForm extends JLayeredPane {
 
                 }
 
-            } else if (index == 9) {
+            }
+            else if (index == 4) {
+                if (subIndex == 1) {
+                    Application.showForm(new FormCrearUsuario());
+                }
+                }
+            
+            else if (index == 9) {
                 Application.logout();
             } else {
                 action.cancel();

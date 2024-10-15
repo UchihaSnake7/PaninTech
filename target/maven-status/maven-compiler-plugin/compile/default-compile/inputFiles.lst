@@ -4,6 +4,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.j
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
@@ -28,6 +29,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\othe
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\ActionButton.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\PanelDeInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\PanelAction.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Usuarios.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Conversion.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormVerInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
@@ -70,6 +72,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insu
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Producto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\FormCrearUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java

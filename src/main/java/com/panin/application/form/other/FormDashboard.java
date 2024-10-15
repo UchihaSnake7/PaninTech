@@ -22,8 +22,8 @@ public class FormDashboard extends javax.swing.JPanel {
         );
 //        lb1.setForeground(UIManager.getColor("h2.foreground"));
         lb1.setOpaque(true);
-        Application.setUser("Prueba Dash");
-        lb1.setText(Application.User);
+     
+        lb1.setText(Application.User.getUsername());
     }
     
     @SuppressWarnings("unchecked")
