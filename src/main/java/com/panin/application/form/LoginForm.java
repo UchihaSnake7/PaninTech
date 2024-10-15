@@ -5,7 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.frameConfiguracion;
 import com.panin.controladores.ControladorUsuario;
-import com.panin.entidades.Usuario;
+import com.panin.entidades.Usuarios;
 import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import raven.toast.Notifications;
@@ -98,13 +98,16 @@ public class LoginForm extends javax.swing.JPanel {
            // String hashedPassword = hash.getResult();
            
   
+       
         ControladorUsuario cr = new ControladorUsuario();
-        List<Usuario> listaUsuarios;
+        List<Usuarios> listaUsuarios;
         
         listaUsuarios = cr.obtenerUsuarios();
-         boolean usuarioEncontrado = false;
+        boolean usuarioEncontrado = false;
 
-    for (Usuario usuarioBD : listaUsuarios) {
+    for (Usuarios usuarioBD : listaUsuarios) {
+        
+        
         if (usuarioBD.getUsername().equals(user) &&
             usuarioBD.getContrasena().equals(claveE)) {
             Application.setUser(usuarioBD);

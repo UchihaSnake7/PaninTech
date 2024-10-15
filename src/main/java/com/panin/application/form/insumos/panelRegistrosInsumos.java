@@ -8,12 +8,17 @@ import com.panin.application.form.productos.*;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.controladores.ControladorComprasInsumos;
 import com.panin.controladores.ControladorConversion;
+import com.panin.controladores.ControladorInsumoReceta;
 import com.panin.controladores.ControladorInsumos;
+import com.panin.controladores.ControladorProductos;
+import com.panin.controladores.ControladorReceta;
 import com.panin.controladores.ControladorUnidadMedida;
 import com.panin.dto.formAgregarInsumoProductoDTO;
 import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.Conversion;
 import com.panin.entidades.Insumo;
+import com.panin.entidades.InsumoRecetas;
+import com.panin.entidades.Producto;
 import com.panin.entidades.UnidadMedida;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +30,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +40,8 @@ import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -47,38 +55,39 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
      */
     private List<ComprasInsumo> listaInsumos;
     private DefaultTableModel modelTable;
+    private DefaultTableModel modelTableProductos;
     private Insumo insumoc;
-
+    
     public List<ComprasInsumo> getListaInsumos() {
         return listaInsumos;
     }
-
+    
     public void setListaInsumos(List<ComprasInsumo> listaInsumos) {
         this.listaInsumos = listaInsumos;
         this.listaInsumos.sort(Collections.reverseOrder());
-
+        
     }
-
+    
     public void agregarCompra(ComprasInsumo nuevaCompra) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
+        
         SimpleDateFormat formatterh = new SimpleDateFormat("HH:mm:ss:");
         ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
         ControladorConversion controladorConversion = new ControladorConversion();
-
+        
         listaInsumos.add(nuevaCompra);
         this.listaInsumos.sort(Collections.reverseOrder());
         modelTable.setRowCount(0);
         actualizarLista();
-
+        
         modelTable.fireTableDataChanged();
         System.out.println(modelTable.getRowCount());
     }
-
+    
     public void iniciar(Insumo insumo) {
-
+        
         ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
-
+        
         this.insumoc = insumo;
         this.listaInsumos = controladorComprasInsumos.obtenerComprasdeUnInsumo(insumo);
         this.listaInsumos.sort(Collections.reverseOrder());
@@ -103,42 +112,63 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
             jComboxUnidades.addItem(item);
         }
-
+        
         actualizarLista();
         actualizarUnidadMedida();
         busquedaPorFecha();
+        listaProductos();
+        tableProductos.setEnabled(false);
+        
     }
-
+    
     public panelRegistrosInsumos() {
+        
         String[] columnas = new String[]{
-            "Fecha", "Hora", "Marca", "Cantidad", "Unidad Medida", "Precio"
+            "Id", "Fecha", "Hora", "Marca", "Cantidad", "Unidad Medida", "Precio"
         };
         modelTable = new DefaultTableModel(columnas, 0);
+        
+        columnas = new String[]{
+            "Id", "Producto", "Cantidad", "Unidad Medida", "Cantidad por receta", "Costo de Producción"
+        };
+        
+        modelTableProductos = new DefaultTableModel(columnas, 0);
         initComponents();
         init();
-
+        
     }
-
+    
     public panelRegistrosInsumos obtenerPanel() {
         return this;
     }
-
+    
     public void init() {
         this.table.setModel(modelTable);
+        this.tableProductos.setModel(modelTableProductos);
+
+//        tabbedPane.putClientProperty(FlatClientProperties.STYLE, ""
+//                //                + "dropLineShortColor:$Menu.background;"
+//                + "selectedBackground: $Login.background;"
+//                + "hoverColor: $Login.background;"
+//                //                + "tabSeparatorColor: $Menu.background;"
+//                + "selectedForeground: $Table.foreground;"
+//                + "foreground:$Table.foreground;"
+//                + "background:$Login.background;"
+//        );
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$background"
         );
-
+        
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
                 + "pressedBackground:null;"
-                //                + "dropLineShortColor:$Menu.background;"
+                //                                + "dropLineShortColor:$Menu.background;"
                 + "font:bold;"
                 + "background:$Menu.background;"
         );
-
+        
         table.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
@@ -150,7 +180,44 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
                 + "selectionForeground:$Table.foreground;"
                 + "background:$Login.background;"
         );
-
+        
+        tableProductos.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
+                + "height:30;"
+                + "hoverBackground:null;"
+                + "pressedBackground:null;"
+                //                                + "dropLineShortColor:$Menu.background;"
+                + "font:bold;"
+                + "background:$Menu.background;"
+        );
+        
+        tableProductos.putClientProperty(FlatClientProperties.STYLE, ""
+                + "rowHeight:30;"
+                + "showHorizontalLines:true;"
+                + "showVerticalLines:true;"
+                + "intercellSpacing:0,1;"
+                //                + "dropLineShortColor:$Menu.background;"
+                + "cellFocusColor:$TableHeader.hoverBackground;"
+                + "selectionBackground:$TableHeader.hoverBackground;"
+                + "selectionForeground:$Table.foreground;"
+                + "background:$Login.background;"
+        );
+        
+        TableColumnModel columnModel = tableProductos.getColumnModel();
+        TableColumn columnaCantidad = columnModel.getColumn(0);
+        columnaCantidad.setPreferredWidth(12);
+        columnaCantidad = columnModel.getColumn(1);
+        columnaCantidad.setPreferredWidth(350);
+        columnaCantidad = columnModel.getColumn(2);
+        columnaCantidad.setPreferredWidth(40);
+        columnaCantidad = columnModel.getColumn(3);
+        columnaCantidad.setPreferredWidth(20);
+        columnaCantidad = columnModel.getColumn(4);
+        columnaCantidad.setPreferredWidth(60);
+        
+        columnModel = table.getColumnModel();
+        columnaCantidad = columnModel.getColumn(0);
+        columnaCantidad.setPreferredWidth(10);
+        
     }
 
     /**
@@ -162,22 +229,20 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        separador = new javax.swing.JSeparator();
-        botonAbrirFrameFormularioInsumo = new javax.swing.JButton();
-        jComboxUnidades = new javax.swing.JComboBox<>();
+        shadowRenderer1 = new com.panin.application.utilities.ShadowsRenderer();
+        tabbedPane = new com.panin.application.utilities.TabbedPaneCustom();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jDateDesde = new com.toedter.calendar.JDateChooser();
-        jDateHasta = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-
-        botonAbrirFrameFormularioInsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utilidad/agregar.png"))); // NOI18N
-        botonAbrirFrameFormularioInsumo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAbrirFrameFormularioInsumoActionPerformed(evt);
-            }
-        });
+        jDateHasta = new com.toedter.calendar.JDateChooser();
+        jSeparator1 = new javax.swing.JSeparator();
+        jComboxUnidades = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableProductos = new javax.swing.JTable();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -211,93 +276,125 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
 
         jLabel3.setText("Hasta:");
 
+        jDateHasta.setMinimumSize(new java.awt.Dimension(85, 22));
+
+        jComboxUnidades.setPreferredSize(new java.awt.Dimension(85, 22));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(12, 12, 12)
+                .addComponent(jDateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29)
+                .addComponent(jDateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(jComboxUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboxUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jDateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jDateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabbedPane.addTab("Compras", jPanel1);
+
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        tableProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableProductos);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        tabbedPane.addTab("Productos", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(separador, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
-                .addGap(86, 86, 86))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboxUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonAbrirFrameFormularioInsumo)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1)
-                .addGap(30, 30, 30))
+                .addGap(14, 14, 14)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(botonAbrirFrameFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboxUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1)
-                                .addComponent(jDateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jDateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+            .addComponent(tabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonAbrirFrameFormularioInsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirFrameFormularioInsumoActionPerformed
-        // TODO add your handling code here:}
-//        frameIngresarInsumoReceta frame = new frameIngresarInsumoReceta(this);
-//        frame.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosed(WindowEvent e) {
-//                String dato1 = frame.getName();
-//                System.out.println(".windowClosed()");
-//                System.out.println("Desde panel receta recibo " + frame.getDtoAgregarInsumo().getInsumo());
-//                modelTable.addRow(new Object[]{frame.getDtoAgregarInsumo().getInsumo(), frame.getDtoAgregarInsumo().getUnidadMedidad(), frame.getDtoAgregarInsumo().getCantidad()});
-//                
-//                listaDTO.add(frame.getDtoAgregarInsumo());
-//            }
-//        });
-    }//GEN-LAST:event_botonAbrirFrameFormularioInsumoActionPerformed
 
     public JTable getTable() {
         return table;
     }
-
+    
     public void setTable(JTable table) {
         this.table = table;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAbrirFrameFormularioInsumo;
     private javax.swing.JComboBox<UnidadMedida> jComboxUnidades;
     private com.toedter.calendar.JDateChooser jDateDesde;
     private com.toedter.calendar.JDateChooser jDateHasta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator separador;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private com.panin.application.utilities.ShadowsRenderer shadowRenderer1;
+    private com.panin.application.utilities.TabbedPaneCustom tabbedPane;
     private javax.swing.JTable table;
+    private javax.swing.JTable tableProductos;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarLista() {
@@ -305,12 +402,13 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         // Redondear a un decimal
         UnidadMedida medidaSeleccionada = (UnidadMedida) jComboxUnidades.getSelectedItem();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
+        
         SimpleDateFormat formatterh = new SimpleDateFormat("HH:mm:ss:");
         String hora;
-
+        
         for (ComprasInsumo fila : listaInsumos) {
             String marca = "NA";
+            DecimalFormat df = new DecimalFormat("#,##0.00");
             ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
             ControladorConversion controladorConversion = new ControladorConversion();
             BigDecimal precioCalculado = fila.getPrecio();
@@ -331,21 +429,23 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
                 unidadAbreviatura = medidaSeleccionada.toString();
 //                System.out.println("Medida seleccionada " + unidadAbreviatura);
             }
-
+            
             if (fila.getMarcaInsumo() != null) {
                 marca = fila.getMarcaInsumo().getNombre();
             }
-
+            
             String strDate = formatter.format(fila.getFecha());
             String strHora = formatter.format(fila.getHora());
             BigDecimal redondeado = precioCalculado.setScale(1, RoundingMode.HALF_UP);
             double valorDouble = redondeado.doubleValue();
-            modelTable.addRow(new Object[]{strDate, hora, marca, cantidadCalculada.toString(), unidadAbreviatura, valorDouble});
+            String cantidadFormat = df.format(cantidadCalculada.doubleValue());
+            String precioFormat = df.format(valorDouble);
+            modelTable.addRow(new Object[]{fila.getId().toString(), strDate, hora, marca, cantidadFormat, unidadAbreviatura, precioFormat});
         }
 
         // Convertir a double
     }
-
+    
     private void actualizarUnidadMedida() {
         jComboxUnidades.addActionListener(new ActionListener() {
             @Override
@@ -356,13 +456,13 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
             }
         });
     }
-
+    
     private void busquedaPorFecha() {
-
+        
         jDateDesde.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent e) {
-
+                
                 if ("date".equals(e.getPropertyName())) {
                     jDateHasta.setMinSelectableDate(jDateDesde.getDate());
                     ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
@@ -375,13 +475,13 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
                     modelTable.setRowCount(0);
                     actualizarLista();
                 }
-
+                
             }
         });
         jDateHasta.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent e) {
-
+                
                 if ("date".equals(e.getPropertyName())) {
                     jDateDesde.setMaxSelectableDate(jDateHasta.getDate());
                     ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
@@ -394,9 +494,33 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
                     modelTable.setRowCount(0);
                     actualizarLista();
                 }
-
+                
             }
         });
-
+        
+    }
+    
+    private void listaProductos() {
+        ControladorInsumoReceta controladorInsumoReceta = new ControladorInsumoReceta();
+        List<InsumoRecetas> listRecetas = controladorInsumoReceta.obtenerRecetasInsumos(insumoc);
+        
+        for (InsumoRecetas fila : listRecetas) {
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            String marca = "NA";
+            ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
+            ControladorConversion controladorConversion = new ControladorConversion();
+            ControladorProductos controladorProducto = new ControladorProductos();
+            System.out.println(fila);
+            Producto producto = controladorProducto.obtenerProductoByReceta(fila.getIdReceta());
+            System.out.println(producto);
+            if (producto != null) {
+                
+                String precioFormateada = df.format(producto.getPrecioProduccion());
+                String cantidadFormateada = df.format(fila.getIdReceta().getCantidad().doubleValue());
+                modelTableProductos.addRow(new Object[]{producto.getId().toString(), producto.getDescripcion(), fila.getCantidad().toString(), fila.getUnidadMedida(), cantidadFormateada, precioFormateada});
+                
+            }
+            
+        }
     }
 }

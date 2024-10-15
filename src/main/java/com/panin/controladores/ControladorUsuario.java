@@ -9,8 +9,7 @@ import org.hibernate.Session;
 import org.apache.commons.codec.digest.DigestUtils;
 import com.panin.HibernateUtil;
 import com.panin.db.ConexionDB;
-import com.panin.entidades.Usuario;
-
+import com.panin.entidades.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -32,10 +31,10 @@ public class ControladorUsuario {
 	
 	
 	//Ejemplo de metodo para obtener todos los productos de la db
-	public List<Usuario> obtenerUsuarios() {
-		List<Usuario> Usuario;
+	public List<Usuarios> obtenerUsuarios() {
+		List<Usuarios> Usuario;
 			
-                     TypedQuery query = session.getNamedQuery("Usuario.findAll");   
+                     TypedQuery query = session.getNamedQuery("Usuarios.findAll");   
 		        Usuario = query.getResultList();
 	       
                 session.getTransaction().commit();
@@ -45,7 +44,7 @@ public class ControladorUsuario {
                 return query.getResultList();
 	}
         
-         public void crearUsuario(Usuario usuario){
+         public void crearUsuario(Usuarios usuario){
             
             session.save(usuario);
             

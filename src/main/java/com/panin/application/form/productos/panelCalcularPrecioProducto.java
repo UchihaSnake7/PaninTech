@@ -231,70 +231,16 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         Calcular precio
         */
         
-        ControladorReceta cr = new ControladorReceta();
-        Recetas r = new Recetas();
-        
         Producto producto = (Producto) combobocProductos.getSelectedItem();
-        r = cr.obtenerRecetaPorId(producto.getIdReceta());
-        
         double cantidad = Double.valueOf(textFieldCantidad.getText());
-        double cantidadReceta = r.getCantidad();
-        double cantidadCalculada = 0.0;
-        double precioTotal = 0;
-        double precio = 0.0;
         
-        ControladorComprasInsumos cpi = new ControladorComprasInsumos();
-         
-        if(cantidadReceta > cantidad){
-            cantidadCalculada =  cantidad / cantidadReceta;
-        }
-        else if(cantidadReceta < cantidad){
-            cantidadCalculada = cantidad / cantidadReceta ;
+        ControladorProductos cp = new ControladorProductos();
+        BigDecimal precio = cp.calcularPrecioProduccion(producto, cantidad, modelTable);
 
-        }
-        else if(cantidadReceta == cantidad){
-            cantidadCalculada = 1;
-        }
         
-//         List<InsumoRecetas> lir =  (List<InsumoRecetas>) r.getInsumoRecetasCollection();
-
-           cr.abrirSesion();
-           modelTable.setRowCount(0);
-
-        for(InsumoRecetas ir : r.getInsumoRecetasCollection()) {
-                    	
-              formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
-                    	
-               dto.setCantidad(ir.getCantidad().doubleValue() * cantidadCalculada);
-               dto.setInsumo(ir.getIdInsumo());
-               dto.setUnidadMedidad(ir.getUnidadMedida());
-                    	
-               listaInsumosReceta.add(dto);
-               
-               ComprasInsumo ci = cpi.obtenerComprasdeUnInsumoUnico(ir.getIdInsumo());
-               
-               
-               System.out.print("\nci.getPrecio() " + ci.getPrecio().toString());
-               System.out.print("\nir.getCantidad() " + ir.getCantidad().toString());
-               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()) " + ci.getPrecio().multiply(ir.getCantidad()).toString());
-
-               System.out.print("\ncantidadCalculada " + cantidadCalculada);
-               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)) " + ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)));
-
-
-               precioTotal = (ci.getPrecio().multiply(ir.getCantidad())).multiply(BigDecimal.valueOf(cantidadCalculada)).doubleValue();
-               
-               System.out.print("\nprecioTotal " + precioTotal);
-
-               
-               modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
-
-                    	
-            }
-        cr.cerrarSesion();
-        BigDecimal bd = new BigDecimal(precioTotal);
+        
 //        System.out.print("Precio Toal: " + bd.doubleValue());
-        labelPrecioTotal.setText(String.valueOf(bd.doubleValue()));
+        labelPrecioTotal.setText(String.valueOf(precio.doubleValue()));
          
     }//GEN-LAST:event_botonCalcularActionPerformed
 

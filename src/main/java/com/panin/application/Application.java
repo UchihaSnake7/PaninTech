@@ -11,7 +11,7 @@ import com.panin.application.form.MainForm;
 import com.panin.controladores.ControladorProductos;
 import com.panin.entidades.Producto;
 import com.panin.controladores.ControladorUsuario;
-import com.panin.entidades.Usuario;
+import com.panin.entidades.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
@@ -48,13 +48,13 @@ public class Application extends javax.swing.JFrame {
     private static Application app;
     private final MainForm mainForm;
     private final LoginForm loginForm;
-    public static Usuario User;
+    public static Usuarios User;
 
-    public static Usuario getUser() {
+    public static Usuarios getUser() {
         return User;
     }
 
-    public static void setUser(Usuario User) {
+    public static void setUser(Usuarios User) {
         Application.User = User;
     }
 

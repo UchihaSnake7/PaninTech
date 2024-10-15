@@ -6,8 +6,7 @@ import com.panin.application.Application;
 import java.awt.Component;
 import java.awt.Container;
 import com.panin.controladores.ControladorUsuario;
-import com.panin.entidades.Usuario;
-
+import com.panin.entidades.Usuarios;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
 import java.awt.LayoutManager;
@@ -167,8 +166,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
-        Usuario cr = new Usuario();
+            Usuarios cr = new Usuarios();
             cr.setUsername(Usuario.getText());
             cr.setCorreoElectronico(Correo.getText());
             String claveE= encriptarclave(Clave.getText());

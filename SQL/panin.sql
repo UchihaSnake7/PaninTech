@@ -276,7 +276,7 @@ CREATE TABLE configuracion (
   valor TEXT,
   descripcion TEXT
 );
-CREATE TABLE usuario (
+CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     correo_electronico VARCHAR(100) NOT NULL,
@@ -295,4 +295,3 @@ VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
 IN  SERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
 
->>>>>>> 6fe517b305f75a7467d97e4e0e6fcac1626b448b

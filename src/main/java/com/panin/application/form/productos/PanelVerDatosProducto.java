@@ -8,8 +8,13 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.controladores.ControladorProductos;
+import com.panin.controladores.ControladorReceta;
 import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
+import com.panin.entidades.Recetas;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 import net.miginfocom.swing.MigLayout;
@@ -24,77 +29,102 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
     /**
      * Creates new form PanelVerDatosProducto
      */
-    
     private DefaultTableModel modelTable;
     private Producto producto = new Producto();
     private ControladorProductos cp = new ControladorProductos();
 
     public PanelVerDatosProducto() {
-        
+
     }
-    
+
     public PanelVerDatosProducto(Model_Card data) {
 
-              producto = data.getProducto();
-              initComponents(); 
-              
-              String[] columnas = new String[]{
-                      "Ingrediente", "Medida", "Cantidad"
-                      };
-              
-              modelTable = new DefaultTableModel(columnas, 0);
-              tablaIngredientes.setModel(modelTable);
-              
-              nombreProducto.setText(data.getTitle());
-              tipoProducto.setText("Tipo: " + data.getDescription());
-              iconoProducto.setIcon(data.getIcon());
+        producto = data.getProducto();
+        initComponents();
+
+        String[] columnas = new String[]{
+            "Ingrediente", "Medida", "Cantidad"
+        };
+
+        modelTable = new DefaultTableModel(columnas, 0);
+        tablaIngredientes.setModel(modelTable);
+
+        nombreProducto.setText(data.getTitle());
+        tipoProducto.setText("Tipo: " + data.getDescription());
+        iconoProducto.setIcon(data.getIcon());
 //              System.out.print("idReceta: " + data.getValues());
-              
-              for(formAgregarInsumoProductoDTO dto : data.getListaInsumo()) {
-            	  
-//                System.out.print("|nInsumo: " + dto.getInsumo().getDescripcion());
-                
-                modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
 
+        obtenerInsumos(data.getDescription());
 
-              }
-              
-              init();
-              
-            
-             
-        }
+//        for (formAgregarInsumoProductoDTO dto : data.getListaInsumo()) {
+//
+//            modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
+//
+//        }
+
+        init();
+
+    }
 
     
-    
-    public void init(){
+    public void obtenerInsumos(String tipo){
         
+         ControladorReceta cr = new ControladorReceta();
+         List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
          
-                            
-              nombreProducto.putClientProperty(FlatClientProperties.STYLE, ""
+            Recetas r = new Recetas();
+            String tipoProducto = "NA";
+            if (producto.getTipo() != null) {
+                tipoProducto = producto.getTipo().name();
+                if (producto.getTipo().toString().equalsIgnoreCase(tipo)) {
+
+                 
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+
+//                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+//
+//                        dto.setCantidad(ir.getCantidad().doubleValue());
+//                        dto.setInsumo(ir.getIdInsumo());
+//                        dto.setUnidadMedidad(ir.getUnidadMedida());
+//
+//                        listaInsumosReceta.add(dto);
+
+                         modelTable.addRow(new Object[]{ir.getIdInsumo(), ir.getUnidadMedida(), ir.getCantidad()});
+
+                    }
+                }
+            }
+
+    }
+    
+    public void init() {
+
+        nombreProducto.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-              botonAtras.putClientProperty(FlatClientProperties.STYLE, ""
+        botonAtras.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-              
-               panelContenidoProducto.putClientProperty(FlatClientProperties.STYLE, ""
+
+        panelContenidoProducto.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:50;");
-              
+
 //              this.putClientProperty(FlatClientProperties.STYLE, ""
 //                + "arc:25;"
 //                + "background:$Table.background"
 //        );
-
-            tablaIngredientes.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
+        tablaIngredientes.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
                 + "pressedBackground:null;"
                 //                + "dropLineShortColor:$Menu.background;"
                 + "font:bold;"
                 + "background:$Menu.background;"
-            );
+        );
 
-            tablaIngredientes.putClientProperty(FlatClientProperties.STYLE, ""
+        tablaIngredientes.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
                 + "showVerticalLines:true;"
@@ -104,15 +134,12 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
                 + "selectionBackground:$TableHeader.hoverBackground;"
                 + "selectionForeground:$Table.foreground;"
                 + "background:$Login.background;"
-            );
-              
-//              setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
-              
-//               modelTable.addRow(new Object[]{frame.getDtoAgregarInsumo().getInsumo(), frame.getDtoAgregarInsumo().getUnidadMedidad(), frame.getDtoAgregarInsumo().getCantidad()});
+        );
 
-        
+//              setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
+//               modelTable.addRow(new Object[]{frame.getDtoAgregarInsumo().getInsumo(), frame.getDtoAgregarInsumo().getUnidadMedidad(), frame.getDtoAgregarInsumo().getCantidad()});
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -263,19 +290,18 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        Application.showForm(new FormVistaProductos());
+        Application.showForm(new FormMostrarProductos());
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
         // TODO add your handling code here:
-        
+
         cp.borrarProducto(producto);
         cp.cerrarSesion();
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto borrado con exito");
-        Application.showForm(new FormVistaProductos());
+        Application.showForm(new FormMostrarProductos());
 
-        
-        
+
     }//GEN-LAST:event_botonEliminarProductoActionPerformed
 
 
