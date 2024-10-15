@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.Conversion;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.InsumoRecetas;
@@ -18,23 +19,23 @@ import org.hibernate.Session;
  */
 public class ControladorInsumoReceta {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorInsumoReceta() {
 
     }
 
     public List<InsumoRecetas> obtenerRecetasInsumos(Insumo insumo) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<InsumoRecetas> InsumosRecetas;
 
-        TypedQuery query = session.getNamedQuery("InsumoRecetas.findByInsumo");
+        TypedQuery query =  Application.session.getNamedQuery("InsumoRecetas.findByInsumo");
         query.setParameter("insumo", insumo);
         InsumosRecetas = query.getResultList();
 
-        session.getTransaction().commit();
+         Application.session.getTransaction().commit();
 
-        session.close();
+         Application.session.close();
         return InsumosRecetas;
 
     }

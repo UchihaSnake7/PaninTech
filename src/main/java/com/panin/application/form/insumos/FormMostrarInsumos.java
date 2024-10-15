@@ -41,7 +41,7 @@ public class FormMostrarInsumos extends javax.swing.JPanel {
         ControladorInsumos ci = new ControladorInsumos();
         insumos = new ArrayList<Insumo>();
         insumos = ci.obtenerInsumos();
-        ci.cerrarSesion();
+//        ci.cerrarSesion();
 
         for (Insumo insumo : insumos) {
             Card card = new Card(new Model_Card(new javax.swing.ImageIcon(getClass().getResource(insumo.getRutaImagen())), insumo.getDescripcion(), "", "Descripcion"), getBackground(), formClass);

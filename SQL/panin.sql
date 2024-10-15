@@ -276,6 +276,15 @@ CREATE TABLE configuracion (
   valor TEXT,
   descripcion TEXT
 );
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    correo_electronico VARCHAR(100) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    activo TINYINT(1) NOT NULL
+);
+INSERT INTO usuarios (username, correo_electronico, contrasena, activo)
+VALUES ('admin', 'admin@example.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
@@ -283,7 +292,6 @@ VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
 INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
 
-INSERT INTO panin.configuracion (clave, valor, descripcion)
+IN  SERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
 
->>>>>>> 6fe517b305f75a7467d97e4e0e6fcac1626b448b

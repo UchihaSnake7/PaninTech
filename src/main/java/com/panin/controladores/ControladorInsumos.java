@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.Insumo;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
@@ -16,49 +17,44 @@ import org.hibernate.Session;
  */
 public class ControladorInsumos {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+//    Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorInsumos() {
-//		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
 
     }
 
     public Insumo obtenerInsumobyId(Integer id) {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         Insumo insumo;
 
-        TypedQuery query = session.getNamedQuery("Insumo.findById");
+        TypedQuery query =  Application.session.getNamedQuery("Insumo.findById");
         query.setParameter("id", id);
         insumo = (Insumo) query.getSingleResult();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+     
         return insumo;
     }
 
-    //Ejemplo de metodo para obtener todos los productos de la db
     public List<Insumo> obtenerInsumos() {
-        session.beginTransaction();
+         
+        Application.session.beginTransaction();
         List<Insumo> insumos;
 
-        TypedQuery query = session.getNamedQuery("Insumo.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("Insumo.findAll");
         insumos = query.getResultList();
 
-        session.getTransaction().commit();
-        //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+         Application.session.getTransaction().commit();
+      
         return insumos;
     }
 
     public boolean save(Insumo insumo) {
         try {
-            session.beginTransaction();
-            session.save(insumo);
-            System.out.println(session.getTransaction().getStatus());
-            session.close();
+             Application.session.beginTransaction();
+             Application.session.save(insumo);
+             Application.session.getTransaction().commit();
             return true;
 
         } catch (Exception e) {
@@ -69,12 +65,11 @@ public class ControladorInsumos {
 
     public boolean update(Insumo insumo) {
         try {
-            session.beginTransaction();
-            session.merge(insumo);
+             Application.session.beginTransaction();
+             Application.session.merge(insumo);
             System.out.println("Sesion "
-                    + session.getTransaction().getStatus());
-            session.getTransaction().commit();
-            session.close();
+                    +  Application.session.getTransaction().getStatus());
+             Application.session.getTransaction().commit();
             return true;
 
         } catch (Exception e) {
@@ -86,11 +81,10 @@ public class ControladorInsumos {
 
     public boolean delete(Insumo insumo) {
         try {
-            session.beginTransaction();
-            session.delete(insumo);
+             Application.session.beginTransaction();
+             Application.session.delete(insumo);
 
-            session.getTransaction().commit();
-            session.close();
+             Application.session.getTransaction().commit();
             return true;
 
         } catch (Exception e) {
@@ -102,12 +96,12 @@ public class ControladorInsumos {
 
     public void abrirSesion() {
 
-        session = HibernateUtil.getSessionFactory().openSession();
+//   Application.session. = HibernateUtil.getSessionFactory().openSession();
 
     }
 
     public void cerrarSesion() {
-        session.close();
+         Application.session.close();
 
     }
 

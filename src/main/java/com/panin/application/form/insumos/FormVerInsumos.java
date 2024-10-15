@@ -170,13 +170,13 @@ public class FormVerInsumos extends javax.swing.JPanel implements SearchHeader2.
                 int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
                         JOptionPane.YES_NO_OPTION);
                 if (respuesta == JOptionPane.YES_OPTION) {
-                    controladorInsumo.abrirSesion();
+//                    controladorInsumo.abrirSesion();
                     if (controladorInsumo.delete(insumo)) {
                         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
                         modelTable.removeRow(row);
                     } else {
                         insumo.setActivo(false);
-                        controladorInsumo.abrirSesion();
+//                        controladorInsumo.abrirSesion();
                         if (controladorInsumo.update(insumo)) {
                             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
                             actualizarLista();

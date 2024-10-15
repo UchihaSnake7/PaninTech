@@ -8,8 +8,13 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.controladores.ControladorProductos;
+import com.panin.controladores.ControladorReceta;
 import com.panin.dto.formAgregarInsumoProductoDTO;
+import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
+import com.panin.entidades.Recetas;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 import net.miginfocom.swing.MigLayout;
@@ -49,17 +54,52 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
         iconoProducto.setIcon(data.getIcon());
 //              System.out.print("idReceta: " + data.getValues());
 
-        for (formAgregarInsumoProductoDTO dto : data.getListaInsumo()) {
+        obtenerInsumos(data.getDescription());
 
-//                System.out.print("|nInsumo: " + dto.getInsumo().getDescripcion());
-            modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
-
-        }
+//        for (formAgregarInsumoProductoDTO dto : data.getListaInsumo()) {
+//
+//            modelTable.addRow(new Object[]{dto.getInsumo(), dto.getUnidadMedidad(), dto.getCantidad()});
+//
+//        }
 
         init();
 
     }
 
+    
+    public void obtenerInsumos(String tipo){
+        
+         ControladorReceta cr = new ControladorReceta();
+         List<formAgregarInsumoProductoDTO> listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+         
+            Recetas r = new Recetas();
+            String tipoProducto = "NA";
+            if (producto.getTipo() != null) {
+                tipoProducto = producto.getTipo().name();
+                if (producto.getTipo().toString().equalsIgnoreCase(tipo)) {
+
+                 
+                    r = cr.obtenerRecetaPorId(producto.getIdReceta());
+                    listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
+
+                    for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+
+//                        formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
+//
+//                        dto.setCantidad(ir.getCantidad().doubleValue());
+//                        dto.setInsumo(ir.getIdInsumo());
+//                        dto.setUnidadMedidad(ir.getUnidadMedida());
+//
+//                        listaInsumosReceta.add(dto);
+
+                         modelTable.addRow(new Object[]{ir.getIdInsumo(), ir.getUnidadMedida(), ir.getCantidad()});
+
+                    }
+                }
+            }
+
+    }
+    
     public void init() {
 
         nombreProducto.putClientProperty(FlatClientProperties.STYLE, ""
@@ -250,16 +290,16 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        Application.showForm(new FormVistaProductos());
+        Application.showForm(new FormMostrarProductos());
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
         // TODO add your handling code here:
 
         cp.borrarProducto(producto);
-        cp.cerrarSesion();
+//        cp.cerrarSesion();
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto borrado con exito");
-        Application.showForm(new FormVistaProductos());
+        Application.showForm(new FormMostrarProductos());
 
 
     }//GEN-LAST:event_botonEliminarProductoActionPerformed

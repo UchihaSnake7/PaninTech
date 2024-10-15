@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Recetas;
 import jakarta.persistence.TypedQuery;
@@ -17,75 +18,68 @@ import org.hibernate.query.Query;
  */
 public class ControladorReceta {
     
-     Session session = HibernateUtil.getSessionFactory().openSession();
 	
 	public ControladorReceta(){
-//		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-//		session.beginTransaction();
+//		 
 
 	}
         
         public Recetas obtenerRecetaPorId(int idReceta){
-           session = HibernateUtil.getSessionFactory().openSession();
-           session.beginTransaction();
+            
+           Application.session.beginTransaction();
 
            Recetas r = new Recetas();
             
-           Query query = session.getNamedQuery("Recetas.findByIdReceta"); 
+           Query query =  Application.session.getNamedQuery("Recetas.findByIdReceta"); 
            query.setParameter("idReceta", idReceta);
            r = (Recetas) query.getSingleResult();
-                   
            
-           session.getTransaction().commit();
-           session.close();
+           Application.session.getTransaction().commit();
 
-           
            return r;
             
         }
         
         public int crearReceta(Recetas receta){
                        
-            session.beginTransaction();
+             Application.session.beginTransaction();
+             
+             int id = (int) Application.session.save(receta);
 
-            return (Integer)session.save(receta);
+             return id;
             
         }
         
         public void agregarInsumoReceta(InsumoRecetas ir){
             
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(ir);
-            session.getTransaction().commit();
+             Application.session.beginTransaction();
+             Application.session.save(ir);
+             Application.session.getTransaction().commit();
             
-            session.close();
+             Application.session.close();
             
         }
         
         public void borrarReceta(Recetas r){
                        
-            session = HibernateUtil.getSessionFactory().openSession();
-
-            session.beginTransaction();
+             Application.session.beginTransaction();
             
-            session.delete(r);
+             Application.session.delete(r);
             
-            session.getTransaction().commit();
+             Application.session.getTransaction().commit();
 
 
         }
         
          public void abrirSesion() {
             
-            session = HibernateUtil.getSessionFactory().openSession();
-//            session.beginTransaction();
+//             Application.session.beginTransaction();
 		
 	}
         
         public void cerrarSesion() {
             
-            session.close();
+//             Application.session.close();
 		
 	}
 	

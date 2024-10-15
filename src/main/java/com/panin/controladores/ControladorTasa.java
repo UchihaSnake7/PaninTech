@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.db.ConexionDB;
 import com.panin.entidades.Tasa;
 import jakarta.persistence.EntityManager;
@@ -17,44 +18,43 @@ import jakarta.persistence.TypedQuery;
 
 public class ControladorTasa {
 	
-//	ConexionDB conexionDB;
-//       @PersistenceContext(unitName = "com.panin_PaninTech")
-//       private EntityManager em;
-       Session session = HibernateUtil.getSessionFactory().openSession();
 
 	
 	public ControladorTasa(){
-//		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
-		session.beginTransaction();
 
 	}
 	
 	
 	//Ejemplo de metodo para obtener todos los productos de la db
 	public List<Tasa> obtenerTasas() {
+                         
+            Application.session.beginTransaction();
+
 		List<Tasa> Tasas;
 			
-                     TypedQuery query = session.getNamedQuery("Tasa.findAll");   
+                     TypedQuery query =  Application.session.getNamedQuery("Tasa.findAll");   
 		        Tasas = query.getResultList();
 	       
-                session.getTransaction().commit();
-                //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
+                 Application.session.getTransaction().commit();
+               
                 
                 return query.getResultList();
 	}
         
          public void crearTasa(Tasa tasa){
+             
+             Application.session.beginTransaction();
             
-            session.save(tasa);
-            
+             Application.session.save(tasa);
+             
+             Application.session.getTransaction().commit();
+
         }
 	
 	
 	public void cerrarSesion() {
             
-//            session.getTransaction().commit();
-            session.close();
+//             Application.session.close();
 		
 	}
 	

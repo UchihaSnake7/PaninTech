@@ -246,7 +246,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
             
             ControladorReceta cr = new ControladorReceta();
             int idReceta = cr.crearReceta(r);
-            cr.cerrarSesion();
+//            cr.cerrarSesion();
 
             for (formAgregarInsumoProductoDTO dto : panelContenidoReceta1.getListaDTO()) {
 
@@ -285,11 +285,11 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
 
             BigDecimal precio = cp.calcularPrecioProduccion(p, Integer.valueOf(textFieldCantidadPorReceta.getText()));
             p.setPrecioProduccion(precio.doubleValue());
-            cp.abrirSesion();
+//            cp.abrirSesion();
             cp.actualizarProducto(p);
 
             
-            cp.cerrarSesion();
+//            cp.cerrarSesion();
             
             
         } else if (comboboxTipoProducto.getSelectedItem().equals("Comprado")) {
@@ -305,16 +305,12 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
             p.setPrecioVenta(0);
             p.setIdReceta(1);
             
-            
             cp.crearProducto(p);
-            cp.cerrarSesion();
-            
-
+//            cp.cerrarSesion();
             
         }
         
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
-        
         
         Application.showForm(new PanelNuevoProducto());
         

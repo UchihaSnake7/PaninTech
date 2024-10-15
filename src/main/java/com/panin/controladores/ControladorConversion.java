@@ -5,6 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.HibernateUtil;
+import com.panin.application.Application;
 import com.panin.entidades.Conversion;
 import com.panin.entidades.UnidadMedida;
 import jakarta.persistence.TypedQuery;
@@ -16,7 +17,6 @@ import org.hibernate.Session;
  * @author USUARIO
  */
 public class ControladorConversion {
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
     public ControladorConversion() {
 //		 conexionDB = new ConexionDB("jdbc:mysql://localhost:3306/panin","root","root");
@@ -24,26 +24,26 @@ public class ControladorConversion {
     }
 
     public List<Conversion> obtenerTipoMedida() {
-        session.beginTransaction();
+         Application.session.beginTransaction();
         List<Conversion> Conversion;
 
-        TypedQuery query = session.getNamedQuery("Conversion.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("Conversion.findAll");
 
         Conversion = query.getResultList();
 
-        session.getTransaction().commit();
+         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
-//                session.close();
-        session.close();
+//                 Application.session.close();
+         Application.session.close();
         return Conversion;
 
     }
 
     public Conversion obtenerFactorConversion(UnidadMedida base, UnidadMedida derivada) {
-        session.beginTransaction();
+         Application.session.beginTransaction();
         List<Conversion> Conversion;
 
-        TypedQuery query = session.getNamedQuery("Conversion.findByConversionUnidadBase");
+        TypedQuery query =  Application.session.getNamedQuery("Conversion.findByConversionUnidadBase");
       
         query.setParameter("unidadBase", base);
         query.setParameter("unidadDerivada", derivada);
@@ -53,15 +53,15 @@ public class ControladorConversion {
 //        if (Conversion.size() == 0) {
 //            Conversion.add(unidadMedida);
 //        }
-        session.getTransaction().commit();
+         Application.session.getTransaction().commit();
 
-        session.close();
+         Application.session.close();
         return Conversion.get(0);
 
     }
 
     public void cerrarSesion() {
-        session.close();
+         Application.session.close();
 
     }
 }
