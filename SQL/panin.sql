@@ -284,7 +284,7 @@ CREATE TABLE usuario (
     activo TINYINT(1) NOT NULL
 );
 INSERT INTO usuarios (username, correo_electronico, contrasena, activo)
-VALUES ('admin', 'admin@example.com', '1234', 1);
+VALUES ('admin', 'admin@example.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');

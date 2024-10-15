@@ -7,13 +7,15 @@ import java.awt.Component;
 import java.awt.Container;
 import com.panin.controladores.ControladorUsuario;
 import com.panin.entidades.Usuario;
+
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
 import java.awt.LayoutManager;
-
+import org.apache.commons.codec.digest.DigestUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import static java.util.Objects.hash;
 import java.util.Set;
 import raven.toast.Notifications;
 
@@ -47,7 +49,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
         setLayout(new CambioLayout());
         Cambio.putClientProperty(FlatClientProperties.STYLE, "" + "background:$Login.background;" + "arc:20");
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,10 +167,14 @@ public class FormCrearUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            Usuario cr = new Usuario();
+            
+        Usuario cr = new Usuario();
             cr.setUsername(Usuario.getText());
             cr.setCorreoElectronico(Correo.getText());
-            cr.setContrasena(Clave.getText());
+            String claveE= encriptarclave(Clave.getText());
+            
+           // String hashedPassword = hash.getResult();
+            cr.setContrasena(claveE);  
             cr.setActivo(true);
             ControladorUsuario ct = new ControladorUsuario();
             ct.crearUsuario(cr);
@@ -177,6 +183,13 @@ public class FormCrearUsuario extends javax.swing.JPanel {
             Application.showForm(new FormDashboard());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private String encriptarclave(String clave) {
+      String hash = DigestUtils.md5Hex(clave);
+        return hash;  
+    }
+ 
+    
+     
     private class CambioLayout implements LayoutManager {
 
         @Override

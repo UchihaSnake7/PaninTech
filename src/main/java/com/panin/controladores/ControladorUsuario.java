@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-
+import org.apache.commons.codec.digest.DigestUtils;
 import com.panin.HibernateUtil;
 import com.panin.db.ConexionDB;
 import com.panin.entidades.Usuario;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -57,6 +58,11 @@ public class ControladorUsuario {
             session.close();
 		
 	}
+      
+        
+      
+       
+   
 	
 
 }
