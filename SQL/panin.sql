@@ -292,6 +292,16 @@ VALUES ('PORCANTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
 INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
 
-IN  SERT INTO panin.configuracion (clave, valor, descripcion)
+INSERT INTO panin.configuracion (clave, valor, descripcion)
 VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
+ 
+--  ecortez 15/10/2024
+
+alter table producto
+    add id_tipo_medida int null;
+
+alter table producto
+    add constraint producto_ibfk_1
+ foreign key (id_tipo_medida) references tipo_medida (id_tipo_medida);
+
 
