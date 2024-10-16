@@ -66,7 +66,7 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
     @Column(name = "hora")
     @Temporal(TemporalType.TIME)
     private Date hora;
-    @JoinColumn(name = "marca_insumo", referencedColumnName = "id")
+    @JoinColumn(name = "marca", referencedColumnName = "id")
     @ManyToOne
     private MarcaInsumo marcaInsumo;
 
@@ -79,9 +79,9 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
     @JoinColumn(name = "producto", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Producto producto;
-    @JoinColumn(name = "unidad_medida_id", referencedColumnName = "id_unidad", nullable = false)
+    @JoinColumn(name = "unidad_medida", referencedColumnName = "id_unidad", nullable = false)
     @ManyToOne(optional = false)
-    private UnidadMedida unidadMedidaId;
+    private UnidadMedida unidadMedida;
 
     
 
@@ -94,20 +94,20 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
     }
 
 
-    public Producto getInsumo() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setInsumo(Producto producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
-    public UnidadMedida getUnidadMedidaId() {
-        return unidadMedidaId;
+    public UnidadMedida getUnidadMedida() {
+        return unidadMedida;
     }
 
-    public void setUnidadMedidaId(UnidadMedida unidadMedidaId) {
-        this.unidadMedidaId = unidadMedidaId;
+    public void setUnidadMedida(UnidadMedida unidadMedida) {
+        this.unidadMedida = unidadMedida;
     }
 
     @Override

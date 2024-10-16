@@ -8,7 +8,9 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.utilities.VerificarIngresoNumero;
+import com.panin.controladores.ControladorComprasProductos;
 import com.panin.controladores.ControladorMarcaInsumo;
+import com.panin.entidades.ComprasProducto;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.MarcaInsumo;
 import com.panin.entidades.Producto;
@@ -16,9 +18,12 @@ import com.panin.entidades.UnidadMedida;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.SwingConstants;
+import raven.toast.Notifications;
 
 /**
  *
@@ -299,11 +304,29 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+        
+        
         String precio = textoHint1.getText();
         String cantidad = textoCantidad.getText();
         precio = precio.replace(",", ".");
         cantidad = cantidad.replace(",", ".");
+                
+        ComprasProducto cp = new ComprasProducto();
+        cp.setCantidad(new BigDecimal(cantidad));
+        cp.setPrecio(new BigDecimal(precio));
+        cp.setMarcaInsumo((MarcaInsumo) jComboBoxMarca.getSelectedItem());
+        UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
 
+        cp.setUnidadMedida((UnidadMedida) jUnidad.getSelectedItem());
+        cp.setProducto(producto);
+        cp.setFecha(jDateChooser2.getDate());
+        cp.setHora(jDateChooser2.getDate());
+
+        ControladorComprasProductos ccp = new ControladorComprasProductos();
+
+        ccp.save(cp);
+        
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Compra registrada con exito");
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 

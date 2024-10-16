@@ -102,13 +102,10 @@ public class LoginForm extends javax.swing.JPanel {
 
         usuario = cr.obtenerUsuario(user);
         boolean usuarioEncontrado = false;
-        System.out.println("Clave encriptada: " + claveE);
         if (usuario != null) {
             if (usuario.getContrasena().equals(claveE)) {
                 Application.setUser(usuario);
                 usuarioEncontrado = true;
-                System.out.println("cambio en el if");
-
             }
         }
 

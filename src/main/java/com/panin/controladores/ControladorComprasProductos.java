@@ -27,7 +27,6 @@ import org.hibernate.Session;
 public class ControladorComprasProductos {
 
     public ControladorComprasProductos() {
-//          Application.session.beginTransaction();
     }
 
     public List<ComprasProducto> obtenerComprasInsumos() {
@@ -80,18 +79,20 @@ public class ControladorComprasProductos {
         return comprasProductos;
     }
 
-    public boolean save(ComprasProducto compra) {
-        try {
+    public void save(ComprasProducto compra) {
+//        try {
+//            Application.session.beginTransaction();
+//            Application.session.save(compra);
+//            Application.session.getTransaction().commit();
+//            return true;
+//
+//        } catch (Exception e) {
+//            return false;
+//        }
+
             Application.session.beginTransaction();
             Application.session.save(compra);
-            System.out.println(Application.session.getTransaction().getStatus());
-//             Application.session.close();
             Application.session.getTransaction().commit();
-            return true;
-
-        } catch (Exception e) {
-            return false;
-        }
 
     }
 

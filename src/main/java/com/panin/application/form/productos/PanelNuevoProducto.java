@@ -334,7 +334,6 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         }
         
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Producto creado con exito");
-        
         Application.showForm(new PanelNuevoProducto());
         
         }

@@ -131,19 +131,8 @@ public class ControladorProductos {
                listaInsumosReceta.add(dto);
                
                ComprasInsumo ci = cpi.obtenerComprasdeUnInsumoUnico(ir.getIdInsumo());
-               
-//               
-//               System.out.print("\nci.getPrecio() " + ci.getPrecio().toString());
-//               System.out.print("\nir.getCantidad() " + ir.getCantidad().toString());
-//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()) " + ci.getPrecio().multiply(ir.getCantidad()).toString());
-//
-//               System.out.print("\ncantidadCalculada " + cantidadCalculada);
-//               System.out.print("\n ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)) " + ci.getPrecio().multiply(ir.getCantidad()).multiply(BigDecimal.valueOf(cantidadCalculada)));
-
 
                precioTotal = (ci.getPrecio().multiply(ir.getCantidad())).multiply(BigDecimal.valueOf(cantidadCalculada)).doubleValue();
-               
-//               System.out.print("\nprecioTotal " + precioTotal);
 
                 if(modelTable.length > 0 ){
                                   
