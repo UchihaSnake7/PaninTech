@@ -35,7 +35,7 @@ public class ControladorTipoMedida {
 
          Application.session.getTransaction().commit();
      
-         Application.session.close();
+//         Application.session.close();
          
         return tiposMedida;
 

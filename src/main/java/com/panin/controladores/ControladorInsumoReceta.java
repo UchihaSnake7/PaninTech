@@ -35,7 +35,7 @@ public class ControladorInsumoReceta {
 
          Application.session.getTransaction().commit();
 
-         Application.session.close();
+//         Application.session.close();
         return InsumosRecetas;
 
     }

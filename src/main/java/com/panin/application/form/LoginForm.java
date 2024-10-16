@@ -9,6 +9,7 @@ import com.panin.entidades.Usuarios;
 import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import raven.toast.Notifications;
+
 /**
  *
  * @author Raven
@@ -25,7 +26,7 @@ public class LoginForm extends javax.swing.JPanel {
 
         lbTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$h1.font");
-        
+
         txtPass.putClientProperty(FlatClientProperties.STYLE, ""
                 + "showRevealButton:true;"
                 + "showCapsLock:true");
@@ -91,44 +92,40 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        String  user = txtUser.getText();
-        
-         String claveE= encriptarclave(String.valueOf(txtPass.getPassword()));
-            
-           // String hashedPassword = hash.getResult();
-           
-        ControladorUsuario cr = new ControladorUsuario();
-        List<Usuarios> listaUsuarios;
-        
-        listaUsuarios = cr.obtenerUsuarios();
-        boolean usuarioEncontrado = true;
-        System.out.println("Clave encriptada: " + claveE);
+        String user = txtUser.getText();
 
-    for (Usuarios usuarioBD : listaUsuarios) {
-        System.out.println("entro en el for " );
-        
-        if (usuarioBD.getUsername().equals(user) &&
-            usuarioBD.getContrasena().equals(claveE)) {
-            Application.setUser(usuarioBD);
-            usuarioEncontrado = true;
-            System.out.println("cambio en el if" );
-            break;
+        String claveE = encriptarclave(String.valueOf(txtPass.getPassword()));
+
+        // String hashedPassword = hash.getResult();
+        ControladorUsuario cr = new ControladorUsuario();
+        Usuarios usuario;
+
+        usuario = cr.obtenerUsuario(user);
+        boolean usuarioEncontrado = false;
+        System.out.println("Clave encriptada: " + claveE);
+        if (usuario != null) {
+            if (usuario.getContrasena().equals(claveE)) {
+                Application.setUser(usuario);
+                usuarioEncontrado = true;
+                System.out.println("cambio en el if");
+
+            }
         }
-    }
-     if (usuarioEncontrado) {
-        // El usuario y la contraseña son válidos, iniciar sesión
-        Application.login();
-        
-    } else {
-        // Mostrar un mensaje de error indicando que las credenciales son incorrectas
-         Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Usuario o Clave equivocada");
-    }
-   
+
+        if (usuarioEncontrado) {
+            // El usuario y la contraseña son válidos, iniciar sesión
+            Application.login();
+
+        } else {
+            // Mostrar un mensaje de error indicando que las credenciales son incorrectas
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Usuario o Clave equivocada");
+        }
+
     }//GEN-LAST:event_cmdLoginActionPerformed
 
-     private String encriptarclave(String clave) {
-      String hash = DigestUtils.md5Hex(clave);
-        return hash;  
+    private String encriptarclave(String clave) {
+        String hash = DigestUtils.md5Hex(clave);
+        return hash;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdLogin;

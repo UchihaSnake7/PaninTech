@@ -20,8 +20,10 @@ import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.form.productos.PanelIngresarProducto;
 import com.panin.application.form.insumos.PanelIngresarInsumo;
+import com.panin.application.form.productos.PanelIngresarCompra;
 import com.panin.application.form.productos.PanelVerDatosProducto;
 import com.panin.entidades.Insumo;
+import com.panin.entidades.Producto;
 
 /**
  *
@@ -61,6 +63,15 @@ public class Card extends javax.swing.JPanel {
     private int speed = 3;
     private boolean showing = false;
     private Insumo insumo;
+    private Producto producto;
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     public Insumo getInsumo() {
         return insumo;
@@ -137,16 +148,20 @@ public class Card extends javax.swing.JPanel {
                         Application.showForm(new PanelIngresarProducto(data));
                         break;
                     }
-                    
-                     case ("PanelVerDatosProducto"): {
+
+                    case ("PanelVerDatosProducto"): {
 
                         Application.showForm(new PanelVerDatosProducto(data));
                         break;
                     }
-                    
+
                     case ("PanelIngresarInsumo"): {
 
                         Application.showForm(new PanelIngresarInsumo(data, insumo));
+                        break;
+                    }
+                    case ("FormCompraProductos"): {
+                        Application.showForm(new PanelIngresarCompra(data, producto));
                         break;
                     }
                     default:

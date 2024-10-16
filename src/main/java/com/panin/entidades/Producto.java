@@ -21,6 +21,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 import com.panin.application.utilities.tipoProducto;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 /**
  *
@@ -66,6 +68,10 @@ public class Producto implements Serializable {
 
     @Column(name = "id_receta")
     private Integer idReceta;
+    
+    @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
+    @ManyToOne
+    private TipoMedida idTipoMedida;
 
     public Producto() {
     }
@@ -154,6 +160,15 @@ public class Producto implements Serializable {
         }
         return true;
     }
+
+    public TipoMedida getIdTipoMedida() {
+        return idTipoMedida;
+    }
+
+    public void setIdTipoMedida(TipoMedida idTipoMedida) {
+        this.idTipoMedida = idTipoMedida;
+    }
+    
 
     @Override
     public String toString() {

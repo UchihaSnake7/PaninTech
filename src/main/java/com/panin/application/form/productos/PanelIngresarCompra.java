@@ -2,100 +2,67 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.panin.application.form.insumos;
+package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
-import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.other.Model_Card;
-import com.panin.controladores.ControladorComprasInsumos;
-import com.panin.controladores.ControladorConversion;
-import com.panin.controladores.ControladorInsumos;
+import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorMarcaInsumo;
-import com.panin.controladores.ControladorUnidadMedida;
-import com.panin.entidades.ComprasInsumo;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.MarcaInsumo;
+import com.panin.entidades.Producto;
 import com.panin.entidades.UnidadMedida;
-import com.toedter.calendar.JTextFieldDateEditor;
-import com.toedter.calendar.MinMaxDateEvaluator;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import org.hibernate.Hibernate;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.sql.Time;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.SwingConstants;
-import javax.swing.text.MaskFormatter;
-import raven.toast.Notifications;
 
 /**
  *
  * @author USUARIO
  */
-public class PanelIngresarInsumo extends javax.swing.JPanel {
+public class PanelIngresarCompra extends javax.swing.JPanel {
+
+    private Producto producto;
 
     /**
-     * Creates new form PanelIngresarProducto
+     * Creates new form PanelIngresarCompra
      */
-    public PanelIngresarInsumo() {
-//        jIcon.setIcon(data.getIcon());
-//        System.out.println(data.getTitle());
-//        initComponents();
-//        jTitle.setText(data.getTitle());
-//        jIcon.setIcon(data.getIcon());
-        setLayout(new MigLayout("al center center"));
-    }
-    
-    public PanelIngresarInsumo(Model_Card data, Insumo insumo) {
-        
-        NumberFormat format = NumberFormat.getNumberInstance();
-        this.insumoC = insumo;
-//        MaskFormatter maskFormatter = new MaskFormatter("####.###,##");
-//        jIcon.setIcon(data.getIcon());
-//        Hibernate.initialize(insumo.getIdTipoMedida().getUnidadMedidaCollection());
-        ControladorInsumos ci = new ControladorInsumos();
-        System.out.println(insumo.getIdTipoMedida().getUnidadMedidaCollection());
-
-//         modeloComboBoxUnidadMedida = new ModeloComboBoxUnidadMedida((List<UnidadMedida>) insumo.getIdTipoMedida().getUnidadMedidaCollection());
+    public PanelIngresarCompra(Model_Card data, Producto producto) {
+        this.producto = producto;
         initComponents();
+        init();
         jTitle.setText(data.getTitle());
         jIcon.setIcon(data.getIcon());
+        VerificarIngresoNumero.verificar(textoHint1);
+        VerificarIngresoNumero.verificar(textoCantidad);
+        jDateChooser2.setDate(new Date());
+        jDateChooser2.setMaxSelectableDate(new Date());
 
-//        jUnidad.setModel(modeloComboBoxUnidadMedida);
-        for (UnidadMedida item : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
+    }
+
+    private void init() {
+        for (UnidadMedida item : producto.getIdTipoMedida().getUnidadMedidaCollection()) {
             jUnidad.addItem(item);
         }
-        
+
         UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
         if (medidaSeleccionada != null) {
             lblUnidad.setText(medidaSeleccionada.getNombre());
         }
-        
+
         ControladorMarcaInsumo controladorMarcaInsumo = new ControladorMarcaInsumo();
         List<MarcaInsumo> marcas = controladorMarcaInsumo.obtenerMarcasInsumos();
-        
+
         for (MarcaInsumo marca : marcas) {
             jComboBoxMarca.addItem(marca);
             if (marca.getNombre().equals("NA")) {
                 jComboBoxMarca.setSelectedItem(marca);
             }
         }
-        
         jTitle.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -104,23 +71,23 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 + "foreground:$Menu.foreground;");
         lblUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         textoCantidad.setHint("Ingrese Cantidad...");
-        
+
         textoCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
         textoCantidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         textoHint1.setHint("Ingrese Precio...");
         textoHint1.setHorizontalAlignment(SwingConstants.RIGHT);
         textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
-        
+
         jUnidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         jBtnAtras.putClientProperty(FlatClientProperties.STYLE, ""
@@ -132,17 +99,19 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         panel.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:50;");
+        actualizarUnidadMedida();
+//        validarCalendario();
+    }
 
-//        int x = (getWidth() + 50 - panel.getWidth()) / 2;
-//        int y = (getHeight() - panel.getHeight()) / 2;
-//        
-//        panel.setLocation(x, y);
-//        setLayout(new MigLayout("al center center"));
-//        setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
-        validarCalendario();
-        verificarIngresoNumero();
-        actualizarUnidadMedida(insumo);
-        panelRegistrosInsumos1.iniciar(insumo);
+    private void actualizarUnidadMedida() {
+        jUnidad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
+                lblUnidad.setText(medidaSeleccionada.getNombre());
+
+            }
+        });
     }
 
     /**
@@ -154,7 +123,6 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jBtnOk = new javax.swing.JButton();
@@ -171,7 +139,6 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBoxMarca = new javax.swing.JComboBox<>();
-        panelRegistrosInsumos1 = new com.panin.application.form.insumos.panelRegistrosInsumos();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cantidad:");
@@ -242,7 +209,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 .addComponent(jTitle)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -276,17 +243,17 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(30, 30, 30)
                         .addComponent(jIcon))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(40, 40, 40)
                         .addComponent(jTitle)))
                 .addGap(40, 40, 40)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,107 +280,44 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12)))
-                .addGap(28, 28, 28))
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(panelRegistrosInsumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
-        Application.showForm(new FormIngresarInsumo());
-    }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         String precio = textoHint1.getText();
         String cantidad = textoCantidad.getText();
         precio = precio.replace(",", ".");
         cantidad = cantidad.replace(",", ".");
-        
-        try {
-            
-            if (textoHint1.getText() == null || precio.length() == 0 || textoHint1.getText().equals(" ")) {
-                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese el Precio del Insumo...");
-            } else if (textoCantidad.getText() == null || cantidad.length() == 0 || textoCantidad.getText().equals(" ")) {
-                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la cantidad commprada...");
-            } else if (jDateChooser2.getDate() == null) {
-                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la fecha de compra...");
-            } else {
-                
-                ControladorUnidadMedida cmd = new ControladorUnidadMedida();
-                UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
-                UnidadMedida umb;
-                BigDecimal cantidadCalculada = new BigDecimal(cantidad);
-                BigDecimal precioCalculado = new BigDecimal(precio);
-                
-                if (!um.isUnidadBase()) {
-                    ControladorConversion cc = new ControladorConversion();
-                    umb = cmd.obtenerUnidadBase(um);
-                    
-                    BigDecimal factorConversion = cc.obtenerFactorConversion(um, umb).getFactorConversion();
-                    
-                    cantidadCalculada = cantidadCalculada.multiply(factorConversion);
-                    
-                } else {
-                    umb = um;
-                }
-                precioCalculado = precioCalculado.divide(cantidadCalculada, 6, RoundingMode.HALF_UP);
-                ComprasInsumo compraInsumo = new ComprasInsumo();
-                compraInsumo.setInsumo(insumoC);
-                compraInsumo.setPrecio(precioCalculado);
-                compraInsumo.setCantidad(cantidadCalculada);
-                compraInsumo.setFecha(jDateChooser2.getDate());
-                compraInsumo.setUnidadMedidaId(umb);
-                compraInsumo.setHora(new Time(new Date().getTime()));
-                compraInsumo.setMarcaInsumo((MarcaInsumo)jComboBoxMarca.getSelectedItem());
-                
-                ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
-                if (controladorComprasInsumos.save(compraInsumo)) {
-                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Compra Registrada con Exito!");
-                    textoHint1.setText("");
-                    textoHint1.setHint("Ingrese Precio...");
-                    textoCantidad.setText("");
-                    textoCantidad.setHint("Ingrese Cantidad...");
-                    panelRegistrosInsumos1.agregarCompra(compraInsumo);
-                } else {
-                    Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error al crear compra");
-                }
-                
-            }
-        } catch (Exception e) {
-            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno del sistema");
-            System.err.println(e);
-        }
+
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 
-    private void textoHint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoHint1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoHint1ActionPerformed
+    private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
+        Application.showForm(new FormCompraProductos());
+    }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void textoCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCantidadActionPerformed
+
+    private void textoHint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoHint1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoHint1ActionPerformed
 
     private void jUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUnidadActionPerformed
         // TODO add your handling code here:
@@ -425,7 +329,6 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private javax.swing.JButton jBtnOk;
     private javax.swing.JComboBox<MarcaInsumo
     > jComboBoxMarca;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jIcon;
     private javax.swing.JLabel jLabel1;
@@ -437,105 +340,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private javax.swing.JComboBox<UnidadMedida> jUnidad;
     private javax.swing.JLabel lblUnidad;
     private javax.swing.JPanel panel;
-    private com.panin.application.form.insumos.panelRegistrosInsumos panelRegistrosInsumos1;
     private com.panin.application.utilities.TextoHint textoCantidad;
     private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables
-    private Insumo insumoC;
-    
-    public Insumo getInsumoC() {
-        return insumoC;
-    }
-    
-    public void setInsumoC(Insumo insumoC) {
-        this.insumoC = insumoC;
-    }
-    
-    private void verificarIngresoNumero() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//textoCantidad.addKeyListener(new KeyAdapter() {
-        textoCantidad.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textoCantidad.getText();
-
-                // Permitir números, coma y signo negativo al inicio
-                if (!(Character.isDigit(c) || c == ',')) {
-                    ke.consume();
-                    return;
-                }
-                if (text.length() >= 12) {
-                    ke.consume();
-                    return;
-                }
-
-                // Permitir solo una coma
-                if (c == ',' && text.contains(",")) {
-                    ke.consume();
-                }
-
-                // Limitar a cuatro decimales
-                int index = text.indexOf(',');
-                if (index >= 0 && text.length() - index - 1 > 3) {
-                    ke.consume();
-                }
-            }
-        });
-        
-        textoHint1.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textoHint1.getText();
-
-                // Permitir números, coma y signo negativo al inicio
-                if (!(Character.isDigit(c) || c == ',')) {
-                    ke.consume();
-                    return;
-                }
-                if (text.length() >= 12) {
-                    ke.consume();
-                    return;
-                }
-
-                // Permitir solo una coma
-                if (c == ',' && text.contains(",")) {
-                    ke.consume();
-                }
-
-                // Limitar a cuatro decimales
-                int index = text.indexOf(',');
-                if (index >= 0 && text.length() - index - 1 > 3) {
-                    ke.consume();
-                }
-            }
-        });
-        
-    }
-    
-    private void actualizarUnidadMedida(Insumo insumo) {
-        jUnidad.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UnidadMedida medidaSeleccionada = (UnidadMedida) jUnidad.getSelectedItem();
-                lblUnidad.setText(medidaSeleccionada.getNombre());
-                
-            }
-        });
-    }
-    
-    private void validarCalendario() {
-
-        jDateChooser2.setDate(new Date());
-        jDateChooser2.setMaxSelectableDate(new Date());
-        
-    }
-    
-}
-
-class RangeEvaluator extends MinMaxDateEvaluator {
-    
-    @Override
-    public boolean isInvalid(Date date) {
-        return !super.isInvalid(date);
-    }
 }

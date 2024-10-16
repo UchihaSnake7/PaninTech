@@ -172,6 +172,21 @@ public class ControladorProductos {
 
         return query.getResultList();
     }
+    
+      public List<Producto> obtenerProductosComprados() {
+        
+        Application.session.beginTransaction();
+        List<Producto> productos;
+
+        TypedQuery query =  Application.session.getNamedQuery("Producto.findByTipo");
+        query.setParameter("tipo", tipoProducto.Comprado);
+
+        productos = query.getResultList();
+
+         Application.session.getTransaction().commit();
+
+        return query.getResultList();
+    }
 
     public void crearProducto(Producto producto) {
 

@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE hibernate-configuration PUBLIC  
-   "-//Hibernate/Hibernate Configuration DTD 6.2.7//EN"  
-   "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">  
+<!DOCTYPE hibernate-configuration PUBLIC
+   "-//Hibernate/Hibernate Configuration DTD 6.2.7//EN"
+   "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
-<hibernate-configuration>  
-   <session-factory>  
-      <property name="hbm2ddl.auto">update</property>  
-      <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>  
+<hibernate-configuration>
+   <session-factory>
+      <property name="hbm2ddl.auto">update</property>
+      <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
       <!-- <property name="connection.url">jdbc:mysql://root:qWupeJjHvRBtuRWEOqmnOcXPfnWinuno@autorack.proxy.rlwy.net:29817/panin</property>   -->
-      <!-- <property name="connection.url">jdbc:mysql://root:qWupeJjHvRBtuRWEOqmnOcXPfnWinuno@autorack.proxy.rlwy.net:29817/panin</property>   -->
-        <property name="connection.username">root</property>  
+      <property name="connection.url">jdbc:mysql://root:qWupeJjHvRBtuRWEOqmnOcXPfnWinuno@autorack.proxy.rlwy.net:29817/panin</property>
+        <!-- <property name="connection.username">root</property> -->
 
-         <property name="connection.url">jdbc:mysql://localhost:3306/panin</property>
+         <!-- <property name="connection.url">jdbc:mysql://localhost:3306/panin</property> -->
       <!-- <property name="connection.password">qWupeJjHvRBtuRWEOqmnOcXPfnWinuno</property>   -->
 <!-- <property name="connection.password">12345</property>   -->
 
-      <property name="connection.password">qWupeJjHvRBtuRWEOqmnOcXPfnWinuno</property>  
+      <!-- <property name="connection.password">qWupeJjHvRBtuRWEOqmnOcXPfnWinuno</property> -->
 <!-- <property name="connection.password">12345</property>   -->
-     
-      <!-- <property name="connection.username">root</property>  
+
+      <!-- <property name="connection.username">root</property>
       <property name="connection.password">12345</property>   -->
-      <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>  
-      
+      <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
 <!--      Sintaxis para mapear entidades directamente-->
-      <mapping class="com.panin.entidades.Producto"/>  
+      <mapping class="com.panin.entidades.Producto"/>
       <mapping class="com.panin.entidades.Insumo"/>
-      <mapping class="com.panin.entidades.TipoMedida"/>    
-      <mapping class="com.panin.entidades.UnidadMedida"/> 
+      <mapping class="com.panin.entidades.TipoMedida"/>
+      <mapping class="com.panin.entidades.UnidadMedida"/>
       <mapping class="com.panin.entidades.Conversion"/>
-      <mapping class="com.panin.entidades.ComprasInsumo"/>  
-      <mapping class="com.panin.entidades.Conversion"/> 
-      <mapping class="com.panin.entidades.Recetas"/>  
-      <mapping class="com.panin.entidades.InsumoRecetas"/> 
-      <mapping class="com.panin.entidades.Tasa"/> 
-      <mapping class="com.panin.entidades.MarcaInsumo"/> 
-       <mapping class="com.panin.entidades.Usuarios"/> 
-  
-          
+      <mapping class="com.panin.entidades.ComprasInsumo"/>
+      <mapping class="com.panin.entidades.Conversion"/>
+      <mapping class="com.panin.entidades.Recetas"/>
+      <mapping class="com.panin.entidades.InsumoRecetas"/>
+      <mapping class="com.panin.entidades.Tasa"/>
+      <mapping class="com.panin.entidades.MarcaInsumo"/>
+       <mapping class="com.panin.entidades.Usuarios"/>
+
+
 <!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->
 <!--      <mapping resource="Producto.hbm.xml"/>  -->
-   </session-factory>  
+   </session-factory>
 </hibernate-configuration>

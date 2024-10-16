@@ -12,6 +12,7 @@ com\panin\application\form\MainForm$MainFormLayout.class
 com\panin\entidades\Conversion.class
 com\panin\controladores\ControladorComprasProductos.class
 com\panin\controladores\ControladorComprasInsumos.class
+com\panin\application\form\productos\PanelIngresarCompra$1.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
 com\panin\application\form\productos\panelMostrarProductos.class
@@ -45,6 +46,7 @@ com\panin\application\form\insumos\panelRegistrosInsumos$2.class
 com\panin\application\utilities\PanelAction$1.class
 com\panin\application\form\insumos\crear\PanelDeInsumo$2.class
 com\panin\application\form\insumos\Model_Card.class
+com\panin\application\form\productos\PanelIngresarCompra$2.class
 com\panin\application\form\insumos\PanelIngresarInsumo$5.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$1.class
 com\panin\application\form\other\Card$1.class
@@ -55,9 +57,11 @@ com\panin\controladores\ControladorUnidadMedida.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN.class
 com\panin\application\form\productos\panelContenidoReceta$1.class
 com\panin\application\form\productos\frameIngresarInsumoReceta.class
+com\panin\application\form\productos\PanelIngresarCompra.class
 com\panin\application\form\insumos\PanelIngresarInsumo$3.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
+com\panin\application\form\productos\PanelIngresarCompra$3.class
 com\panin\application\form\insumos\FormVerInsumos$1.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$1.class
 com\panin\controladores\ControladorMarcaInsumo.class
@@ -68,10 +72,12 @@ com\panin\application\form\insumos\PanelIngresarInsumo$2.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$1.class
 com\panin\menu\PopupSubmenu.class
 com\panin\application\form\other\VistaProductos.class
+com\panin\application\form\productos\PanelIngresarCompra$6.class
 com\panin\application\utilities\PanelAction$3.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\FormCrearUsuario$CambioLayout.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
+com\panin\application\form\productos\PanelIngresarCompra$5.class
 com\panin\application\form\other\formprueba.class
 com\panin\application\form\other\CardDescription.class
 com\panin\application\utilities\FormObjetoInsumo.class
@@ -86,6 +92,7 @@ com\panin\application\form\other\FormInbox.class
 com\panin\application\form\other\Card$3.class
 com\panin\application\form\productos\PanelVerDatosProducto$3.class
 com\panin\entidades\Usuarios.class
+com\panin\application\form\productos\PanelIngresarCompra$4.class
 com\panin\application\form\productos\PanelIngresarProducto.class
 com\panin\controladores\ControladorUsuario.class
 com\panin\application\utilities\WrapLayout.class
@@ -128,6 +135,7 @@ com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.class
 com\panin\application\form\LoginForm.class
 com\panin\entidades\Producto.class
 com\panin\application\form\LoginForm$1.class
+com\panin\application\form\productos\FormCompraProductos.class
 com\panin\application\form\productos\PanelVerDatosProducto$2.class
 com\panin\application\utilities\ModernScrollBarUI$InvisibleScrollBarButton.class
 com\panin\entidades\ComprasProducto.class

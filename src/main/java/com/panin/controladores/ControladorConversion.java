@@ -34,7 +34,7 @@ public class ControladorConversion {
          Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-         Application.session.close();
+//         Application.session.close();
         return Conversion;
 
     }
@@ -55,13 +55,13 @@ public class ControladorConversion {
 //        }
          Application.session.getTransaction().commit();
 
-         Application.session.close();
+//         Application.session.close();
         return Conversion.get(0);
 
     }
 
     public void cerrarSesion() {
-         Application.session.close();
+//         Application.session.close();
 
     }
 }
