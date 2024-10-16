@@ -56,7 +56,6 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         
         for (Insumo insumo : insumos) {
         	
-//        	System.out.println("Insumo: " + insumo.getDescripcion());
 		comboboxInsumos.addItem(insumo);	
 	}
         
