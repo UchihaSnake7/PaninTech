@@ -98,6 +98,7 @@ com\panin\controladores\ControladorUsuario.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\application\utilities\TabbedPaneCustom.class
 com\panin\menu\MenuAnimation.class
+com\panin\application\utilities\exportarTablaCSV.class
 com\panin\application\utilities\TableActionEvent.class
 com\panin\menu\ToolBarAccentColor.class
 com\panin\application\form\insumos\FormVerInsumos$2.class
@@ -154,6 +155,7 @@ com\panin\application\utilities\SearchHeader2$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
+com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$3.class
 com\panin\application\form\productos\FormAgregarNuevoProducto.class
 com\panin\controladores\ControladorProductos.class
 com\panin\application\form\productos\FormMostrarProductos.class

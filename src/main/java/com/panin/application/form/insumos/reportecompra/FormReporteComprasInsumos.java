@@ -5,6 +5,7 @@
 package com.panin.application.form.insumos.reportecompra;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import static com.panin.application.utilities.exportarTablaCSV.exportaraCSV;
 import com.panin.controladores.ControladorComprasInsumos;
 import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorInsumos;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import net.miginfocom.swing.MigLayout;
+import raven.toast.Notifications;
 
 /**
  *
@@ -64,6 +67,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jComboBoxInsumos = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        botonExportar = new javax.swing.JButton();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +97,13 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
             }
         });
 
+        botonExportar.setText("Exportar");
+        botonExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonExportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,14 +122,14 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(263, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBoxUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton1)
-                        .addGap(10, 10, 10))))
+                        .addGap(39, 39, 39)
+                        .addComponent(botonExportar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +147,8 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBoxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBoxUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addComponent(botonExportar)))
                 .addGap(1, 1, 1))
         );
 
@@ -209,8 +221,19 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void botonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExportarActionPerformed
+        // TODO add your handling code here:
+        
+        DateTimeFormatter timeStampPattern = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String ruta = "archivos/insumos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".csv";
+        exportaraCSV(table, ruta);
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Reporte generaro en : " + ruta);
+
+    }//GEN-LAST:event_botonExportarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonExportar;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<Insumo> jComboBoxInsumos;
     private javax.swing.JComboBox<UnidadMedida> jComboBoxUnidad;
