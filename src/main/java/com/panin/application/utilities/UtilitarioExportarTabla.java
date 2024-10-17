@@ -16,9 +16,9 @@ import javax.swing.table.TableModel;
  *
  * @author ricke
  */
-public class exportarTablaCSV {
+public class UtilitarioExportarTabla {
     
-    public static boolean exportaraCSV(JTable tabla,
+    public static boolean exportar(JTable tabla,
         String ruta) {
 
     try {
@@ -30,14 +30,14 @@ public class exportarTablaCSV {
         FileWriter csv = new FileWriter(file);
 
         for (int i = 0; i < model.getColumnCount(); i++) {
-            csv.write(model.getColumnName(i) + ",");
+            csv.write(model.getColumnName(i) + "\t");
         }
 
         csv.write("\n");
 
         for (int i = 0; i < model.getRowCount(); i++) {
             for (int j = 0; j < model.getColumnCount(); j++) {
-                csv.write(model.getValueAt(i, j).toString() + ",");
+                csv.write(model.getValueAt(i, j).toString() + "\t");
             }
             csv.write("\n");
         }

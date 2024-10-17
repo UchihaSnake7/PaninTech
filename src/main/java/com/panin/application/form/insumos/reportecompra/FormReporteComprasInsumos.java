@@ -5,7 +5,7 @@
 package com.panin.application.form.insumos.reportecompra;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import static com.panin.application.utilities.exportarTablaCSV.exportaraCSV;
+import static com.panin.application.utilities.UtilitarioExportarTabla.exportar;
 import com.panin.controladores.ControladorComprasInsumos;
 import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorInsumos;
@@ -225,8 +225,8 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         DateTimeFormatter timeStampPattern = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-        String ruta = "archivos/insumos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".csv";
-        exportaraCSV(table, ruta);
+        String ruta = "archivos/insumos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".tsv";
+        exportar(table, ruta);
         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Reporte generaro en : " + ruta);
 
     }//GEN-LAST:event_botonExportarActionPerformed
