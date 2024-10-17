@@ -227,7 +227,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         DateTimeFormatter timeStampPattern = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         String ruta = "archivos/insumos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".tsv";
         exportar(table, ruta);
-        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Reporte generaro en : " + ruta);
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Reporte generado en : " + ruta);
 
     }//GEN-LAST:event_botonExportarActionPerformed
 

@@ -51,7 +51,7 @@ public class LoginForm extends javax.swing.JPanel {
 
         lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("Login");
+        lbTitle.setText("Iniciar sesión");
         panelLogin1.add(lbTitle);
 
         lbUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -117,6 +117,8 @@ public class LoginForm extends javax.swing.JPanel {
             // Mostrar un mensaje de error indicando que las credenciales son incorrectas
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Usuario o Clave equivocada");
         }
+        txtUser.setText("");
+        txtPass.setText("");
 
     }//GEN-LAST:event_cmdLoginActionPerformed
 

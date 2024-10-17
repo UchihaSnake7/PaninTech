@@ -71,11 +71,9 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Clave" min="-2" pref="219" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Usuario" max="32767" attributes="0"/>
-                          <Component id="Correo" min="-2" pref="219" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="Usuario" max="32767" attributes="0"/>
+                      <Component id="Correo" pref="219" max="32767" attributes="0"/>
+                      <Component id="Clave" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="140" pref="140" max="-2" attributes="0"/>
               </Group>
@@ -109,12 +107,12 @@
                       <Component id="lb" alignment="3" max="32767" attributes="0"/>
                       <Component id="Correo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lb1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Clave" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
@@ -156,7 +154,7 @@
         </Component>
         <Component class="com.panin.application.utilities.TextoHint" name="Usuario">
         </Component>
-        <Component class="com.panin.application.utilities.TextoHint" name="Clave">
+        <Component class="javax.swing.JPasswordField" name="Clave">
         </Component>
       </SubComponents>
     </Container>

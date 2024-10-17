@@ -98,7 +98,6 @@ com\panin\controladores\ControladorUsuario.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\application\utilities\TabbedPaneCustom.class
 com\panin\menu\MenuAnimation.class
-com\panin\application\utilities\exportarTablaCSV.class
 com\panin\application\utilities\TableActionEvent.class
 com\panin\menu\ToolBarAccentColor.class
 com\panin\application\form\insumos\FormVerInsumos$2.class
@@ -119,6 +118,7 @@ com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.class
 com\panin\PaninTech\App.class
 com\panin\application\form\productos\FormVistaProductos.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$2.class
+com\panin\application\utilities\UtilitarioExportarTabla.class
 com\panin\entidades\Tasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\entidades\MarcaInsumo.class

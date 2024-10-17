@@ -40,7 +40,7 @@ replay_pid*
 /bin/
 
 # /src/main/resources/hibernate.cfg
-/archivos/
+archivos/
 /target/maven-archiver
 /target
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst

@@ -4,7 +4,6 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.j
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
-C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\exportarTablaCSV.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
@@ -18,6 +17,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\othe
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormCrearInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTasa.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\UtilitarioExportarTabla.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java

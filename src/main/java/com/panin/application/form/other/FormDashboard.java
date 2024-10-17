@@ -2,6 +2,7 @@ package com.panin.application.form.other;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import raven.toast.Notifications;
 
@@ -104,6 +105,17 @@ public class FormDashboard extends javax.swing.JPanel {
 
     private void actionButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionButton1ActionPerformed
         // TODO add your handling code here:
+
+     String[] opciones = {"Si","No"};
+     int resp=JOptionPane.showOptionDialog(null,"¿Desea cerrar la sesión actual?", "" ,0,2,null, opciones, opciones[0]);
+     System.out.print("resp: " + resp);
+     
+     if (resp == 0){
+//       Application.session.close();
+       Application.logout();    
+     
+     }
+
     }//GEN-LAST:event_actionButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

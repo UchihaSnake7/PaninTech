@@ -57,7 +57,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
         Correo = new com.panin.application.utilities.TextoHint();
         lb1 = new javax.swing.JLabel();
         Usuario = new com.panin.application.utilities.TextoHint();
-        Clave = new com.panin.application.utilities.TextoHint();
+        Clave = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
 
         Cambio.setBackground(new java.awt.Color(60, 78, 102));
@@ -96,10 +96,9 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                             .addComponent(lb1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(42, 42, 42)))
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(Clave))
                 .addGap(140, 140, 140))
             .addGroup(CambioLayout.createSequentialGroup()
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +123,11 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb1)
                     .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(39, 39, 39)
                 .addComponent(jButton1)
                 .addGap(21, 21, 21))
         );
@@ -173,7 +172,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
             ControladorUsuario ct = new ControladorUsuario();
             ct.crearUsuario(cr);
 //            ct.cerrarSesion();
-            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Tasa actulizada con exito");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Usuario creado con éxito");
             Application.showForm(new FormDashboard());
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -229,7 +228,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cambio;
-    private com.panin.application.utilities.TextoHint Clave;
+    private javax.swing.JPasswordField Clave;
     private com.panin.application.utilities.TextoHint Correo;
     private com.panin.application.utilities.TextoHint Usuario;
     private javax.swing.JButton jButton1;
