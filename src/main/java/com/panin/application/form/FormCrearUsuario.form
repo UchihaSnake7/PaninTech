@@ -24,7 +24,7 @@
                       <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="Cambio" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelFormCrearUsuario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -37,14 +37,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" pref="20" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-              <Component id="Cambio" min="-2" max="-2" attributes="0"/>
+              <Component id="panelFormCrearUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="Cambio">
+    <Container class="javax.swing.JPanel" name="panelFormCrearUsuario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="4e" red="3c" type="rgb"/>
@@ -145,6 +145,9 @@
           </Properties>
         </Component>
         <Component class="com.panin.application.utilities.TextoHint" name="Correo">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Correo" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lb1">
           <Properties>
@@ -153,8 +156,14 @@
           </Properties>
         </Component>
         <Component class="com.panin.application.utilities.TextoHint" name="Usuario">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Usuario" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="Clave">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Clave" noResource="true"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

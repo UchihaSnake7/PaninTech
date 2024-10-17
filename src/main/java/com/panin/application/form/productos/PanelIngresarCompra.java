@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -320,7 +321,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         cp.setUnidadMedida((UnidadMedida) jUnidad.getSelectedItem());
         cp.setProducto(producto);
         cp.setFecha(jDateChooser2.getDate());
-        cp.setHora(jDateChooser2.getDate());
+        cp.setHora(new Time(new Date().getTime()));
 
         ControladorComprasProductos ccp = new ControladorComprasProductos();
 

@@ -9,6 +9,7 @@ import net.miginfocom.swing.MigLayout;
 import com.panin.application.Application;
 import com.panin.application.form.other.FormIngresarInsumo;
 import com.panin.application.form.other.Model_Card;
+import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorComprasInsumos;
 import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorInsumos;
@@ -111,9 +112,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         textoCantidad.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         
-        textoHint1.setHint("Ingrese Precio...");
-        textoHint1.setHorizontalAlignment(SwingConstants.RIGHT);
-        textoHint1.putClientProperty(FlatClientProperties.STYLE, ""
+        textFieldPrecio.setHint("Ingrese Precio...");
+        textFieldPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
+        textFieldPrecio.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
         
         jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -140,7 +141,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 //        setLayout(new MigLayout("al center center"));
 //        setLayout(new MigLayout("fillx,wrap,insets 30 40 50 40, width 220", "[fill]", "[]20[][]100[][]130[]"));
         validarCalendario();
-        verificarIngresoNumero();
+        VerificarIngresoNumero.verificar(textoCantidad);
+        VerificarIngresoNumero.verificar(textFieldPrecio);
+
         actualizarUnidadMedida(insumo);
         panelRegistrosInsumos1.iniciar(insumo);
     }
@@ -165,7 +168,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         jBtnAtras = new javax.swing.JButton();
         lblUnidad = new javax.swing.JLabel();
         textoCantidad = new com.panin.application.utilities.TextoHint();
-        textoHint1 = new com.panin.application.utilities.TextoHint();
+        textFieldPrecio = new com.panin.application.utilities.TextoHint();
         jLabel3 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
@@ -213,9 +216,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
             }
         });
 
-        textoHint1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoHint1ActionPerformed(evt);
+                textFieldPrecioActionPerformed(evt);
             }
         });
 
@@ -257,7 +260,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                                         .addGap(100, 100, 100)
                                         .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(panelLayout.createSequentialGroup()
-                                        .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(43, 43, 43)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(30, 30, 30)
@@ -293,7 +296,7 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel3))
-                    .addComponent(textoHint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -345,14 +348,14 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        String precio = textoHint1.getText();
+        String precio = textFieldPrecio.getText();
         String cantidad = textoCantidad.getText();
         precio = precio.replace(",", ".");
         cantidad = cantidad.replace(",", ".");
         
         try {
             
-            if (textoHint1.getText() == null || precio.length() == 0 || textoHint1.getText().equals(" ")) {
+            if (textFieldPrecio.getText() == null || precio.length() == 0 || textFieldPrecio.getText().equals(" ")) {
                 Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese el Precio del Insumo...");
             } else if (textoCantidad.getText() == null || cantidad.length() == 0 || textoCantidad.getText().equals(" ")) {
                 Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Por Favor Ingrese la cantidad commprada...");
@@ -390,8 +393,8 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
                 ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
                 if (controladorComprasInsumos.save(compraInsumo)) {
                     Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Compra Registrada con Exito!");
-                    textoHint1.setText("");
-                    textoHint1.setHint("Ingrese Precio...");
+                    textFieldPrecio.setText("");
+                    textFieldPrecio.setHint("Ingrese Precio...");
                     textoCantidad.setText("");
                     textoCantidad.setHint("Ingrese Cantidad...");
                     panelRegistrosInsumos1.agregarCompra(compraInsumo);
@@ -407,9 +410,9 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 
-    private void textoHint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoHint1ActionPerformed
+    private void textFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textoHint1ActionPerformed
+    }//GEN-LAST:event_textFieldPrecioActionPerformed
 
     private void textoCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCantidadActionPerformed
         // TODO add your handling code here:
@@ -438,8 +441,8 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
     private javax.swing.JLabel lblUnidad;
     private javax.swing.JPanel panel;
     private com.panin.application.form.insumos.panelRegistrosInsumos panelRegistrosInsumos1;
+    private com.panin.application.utilities.TextoHint textFieldPrecio;
     private com.panin.application.utilities.TextoHint textoCantidad;
-    private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables
     private Insumo insumoC;
     
@@ -451,66 +454,6 @@ public class PanelIngresarInsumo extends javax.swing.JPanel {
         this.insumoC = insumoC;
     }
     
-    private void verificarIngresoNumero() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//textoCantidad.addKeyListener(new KeyAdapter() {
-        textoCantidad.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textoCantidad.getText();
-
-                // Permitir números, coma y signo negativo al inicio
-                if (!(Character.isDigit(c) || c == ',')) {
-                    ke.consume();
-                    return;
-                }
-                if (text.length() >= 12) {
-                    ke.consume();
-                    return;
-                }
-
-                // Permitir solo una coma
-                if (c == ',' && text.contains(",")) {
-                    ke.consume();
-                }
-
-                // Limitar a cuatro decimales
-                int index = text.indexOf(',');
-                if (index >= 0 && text.length() - index - 1 > 3) {
-                    ke.consume();
-                }
-            }
-        });
-        
-        textoHint1.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textoHint1.getText();
-
-                // Permitir números, coma y signo negativo al inicio
-                if (!(Character.isDigit(c) || c == ',')) {
-                    ke.consume();
-                    return;
-                }
-                if (text.length() >= 12) {
-                    ke.consume();
-                    return;
-                }
-
-                // Permitir solo una coma
-                if (c == ',' && text.contains(",")) {
-                    ke.consume();
-                }
-
-                // Limitar a cuatro decimales
-                int index = text.indexOf(',');
-                if (index >= 0 && text.length() - index - 1 > 3) {
-                    ke.consume();
-                }
-            }
-        });
-        
-    }
     
     private void actualizarUnidadMedida(Insumo insumo) {
         jUnidad.addActionListener(new ActionListener() {

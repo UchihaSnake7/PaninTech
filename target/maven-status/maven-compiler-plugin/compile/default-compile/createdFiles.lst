@@ -101,7 +101,6 @@ com\panin\menu\MenuAnimation.class
 com\panin\application\utilities\TableActionEvent.class
 com\panin\menu\ToolBarAccentColor.class
 com\panin\application\form\insumos\FormVerInsumos$2.class
-com\panin\application\form\insumos\PanelIngresarInsumo$7.class
 com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorConversion.class
@@ -173,5 +172,4 @@ com\panin\application\utilities\ActionButton$1.class
 com\panin\application\frameConfiguracion$1.class
 com\panin\application\form\MainForm.class
 com\panin\entidades\ComprasInsumo.class
-com\panin\application\form\insumos\PanelIngresarInsumo$8.class
 com\panin\controladores\ControladorReceta.class

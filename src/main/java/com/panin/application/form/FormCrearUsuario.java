@@ -3,6 +3,7 @@ package com.panin.application.form;
 import com.panin.application.form.other.*;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
+import com.panin.application.utilities.ValidadorFormulario;
 import java.awt.Component;
 import java.awt.Container;
 import com.panin.controladores.ControladorUsuario;
@@ -42,14 +43,14 @@ public class FormCrearUsuario extends javax.swing.JPanel {
     private void init() {
 
         setLayout(new CambioLayout());
-        Cambio.putClientProperty(FlatClientProperties.STYLE, "" + "background:$Login.background;" + "arc:20");
+        panelFormCrearUsuario.putClientProperty(FlatClientProperties.STYLE, "" + "background:$Login.background;" + "arc:20");
     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Cambio = new javax.swing.JPanel();
+        panelFormCrearUsuario = new javax.swing.JPanel();
         lb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -60,8 +61,8 @@ public class FormCrearUsuario extends javax.swing.JPanel {
         Clave = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
 
-        Cambio.setBackground(new java.awt.Color(60, 78, 102));
-        Cambio.setName("cambio"); // NOI18N
+        panelFormCrearUsuario.setBackground(new java.awt.Color(60, 78, 102));
+        panelFormCrearUsuario.setName("cambio"); // NOI18N
 
         lb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb.setText("Correo");
@@ -77,54 +78,60 @@ public class FormCrearUsuario extends javax.swing.JPanel {
 
         jLabel3.setText("Nuevo Usuario");
 
+        Correo.setName("Correo"); // NOI18N
+
         lb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb1.setText("Clave");
 
-        javax.swing.GroupLayout CambioLayout = new javax.swing.GroupLayout(Cambio);
-        Cambio.setLayout(CambioLayout);
-        CambioLayout.setHorizontalGroup(
-            CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CambioLayout.createSequentialGroup()
+        Usuario.setName("Usuario"); // NOI18N
+
+        Clave.setName("Clave"); // NOI18N
+
+        javax.swing.GroupLayout panelFormCrearUsuarioLayout = new javax.swing.GroupLayout(panelFormCrearUsuario);
+        panelFormCrearUsuario.setLayout(panelFormCrearUsuarioLayout);
+        panelFormCrearUsuarioLayout.setHorizontalGroup(
+            panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
                 .addGap(150, 150, 150)
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CambioLayout.createSequentialGroup()
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(38, 38, 38))
-                    .addGroup(CambioLayout.createSequentialGroup()
-                        .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
+                        .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lb1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(42, 42, 42)))
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                     .addComponent(Clave))
                 .addGap(140, 140, 140))
-            .addGroup(CambioLayout.createSequentialGroup()
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CambioLayout.createSequentialGroup()
+            .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addComponent(jButton1))
-                    .addGroup(CambioLayout.createSequentialGroup()
+                    .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        CambioLayout.setVerticalGroup(
-            CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CambioLayout.createSequentialGroup()
+        panelFormCrearUsuarioLayout.setVerticalGroup(
+            panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormCrearUsuarioLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel3)
                 .addGap(38, 38, 38)
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb1)
                     .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
@@ -146,7 +153,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(277, 277, 277))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelFormCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(200, 200, 200))))
         );
         layout.setVerticalGroup(
@@ -155,12 +162,16 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100)
-                .addComponent(Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFormCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(200, 200, 200))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            
+            ValidadorFormulario vf = new ValidadorFormulario(this.panelFormCrearUsuario);
+            if(vf.validarFormulario()){
+        
             Usuarios cr = new Usuarios();
             cr.setUsername(Usuario.getText());
             cr.setCorreoElectronico(Correo.getText());
@@ -175,7 +186,7 @@ public class FormCrearUsuario extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Usuario creado con éxito");
             Application.showForm(new FormDashboard());
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
     private String encriptarclave(String clave) {
       String hash = DigestUtils.md5Hex(clave);
         return hash;  
@@ -216,10 +227,10 @@ public class FormCrearUsuario extends javax.swing.JPanel {
                 int width = parent.getWidth();
                 int heigth = parent.getHeight();
                 int CambioWidth = 560;
-                int CambioHeigth = Cambio.getPreferredSize().height;
+                int CambioHeigth = panelFormCrearUsuario.getPreferredSize().height;
                 int x = (width - CambioWidth) / 2;
                 int y = (heigth - CambioHeigth) / 2;
-                Cambio.setBounds(x, y, CambioWidth, CambioHeigth);
+                panelFormCrearUsuario.setBounds(x, y, CambioWidth, CambioHeigth);
 
             }
         }
@@ -227,7 +238,6 @@ public class FormCrearUsuario extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Cambio;
     private javax.swing.JPasswordField Clave;
     private com.panin.application.utilities.TextoHint Correo;
     private com.panin.application.utilities.TextoHint Usuario;
@@ -237,5 +247,6 @@ public class FormCrearUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb1;
+    private javax.swing.JPanel panelFormCrearUsuario;
     // End of variables declaration//GEN-END:variables
 }

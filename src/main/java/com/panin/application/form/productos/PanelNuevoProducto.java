@@ -260,12 +260,8 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
         ControladorProductos cp = new ControladorProductos();
 
         ValidadorFormulario vf = new ValidadorFormulario(this.panelFormulario);
-        vf.buscarCampos();
         if(vf.validarFormulario()){
         
-
-        
-//        System.out.print("\nEntro a evento del boton ok ");
         if (comboboxTipoProducto.getSelectedItem().equals("Elaborado")) {
             
             Recetas r = new Recetas();
