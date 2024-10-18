@@ -270,12 +270,7 @@ INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_convers
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (17, 4, 6.00000);
 INSERT INTO panin.conversion (unidad_base_id, unidad_derivada_id, factor_conversion) VALUES (18, 4, 12.00000);
 
-CREATE TABLE configuracion (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  clave VARCHAR(100) NOT NULL UNIQUE,
-  valor TEXT,
-  descripcion TEXT
-);
+
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
@@ -286,14 +281,45 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (username, correo_electronico, contrasena, activo)
 VALUES ('admin', 'admin@example.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
-INSERT INTO panin.configuracion (clave, valor, descripcion)
-VALUES ('PORCENTAJE_GANANCIA', '0.3', 'Porcentaje de ganancia');
+create table divisa
+(
+    id          int auto_increment,
+    descripcion varchar(100) null,
+    abreviatura varchar(10)  null,
+    constraint divisa_pk
+        primary key (id)
+);
 
-INSERT INTO panin.configuracion (clave, valor, descripcion)
-VALUES ('NOMBRE_EMPRESA', 'Panin', 'Nombre de la empresa');
+create table conversion_divisa
+(
+    id     int auto_increment,
+    divisa int not null,
+    tasa   int not null,
+    constraint conversion_divisa_pk
+        primary key (id),
+    constraint conversion_divisa_divisa_id_fk
+        foreign key (divisa) references divisa (id),
+    constraint conversion_divisa_tasa_id_fk
+        foreign key (tasa) references tasa (id)
+)
+    comment 'Tabla que contiene la relacion entre la divisa y una tasa';
 
-INSERT INTO panin.configuracion (clave, valor, descripcion)
-VALUES ('DIRECCION_EMPRESA', 'Urbanización Chucho Briceño, Cabudare Edo. Lara', 'Dirección de la empresa');
+create table configuracion
+(
+    id                  int          not null,
+    nombre_empresa      varchar(100) null,
+    direccion_empresa   varchar(500) null,
+    porcentaje_ganancia double       null,
+    divisa_principal    int          not null,
+    constraint configuracion_pk
+        primary key (id),
+    constraint configuracion_divisa_id_fk
+        foreign key (divisa_principal) references divisa (id)
+)
+    comment 'Tabla con los datos relevantes de la empresa';
+
+
+
  
 --  ecortez 15/10/2024
 

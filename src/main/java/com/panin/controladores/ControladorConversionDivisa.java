@@ -5,7 +5,7 @@
 package com.panin.controladores;
 
 import com.panin.application.Application;
-import com.panin.entidades.Configuracion;
+import com.panin.entidades.ConversionDivisa;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
@@ -13,23 +13,23 @@ import java.util.List;
  *
  * @author USUARIO
  */
-public class ControladorConfiguracion {
+public class ControladorConversionDivisa {
 
-    public ControladorConfiguracion() {
+    public ControladorConversionDivisa() {
 
     }
 
-    public static Configuracion obtener() {
+    public List<ConversionDivisa> obtenerTodos() {
         Application.session.beginTransaction();
-        Configuracion configuracion;
+        List<ConversionDivisa> lista;
 
-        TypedQuery query =  Application.session.getNamedQuery("Configuracion.findAll");
+        TypedQuery query =  Application.session.getNamedQuery("ConverionDivisa.findAll");
 
-        configuracion = (Configuracion) query.getResultList().get(0);
+        lista = query.getResultList();
 
         Application.session.getTransaction().commit();
    
-        return configuracion;
+        return lista;
 
     }
 

@@ -92,6 +92,7 @@ com\panin\application\form\productos\panelRegistrosCompraProducto.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\other\FormInbox.class
+com\panin\entidades\Divisa.class
 com\panin\application\form\other\Card$3.class
 com\panin\application\form\productos\PanelVerDatosProducto$3.class
 com\panin\entidades\Usuarios.class

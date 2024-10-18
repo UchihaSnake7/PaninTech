@@ -29,7 +29,7 @@ import java.math.BigDecimal;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Configuracion.findAll", query = "SELECT c FROM Configuracion c"),
-    @NamedQuery(name = "Configuracion.findByClave", query = "SELECT c FROM Configuracion c WHERE c.clave = :clave")}
+}
 )
 public class Configuracion implements Serializable {
 
@@ -39,12 +39,15 @@ public class Configuracion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(name = "clave", nullable = false)
-    private String clave;
-    @Column(name = "valor")
-    private String valor;
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "nombre_empresa", nullable = false)
+    private String nombreEmpresa;
+    @Column(name = "direccion_empresa")
+    private String direccionEmpresa;
+    @Column(name = "porcentaje_ganancia")
+    private Double porcentajeGanancia;
+    @JoinColumn(name = "divisa_principal", referencedColumnName = "id")
+    @ManyToOne
+    private Divisa divisa;
    
     public Configuracion() {
     }
@@ -61,29 +64,39 @@ public class Configuracion implements Serializable {
         this.id = id;
     }
 
-    public String getClave() {
-        return clave;
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
     }
 
-    public String getValor() {
-        return valor;
+    public String getDireccionEmpresa() {
+        return direccionEmpresa;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setDireccionEmpresa(String direccionEmpresa) {
+        this.direccionEmpresa = direccionEmpresa;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Double getPorcentajeGanancia() {
+        return porcentajeGanancia;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setPorcentajeGanancia(Double porcentajeGanancia) {
+        this.porcentajeGanancia = porcentajeGanancia;
     }
+
+    public Divisa getDivisa() {
+        return divisa;
+    }
+
+    public void setDivisa(Divisa divisa) {
+        this.divisa = divisa;
+    }
+
+    
 
     
     

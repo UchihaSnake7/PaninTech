@@ -33,7 +33,7 @@ public class Menu extends JPanel {
         {"~TASA DE CAMNBIO~"},
         {"Tasa de cambio", "Visualización", "Actualizar"},
         {"~Area Personal~"},
-        {"Configuracion", "Crear Usuario", "Cambiar Clave"},
+        {"Configuracion", "Crear Usuario", "Cambiar Clave", "General"},
         
 //
     //        {"~TASA DE CAMBIO~"},

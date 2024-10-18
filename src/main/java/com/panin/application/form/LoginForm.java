@@ -116,7 +116,7 @@ public class LoginForm extends javax.swing.JPanel {
         boolean usuarioEncontrado = false;
         if (usuario != null) {
             if (usuario.getContrasena().equals(claveE)) {
-                Application.setUser(usuario);
+                Application.User = usuario;
                 usuarioEncontrado = true;
             }
         }

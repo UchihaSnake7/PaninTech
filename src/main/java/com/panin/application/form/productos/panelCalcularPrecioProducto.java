@@ -5,6 +5,7 @@
 package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
 import com.panin.application.utilities.ValidadorFormulario;
 import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorComprasInsumos;
@@ -266,22 +267,19 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         ValidadorFormulario vf = new ValidadorFormulario(this.panelDatosProducto);
         if(vf.validarFormulario()){
         
-        Producto producto = (Producto) combobocProductos.getSelectedItem();
-        double cantidad = Double.valueOf(textFieldCantidad.getText());
-        
-        ControladorProductos cp = new ControladorProductos();
-        BigDecimal precio = cp.calcularPrecioProduccion(producto, cantidad, modelTable);
-        
-        ControladorConfiguracion cc = new ControladorConfiguracion();
-        Configuracion cfg = cc.obtenerPorClave("PORCENTAJE_GANANCIA");
-        
-        BigDecimal valorGanancia = new BigDecimal(cfg.getValor());
-        BigDecimal gananciaProducto = valorGanancia.multiply(precio);
-        BigDecimal venta = precio.add(gananciaProducto);
-        
-        labelPrecioTotal.setText(String.valueOf(precio.doubleValue()));
-        porcentajeGanancia.setText(String.valueOf(valorGanancia.doubleValue()));
-        precioVenta.setText(String.valueOf(venta.doubleValue()));
+            Producto producto = (Producto) combobocProductos.getSelectedItem();
+            double cantidad = Double.valueOf(textFieldCantidad.getText());
+
+            ControladorProductos cp = new ControladorProductos();
+            BigDecimal precio = cp.calcularPrecioProduccion(producto, cantidad, modelTable);
+
+            BigDecimal valorGanancia = new BigDecimal(Application.configuracion.getPorcentajeGanancia());
+            BigDecimal gananciaProducto = valorGanancia.multiply(precio);
+            BigDecimal venta = precio.add(gananciaProducto);
+
+            labelPrecioTotal.setText(String.valueOf(precio.doubleValue()));
+            porcentajeGanancia.setText(String.valueOf(valorGanancia.doubleValue()));
+            precioVenta.setText(String.valueOf(venta.doubleValue()));
        }   
     }//GEN-LAST:event_botonCalcularActionPerformed
    

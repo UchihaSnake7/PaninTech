@@ -11,6 +11,7 @@ import com.panin.application.form.MainForm;
 import com.panin.controladores.ControladorProductos;
 import com.panin.entidades.Producto;
 import com.panin.controladores.ControladorUsuario;
+import com.panin.entidades.Configuracion;
 import com.panin.entidades.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -50,17 +51,10 @@ public class Application extends javax.swing.JFrame {
     private final LoginForm loginForm;
     public static Usuarios User;
     public static Session session = HibernateUtil.getSessionFactory().openSession();
-
+    public static Configuracion configuracion = com.panin.controladores.ControladorConfiguracion.obtener();
     
-
-    public static Usuarios getUser() {
-        return User;
-    }
-
-    public static void setUser(Usuarios User) {
-        Application.User = User;
-    }
-
+    
+    
     public Application() {
         initComponents();
         setSize(new Dimension(1366, 768));

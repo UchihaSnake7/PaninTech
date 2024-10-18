@@ -38,6 +38,8 @@
       <mapping class="com.panin.entidades.MarcaInsumo"/>
       <mapping class="com.panin.entidades.Usuarios"/>
       <mapping class="com.panin.entidades.Configuracion"/>
+      <mapping class="com.panin.entidades.Divisa"/>
+
 
 
 
