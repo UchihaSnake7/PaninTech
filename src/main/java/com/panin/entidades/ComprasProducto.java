@@ -27,10 +27,10 @@ import java.util.Date;
  *
  * @author ricke
  */
- @Entity
-    @Table(name = "compras_producto")
-    @XmlRootElement
-    @NamedQueries({
+@Entity
+@Table(name = "compras_producto")
+@XmlRootElement
+@NamedQueries({
     @NamedQuery(name = "ComprasProducto.findAll", query = "SELECT c FROM ComprasProducto c"),
     @NamedQuery(name = "ComprasProducto.findById", query = "SELECT c FROM ComprasProducto c WHERE c.id = :id"),
     @NamedQuery(name = "ComprasProducto.findByFecha", query = "SELECT c FROM ComprasProducto c WHERE c.fecha = :fecha"),
@@ -43,10 +43,8 @@ import java.util.Date;
     @NamedQuery(name = "ComprasProducto.findByFechas", query = "SELECT c FROM ComprasProducto c WHERE c.fecha between :desde and :hasta"),
     @NamedQuery(name = "ComprasProducto.findByDesde", query = "SELECT c FROM ComprasProducto c WHERE c.fecha >= :desde"),
     @NamedQuery(name = "ComprasProducto.findByHasta", query = "SELECT c FROM ComprasProducto c WHERE c.fecha <= :hasta"),
-    
-    @NamedQuery(name = "ComprasProducto.findByProductoUnico", query = "SELECT c FROM ComprasProducto c WHERE c.producto = :producto ORDER BY c.fecha DESC, c.hora DESC"),
 
-})
+    @NamedQuery(name = "ComprasProducto.findByProductoUnico", query = "SELECT c FROM ComprasProducto c WHERE c.producto = :producto ORDER BY c.fecha DESC, c.hora DESC"),})
 public class ComprasProducto implements Serializable, Comparable<ComprasProducto> {
 
     @Basic(optional = false)
@@ -83,8 +81,6 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
     @ManyToOne(optional = false)
     private UnidadMedida unidadMedida;
 
-    
-
     public Integer getId() {
         return id;
     }
@@ -92,7 +88,6 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public Producto getProducto() {
         return producto;
@@ -116,7 +111,7 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-    
+
     @Override
     public String toString() {
         return "com.panin.entidades.ComprasInsumo[ id=" + id + " ]";
@@ -164,8 +159,8 @@ public class ComprasProducto implements Serializable, Comparable<ComprasProducto
 
     @Override
     public int compareTo(ComprasProducto o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getFecha().compareTo(o.getFecha()); // Por ejemplo, comparar por fecha
     }
 
-
- }
+}

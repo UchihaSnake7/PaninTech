@@ -47,6 +47,7 @@ com\panin\application\utilities\PanelAction$1.class
 com\panin\application\form\insumos\crear\PanelDeInsumo$2.class
 com\panin\application\form\insumos\Model_Card.class
 com\panin\application\form\productos\PanelIngresarCompra$2.class
+com\panin\application\form\productos\panelRegistrosCompraProducto$5.class
 com\panin\application\form\insumos\PanelIngresarInsumo$5.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$1.class
 com\panin\application\form\other\Card$1.class
@@ -86,6 +87,7 @@ com\panin\application\utilities\SearchHeaderFinal.class
 com\panin\controladores\ControladorInsumos.class
 com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
+com\panin\application\form\productos\panelRegistrosCompraProducto.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\other\FormInbox.class
@@ -131,10 +133,12 @@ com\panin\application\form\insumos\PanelIngresarInsumo.class
 com\panin\menu\MenuItem$MenuLayout.class
 com\panin\entidades\UnidadMedida.class
 com\panin\application\form\FormCrearUsuario.class
+com\panin\application\form\productos\panelRegistrosCompraProducto$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.class
 com\panin\application\form\LoginForm.class
 com\panin\entidades\Producto.class
 com\panin\application\form\LoginForm$1.class
+com\panin\application\form\productos\panelRegistrosCompraProducto$1.class
 com\panin\application\form\productos\FormCompraProductos.class
 com\panin\application\form\productos\PanelVerDatosProducto$2.class
 com\panin\application\utilities\ModernScrollBarUI$InvisibleScrollBarButton.class
@@ -158,6 +162,7 @@ com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$3.cla
 com\panin\application\form\productos\FormAgregarNuevoProducto.class
 com\panin\controladores\ControladorProductos.class
 com\panin\application\form\productos\FormMostrarProductos.class
+com\panin\application\form\productos\panelRegistrosCompraProducto$3.class
 com\panin\HibernateUtil.class
 com\panin\application\form\other\Card.class
 com\panin\application\form\other\FormDashboard$2.class
@@ -167,6 +172,7 @@ com\panin\application\form\productos\panelContenidoReceta.class
 com\panin\entidades\InsumoRecetas.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$1.class
 com\panin\application\form\other\FormDashboard$1.class
+com\panin\application\form\productos\panelRegistrosCompraProducto$2.class
 com\panin\application\utilities\VerificarIngresoNumero$1.class
 com\panin\application\utilities\ActionButton$1.class
 com\panin\application\frameConfiguracion$1.class

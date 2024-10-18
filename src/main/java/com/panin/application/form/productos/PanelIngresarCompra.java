@@ -9,8 +9,11 @@ import com.panin.application.Application;
 import com.panin.application.form.other.Model_Card;
 import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorComprasProductos;
+import com.panin.controladores.ControladorConversion;
 import com.panin.controladores.ControladorMarcaInsumo;
+import com.panin.controladores.ControladorUnidadMedida;
 import com.panin.entidades.ComprasProducto;
+import com.panin.entidades.Conversion;
 import com.panin.entidades.Insumo;
 import com.panin.entidades.MarcaInsumo;
 import com.panin.entidades.Producto;
@@ -19,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +51,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         VerificarIngresoNumero.verificar(textoCantidad);
         jDateChooser2.setDate(new Date());
         jDateChooser2.setMaxSelectableDate(new Date());
+        panelRegistrosCompraProducto2.iniciar(producto);
 
     }
 
@@ -145,6 +150,9 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBoxMarca = new javax.swing.JComboBox<>();
+        panelRegistrosCompraProducto2 = new com.panin.application.form.productos.panelRegistrosCompraProducto();
+
+        setPreferredSize(new java.awt.Dimension(613, 700));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cantidad:");
@@ -164,6 +172,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Unidad de Medida:");
 
+        jUnidad.setPreferredSize(new java.awt.Dimension(64, 24));
         jUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jUnidadActionPerformed(evt);
@@ -204,6 +213,8 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Marca:");
 
+        jComboBoxMarca.setPreferredSize(new java.awt.Dimension(64, 24));
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -215,7 +226,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
                 .addComponent(jTitle)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -249,7 +260,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,39 +297,66 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRegistrosCompraProducto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(373, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(panelRegistrosCompraProducto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        
-        
+
         String precio = textoHint1.getText();
         String cantidad = textoCantidad.getText();
         precio = precio.replace(",", ".");
         cantidad = cantidad.replace(",", ".");
-                
+        BigDecimal cantidadCalculada;
+        BigDecimal precioCalculado;
         ComprasProducto cp = new ComprasProducto();
-        cp.setCantidad(new BigDecimal(cantidad));
-        cp.setPrecio(new BigDecimal(precio));
-        cp.setMarcaInsumo((MarcaInsumo) jComboBoxMarca.getSelectedItem());
-        UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
 
-        cp.setUnidadMedida((UnidadMedida) jUnidad.getSelectedItem());
+        UnidadMedida um = (UnidadMedida) jUnidad.getSelectedItem();
+        UnidadMedida unidadMedida;
+
+        cantidadCalculada = new BigDecimal(cantidad);
+        precioCalculado = new BigDecimal(precio);
+
+        if (um.isUnidadBase()) {
+            unidadMedida = um;
+
+        } else {
+            ControladorConversion controladorConversion = new ControladorConversion();
+            ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
+            UnidadMedida unidadMedidaBase = controladorUnidadMedida.obtenerUnidadBase(um);
+            unidadMedida = unidadMedidaBase;
+            Conversion conversion = controladorConversion.obtenerFactorConversion(um, unidadMedidaBase);
+            cantidadCalculada = cantidadCalculada.multiply(conversion.getFactorConversion());
+        }
+
+        System.out.println(precioCalculado + " " + cantidadCalculada);
+        precioCalculado = precioCalculado.divide(cantidadCalculada, 6, RoundingMode.HALF_UP);
+        System.out.println("PrecioCalculado " + precioCalculado);
+        cp.setCantidad(cantidadCalculada);
+        cp.setPrecio(precioCalculado);
+        cp.setMarcaInsumo((MarcaInsumo) jComboBoxMarca.getSelectedItem());
+        cp.setUnidadMedida(unidadMedida);
         cp.setProducto(producto);
         cp.setFecha(jDateChooser2.getDate());
         cp.setHora(new Time(new Date().getTime()));
@@ -326,9 +364,9 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
         ControladorComprasProductos ccp = new ControladorComprasProductos();
 
         ccp.save(cp);
-        
-        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Compra registrada con exito");
 
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Compra registrada con exito");
+        panelRegistrosCompraProducto2.agregarCompra(cp);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
@@ -364,6 +402,7 @@ public class PanelIngresarCompra extends javax.swing.JPanel {
     private javax.swing.JComboBox<UnidadMedida> jUnidad;
     private javax.swing.JLabel lblUnidad;
     private javax.swing.JPanel panel;
+    private com.panin.application.form.productos.panelRegistrosCompraProducto panelRegistrosCompraProducto2;
     private com.panin.application.utilities.TextoHint textoCantidad;
     private com.panin.application.utilities.TextoHint textoHint1;
     // End of variables declaration//GEN-END:variables

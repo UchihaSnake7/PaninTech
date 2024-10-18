@@ -81,7 +81,7 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
         actualizarLista();
         
         modelTable.fireTableDataChanged();
-        System.out.println(modelTable.getRowCount());
+//        System.out.println(modelTable.getRowCount());
     }
     
     public void iniciar(Insumo insumo) {
@@ -317,7 +317,8 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Compras", jPanel1);
@@ -350,8 +351,8 @@ public class panelRegistrosInsumos extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addGap(177, 177, 177))
         );
 
         tabbedPane.addTab("Productos", jPanel2);

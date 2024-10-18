@@ -29,7 +29,7 @@ public class ControladorComprasProductos {
     public ControladorComprasProductos() {
     }
 
-    public List<ComprasProducto> obtenerComprasInsumos() {
+    public List<ComprasProducto> obtenerComprasProductos() {
 
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
@@ -44,7 +44,7 @@ public class ControladorComprasProductos {
         return comprasProductos;
     }
 
-    public List<ComprasProducto> obtenerComprasdeUnInsumo(Producto producto) {
+    public List<ComprasProducto> obtenerComprasdeUnProducto(Producto producto) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -63,7 +63,7 @@ public class ControladorComprasProductos {
 //         Application.session.close();
     }
 
-    public ComprasProducto obtenerComprasdeUnInsumoUnico(Producto producto) {
+    public ComprasProducto obtenerComprasdeUnProductoUnico(Producto producto) {
 //         Application.session.beginTransaction();
         ComprasProducto comprasProductos;
 
@@ -145,7 +145,7 @@ public class ControladorComprasProductos {
         return comprasProductos;
     }
 
-    public List<ComprasProducto> obtenerComprasInsumosFecha(Date desde, Date hasta) {
+    public List<ComprasProducto> obtenerComprasProductosFecha(Date desde, Date hasta) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -161,7 +161,7 @@ public class ControladorComprasProductos {
         return comprasProductos;
     }
 
-    public List<ComprasProducto> obtenerComprasInsumosHasta(Date hasta) {
+    public List<ComprasProducto> obtenerComprasProductosHasta(Date hasta) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -178,7 +178,7 @@ public class ControladorComprasProductos {
 
     }
 
-    public List<ComprasProducto> obtenerComprasInsumosDesde(Date desde) {
+    public List<ComprasProducto> obtenerComprasProductosDesde(Date desde) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
