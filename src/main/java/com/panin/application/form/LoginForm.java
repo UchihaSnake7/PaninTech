@@ -92,6 +92,18 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
+            evaluarDatosUsuario();
+
+    }//GEN-LAST:event_cmdLoginActionPerformed
+
+    private String encriptarclave(String clave) {
+        String hash = DigestUtils.md5Hex(clave);
+        return hash;
+    }
+    
+    
+    private void evaluarDatosUsuario(){
+         
         String user = txtUser.getText();
 
         String claveE = encriptarclave(String.valueOf(txtPass.getPassword()));
@@ -119,13 +131,8 @@ public class LoginForm extends javax.swing.JPanel {
         }
         txtUser.setText("");
         txtPass.setText("");
-
-    }//GEN-LAST:event_cmdLoginActionPerformed
-
-    private String encriptarclave(String clave) {
-        String hash = DigestUtils.md5Hex(clave);
-        return hash;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdLogin;
     private javax.swing.JLabel lbPass;

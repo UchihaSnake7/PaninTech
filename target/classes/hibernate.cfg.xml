@@ -36,7 +36,9 @@
       <mapping class="com.panin.entidades.InsumoRecetas"/>
       <mapping class="com.panin.entidades.Tasa"/>
       <mapping class="com.panin.entidades.MarcaInsumo"/>
-       <mapping class="com.panin.entidades.Usuarios"/>
+      <mapping class="com.panin.entidades.Usuarios"/>
+      <mapping class="com.panin.entidades.Configuracion"/>
+
 
 
 <!--		Sintaxis para mapear entidades desde un archivo xml de configuracion-->

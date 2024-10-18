@@ -5,12 +5,15 @@
 package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.utilities.ValidadorFormulario;
 import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorComprasInsumos;
+import com.panin.controladores.ControladorConfiguracion;
 import com.panin.controladores.ControladorProductos;
 import com.panin.controladores.ControladorReceta;
 import com.panin.dto.formAgregarInsumoProductoDTO;
 import com.panin.entidades.ComprasInsumo;
+import com.panin.entidades.Configuracion;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Producto;
 import com.panin.entidades.Recetas;
@@ -113,6 +116,10 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         labelPrecioTotal = new javax.swing.JLabel();
         botonCalcular = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        porcentajeGanancia = new javax.swing.JLabel();
+        precioVenta = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         tablaIngredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,8 +145,10 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         labelProducto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelProducto.setText("Producto:");
 
+        textFieldCantidad.setName("Cantidad"); // NOI18N
+
         labelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelPrecio.setText("Precio:");
+        labelPrecio.setText("Precio Neto");
 
         labelPrecioTotal.setText("precio");
 
@@ -154,33 +163,57 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Cantidad:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Ganancia (%)");
+
+        porcentajeGanancia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        porcentajeGanancia.setText("%");
+
+        precioVenta.setText("venta");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Venta");
+
         javax.swing.GroupLayout panelDatosProductoLayout = new javax.swing.GroupLayout(panelDatosProducto);
         panelDatosProducto.setLayout(panelDatosProductoLayout);
         panelDatosProductoLayout.setHorizontalGroup(
             panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosProductoLayout.createSequentialGroup()
-                .addGap(236, 236, 236)
-                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosProductoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(labelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                                .addComponent(porcentajeGanancia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(precioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelDatosProductoLayout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosProductoLayout.createSequentialGroup()
-                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDatosProductoLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(botonCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelDatosProductoLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(labelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
-                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
         );
         panelDatosProductoLayout.setVerticalGroup(
             panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,15 +223,18 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPrecio)
-                    .addComponent(jLabel1))
+                    .addComponent(labelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonCalcular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelPrecioTotal)))
+                .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combobocProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelPrecioTotal)
+                    .addComponent(porcentajeGanancia)
+                    .addComponent(precioVenta))
                 .addGap(10, 10, 10))
         );
 
@@ -227,34 +263,43 @@ public class panelCalcularPrecioProducto extends javax.swing.JPanel {
     private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
         // TODO add your handling code here:
         
-        /*
-        Calcular precio
-        */
+        ValidadorFormulario vf = new ValidadorFormulario(this.panelDatosProducto);
+        if(vf.validarFormulario()){
         
         Producto producto = (Producto) combobocProductos.getSelectedItem();
         double cantidad = Double.valueOf(textFieldCantidad.getText());
         
         ControladorProductos cp = new ControladorProductos();
         BigDecimal precio = cp.calcularPrecioProduccion(producto, cantidad, modelTable);
-
         
+        ControladorConfiguracion cc = new ControladorConfiguracion();
+        Configuracion cfg = cc.obtenerPorClave("PORCENTAJE_GANANCIA");
         
-//        System.out.print("Precio Toal: " + bd.doubleValue());
+        BigDecimal valorGanancia = new BigDecimal(cfg.getValor());
+        BigDecimal gananciaProducto = valorGanancia.multiply(precio);
+        BigDecimal venta = precio.add(gananciaProducto);
+        
         labelPrecioTotal.setText(String.valueOf(precio.doubleValue()));
-         
+        porcentajeGanancia.setText(String.valueOf(valorGanancia.doubleValue()));
+        precioVenta.setText(String.valueOf(venta.doubleValue()));
+       }   
     }//GEN-LAST:event_botonCalcularActionPerformed
-
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCalcular;
     private javax.swing.JComboBox<Producto> combobocProductos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelPrecio;
     private javax.swing.JLabel labelPrecioTotal;
     private javax.swing.JLabel labelProducto;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel panelDatosProducto;
+    private javax.swing.JLabel porcentajeGanancia;
+    private javax.swing.JLabel precioVenta;
     private javax.swing.JTable tablaIngredientes;
     private com.panin.application.utilities.TextoHint textFieldCantidad;
     // End of variables declaration//GEN-END:variables

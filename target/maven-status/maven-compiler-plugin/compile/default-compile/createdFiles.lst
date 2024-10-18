@@ -59,6 +59,7 @@ com\panin\application\form\insumos\crear\FormCrearInsumoN.class
 com\panin\application\form\productos\panelContenidoReceta$1.class
 com\panin\application\form\productos\frameIngresarInsumoReceta.class
 com\panin\application\form\productos\PanelIngresarCompra.class
+com\panin\controladores\ControladorConfiguracion.class
 com\panin\application\form\insumos\PanelIngresarInsumo$3.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
@@ -175,6 +176,7 @@ com\panin\application\form\other\FormDashboard$1.class
 com\panin\application\form\productos\panelRegistrosCompraProducto$2.class
 com\panin\application\utilities\VerificarIngresoNumero$1.class
 com\panin\application\utilities\ActionButton$1.class
+com\panin\entidades\Configuracion.class
 com\panin\application\frameConfiguracion$1.class
 com\panin\application\form\MainForm.class
 com\panin\entidades\ComprasInsumo.class

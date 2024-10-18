@@ -58,7 +58,8 @@ public class ControladorComprasInsumos {
 
     public ComprasInsumo obtenerComprasdeUnInsumoUnico(Insumo insumo) {
         ComprasInsumo comprasInsumos;
-
+       
+        Application.session.beginTransaction();
         TypedQuery query = Application.session.getNamedQuery("ComprasInsumo.findByInsumoUnico");
         query.setParameter("insumo", insumo);
         query.setMaxResults(1);
