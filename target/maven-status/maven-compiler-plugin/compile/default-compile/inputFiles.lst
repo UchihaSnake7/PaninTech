@@ -3,6 +3,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insu
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasInsumos.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\VentaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
@@ -22,6 +23,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\ConversionD
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTasa.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\UtilitarioExportarTabla.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\MetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\DefaultForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
@@ -35,6 +37,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insu
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\PanelAction.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Usuarios.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Conversion.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Venta.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Configuracion.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormVerInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVerProductos.java
@@ -52,8 +55,11 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\frameConf
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionEvent.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Tasa.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\TabbedPaneCustom.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Cliente.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\TipoMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\tipoProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\VentaMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuItem.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorDivisa.java
@@ -109,6 +115,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insu
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormReporteComprasProductosC.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\formConfiguracion.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Banco.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTipoMedida.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
