@@ -44,20 +44,20 @@ public class TabbedPaneCustom extends JTabbedPane {
 
     public TabbedPaneCustom() {
         setBackground(getBackground());
-//        this.putClientProperty(FlatClientProperties.STYLE, ""
-//                //                + "dropLineShortColor:$Menu.background;"
-//                + "selectedBackground: $Login.background;"
-//                + "hoverColor: $Login.background;"
-//                //                + "tabSeparatorColor: $Menu.background;"
-//                + "selectedForeground: $Table.foreground;"
-//                + "foreground:$Table.foreground;"
-//                + "background:$Login.background;"
-//        );
+        this.putClientProperty(FlatClientProperties.STYLE, ""
+                //                + "dropLineShortColor:$Menu.background;"
+                + "selectedBackground: $Login.background;"
+                + "hoverColor: $Login.background;"
+                //                + "tabSeparatorColor: $Menu.background;"
+                + "selectedForeground: $Table.foreground;"
+//                + "unselectedBackground: $background"
+                + "foreground:$Table.foreground;"
+                + "background: $background;"
+        );
 
-        unselectedColor = UIManager.getColor("$Menu.background");
-        selectedColor = getBackground();
+//        unselectedColor = UIManager.getColor("$Menu.background");
+//        selectedColor = UIManager.getColor("$Menu.background");
 //        unselectedColor = getBackground();
 //        setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-
     }
 }

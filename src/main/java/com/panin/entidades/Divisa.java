@@ -5,6 +5,7 @@
 package com.panin.entidades;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,8 +13,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -29,6 +33,9 @@ import java.util.Objects;
 }
 )
 public class Divisa {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "divisa")
+    private List<VentaMetodoPago> ventaMetodoPagoList;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -93,6 +100,15 @@ public class Divisa {
     public String toString() {
         return this.abreviatura;
 //        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
+    }
+
+    @XmlTransient
+    public List<VentaMetodoPago> getVentaMetodoPagoList() {
+        return ventaMetodoPagoList;
+    }
+
+    public void setVentaMetodoPagoList(List<VentaMetodoPago> ventaMetodoPagoList) {
+        this.ventaMetodoPagoList = ventaMetodoPagoList;
     }
 
     
