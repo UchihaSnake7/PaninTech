@@ -87,6 +87,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\C
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelCrearCliente.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuAnimation.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormVerInsumos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormCambio.java
@@ -113,6 +114,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorDivisa.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorCliente.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuEvent.java

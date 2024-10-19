@@ -31,6 +31,7 @@ public class panelCrearDatos extends javax.swing.JPanel {
         jComboxUnidades = new javax.swing.JComboBox<>();
         tabbedPane = new com.panin.application.utilities.TabbedPaneCustom();
         jPanel1 = new javax.swing.JPanel();
+        panelCrearCliente1 = new com.panin.application.ventas.PanelCrearCliente();
         jPanel2 = new javax.swing.JPanel();
 
         jComboxUnidades.setPreferredSize(new java.awt.Dimension(85, 22));
@@ -44,11 +45,17 @@ public class panelCrearDatos extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(128, Short.MAX_VALUE)
+                .addComponent(panelCrearCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(panelCrearCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Crear Cliente", jPanel1);
@@ -61,7 +68,7 @@ public class panelCrearDatos extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Crear Método de Pago", jPanel2);
@@ -90,6 +97,7 @@ public class panelCrearDatos extends javax.swing.JPanel {
     private javax.swing.JComboBox<UnidadMedida> jComboxUnidades;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private com.panin.application.ventas.PanelCrearCliente panelCrearCliente1;
     private com.panin.application.utilities.TabbedPaneCustom tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

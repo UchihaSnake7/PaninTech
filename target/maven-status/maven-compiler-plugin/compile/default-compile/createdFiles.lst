@@ -35,6 +35,7 @@ com\panin\application\utilities\ValidadorFormulario.class
 com\panin\entidades\TipoMedida.class
 com\panin\application\form\productos\PanelVerDatosProducto$1.class
 com\panin\entidades\VentaProductos.class
+com\panin\application\ventas\PanelCrearCliente$1.class
 com\panin\application\form\productos\PanelNuevoProducto$1.class
 com\panin\application\Application.class
 com\panin\application\utilities\SearchHeader2$BuscadorListener.class
@@ -126,8 +127,10 @@ com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorDivisa.class
 com\panin\controladores\ControladorConversion.class
 com\panin\controladores\ControladorInsumoReceta.class
+com\panin\application\ventas\PanelCrearCliente.class
 com\panin\application\form\productos\PanelNuevoProducto$3.class
 com\panin\application\form\insumos\TextArea.class
+com\panin\controladores\ControladorCliente.class
 com\panin\application\utilities\SearchText.class
 com\panin\menu\LightDarkMode.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$1.class
@@ -145,6 +148,7 @@ com\panin\entidades\Tasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\entidades\MarcaInsumo.class
 com\panin\menu\MenuItemLayout.class
+com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class
 com\panin\application\form\productos\PanelDeProducto.class
 com\panin\application\form\other\FormIngresarInsumoold.class

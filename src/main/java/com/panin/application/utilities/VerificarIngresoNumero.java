@@ -12,9 +12,9 @@ import java.awt.event.KeyEvent;
  * @author ricke
  */
 public class VerificarIngresoNumero {
-    
-    public static void verificar(com.panin.application.utilities.TextoHint textfield){
-       
+
+    public static void verificar(com.panin.application.utilities.TextoHint textfield) {
+
         textfield.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();
@@ -25,7 +25,7 @@ public class VerificarIngresoNumero {
                     ke.consume();
                     return;
                 }
-                    if (text.length() >= 12) {
+                if (text.length() >= 12) {
                     ke.consume();
                     return;
                 }
@@ -43,7 +43,28 @@ public class VerificarIngresoNumero {
             }
         });
 
-        
     }
-    
+
+    public static void verificarSoloNumero(com.panin.application.utilities.TextoHint textfield) {
+
+        textfield.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                String text = textfield.getText();
+
+                // Permitir números, coma y signo negativo al inicio
+                if (!(Character.isDigit(c))) {
+                    ke.consume();
+                    return;
+                }
+                if (text.length() >= 12) {
+                    ke.consume();
+                    return;
+                }
+            }
+        }
+        );
+
+    }
+
 }
