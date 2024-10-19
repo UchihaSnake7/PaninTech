@@ -1,3 +1,4 @@
+com\panin\application\ventas\panelFormularioMetodoDePago$1.class
 com\panin\application\utilities\TableActionCellEditor.class
 com\panin\application\form\productos\FormReporteComprasProductosC$1.class
 com\panin\application\form\insumos\crear\PanelDeInsumo$1.class
@@ -27,6 +28,7 @@ com\panin\application\form\productos\PanelNuevoProducto.class
 com\panin\application\form\productos\FormReporteComprasProductosC.class
 com\panin\menu\Menu$MenuLayout.class
 com\panin\application\ventas\panelCrearDatos.class
+com\panin\controladores\ControladorTipoMetodoPago.class
 com\panin\controladores\ControladorTasa.class
 com\panin\entidades\Cliente.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
@@ -50,6 +52,7 @@ com\panin\entidades\VentaMetodoPago.class
 com\panin\application\utilities\ScrollBar.class
 com\panin\application\form\FormCrearUsuario$1.class
 com\panin\application\form\insumos\panelRegistrosInsumos$2.class
+com\panin\application\ventas\panelFormularioMetodoDePago$2.class
 com\panin\application\utilities\PanelAction$1.class
 com\panin\application\form\insumos\crear\PanelDeInsumo$2.class
 com\panin\application\form\insumos\Model_Card.class
@@ -84,6 +87,7 @@ com\panin\application\form\insumos\PanelIngresarInsumo$2.class
 com\panin\application\form\other\FormCambio$2.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$1.class
 com\panin\entidades\Venta.class
+com\panin\controladores\ControladorBanco.class
 com\panin\menu\PopupSubmenu.class
 com\panin\application\form\other\VistaProductos.class
 com\panin\application\form\productos\PanelIngresarCompra$6.class
@@ -205,6 +209,7 @@ com\panin\application\utilities\VerificarIngresoNumero$1.class
 com\panin\application\utilities\ActionButton$1.class
 com\panin\entidades\Configuracion.class
 com\panin\application\frameConfiguracion$1.class
+com\panin\application\ventas\panelFormularioMetodoDePago.class
 com\panin\application\form\MainForm.class
 com\panin\entidades\ComprasInsumo.class
 com\panin\controladores\ControladorReceta.class

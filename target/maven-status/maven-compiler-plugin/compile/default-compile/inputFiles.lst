@@ -10,6 +10,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\Control
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTipoMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\VerificarIngresoNumero.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\panelCrearDatos.java
@@ -92,6 +93,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Producto.ja
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\FormCrearUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\panelFormularioMetodoDePago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\frameIngresarInsumoReceta.java
@@ -105,6 +107,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\ComprasProd
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\PanelLogin.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorBanco.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\MarcaInsumo.java
