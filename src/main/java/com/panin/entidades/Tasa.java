@@ -32,7 +32,7 @@ import java.util.Date;
     @NamedQuery(name = "Tasa.findById", query = "SELECT t FROM Tasa t WHERE t.id = :id"),
     @NamedQuery(name = "Tasa.findByTasa", query = "SELECT t FROM Tasa t WHERE t.tasa = :tasa"),
     @NamedQuery(name = "Tasa.findByFecha", query = "SELECT t FROM Tasa t WHERE t.fecha = :fecha")})
-public class Tasa implements Serializable {
+public class Tasa implements Serializable, Comparable<Tasa> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,5 +111,16 @@ public class Tasa implements Serializable {
     public String toString() {
         return "com.panin.entidades.Tasa[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public int compareTo(Tasa t) {
+        int comparison = this.getFecha().compareTo(t.getFecha());
+        if (comparison == 0) {
+            // Si las fechas son iguales, comparamos los IDs
+            System.out.println("Comparando ID");
+            return Integer.compare(this.getId(), t.getId());
+        } else {
+            return comparison;
+        }
+    }
 }

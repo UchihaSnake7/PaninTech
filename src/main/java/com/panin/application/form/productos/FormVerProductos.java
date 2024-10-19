@@ -175,13 +175,13 @@ public class FormVerProductos extends javax.swing.JPanel implements SearchHeader
                 if (respuesta == JOptionPane.YES_OPTION) {
 //                    controladorInsumo.abrirSesion();
                     if (controladorProductos.delete(producto)) {
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Producto se borró con Éxito!");
                         modelTable.removeRow(row);
                     } else {
                         producto.setActivo(false);
 //                        controladorInsumo.abrirSesion();
                         if (controladorProductos.update(producto)) {
-                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
+                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Pruducto no se puede borrar, se desactivó");
                             actualizarLista();
                         } else {
                             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");

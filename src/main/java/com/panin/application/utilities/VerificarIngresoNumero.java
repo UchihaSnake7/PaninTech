@@ -14,26 +14,7 @@ import java.awt.event.KeyEvent;
 public class VerificarIngresoNumero {
     
     public static void verificar(com.panin.application.utilities.TextoHint textfield){
-        
-          textfield.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent ke) {
-                char c = ke.getKeyChar();
-                String text = textfield.getText();
-
-                // Permitir números, coma y signo negativo al inicio
-                if (!Character.isDigit(c)) {
-                    ke.consume();
-                    return;
-                }
-                   if (text.length() >= 10) {
-                    ke.consume();
-                    return;
-                }
-
-           
-            }
-        });
-
+       
         textfield.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();

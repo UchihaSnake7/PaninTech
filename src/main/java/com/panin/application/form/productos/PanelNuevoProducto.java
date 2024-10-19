@@ -307,6 +307,7 @@ public class PanelNuevoProducto extends javax.swing.JPanel {
                 p.setRutaImagen("/imagenes/utilidad/productos.png");
                 p.setPrecioProduccion(0);
                 p.setPrecioVenta(0);
+                p.setActivo(true);
                 p.setIdTipoMedida((TipoMedida) comboBoxTipoMedida.getSelectedItem());
 
                 cp.crearProducto(p);
