@@ -9,9 +9,11 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\C
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TabbedPaneCustom.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Venta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelMostrarProductos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Banco.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\panelRegistrosInsumos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversionDivisa.java
@@ -35,12 +37,14 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\Model_Card.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormIngresarInsumo.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ValidadorFormulario.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\VentaProductos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelVerDatosProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\Application.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\dto\formAgregarInsumoProductoDTO.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\CardDescription.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\FormDashboard.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\TipoMetodoPago.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormIngresarProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuItemLayout.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelIngresarCompra.java
@@ -62,7 +66,9 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\HibernateUt
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\CardDescription.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\frameIngresarInsumoReceta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\TextArea.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\VentaMetodoPago.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuItem.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\MetodoPago.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\VerificarIngresoNumero.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMarcaInsumo.java
@@ -77,6 +83,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controlador
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\insumos\crear\PanelDeInsumo.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\formprueba.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Cliente.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormMostrarProductos.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ScrollBar.java

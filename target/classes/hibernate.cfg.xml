@@ -40,6 +40,13 @@
       <mapping class="com.panin.entidades.Configuracion"/>
       <mapping class="com.panin.entidades.Divisa"/>
       <mapping class="com.panin.entidades.ConversionDivisa"/>
+      <mapping class="com.panin.entidades.Cliente"/>
+      <mapping class="com.panin.entidades.Banco"/>
+      <mapping class="com.panin.entidades.MetodoPago"/>
+      <mapping class="com.panin.entidades.TipoMetodoPago"/>
+      <mapping class="com.panin.entidades.Venta"/>
+      <mapping class="com.panin.entidades.VentaMetodoPago"/>
+      <mapping class="com.panin.entidades.VentaProductos"/>
 
 
 

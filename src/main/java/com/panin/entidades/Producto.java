@@ -21,12 +21,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Collection;
 import com.panin.application.utilities.tipoProducto;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.xml.bind.annotation.XmlTransient;
-import java.util.List;
 
 /**
  *
@@ -48,34 +44,27 @@ import java.util.List;
 
 public class Producto implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "descripcion")
-    private String descripcion;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "precio_produccion")
-    private Double precioProduccion;
-    @Column(name = "precio_venta")
-    private Double precioVenta;
-
-    @Column(name = "activo")
-    private Boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<VentaProductos> ventaProductosList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Column(name = "precio_produccion")
+    private double precioProduccion;
+    @Column(name = "precio_venta")
+    private double precioVenta;
     @Column(name = "ruta_imagen")
     private String rutaImagen;
 
     @Column(columnDefinition = "ENUM('Comprado', 'Elaborado')")
     @Enumerated(EnumType.STRING)
-    private String tipo;
+    private tipoProducto tipo;
 
     @Column(name = "id_receta")
     private Integer idReceta;
@@ -83,6 +72,16 @@ public class Producto implements Serializable {
     @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
     @ManyToOne
     private TipoMedida idTipoMedida;
+    @Column(name = "activo")
+    private boolean activo;
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
     public Producto() {
     }
@@ -102,6 +101,14 @@ public class Producto implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getPrecioProduccion() {
@@ -126,6 +133,14 @@ public class Producto implements Serializable {
 
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
+    }
+
+    public tipoProducto getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(tipoProducto tipo) {
+        this.tipo = tipo;
     }
 
     public int getIdReceta() {
@@ -167,47 +182,6 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return this.descripcion;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setPrecioProduccion(Double precioProduccion) {
-        this.precioProduccion = precioProduccion;
-    }
-
-    public void setPrecioVenta(Double precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
-
-    @XmlTransient
-    public List<VentaProductos> getVentaProductosList() {
-        return ventaProductosList;
-    }
-
-    public void setVentaProductosList(List<VentaProductos> ventaProductosList) {
-        this.ventaProductosList = ventaProductosList;
     }
 
 }

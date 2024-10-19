@@ -5,7 +5,6 @@
 package com.panin.entidades;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,11 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -33,9 +29,6 @@ import java.util.Objects;
 }
 )
 public class Divisa {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "divisa")
-    private List<VentaMetodoPago> ventaMetodoPagoList;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,7 +37,7 @@ public class Divisa {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Column(name = "descripcion", nullable = false)
-    private String descripcicion;
+    private String nombreEmpresa;
     @Column(name = "abreviatura")
     private String abreviatura;
 
@@ -60,11 +53,11 @@ public class Divisa {
     }
 
     public String getNombreEmpresa() {
-        return descripcicion;
+        return nombreEmpresa;
     }
 
     public void setNombreEmpresa(String nombreEmpresa) {
-        this.descripcicion = nombreEmpresa;
+        this.nombreEmpresa = nombreEmpresa;
     }
 
     public String getAbreviatura() {
@@ -98,19 +91,9 @@ public class Divisa {
 
     @Override
     public String toString() {
-        return this.abreviatura;
-//        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
+        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
     }
-
-    @XmlTransient
-    public List<VentaMetodoPago> getVentaMetodoPagoList() {
-        return ventaMetodoPagoList;
-    }
-
-    public void setVentaMetodoPagoList(List<VentaMetodoPago> ventaMetodoPagoList) {
-        this.ventaMetodoPagoList = ventaMetodoPagoList;
-    }
-
+    
     
     
     

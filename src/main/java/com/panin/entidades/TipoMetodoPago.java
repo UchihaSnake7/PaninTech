@@ -19,7 +19,7 @@ import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 /**
  *
@@ -44,7 +44,7 @@ public class TipoMetodoPago implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo")
-    private List<MetodoPago> metodoPagoList;
+    private Collection<MetodoPago> metodoPagoCollection;
 
     public TipoMetodoPago() {
     }
@@ -70,12 +70,12 @@ public class TipoMetodoPago implements Serializable {
     }
 
     @XmlTransient
-    public List<MetodoPago> getMetodoPagoList() {
-        return metodoPagoList;
+    public Collection<MetodoPago> getMetodoPagoCollection() {
+        return metodoPagoCollection;
     }
 
-    public void setMetodoPagoList(List<MetodoPago> metodoPagoList) {
-        this.metodoPagoList = metodoPagoList;
+    public void setMetodoPagoCollection(Collection<MetodoPago> metodoPagoCollection) {
+        this.metodoPagoCollection = metodoPagoCollection;
     }
 
     @Override

@@ -40,9 +40,6 @@ public class VentaMetodoPago implements Serializable {
     @NotNull
     @Column(name = "monto")
     private double monto;
-    @JoinColumn(name = "divisa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Divisa divisa;
     @JoinColumn(name = "metodo_pago", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private MetodoPago metodoPago;
@@ -76,14 +73,6 @@ public class VentaMetodoPago implements Serializable {
 
     public void setMonto(double monto) {
         this.monto = monto;
-    }
-
-    public Divisa getDivisa() {
-        return divisa;
-    }
-
-    public void setDivisa(Divisa divisa) {
-        this.divisa = divisa;
     }
 
     public MetodoPago getMetodoPago() {
