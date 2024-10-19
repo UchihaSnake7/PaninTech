@@ -1,4 +1,5 @@
 com\panin\application\utilities\TableActionCellEditor.class
+com\panin\application\form\productos\FormReporteComprasProductosC$1.class
 com\panin\application\form\insumos\crear\PanelDeInsumo$1.class
 com\panin\application\form\insumos\panelRegistrosInsumos$1.class
 com\panin\application\form\other\FormRead.class
@@ -22,6 +23,7 @@ com\panin\application\form\other\FormCambio$1.class
 com\panin\application\form\productos\panelContenidoReceta$2.class
 com\panin\application\utilities\SearchHeader.class
 com\panin\application\form\productos\PanelNuevoProducto.class
+com\panin\application\form\productos\FormReporteComprasProductosC.class
 com\panin\menu\Menu$MenuLayout.class
 com\panin\controladores\ControladorTasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
@@ -65,9 +67,11 @@ com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
 com\panin\application\form\productos\PanelIngresarCompra$3.class
 com\panin\application\form\insumos\FormVerInsumos$1.class
+com\panin\entidades\ConversionDivisa.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$1.class
 com\panin\controladores\ControladorMarcaInsumo.class
 com\panin\menu\MenuAction.class
+com\panin\application\form\productos\FormReporteComprasProductosC$2.class
 com\panin\menu\MenuAnimation$1.class
 com\panin\application\form\insumos\FormCrearInsumo.class
 com\panin\application\form\insumos\PanelIngresarInsumo$2.class
@@ -88,6 +92,7 @@ com\panin\application\utilities\SearchHeaderFinal.class
 com\panin\controladores\ControladorInsumos.class
 com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
+com\panin\controladores\ControladorConversionDivisa.class
 com\panin\application\form\productos\panelRegistrosCompraProducto.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
@@ -114,6 +119,7 @@ com\panin\application\form\insumos\TextArea.class
 com\panin\application\utilities\SearchText.class
 com\panin\menu\LightDarkMode.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$1.class
+com\panin\application\form\productos\FormReporteComprasProductosC$3.class
 com\panin\application\utilities\PanelAction$2.class
 com\panin\db\ConexionDB.class
 com\panin\application\form\other\DefaultForm.class
@@ -160,6 +166,7 @@ com\panin\application\utilities\SearchHeader2$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
+com\panin\application\form\productos\PanelNuevoProducto$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$3.class
 com\panin\application\form\productos\FormAgregarNuevoProducto.class
 com\panin\controladores\ControladorProductos.class

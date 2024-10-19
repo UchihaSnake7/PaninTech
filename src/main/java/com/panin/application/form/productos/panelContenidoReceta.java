@@ -24,30 +24,29 @@ public class panelContenidoReceta extends javax.swing.JPanel {
      */
     private List<formAgregarInsumoProductoDTO> listaDTO = new ArrayList<formAgregarInsumoProductoDTO>();
     private DefaultTableModel modelTable;
-    
+
     public panelContenidoReceta() {
-        
+
         initComponents();
         init();
-        
+
     }
-    
+
     public panelContenidoReceta obtenerPanel() {
         return this;
     }
-    
+
     public void init() {
         String[] columnas = new String[]{
             "Insumo", "Medida", "Cantidad"
         };
         modelTable = new DefaultTableModel(columnas, 0);
         table.setModel(modelTable);
-        
+
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
-                + "background:$Table.background"
+                + "background:$background"
         );
-        
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
                 + "height:30;"
                 + "hoverBackground:null;"
@@ -56,7 +55,7 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 + "font:bold;"
                 + "background:$Menu.background;"
         );
-        
+
         table.putClientProperty(FlatClientProperties.STYLE, ""
                 + "rowHeight:30;"
                 + "showHorizontalLines:true;"
@@ -68,7 +67,7 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 + "selectionForeground:$Table.foreground;"
                 + "background:$Login.background;"
         );
-        
+
     }
 
     /**
@@ -131,13 +130,13 @@ public class panelContenidoReceta extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(separador)
-                .addGap(86, 86, 86))
             .addComponent(scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonAbrirFrameFormularioInsumo)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonAbrirFrameFormularioInsumo))
+                    .addComponent(separador))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -162,16 +161,16 @@ public class panelContenidoReceta extends javax.swing.JPanel {
                 System.out.println(".windowClosed()");
                 System.out.println("Desde panel receta recibo " + frame.getDtoAgregarInsumo().getInsumo());
                 modelTable.addRow(new Object[]{frame.getDtoAgregarInsumo().getInsumo(), frame.getDtoAgregarInsumo().getUnidadMedidad(), frame.getDtoAgregarInsumo().getCantidad()});
-                
+
                 listaDTO.add(frame.getDtoAgregarInsumo());
             }
         });
     }//GEN-LAST:event_botonAbrirFrameFormularioInsumoActionPerformed
-    
+
     public JTable getTable() {
         return table;
     }
-    
+
     public void setTable(JTable table) {
         this.table = table;
     }
@@ -183,8 +182,6 @@ public class panelContenidoReceta extends javax.swing.JPanel {
     public void setListaDTO(List<formAgregarInsumoProductoDTO> listaDTO) {
         this.listaDTO = listaDTO;
     }
-    
-   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

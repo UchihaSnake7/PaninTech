@@ -304,9 +304,9 @@ public class panelRegistrosCompraProducto extends javax.swing.JPanel {
                     jDateHasta.setMinSelectableDate(jDateDesde.getDate());
                     ControladorComprasProductos controladorComprasProductos = new ControladorComprasProductos();
                     if (jDateHasta.getDate() == null) {
-                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesde(producto, jDateDesde.getDate());
+                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesdeProducto(producto, jDateDesde.getDate());
                     } else {
-                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesdeHasta(producto, jDateDesde.getDate(), jDateHasta.getDate());
+                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesdeHastaProducto(producto, jDateDesde.getDate(), jDateHasta.getDate());
                     }
                     listaComprasProductos.sort(Collections.reverseOrder());
                     modelTable.setRowCount(0);
@@ -323,9 +323,9 @@ public class panelRegistrosCompraProducto extends javax.swing.JPanel {
                     jDateDesde.setMaxSelectableDate(jDateHasta.getDate());
                     ControladorComprasProductos controladorComprasProductos = new ControladorComprasProductos();
                     if (jDateDesde.getDate() == null) {
-                        listaComprasProductos = controladorComprasProductos.obtenerComprasHasta(producto, jDateHasta.getDate());
+                        listaComprasProductos = controladorComprasProductos.obtenerComprasHastaProducto(producto, jDateHasta.getDate());
                     } else {
-                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesdeHasta(producto, jDateDesde.getDate(), jDateHasta.getDate());
+                        listaComprasProductos = controladorComprasProductos.obtenerComprasDesdeHastaProducto(producto, jDateDesde.getDate(), jDateHasta.getDate());
                     }
                     listaComprasProductos.sort(Collections.reverseOrder());
                     modelTable.setRowCount(0);

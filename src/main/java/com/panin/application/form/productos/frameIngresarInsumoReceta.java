@@ -44,7 +44,7 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         
         panelFormularioInsumo.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
-                + "arc:50;");
+                + "arc:10;");
         
         botonAceptar.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$Menu.foreground;");
@@ -85,9 +85,9 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         labelTituloIngrediente = new javax.swing.JLabel();
         labelTituloMedida = new javax.swing.JLabel();
         labelTituloCantidad = new javax.swing.JLabel();
-        botonAceptar = new javax.swing.JButton();
         comboboxMedida = new javax.swing.JComboBox<>();
         textFieldCantidad = new com.panin.application.utilities.TextoHint();
+        botonAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,26 +99,22 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
             }
         });
 
-        labelTituloIngrediente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloIngrediente.setText("Ingrediente");
 
-        labelTituloMedida.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloMedida.setText("Medida");
 
-        labelTituloCantidad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelTituloCantidad.setText("Cantidad");
-
-        botonAceptar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        botonAceptar.setText("Aceptar");
-        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAceptarActionPerformed(evt);
-            }
-        });
 
         comboboxMedida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxMedidaActionPerformed(evt);
+            }
+        });
+
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarActionPerformed(evt);
             }
         });
 
@@ -127,52 +123,47 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         panelFormularioInsumoLayout.setHorizontalGroup(
             panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(labelTituloForm, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                        .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelTituloIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(labelTituloIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(88, 88, 88)
-                                .addComponent(labelTituloMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelTituloForm, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(botonAceptar))
-                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(labelTituloCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                                .addGap(138, 138, 138)
+                                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelTituloMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
+                                        .addComponent(labelTituloCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE))
+                                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(20, 20, 20)
+                .addComponent(botonAceptar)
+                .addGap(30, 30, 30))
         );
         panelFormularioInsumoLayout.setVerticalGroup(
             panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioInsumoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(labelTituloForm)
-                .addGap(68, 68, 68)
-                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTituloIngrediente)
-                    .addComponent(labelTituloMedida)
-                    .addComponent(labelTituloCantidad))
+                .addGap(30, 30, 30)
+                .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloForm)
+                    .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelTituloIngrediente)
+                        .addComponent(labelTituloMedida)
+                        .addComponent(labelTituloCantidad)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelFormularioInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboboxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboboxMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(botonAceptar)
-                .addGap(46, 46, 46))
+                    .addComponent(textFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAceptar))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout panelEstiloLayout = new javax.swing.GroupLayout(panelEstilo);
@@ -180,23 +171,25 @@ public class frameIngresarInsumoReceta extends javax.swing.JFrame {
         panelEstiloLayout.setHorizontalGroup(
             panelEstiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEstiloLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         panelEstiloLayout.setVerticalGroup(
             panelEstiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEstiloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEstiloLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(panelFormularioInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

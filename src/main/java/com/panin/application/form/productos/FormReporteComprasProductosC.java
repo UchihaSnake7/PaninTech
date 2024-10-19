@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.panin.application.form.insumos.reportecompra;
+package com.panin.application.form.productos;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import static com.panin.application.utilities.UtilitarioExportarTabla.exportar;
-import com.panin.controladores.ControladorComprasInsumos;
+import com.panin.controladores.ControladorComprasProductos;
 import com.panin.controladores.ControladorConversion;
-import com.panin.controladores.ControladorInsumos;
+import com.panin.controladores.ControladorProductos;
 import com.panin.controladores.ControladorUnidadMedida;
-import com.panin.entidades.ComprasInsumo;
+import com.panin.entidades.ComprasProducto;
 import com.panin.entidades.Conversion;
-import com.panin.entidades.Insumo;
+import com.panin.entidades.Producto;
 import com.panin.entidades.UnidadMedida;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,19 +27,18 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import net.miginfocom.swing.MigLayout;
 import raven.toast.Notifications;
 
 /**
  *
  * @author USUARIO
  */
-public class FormReporteComprasInsumos extends javax.swing.JPanel {
+public class FormReporteComprasProductosC extends javax.swing.JPanel {
 
     /**
-     * Creates new form FormReporteComprasInsumos
+     * Creates new form FormReporteComprasProductosC
      */
-    public FormReporteComprasInsumos() {
+    public FormReporteComprasProductosC() {
         initComponents();
         init();
     }
@@ -53,10 +52,6 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jDateDesde1 = new com.toedter.calendar.JDateChooser();
@@ -65,22 +60,12 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jDateHasta = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
-        jComboBoxInsumos = new javax.swing.JComboBox<>();
+        jComboBoxProductos = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         botonExportar = new javax.swing.JButton();
-
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(table);
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
 
         jLabel4.setText("Unidad Medida");
 
@@ -88,7 +73,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
 
         jLabel2.setText("Hasta");
 
-        jLabel3.setText("Insumo");
+        jLabel3.setText("Productos - Comprados");
 
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +103,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +114,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                         .addComponent(botonExportar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,39 +130,49 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                     .addComponent(jDateDesde1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBoxUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)
                         .addComponent(botonExportar)))
                 .addGap(1, 1, 1))
         );
 
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(table);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(30, 30, 30))))
+                .addComponent(jScrollPane1)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,19 +181,19 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         Date hasta = jDateHasta.getDate() == null ? null : jDateHasta.getDate();
 
         if (desde != null || hasta != null) {
-            Insumo insumo = (Insumo) jComboBoxInsumos.getSelectedItem();
-            ControladorComprasInsumos controladorComprasInsumos = new ControladorComprasInsumos();
-            System.out.println(insumo.getDescripcion());
-            if (insumo.getDescripcion().equals("Todos")) {
+            Producto producto = (Producto) jComboBoxProductos.getSelectedItem();
+            ControladorComprasProductos controladorComprasProductos = new ControladorComprasProductos();
+            System.out.println(producto.getDescripcion());
+            if (producto.getDescripcion().equals("Todos")) {
                 //Buscar todos los insumos
                 if (desde != null && hasta != null) {
 
-                    listaCompras = controladorComprasInsumos.obtenerComprasInsumosFecha(desde, hasta);
+                    listaCompras = controladorComprasProductos.obtenerComprasProductosFecha(desde, hasta);
                 } else if (desde != null) {
                     System.out.println(desde);
-                    listaCompras = controladorComprasInsumos.obtenerComprasInsumosDesde(desde);
+                    listaCompras = controladorComprasProductos.obtenerComprasProductosDesde(desde);
                 } else if (hasta != null) {
-                    listaCompras = controladorComprasInsumos.obtenerComprasInsumosHasta(hasta);
+                    listaCompras = controladorComprasProductos.obtenerComprasProductosHasta(hasta);
                 }
 
                 actualizarLista();
@@ -207,17 +202,16 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
                 //Buscar por un insumo especifico
 
                 if (desde != null && hasta != null) {
-                    listaCompras = controladorComprasInsumos.obtenerComprasDesdeHasta(insumo, desde, hasta);
+                    listaCompras = controladorComprasProductos.obtenerComprasDesdeHastaProducto(producto, desde, hasta);
                 } else if (desde != null) {
-                    listaCompras = controladorComprasInsumos.obtenerComprasDesde(insumo, desde);
+                    listaCompras = controladorComprasProductos.obtenerComprasDesdeProducto(producto, desde);
                 } else if (hasta != null) {
-                    listaCompras = controladorComprasInsumos.obtenerComprasHasta(insumo, hasta);
+                    listaCompras = controladorComprasProductos.obtenerComprasHastaProducto(producto, hasta);
                 }
                 actualizarLista();
             }
 
         }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -225,7 +219,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (table.getModel().getRowCount() > 0) {
             DateTimeFormatter timeStampPattern = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-            String ruta = "archivos/insumos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".xls";
+            String ruta = "archivos/productos/Reporte_Compras_Insumos_" + timeStampPattern.format(java.time.LocalDateTime.now()) + ".xls";
             exportar(table, ruta);
             Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Reporte generado en : " + ruta);
         } else {
@@ -238,7 +232,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonExportar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<Insumo> jComboBoxInsumos;
+    private javax.swing.JComboBox<Producto> jComboBoxProductos;
     private javax.swing.JComboBox<UnidadMedida> jComboBoxUnidad;
     private com.toedter.calendar.JDateChooser jDateDesde1;
     private com.toedter.calendar.JDateChooser jDateHasta;
@@ -246,31 +240,30 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
-    private DefaultTableModel modelTable;
-    private List<ComprasInsumo> listaCompras;
+  private DefaultTableModel modelTable;
+    private List<ComprasProducto> listaCompras;
 
     private void init() {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 
 //        jPanel1.setLayout(new MigLayout("al center"));
-        ControladorInsumos controladorInsumo = new ControladorInsumos();
-        List<Insumo> insumos = controladorInsumo.obtenerInsumos();
-        Insumo all = new Insumo();
+        ControladorProductos controladorProducto = new ControladorProductos();
+        List<Producto> productos = controladorProducto.obtenerProductosComprados();
+        Producto all = new Producto();
         all.setDescripcion("Todos");
-        jComboBoxInsumos.addItem(all);
-        for (Insumo insumo : insumos) {
-            jComboBoxInsumos.addItem(insumo);
+        jComboBoxProductos.addItem(all);
+        for (Producto producto : productos) {
+            jComboBoxProductos.addItem(producto);
             actualizarUnidadMedida();
         }
 
         String[] columnas = new String[]{
-            "Id Insumo", "Insumo", "Id Compra", "Marca", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
+            "Id Producto", "Producto", "Id Compra", "Marca", "Cantidad", "Unidad Medida", "Precio", "Fecha", "Hora",};
         modelTable = new DefaultTableModel(columnas, 0);
         this.table.setModel(modelTable);
         TableColumnModel columnModel = table.getColumnModel();
@@ -292,6 +285,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         columnaCantidad.setPreferredWidth(180);
         columnaCantidad = columnModel.getColumn(3);
         columnaCantidad.setPreferredWidth(140);
+
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$background"
@@ -323,13 +317,13 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
     }
 
     private void actualizarUnidadMedida() {
-        jComboBoxInsumos.addActionListener(new ActionListener() {
+        jComboBoxProductos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jComboBoxUnidad.removeAllItems();
-                Insumo insumo = (Insumo) jComboBoxInsumos.getSelectedItem();
-                if (!insumo.getDescripcion().equals("Todos")) {
-                    for (UnidadMedida um : insumo.getIdTipoMedida().getUnidadMedidaCollection()) {
+                Producto producto = (Producto) jComboBoxProductos.getSelectedItem();
+                if (!producto.getDescripcion().equals("Todos")) {
+                    for (UnidadMedida um : producto.getIdTipoMedida().getUnidadMedidaCollection()) {
                         jComboBoxUnidad.addItem(um);
                     }
                 }
@@ -355,22 +349,22 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
         SimpleDateFormat formatterh = new SimpleDateFormat("HH:mm:ss:");
         String hora;
 
-        for (ComprasInsumo fila : listaCompras) {
+        for (ComprasProducto fila : listaCompras) {
             DecimalFormat df = new DecimalFormat("#,##0.00");
             String marca = "NA";
             ControladorUnidadMedida controladorUnidadMedida = new ControladorUnidadMedida();
             ControladorConversion controladorConversion = new ControladorConversion();
             BigDecimal precioCalculado = fila.getPrecio();
             BigDecimal cantidadCalculada = fila.getCantidad();
-            String unidadAbreviatura = fila.getUnidadMedidaId().toString();
+            String unidadAbreviatura = fila.getUnidadMedida().toString();
             String cantidadFormateada;
             String precioFormateado;
             hora = fila.getHora().toString();
-            if (fila.getUnidadMedidaId().isUnidadBase()) {
+            if (fila.getUnidadMedida().isUnidadBase()) {
                 precioCalculado = precioCalculado.multiply(fila.getCantidad());
             } else {
-                UnidadMedida umb = controladorUnidadMedida.obtenerUnidadBase(fila.getUnidadMedidaId());
-                Conversion conversion = controladorConversion.obtenerFactorConversion(umb, fila.getUnidadMedidaId());
+                UnidadMedida umb = controladorUnidadMedida.obtenerUnidadBase(fila.getUnidadMedida());
+                Conversion conversion = controladorConversion.obtenerFactorConversion(umb, fila.getUnidadMedida());
                 cantidadCalculada = fila.getCantidad().multiply(conversion.getFactorConversion());
                 precioCalculado = precioCalculado.multiply(cantidadCalculada);
             }
@@ -390,7 +384,7 @@ public class FormReporteComprasInsumos extends javax.swing.JPanel {
             double valorDouble = redondeado.doubleValue();
             cantidadFormateada = df.format(cantidadCalculada.doubleValue());
             precioFormateado = df.format(valorDouble);
-            modelTable.addRow(new Object[]{fila.getInsumo().getId().toString(), fila.getInsumo(), fila.getId().toString(), marca, cantidadFormateada, unidadAbreviatura, valorDouble, strDate, hora,});
+            modelTable.addRow(new Object[]{fila.getProducto().getId().toString(), fila.getProducto(), fila.getId().toString(), marca, cantidadFormateada, unidadAbreviatura, valorDouble, strDate, hora,});
         }
 
         // Convertir a double

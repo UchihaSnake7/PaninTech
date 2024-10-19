@@ -96,7 +96,7 @@ public class ControladorComprasProductos {
 
     }
 
-    public List<ComprasProducto> obtenerComprasDesde(Producto producto, Date date) {
+    public List<ComprasProducto> obtenerComprasDesdeProducto(Producto producto, Date date) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -108,11 +108,11 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
     }
 
-    public List<ComprasProducto> obtenerComprasDesdeHasta(Producto producto, Date date, Date hasta) {
+    public List<ComprasProducto> obtenerComprasDesdeHastaProducto(Producto producto, Date date, Date hasta) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -125,11 +125,11 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
     }
 
-    public List<ComprasProducto> obtenerComprasHasta(Producto producto, Date hasta) {
+    public List<ComprasProducto> obtenerComprasHastaProducto(Producto producto, Date hasta) {
         Application.session.beginTransaction();
         List<ComprasProducto> comprasProductos;
 
@@ -141,7 +141,7 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
     }
 
@@ -157,7 +157,7 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
     }
 
@@ -173,7 +173,7 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
 
     }
@@ -190,7 +190,7 @@ public class ControladorComprasProductos {
         Application.session.getTransaction().commit();
         //No cerrar la session mientras se piense utilizar mas metodos con query o generara una excepcion
 //                 Application.session.close();
-        Application.session.close();
+//        Application.session.close();
         return comprasProductos;
 
     }
