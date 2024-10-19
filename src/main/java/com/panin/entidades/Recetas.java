@@ -20,9 +20,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -45,6 +47,8 @@ public class Recetas implements Serializable {
     @Size(max = 65535)
     @Column(name = "instrucciones")
     private String instrucciones;
+    @OneToMany(mappedBy = "idReceta")
+    private List<Producto> productoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -143,6 +147,15 @@ public class Recetas implements Serializable {
 
     public void setInstrucciones(String instrucciones) {
         this.instrucciones = instrucciones;
+    }
+
+    @XmlTransient
+    public List<Producto> getProductoList() {
+        return productoList;
+    }
+
+    public void setProductoList(List<Producto> productoList) {
+        this.productoList = productoList;
     }
     
 }
