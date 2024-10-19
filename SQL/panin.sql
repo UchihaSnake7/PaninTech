@@ -333,4 +333,17 @@ alter table producto
  alter table producto
     add activo boolean null;
 
+CREATE TABLE cliente (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  cedula INT,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  direccion TEXT,
+  telefono VARCHAR(20),
+  email VARCHAR(100),
+  fecha_nacimiento DATE
+);
+
+
+
 
