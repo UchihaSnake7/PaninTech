@@ -46,7 +46,7 @@
       <mapping class="com.panin.entidades.TipoMetodoPago"/>
       <mapping class="com.panin.entidades.Venta"/>
       <mapping class="com.panin.entidades.VentaMetodoPago"/>
-      <mapping class="com.panin.entidades.VentaProducto"/>
+      <mapping class="com.panin.entidades.VentaProductos"/>
 
 
 

@@ -46,7 +46,11 @@
       <mapping class="com.panin.entidades.TipoMetodoPago"/>
       <mapping class="com.panin.entidades.Venta"/>
       <mapping class="com.panin.entidades.VentaMetodoPago"/>
+<<<<<<< HEAD
       <mapping class="com.panin.entidades.VentaProducto"/>
+=======
+      <mapping class="com.panin.entidades.VentaProductos"/>
+>>>>>>> 0aa37e9d3461bb35ac960c162ed7e093910a2e15
 
 
 

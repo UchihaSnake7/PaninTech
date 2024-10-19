@@ -22,8 +22,8 @@ import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -72,7 +72,7 @@ public class Cliente implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private List<Venta> ventaList;
+    private Collection<Venta> ventaCollection;
 
     public Cliente() {
     }
@@ -146,12 +146,12 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public List<Venta> getVentaList() {
-        return ventaList;
+    public Collection<Venta> getVentaCollection() {
+        return ventaCollection;
     }
 
-    public void setVentaList(List<Venta> ventaList) {
-        this.ventaList = ventaList;
+    public void setVentaCollection(Collection<Venta> ventaCollection) {
+        this.ventaCollection = ventaCollection;
     }
 
     @Override

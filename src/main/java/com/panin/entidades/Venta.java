@@ -23,8 +23,8 @@ import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -64,9 +64,9 @@ public class Venta implements Serializable {
     @ManyToOne(optional = false)
     private Cliente cliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta")
-    private List<VentaProductos> ventaProductosList;
+    private Collection<VentaProductos> ventaProductosCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta")
-    private List<VentaMetodoPago> ventaMetodoPagoList;
+    private Collection<VentaMetodoPago> ventaMetodoPagoCollection;
 
     public Venta() {
     }
@@ -124,21 +124,21 @@ public class Venta implements Serializable {
     }
 
     @XmlTransient
-    public List<VentaProductos> getVentaProductosList() {
-        return ventaProductosList;
+    public Collection<VentaProductos> getVentaProductosCollection() {
+        return ventaProductosCollection;
     }
 
-    public void setVentaProductosList(List<VentaProductos> ventaProductosList) {
-        this.ventaProductosList = ventaProductosList;
+    public void setVentaProductosCollection(Collection<VentaProductos> ventaProductosCollection) {
+        this.ventaProductosCollection = ventaProductosCollection;
     }
 
     @XmlTransient
-    public List<VentaMetodoPago> getVentaMetodoPagoList() {
-        return ventaMetodoPagoList;
+    public Collection<VentaMetodoPago> getVentaMetodoPagoCollection() {
+        return ventaMetodoPagoCollection;
     }
 
-    public void setVentaMetodoPagoList(List<VentaMetodoPago> ventaMetodoPagoList) {
-        this.ventaMetodoPagoList = ventaMetodoPagoList;
+    public void setVentaMetodoPagoCollection(Collection<VentaMetodoPago> ventaMetodoPagoCollection) {
+        this.ventaMetodoPagoCollection = ventaMetodoPagoCollection;
     }
 
     @Override

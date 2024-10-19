@@ -36,9 +36,6 @@ public class VentaProductos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "producto", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Producto producto;
     @JoinColumn(name = "venta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Venta venta;
@@ -56,14 +53,6 @@ public class VentaProductos implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public Venta getVenta() {

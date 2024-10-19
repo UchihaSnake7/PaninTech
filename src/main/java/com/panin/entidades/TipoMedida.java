@@ -24,7 +24,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 
 /**
  *
@@ -44,8 +43,6 @@ public class TipoMedida implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(mappedBy = "idTipoMedida")
-    private List<Producto> productoList;
     @OneToMany(mappedBy = "idTipo", fetch=FetchType.EAGER)
 //    @ElementCollection(fetch = FetchType.EAGER)
 //    @CollectionTable(name = "unidad_medida", joinColumns = @JoinColumn(name = "id_tipo"))
@@ -131,15 +128,6 @@ public class TipoMedida implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    @XmlTransient
-    public List<Producto> getProductoList() {
-        return productoList;
-    }
-
-    public void setProductoList(List<Producto> productoList) {
-        this.productoList = productoList;
     }
     
 }

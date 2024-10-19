@@ -75,10 +75,8 @@ public class PanelVerDatosProducto extends javax.swing.JPanel {
             Recetas r = new Recetas();
             String tipoProducto = "NA";
             if (producto.getTipo() != null) {
-                tipoProducto = producto.getTipo().name();
-                if (producto.getTipo().toString().equalsIgnoreCase(tipo)) {
-
-                 
+                tipoProducto = producto.getTipo().toString();
+                if (producto.getTipo().toString().equalsIgnoreCase(tipo)) {        
                     r = cr.obtenerRecetaPorId(producto.getIdReceta());
                     listaInsumosReceta = new ArrayList<formAgregarInsumoProductoDTO>();
 
