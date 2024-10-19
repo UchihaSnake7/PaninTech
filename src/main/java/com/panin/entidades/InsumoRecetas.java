@@ -30,7 +30,9 @@ import java.math.BigDecimal;
     @NamedQuery(name = "InsumoRecetas.findAll", query = "SELECT i FROM InsumoRecetas i"),
     @NamedQuery(name = "InsumoRecetas.findByIdInsumoReceta", query = "SELECT i FROM InsumoRecetas i WHERE i.idInsumoReceta = :idInsumoReceta"),
     @NamedQuery(name = "InsumoRecetas.findByCantidad", query = "SELECT i FROM InsumoRecetas i WHERE i.cantidad = :cantidad"),
-    @NamedQuery(name = "InsumoRecetas.findByInsumo", query = "SELECT i FROM InsumoRecetas i WHERE i.idInsumo = :insumo")
+    @NamedQuery(name = "InsumoRecetas.findByInsumo", query = "SELECT i FROM InsumoRecetas i WHERE i.idInsumo = :insumo"),
+    @NamedQuery(name = "InsumoRecetas.findByReceta", query = "SELECT i FROM InsumoRecetas i WHERE i.idReceta = :receta")
+
 })
 public class InsumoRecetas implements Serializable {
 

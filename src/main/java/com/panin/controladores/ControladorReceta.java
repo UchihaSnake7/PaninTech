@@ -9,6 +9,8 @@ import com.panin.application.Application;
 import com.panin.entidades.InsumoRecetas;
 import com.panin.entidades.Recetas;
 import jakarta.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -36,6 +38,22 @@ public class ControladorReceta {
         Application.session.getTransaction().commit();
 
         return r;
+
+    }
+    
+    public List<InsumoRecetas> obtenerInsumosPorReceta(Recetas r) {
+
+        Application.session.beginTransaction();
+
+        List<InsumoRecetas> lista = new ArrayList<InsumoRecetas>();
+
+        Query query = Application.session.getNamedQuery("InsumoRecetas.findByReceta");
+        query.setParameter("receta", r);
+        lista = query.getResultList();
+
+        Application.session.getTransaction().commit();
+
+        return lista;
 
     }
 

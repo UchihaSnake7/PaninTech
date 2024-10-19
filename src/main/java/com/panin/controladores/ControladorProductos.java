@@ -86,7 +86,8 @@ public class ControladorProductos {
         ControladorReceta cr = new ControladorReceta();
         Recetas r = new Recetas();
         r = cr.obtenerRecetaPorId(producto.getIdReceta());
-        System.out.print("receta: " + r.getIdReceta());
+        List<InsumoRecetas> listaInsumoReceta = cr.obtenerInsumosPorReceta(r);
+//        System.out.print("receta: " + r.getIdReceta());
         double cantidadReceta = r.getCantidad();
         double cantidadCalculada = 0.0;
         double precioTotal = 0;
@@ -110,7 +111,7 @@ public class ControladorProductos {
 
         }
 
-        for (InsumoRecetas ir : r.getInsumoRecetasCollection()) {
+        for (InsumoRecetas ir : listaInsumoReceta) {
 
             formAgregarInsumoProductoDTO dto = new formAgregarInsumoProductoDTO();
 
