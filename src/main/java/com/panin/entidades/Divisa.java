@@ -37,7 +37,7 @@ public class Divisa {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Column(name = "descripcion", nullable = false)
-    private String nombreEmpresa;
+    private String descripcicion;
     @Column(name = "abreviatura")
     private String abreviatura;
 
@@ -53,11 +53,11 @@ public class Divisa {
     }
 
     public String getNombreEmpresa() {
-        return nombreEmpresa;
+        return descripcicion;
     }
 
     public void setNombreEmpresa(String nombreEmpresa) {
-        this.nombreEmpresa = nombreEmpresa;
+        this.descripcicion = nombreEmpresa;
     }
 
     public String getAbreviatura() {
@@ -91,9 +91,10 @@ public class Divisa {
 
     @Override
     public String toString() {
-        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
+        return this.abreviatura;
+//        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
     }
-    
+
     
     
     

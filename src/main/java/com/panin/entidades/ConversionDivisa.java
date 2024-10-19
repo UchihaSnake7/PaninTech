@@ -22,16 +22,16 @@ import java.util.Objects;
  *
  * @author ricke
  */
-
-  @Entity
-    @Table(name = "conversion_divisa")
-    @XmlRootElement
-    @NamedQueries({
-    @NamedQuery(name = "ConverionDivisa.findAll", query = "SELECT c FROM ConverionDivisa c"),
+@Entity
+@Table(name = "conversion_divisa")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "ConversionDivisa.findAll", query = "SELECT c FROM ConversionDivisa c"),
+    @NamedQuery(name = "ConversionDivisa.findByDivisa", query = "SELECT c FROM ConversionDivisa c WHERE c.divisa = :divisa")
 })
-  
+
 public class ConversionDivisa {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,9 +71,6 @@ public class ConversionDivisa {
     public void setDivisa(Divisa divisa) {
         this.divisa = divisa;
     }
-    
-    
-   
 
     @Override
     public int hashCode() {
@@ -96,11 +93,4 @@ public class ConversionDivisa {
         return Objects.equals(this.id, other.id);
     }
 
-    
-    
-    
-    
-    
-    
-  
 }
