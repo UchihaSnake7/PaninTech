@@ -25,6 +25,7 @@ com\panin\application\utilities\SearchHeader.class
 com\panin\application\form\productos\PanelNuevoProducto.class
 com\panin\application\form\productos\FormReporteComprasProductosC.class
 com\panin\menu\Menu$MenuLayout.class
+com\panin\application\ventas\panelCrearDatos.class
 com\panin\controladores\ControladorTasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
 com\panin\application\utilities\ValidadorFormulario.class
@@ -125,6 +126,7 @@ com\panin\PaninTech\App.class
 com\panin\application\form\productos\FormVistaProductos.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$2.class
 com\panin\application\utilities\UtilitarioExportarTabla.class
+com\panin\application\ventas\panelCrearDatos$1.class
 com\panin\entidades\Tasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\entidades\MarcaInsumo.class
