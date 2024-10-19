@@ -13,6 +13,7 @@ com\panin\application\form\MainForm$MainFormLayout.class
 com\panin\entidades\Conversion.class
 com\panin\controladores\ControladorComprasProductos.class
 com\panin\controladores\ControladorComprasInsumos.class
+com\panin\application\form\productos\FormVerProductos$1.class
 com\panin\application\form\productos\PanelIngresarCompra$1.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
@@ -63,6 +64,7 @@ com\panin\application\form\productos\frameIngresarInsumoReceta.class
 com\panin\application\form\productos\PanelIngresarCompra.class
 com\panin\controladores\ControladorConfiguracion.class
 com\panin\application\form\insumos\PanelIngresarInsumo$3.class
+com\panin\application\form\productos\PanelDeProducto$1.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
 com\panin\application\form\productos\PanelIngresarCompra$3.class
@@ -96,6 +98,7 @@ com\panin\controladores\ControladorConversionDivisa.class
 com\panin\application\form\productos\panelRegistrosCompraProducto.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
+com\panin\application\form\productos\PanelDeProducto$2.class
 com\panin\application\form\other\FormInbox.class
 com\panin\entidades\Divisa.class
 com\panin\application\form\other\Card$3.class
@@ -110,6 +113,7 @@ com\panin\menu\MenuAnimation.class
 com\panin\application\utilities\TableActionEvent.class
 com\panin\menu\ToolBarAccentColor.class
 com\panin\application\form\insumos\FormVerInsumos$2.class
+com\panin\application\form\productos\FormVerProductos.class
 com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorConversion.class
@@ -134,6 +138,7 @@ com\panin\entidades\MarcaInsumo.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class
+com\panin\application\form\productos\PanelDeProducto.class
 com\panin\application\form\other\FormIngresarInsumoold.class
 com\panin\application\utilities\ActionButton.class
 com\panin\application\form\productos\PanelNuevoProducto$2.class
@@ -162,6 +167,7 @@ com\panin\application\form\insumos\PanelIngresarInsumo$6.class
 com\panin\application\form\other\Card$2.class
 com\panin\application\form\PanelLogin.class
 com\panin\application\form\insumos\RangeEvaluator.class
+com\panin\application\form\productos\FormVerProductos$2.class
 com\panin\application\utilities\SearchHeader2$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class

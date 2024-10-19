@@ -330,4 +330,7 @@ alter table producto
     add constraint producto_ibfk_1
  foreign key (id_tipo_medida) references tipo_medida (id_tipo_medida);
 
+ alter table producto
+    add activo boolean null;
+
 

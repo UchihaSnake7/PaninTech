@@ -19,7 +19,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-
+import java.util.Collection;
 import com.panin.application.utilities.tipoProducto;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -68,10 +68,20 @@ public class Producto implements Serializable {
 
     @Column(name = "id_receta")
     private Integer idReceta;
-    
+
     @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
     @ManyToOne
     private TipoMedida idTipoMedida;
+    @Column(name = "activo")
+    private boolean activo;
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
     public Producto() {
     }
@@ -168,7 +178,6 @@ public class Producto implements Serializable {
     public void setIdTipoMedida(TipoMedida idTipoMedida) {
         this.idTipoMedida = idTipoMedida;
     }
-    
 
     @Override
     public String toString() {

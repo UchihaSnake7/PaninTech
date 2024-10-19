@@ -17,71 +17,65 @@ import org.hibernate.query.Query;
  * @author ricke
  */
 public class ControladorReceta {
-    
-	
-	public ControladorReceta(){
+
+    public ControladorReceta() {
 //		 
 
-	}
-        
-        public Recetas obtenerRecetaPorId(int idReceta){
-            
-           Application.session.beginTransaction();
+    }
 
-           Recetas r = new Recetas();
-            
-           Query query =  Application.session.getNamedQuery("Recetas.findByIdReceta"); 
-           query.setParameter("idReceta", idReceta);
-           r = (Recetas) query.getSingleResult();
-           
-           Application.session.getTransaction().commit();
+    public Recetas obtenerRecetaPorId(int idReceta) {
 
-           return r;
-            
-        }
-        
-        public int crearReceta(Recetas receta){
-                       
-             Application.session.beginTransaction();
-             
-             int id = (int) Application.session.save(receta);
+        Application.session.beginTransaction();
 
-             return id;
-            
-        }
-        
-        public void agregarInsumoReceta(InsumoRecetas ir){
-            
-             Application.session.beginTransaction();
-             Application.session.save(ir);
-             Application.session.getTransaction().commit();
-            
+        Recetas r = new Recetas();
+
+        Query query = Application.session.getNamedQuery("Recetas.findByIdReceta");
+        query.setParameter("idReceta", idReceta);
+        r = (Recetas) query.getSingleResult();
+
+        Application.session.getTransaction().commit();
+
+        return r;
+
+    }
+
+    public int crearReceta(Recetas receta) {
+
+        Application.session.beginTransaction();
+
+        int id = (int) Application.session.save(receta);
+        Application.session.getTransaction().commit();
+        return id;
+
+    }
+
+    public void agregarInsumoReceta(InsumoRecetas ir) {
+
+        Application.session.beginTransaction();
+        Application.session.save(ir);
+        Application.session.getTransaction().commit();
+
 //             Application.session.close();
-            
-        }
-        
-        public void borrarReceta(Recetas r){
-                       
-             Application.session.beginTransaction();
-            
-             Application.session.delete(r);
-            
-             Application.session.getTransaction().commit();
+    }
 
+    public void borrarReceta(Recetas r) {
 
-        }
-        
-         public void abrirSesion() {
-            
+        Application.session.beginTransaction();
+
+        Application.session.delete(r);
+
+        Application.session.getTransaction().commit();
+
+    }
+
+    public void abrirSesion() {
+
 //             Application.session.beginTransaction();
-		
-	}
-        
-        public void cerrarSesion() {
-            
+    }
+
+    public void cerrarSesion() {
+
 //             Application.session.close();
-		
-	}
-	
-    
+    }
+
 }
