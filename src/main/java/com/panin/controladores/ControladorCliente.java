@@ -6,6 +6,8 @@ package com.panin.controladores;
 
 import com.panin.application.Application;
 import com.panin.entidades.Cliente;
+import jakarta.persistence.TypedQuery;
+import java.util.List;
 
 /**
  *
@@ -14,6 +16,16 @@ import com.panin.entidades.Cliente;
 public class ControladorCliente {
 
     public ControladorCliente() {
+    }
+
+    public List<Cliente> obtenerClientes() {
+        Application.session.beginTransaction();
+        List<Cliente> clientes;
+        TypedQuery query = Application.session.getNamedQuery("Cliente.findAll");
+        clientes = query.getResultList();
+
+        Application.session.getTransaction().commit();
+        return clientes;
     }
 
     public void crearCliente(Cliente cliente) {

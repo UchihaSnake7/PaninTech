@@ -4,6 +4,7 @@
  */
 package com.panin.application.ventas;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.utilities.ValidadorFormulario;
 import com.panin.application.utilities.VerificarIngresoNumero;
 import com.panin.controladores.ControladorCliente;
@@ -182,6 +183,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
             cliente.setCedula(Integer.valueOf(labelCedula.getText()));
             cliente.setEmail(labelEmail.getText());
             cliente.setFechaNacimiento(jDateChooser1.getDate());
+            cliente.setTelefono(labelTelefono.getText());
             controladorCliente.crearCliente(cliente);
             Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Cliente " + cliente.getNombre() + " Creado con éxito!");
             labelApellido.setText("");
@@ -190,6 +192,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
             labelTelefono.setText("");
             labelDireccion.setText("");
             labelEmail.setText("");
+            jDateChooser1.setDate(new Date());
         }
 
 
@@ -226,6 +229,10 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         VerificarIngresoNumero.verificarSoloNumero(labelCedula);
         VerificarIngresoNumero.verificarSoloNumero(labelTelefono);
         jDateChooser1.setMaxSelectableDate(new Date());
+
+        jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.background;"
+                + "arc:20;");
 
     }
 }

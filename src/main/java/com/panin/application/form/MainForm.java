@@ -41,6 +41,7 @@ import com.panin.application.form.productos.FormReporteComprasProductosC;
 import com.panin.application.form.productos.FormVerProductos;
 import com.panin.application.form.productos.PanelNuevoProducto;
 import com.panin.application.form.productos.panelCalcularPrecioProducto;
+import com.panin.application.ventas.PanelVerDatos;
 import com.panin.application.ventas.panelCrearDatos;
 
 /**
@@ -48,11 +49,11 @@ import com.panin.application.ventas.panelCrearDatos;
  * @author Raven
  */
 public class MainForm extends JLayeredPane {
-    
+
     public MainForm() {
         init();
     }
-    
+
     private void init() {
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(new MainFormLayout());
@@ -73,13 +74,13 @@ public class MainForm extends JLayeredPane {
         add(menu);
         add(panelBody);
     }
-    
+
     @Override
     public void applyComponentOrientation(ComponentOrientation o) {
         super.applyComponentOrientation(o);
         initMenuArrowIcon();
     }
-    
+
     private void initMenuArrowIcon() {
         if (menuButton == null) {
             menuButton = new JButton();
@@ -87,7 +88,7 @@ public class MainForm extends JLayeredPane {
         String icon = (getComponentOrientation().isLeftToRight()) ? "menu_left.svg" : "menu_right.svg";
         menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
     }
-    
+
     private void initMenuEvent() {
         menu.addMenuEvent((var index, var subIndex, var action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
@@ -116,7 +117,7 @@ public class MainForm extends JLayeredPane {
                     default:
                         Application.showForm(new FormIngresarInsumo());
                 }
-                
+
             } else if (index == 2) {
 
                 /*
@@ -160,11 +161,15 @@ public class MainForm extends JLayeredPane {
                         Application.showForm(new panelCrearDatos());
                         break;
                     }
-                    
+                    case 2: {
+                        Application.showForm(new PanelVerDatos());
+                        break;
+                    }
+
                     default:
                         throw new IllegalArgumentException("Valor no esperado: " + subIndex);
                 }
-                
+
             } else if (index == 4) {  //Tasas
                 if (subIndex == 1) {
                     Application.showForm(new formprueba());
@@ -172,9 +177,9 @@ public class MainForm extends JLayeredPane {
                     Application.showForm(new FormCambio());
                 } else if (subIndex == 3) {
                     Application.showForm(new FormCrearInsumo());
-                    
+
                 }
-                
+
             } else if (index == 5) { //Configuracion
                 if (subIndex == 1) {
                     Application.showForm(new FormCrearUsuario());
@@ -187,11 +192,11 @@ public class MainForm extends JLayeredPane {
             } else {
                 action.cancel();
             }
-            
+
         }
         );
     }
-    
+
     private void setMenuFull(boolean full) {
         String icon;
         if (getComponentOrientation().isLeftToRight()) {
@@ -203,50 +208,50 @@ public class MainForm extends JLayeredPane {
         menu.setMenuFull(full);
         revalidate();
     }
-    
+
     public void hideMenu() {
         menu.hideMenuItem();
     }
-    
+
     public void showForm(Component component) {
         panelBody.removeAll();
         panelBody.add(component);
         panelBody.repaint();
         panelBody.revalidate();
     }
-    
+
     public void setSelectedMenu(int index, int subIndex) {
         menu.setSelectedMenu(index, subIndex);
     }
-    
+
     private Menu menu;
     private JPanel panelBody;
     private JButton menuButton;
-    
+
     private class MainFormLayout implements LayoutManager {
-        
+
         @Override
         public void addLayoutComponent(String name, Component comp) {
         }
-        
+
         @Override
         public void removeLayoutComponent(Component comp) {
         }
-        
+
         @Override
         public Dimension preferredLayoutSize(Container parent) {
             synchronized (parent.getTreeLock()) {
                 return new Dimension(5, 5);
             }
         }
-        
+
         @Override
         public Dimension minimumLayoutSize(Container parent) {
             synchronized (parent.getTreeLock()) {
                 return new Dimension(0, 0);
             }
         }
-        
+
         @Override
         public void layoutContainer(Container parent) {
             synchronized (parent.getTreeLock()) {
