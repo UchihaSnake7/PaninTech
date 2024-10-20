@@ -112,7 +112,7 @@ public class Banco implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.Banco[ id=" + id + " ]";
+        return this.descripcion;
     }
     
 }

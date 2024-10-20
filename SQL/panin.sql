@@ -342,7 +342,7 @@ create table metodo_pago
     id         int auto_increment,
     tipo       int         not null,
     banco      int         not null,
-    referencia varchar(50) null,
+    referencia varchar(100) null,
     constraint metodo_pago_pk
         primary key (id),
     constraint metodo_pago_banco_id_fk

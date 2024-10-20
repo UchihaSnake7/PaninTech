@@ -4,49 +4,52 @@
  */
 package com.panin.application.ventas;
 
+import com.panin.application.utilities.ValidadorFormulario;
 import com.panin.controladores.ControladorBanco;
+import com.panin.controladores.ControladorMetodoPago;
 import com.panin.controladores.ControladorTipoMetodoPago;
 import com.panin.entidades.Banco;
+import com.panin.entidades.MetodoPago;
 import com.panin.entidades.TipoMetodoPago;
 import java.util.List;
+import raven.toast.Notifications;
 
 /**
  *
  * @author ricke
  */
-public class panelFormularioMetodoDePago extends javax.swing.JPanel {
+public class PanelFormularioMetodoPago extends javax.swing.JPanel {
 
     /**
-     * Creates new form panelFormularioMetodoDePago
+     * Creates new form PanelFormularioMetodoPago
      */
-    public panelFormularioMetodoDePago() {
+    public PanelFormularioMetodoPago() {
         initComponents();
         init();
     }
 
-    public void init(){
-        
+    public void init() {
+
         ControladorBanco cb = new ControladorBanco();
         List<Banco> listaBancos = cb.obtenerTodos();
-        
+
         for (Banco b : listaBancos) {
-            
+
             comboBoxBanco.addItem(b);
-            
+
         }
-        
+
         ControladorTipoMetodoPago ctmp = new ControladorTipoMetodoPago();
         List<TipoMetodoPago> listaTipos = ctmp.obtenerTodos();
-        
+
         for (TipoMetodoPago t : listaTipos) {
-            
+
             comboBoxTipoMetodoPago.addItem(t);
-            
+
         }
-        
-        
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,19 +96,21 @@ public class panelFormularioMetodoDePago extends javax.swing.JPanel {
 
         textAreaDetalles.setColumns(20);
         textAreaDetalles.setRows(5);
+        textAreaDetalles.setName("Detalles"); // NOI18N
         jScrollPane1.setViewportView(textAreaDetalles);
 
         botonAceptar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFormularioLayout = new javax.swing.GroupLayout(panelFormulario);
         panelFormulario.setLayout(panelFormularioLayout);
         panelFormularioLayout.setHorizontalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFormularioLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelFormularioLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(comboBoxTipoMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,6 +131,10 @@ public class panelFormularioMetodoDePago extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFormularioLayout.setVerticalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +162,7 @@ public class panelFormularioMetodoDePago extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -173,6 +182,30 @@ public class panelFormularioMetodoDePago extends javax.swing.JPanel {
     private void comboBoxBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBancoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxBancoActionPerformed
+
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
+        // TODO add your handling code here:
+        
+        ValidadorFormulario vf = new ValidadorFormulario(panelFormulario);
+        if(vf.validarFormulario()){
+              
+            MetodoPago mp = new MetodoPago();
+        
+            mp.setBanco((Banco) comboBoxBanco.getSelectedItem());
+            mp.setTipo((TipoMetodoPago) comboBoxTipoMetodoPago.getSelectedItem());
+            mp.setReferencia(textAreaDetalles.getText());
+
+            ControladorMetodoPago cmp = new ControladorMetodoPago();
+
+            cmp.crearMetodoPago(mp);
+            
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Método de pago creado con éxito!");
+            textAreaDetalles.setText("");
+        }
+        
+      
+        
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

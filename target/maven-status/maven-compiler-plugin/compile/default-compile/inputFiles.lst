@@ -10,6 +10,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\Control
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversion.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorTipoMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeader2.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\VerificarIngresoNumero.java
@@ -46,6 +47,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\othe
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\MainForm.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\PopupSubmenu.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormInbox.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelCrearCliente.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\FormRead.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\MenuEvent.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorInsumoReceta.java
@@ -59,6 +61,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Cliente.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\TipoMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\db\ConexionDB.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorCliente.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\tipoProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\VentaMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
@@ -72,6 +75,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\prod
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\PaninTech\App.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelDeProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchHeaderFinal.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelFormularioMetodoPago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\Card.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormCompraProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorProductos.java
@@ -93,7 +97,6 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Producto.ja
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\FormCrearUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\WrapLayout.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\FormObjetoInsumo.java
-C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\panelFormularioMetodoDePago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\FormMostrarInsumos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorReceta.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\frameIngresarInsumoReceta.java

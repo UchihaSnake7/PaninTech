@@ -45,9 +45,10 @@ public class ControladorUsuario {
     }
 
     public void crearUsuario(Usuarios usuario) {
+        Application.session.beginTransaction();
 
         Application.session.save(usuario);
-
+        Application.session.getTransaction().commit();
     }
 
     //Ejemplo de metodo para obtener todos los productos de la db

@@ -100,7 +100,7 @@ public class TipoMetodoPago implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.TipoMetodoPago[ id=" + id + " ]";
+        return this.descripcion;
     }
     
 }
