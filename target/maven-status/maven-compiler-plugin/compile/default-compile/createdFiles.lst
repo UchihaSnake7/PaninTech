@@ -73,6 +73,7 @@ com\panin\application\form\productos\PanelDeProducto$1.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
 com\panin\application\form\productos\PanelIngresarCompra$3.class
+com\panin\application\ventas\PanelClientes$2.class
 com\panin\application\form\insumos\FormVerInsumos$1.class
 com\panin\entidades\ConversionDivisa.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN$1.class
@@ -101,6 +102,7 @@ com\panin\application\utilities\FormObjetoInsumo.class
 com\panin\application\form\insumos\PanelIngresarInsumo$1.class
 com\panin\application\utilities\SearchHeaderFinal.class
 com\panin\controladores\ControladorInsumos.class
+com\panin\application\ventas\PanelEditarCliente.class
 com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
 com\panin\controladores\ControladorConversionDivisa.class
@@ -115,6 +117,7 @@ com\panin\application\form\productos\PanelVerDatosProducto$3.class
 com\panin\entidades\Usuarios.class
 com\panin\application\form\productos\PanelIngresarCompra$4.class
 com\panin\application\form\productos\PanelIngresarProducto.class
+com\panin\application\ventas\PanelClientes$1.class
 com\panin\controladores\ControladorUsuario.class
 com\panin\application\utilities\WrapLayout.class
 com\panin\application\utilities\TabbedPaneCustom.class
@@ -147,10 +150,12 @@ com\panin\application\utilities\UtilitarioExportarTabla.class
 com\panin\application\ventas\panelCrearDatos$1.class
 com\panin\entidades\Tasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
+com\panin\application\ventas\PanelClientes.class
 com\panin\entidades\MarcaInsumo.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class
+com\panin\application\ventas\PanelEditarCliente$1.class
 com\panin\application\form\productos\PanelDeProducto.class
 com\panin\application\ventas\PanelVerClientes.class
 com\panin\application\form\other\FormIngresarInsumoold.class
@@ -184,6 +189,7 @@ com\panin\application\form\PanelLogin.class
 com\panin\application\form\insumos\RangeEvaluator.class
 com\panin\application\form\productos\FormVerProductos$2.class
 com\panin\application\utilities\SearchHeader2$1.class
+com\panin\application\ventas\PanelVerClientes$1.class
 com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
@@ -207,6 +213,7 @@ com\panin\entidades\Banco.class
 com\panin\application\form\productos\panelRegistrosCompraProducto$2.class
 com\panin\application\utilities\VerificarIngresoNumero$1.class
 com\panin\application\utilities\ActionButton$1.class
+com\panin\application\ventas\PanelEditarCliente$2.class
 com\panin\entidades\Configuracion.class
 com\panin\application\frameConfiguracion$1.class
 com\panin\application\form\MainForm.class
