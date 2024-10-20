@@ -93,6 +93,7 @@ com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\FormCrearUsuario$CambioLayout.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
 com\panin\application\form\productos\PanelIngresarCompra$5.class
+com\panin\application\ventas\PanelVerDatos.class
 com\panin\application\form\other\FormCambio$3.class
 com\panin\application\form\other\formprueba.class
 com\panin\application\form\other\CardDescription.class
@@ -151,6 +152,7 @@ com\panin\menu\MenuItemLayout.class
 com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class
 com\panin\application\form\productos\PanelDeProducto.class
+com\panin\application\ventas\PanelVerClientes.class
 com\panin\application\form\other\FormIngresarInsumoold.class
 com\panin\application\utilities\ActionButton.class
 com\panin\application\form\productos\PanelNuevoProducto$2.class
