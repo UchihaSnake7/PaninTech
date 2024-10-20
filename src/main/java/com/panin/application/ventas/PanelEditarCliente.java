@@ -172,12 +172,12 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(30, Short.MAX_VALUE)
+                                .addContainerGap(150, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 30, Short.MAX_VALUE)))
+                        .addGap(0, 150, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,14 +187,14 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addGap(15, 15, 15)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-
+        notificarAtras();
 
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
@@ -263,6 +263,7 @@ public class PanelEditarCliente extends javax.swing.JPanel {
     private com.panin.application.utilities.TextoHint labelTelefono;
     // End of variables declaration//GEN-END:variables
 private Cliente cliente;
+    private BotonClickListener listener;
 
     public void iniciar(Cliente cliente) {
         System.out.println("com.panin.application.ventas.PanelEditarCliente.iniciar() " + cliente);
@@ -274,5 +275,25 @@ private Cliente cliente;
         labelDireccion.setText(cliente.getDireccion().toString());
         labelEmail.setText(cliente.getEmail());
         jDateChooser1.setDate(cliente.getFechaNacimiento());
+    }
+
+    public interface BotonClickListener {
+
+        void onClick();
+    }
+
+    public BotonClickListener getListener() {
+        return listener;
+    }
+
+    public void setListener(BotonClickListener listener) {
+        this.listener = listener;
+    }
+
+    private void notificarAtras() {
+//        System.out.println("Notificar " + searchText1.getText());
+        if (listener != null) {
+            listener.onClick();
+        }
     }
 }

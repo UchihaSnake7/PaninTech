@@ -207,6 +207,7 @@ com\panin\application\form\productos\PanelIngresarProducto$3.class
 com\panin\application\utilities\SearchHeader2.class
 com\panin\application\form\productos\panelContenidoReceta.class
 com\panin\entidades\InsumoRecetas.class
+com\panin\application\ventas\PanelEditarCliente$BotonClickListener.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$1.class
 com\panin\application\form\other\FormDashboard$1.class
 com\panin\entidades\Banco.class
