@@ -6,6 +6,8 @@ package com.panin.controladores;
 
 import com.panin.application.Application;
 import com.panin.entidades.Configuracion;
+import com.panin.entidades.Producto;
+import com.panin.entidades.Recetas;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
@@ -33,6 +35,28 @@ public class ControladorConfiguracion {
 
     }
 
+     public void save(Configuracion conf) {
+
+        Application.session.beginTransaction();
+        Application.session.save(conf);
+        Application.session.getTransaction().commit();
+
+    }
+     
+      public boolean update(Configuracion conf) {
+        try {
+            Application.session.beginTransaction();
+            Application.session.merge(conf);
+            Application.session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
+    }
+    
     public void cerrarSesion() {
 //         Application.session.close();
 

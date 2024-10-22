@@ -34,6 +34,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.panin.application.form.other.FormIngresarInsumo;
+import com.panin.application.form.other.formConfiguracion;
 import com.panin.application.form.productos.FormCompraProductos;
 import com.panin.application.form.productos.FormMostrarProductos;
 import com.panin.application.form.productos.FormReporteComprasProductosC;
@@ -182,6 +183,9 @@ public class MainForm extends JLayeredPane {
             } else if (index == 5) { //Configuracion
                 if (subIndex == 1) {
                     Application.showForm(new FormCrearUsuario());
+                }
+                else if (subIndex == 3) {
+                    Application.showForm(new formConfiguracion());
                 }
             } else if (index == 9) {
                 Application.logout();

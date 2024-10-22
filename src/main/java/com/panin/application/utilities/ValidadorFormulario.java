@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -20,7 +21,7 @@ public class ValidadorFormulario {
     
     private JPanel panel;
     private List<JTextField> camposTexto = new ArrayList<>();
-    private List<JPasswordField> camposPassword = new ArrayList<>();
+    private List<JTextArea> camposTextArea = new ArrayList<>();
 
     // Agrega más listas para otros tipos de componentes si es necesario
 
@@ -36,9 +37,9 @@ public class ValidadorFormulario {
             if (componente instanceof JTextField){
                 camposTexto.add((JTextField) componente);
             } 
-//            else if (componente instanceof JPasswordField) {
-//                camposPassword.add((JPasswordField) componente);
-//            }
+            else if (componente instanceof JTextArea) {
+                camposTextArea.add((JTextArea) componente);
+            }
             
             // Agrega más condiciones para otros tipos de componentes
         }
@@ -47,6 +48,14 @@ public class ValidadorFormulario {
     public boolean validarFormulario() {
         boolean valido = true;
         for (JTextField campo : camposTexto) {
+            if (campo.getText().trim().isEmpty()) {
+                // Mostrar un mensaje de error para el campo específico
+                JOptionPane.showMessageDialog(null, "El campo " + campo.getName() + " no puede estar vacío.");
+                valido = false;
+            }
+        }
+        
+        for (JTextArea campo : camposTextArea) {
             if (campo.getText().trim().isEmpty()) {
                 // Mostrar un mensaje de error para el campo específico
                 JOptionPane.showMessageDialog(null, "El campo " + campo.getName() + " no puede estar vacío.");
@@ -75,12 +84,12 @@ public class ValidadorFormulario {
         this.camposTexto = camposTexto;
     }
 
-    public List<JPasswordField> getCamposPassword() {
-        return camposPassword;
+    public List<JTextArea> getCamposPassword() {
+        return camposTextArea;
     }
 
-    public void setCamposPassword(List<JPasswordField> camposPassword) {
-        this.camposPassword = camposPassword;
+    public void setCamposPassword(List<JTextArea> camposTextArea) {
+        this.camposTextArea = camposTextArea;
     }
 
     

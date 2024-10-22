@@ -33,6 +33,7 @@ public class panelCrearDatos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         panelCrearCliente1 = new com.panin.application.ventas.PanelCrearCliente();
         jPanel2 = new javax.swing.JPanel();
+        panelFormularioMetodoPago1 = new com.panin.application.ventas.PanelFormularioMetodoPago();
 
         jComboxUnidades.setPreferredSize(new java.awt.Dimension(85, 22));
         jComboxUnidades.addActionListener(new java.awt.event.ActionListener() {
@@ -46,16 +47,16 @@ public class panelCrearDatos extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addComponent(panelCrearCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(panelCrearCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Crear Cliente", jPanel1);
@@ -64,11 +65,17 @@ public class panelCrearDatos extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(70, Short.MAX_VALUE)
+                .addComponent(panelFormularioMetodoPago1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(panelFormularioMetodoPago1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Crear Método de Pago", jPanel2);
@@ -98,6 +105,7 @@ public class panelCrearDatos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private com.panin.application.ventas.PanelCrearCliente panelCrearCliente1;
+    private com.panin.application.ventas.PanelFormularioMetodoPago panelFormularioMetodoPago1;
     private com.panin.application.utilities.TabbedPaneCustom tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

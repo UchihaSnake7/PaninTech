@@ -18,6 +18,7 @@ com\panin\application\form\productos\PanelIngresarCompra$1.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
 com\panin\application\form\productos\panelMostrarProductos.class
+com\panin\application\ventas\PanelFormularioMetodoPago$3.class
 com\panin\application\form\other\FormCambio.class
 com\panin\application\utilities\TableActionCellRender.class
 com\panin\application\form\other\FormCambio$1.class
@@ -27,6 +28,7 @@ com\panin\application\form\productos\PanelNuevoProducto.class
 com\panin\application\form\productos\FormReporteComprasProductosC.class
 com\panin\menu\Menu$MenuLayout.class
 com\panin\application\ventas\panelCrearDatos.class
+com\panin\controladores\ControladorTipoMetodoPago.class
 com\panin\controladores\ControladorTasa.class
 com\panin\entidades\Cliente.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$2.class
@@ -43,6 +45,7 @@ com\panin\application\form\other\FormIngresarInsumo.class
 com\panin\menu\MenuItem.class
 com\panin\application\form\insumos\FormMostrarInsumos.class
 com\panin\application\form\other\Model_Card.class
+com\panin\application\ventas\PanelFormularioMetodoPago$2.class
 com\panin\application\form\other\FormDashboard.class
 com\panin\application\form\productos\panelContenidoReceta$3.class
 com\panin\application\form\productos\FormIngresarProducto.class
@@ -86,6 +89,7 @@ com\panin\application\form\insumos\PanelIngresarInsumo$2.class
 com\panin\application\form\other\FormCambio$2.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$1.class
 com\panin\entidades\Venta.class
+com\panin\controladores\ControladorBanco.class
 com\panin\menu\PopupSubmenu.class
 com\panin\application\form\other\VistaProductos.class
 com\panin\application\form\productos\PanelIngresarCompra$6.class
@@ -111,6 +115,7 @@ com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\productos\PanelDeProducto$2.class
 com\panin\application\form\other\FormInbox.class
+com\panin\application\form\other\formConfiguracion$1.class
 com\panin\entidades\Divisa.class
 com\panin\application\form\other\Card$3.class
 com\panin\application\form\productos\PanelVerDatosProducto$3.class
@@ -129,6 +134,7 @@ com\panin\application\form\productos\FormVerProductos.class
 com\panin\application\form\insumos\panelRegistrosInsumos$4.class
 com\panin\application\form\productos\PanelIngresarProducto$1.class
 com\panin\controladores\ControladorDivisa.class
+com\panin\application\ventas\PanelFormularioMetodoPago.class
 com\panin\controladores\ControladorConversion.class
 com\panin\controladores\ControladorInsumoReceta.class
 com\panin\application\ventas\PanelCrearCliente.class
@@ -136,6 +142,7 @@ com\panin\application\form\productos\PanelNuevoProducto$3.class
 com\panin\application\form\insumos\TextArea.class
 com\panin\controladores\ControladorCliente.class
 com\panin\application\utilities\SearchText.class
+com\panin\application\form\other\formConfiguracion.class
 com\panin\menu\LightDarkMode.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$1.class
 com\panin\application\form\productos\FormReporteComprasProductosC$3.class
@@ -152,6 +159,8 @@ com\panin\entidades\Tasa.class
 com\panin\application\form\productos\frameIngresarInsumoReceta$3.class
 com\panin\application\ventas\PanelClientes.class
 com\panin\entidades\MarcaInsumo.class
+com\panin\application\ventas\PanelFormularioMetodoPago$1.class
+com\panin\controladores\ControladorMetodoPago.class
 com\panin\menu\MenuItemLayout.class
 com\panin\application\utilities\VerificarIngresoNumero$2.class
 com\panin\application\utilities\VerificarIngresoNumero.class

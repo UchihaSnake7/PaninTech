@@ -318,7 +318,71 @@ create table configuracion
 )
     comment 'Tabla con los datos relevantes de la empresa';
 
+create table banco
+(
+    id          int auto_increment,
+    descripcion varchar(50) null,
+    referencia  varchar(20) null,
+    constraint banco_pk
+        primary key (id)
+)
+    comment 'Lista de bancos disponibles';
 
+
+create table tipo_metodo_pago
+(
+    id          int auto_increment,
+    descripcion varchar(50)     null,
+    constraint tipo_metodo_pago_pk
+        primary key (id)
+);
+
+create table metodo_pago
+(
+    id         int auto_increment,
+    tipo       int         not null,
+    banco      int         not null,
+    referencia varchar(100) null,
+    constraint metodo_pago_pk
+        primary key (id),
+    constraint metodo_pago_banco_id_fk
+        foreign key (banco) references banco (id),
+    constraint metodo_pago_tipo_metodo_pago_id_fk
+        foreign key (tipo) references tipo_metodo_pago (id)
+);
+
+create table if not exists venta_productos
+(
+    id       int auto_increment primary key,
+    producto int not null,
+    venta    int not null,
+    constraint venta_productos_producto_id_fk
+        foreign key (producto) references producto (id),
+    constraint venta_productos_venta_id_fk
+        foreign key (venta) references venta (id)
+)
+    comment 'Tabla intermedia entre venta y producto';
+
+
+
+
+create table venta_metodo_pago
+(
+    id          int    not null,
+    venta       int    not null,
+    metodo_pago int    not null,
+    monto       double not null,
+    divisa      int    not null,
+    constraint venta_metodo_pago_pk
+        primary key (id),
+    constraint venta_metodo_pago_divisa_id_fk
+        foreign key (divisa) references divisa (id),
+    constraint venta_metodo_pago_metodo_pago_id_fk
+        foreign key (metodo_pago) references metodo_pago (id),
+    constraint venta_metodo_pago_venta_id_fk
+        foreign key (venta) references venta (id)
+)
+    comment 'Tabla intermedia entre venta y metodo_pago';
 
  
 --  ecortez 15/10/2024

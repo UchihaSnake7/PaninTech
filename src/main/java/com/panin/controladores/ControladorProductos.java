@@ -87,7 +87,6 @@ public class ControladorProductos {
         Recetas r = new Recetas();
         r = cr.obtenerRecetaPorId(producto.getIdReceta());
         List<InsumoRecetas> listaInsumoReceta = cr.obtenerInsumosPorReceta(r);
-//        System.out.print("receta: " + r.getIdReceta());
         double cantidadReceta = r.getCantidad();
         double cantidadCalculada = 0.0;
         double precioTotal = 0;
