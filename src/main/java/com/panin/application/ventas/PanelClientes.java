@@ -5,6 +5,7 @@
 package com.panin.application.ventas;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
 import com.panin.application.utilities.SearchHeader2;
 import com.panin.application.utilities.TableActionCellEditor;
 import com.panin.application.utilities.TableActionCellRender;
@@ -106,20 +107,19 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
             .addGroup(panelTableLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addGroup(panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                    .addComponent(jScrollPane1)))
         );
         panelTableLayout.setVerticalGroup(
             panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTableLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(searchHeader21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
 
@@ -127,12 +127,12 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 901, Short.MAX_VALUE)
+            .addGap(0, 1023, Short.MAX_VALUE)
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelPrincipalLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(panelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(panelTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,7 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
             .addGroup(layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,6 +179,8 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
         String[] columnas = new String[]{
             "Codigo", "Cedula", "Nombre", "Apellido", "Telefono", "Email", "Fecha de Nacimiento", "Dirección", "Opciones"};
         panelEditarCliente = new PanelEditarCliente();
+        panelEditarCliente.setBackground(this.getBackground());
+
         panelEditarCliente.setListener(this);
         modelTable = new DefaultTableModel(columnas, 0) {
             boolean[] canEdit = new boolean[]{
@@ -195,17 +197,18 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
-
+                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
+                panelEditarCliente2.setListener(panelEditarCliente.getListener());
                 ControladorCliente controladorCliente = new ControladorCliente();
                 String id = (String) modelTable.getValueAt(row, 0);
                 Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
                 System.out.println("Editar " + row);
 //                panelEditarCliente.setVisible(true);
                 panelTable.setVisible(false);
-                panelEditarCliente.setVisible(true);
+                panelEditarCliente2.setVisible(true);
 //                panelPrincipal.remove(panelTable);
-                cambioDePanel(panelEditarCliente);
-                panelEditarCliente.iniciar(cliente);
+                cambioDePanel(panelEditarCliente2);
+                panelEditarCliente2.iniciar(cliente, true);
             }
 
             @Override
@@ -241,12 +244,18 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
 
             @Override
             public void onView(int row) {
-//                ControladorInsumos controladorInsumo = new ControladorInsumos();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
-//                Application.showForm(new PanelDeInsumo(insumo, false));
-                System.out.println("ver " + row);
-//                      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
+                panelEditarCliente2.setListener(panelEditarCliente.getListener());
+                ControladorCliente controladorCliente = new ControladorCliente();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
+                System.out.println("view " + row);
+//                panelEditarCliente.setVisible(true);
+                panelTable.setVisible(false);
+                panelEditarCliente2.setVisible(true);
+//                panelPrincipal.remove(panelTable);
+                cambioDePanel(panelEditarCliente2);
+                panelEditarCliente2.iniciar(cliente, false);
             }
         };
 
@@ -345,10 +354,7 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
 
     @Override
     public void onClick() {
-        panelEditarCliente.setVisible(false);
-        panelTable.setVisible(true);
-//        panelPrincipal.remove(panelEditarCliente);
-//        cambioDePanel(panelTable);
-        actualizarLista();
+
+        Application.showForm(new PanelVerDatos());
     }
 }

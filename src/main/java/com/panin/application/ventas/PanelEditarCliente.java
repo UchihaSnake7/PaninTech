@@ -4,6 +4,7 @@
  */
 package com.panin.application.ventas;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.controladores.ControladorCliente;
 import com.panin.entidades.Cliente;
 import java.util.Date;
@@ -20,7 +21,10 @@ public class PanelEditarCliente extends javax.swing.JPanel {
      */
     public PanelEditarCliente() {
         initComponents();
-
+        jPanel1.setBackground(getBackground());
+        jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.background;"
+                + "arc:20;");
     }
 
     /**
@@ -177,7 +181,7 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 150, Short.MAX_VALUE)))
+                        .addGap(150, 150, 150)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,9 +191,9 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addGap(15, 15, 15)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,7 +237,7 @@ public class PanelEditarCliente extends javax.swing.JPanel {
             if (controladorCliente.update(cliente)) {
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Cliente " + cliente.getNombre() + " Editado con éxito!");
             }
-
+            
         } else {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "No se detectaron cambios");
         }
@@ -264,9 +268,9 @@ public class PanelEditarCliente extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 private Cliente cliente;
     private BotonClickListener listener;
-
-    public void iniciar(Cliente cliente) {
-        System.out.println("com.panin.application.ventas.PanelEditarCliente.iniciar() " + cliente);
+    
+    public void iniciar(Cliente cliente, Boolean editar) {
+        
         this.cliente = cliente;
         labelApellido.setText(cliente.getApellido());
         labelNombre.setText(cliente.getNombre());
@@ -275,21 +279,35 @@ private Cliente cliente;
         labelDireccion.setText(cliente.getDireccion().toString());
         labelEmail.setText(cliente.getEmail());
         jDateChooser1.setDate(cliente.getFechaNacimiento());
+        
+        labelApellido.setEditable(editar);
+        labelNombre.setEditable(editar);
+        labelCedula.setEditable(editar);
+        labelTelefono.setEditable(editar);
+        labelDireccion.setEditable(editar);
+        labelEmail.setEditable(editar);
+        jDateChooser1.setEnabled(editar);
+        
+        if (!editar) {
+            jLabel9.setText("Ver Cliente");
+            jButton2.show(false);
+        }
+        
     }
-
+    
     public interface BotonClickListener {
-
+        
         void onClick();
     }
-
+    
     public BotonClickListener getListener() {
         return listener;
     }
-
+    
     public void setListener(BotonClickListener listener) {
         this.listener = listener;
     }
-
+    
     private void notificarAtras() {
 //        System.out.println("Notificar " + searchText1.getText());
         if (listener != null) {

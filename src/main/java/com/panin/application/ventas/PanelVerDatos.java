@@ -15,6 +15,7 @@ public class PanelVerDatos extends javax.swing.JPanel {
      */
     public PanelVerDatos() {
         initComponents();
+        jPanel1.add(new PanelClientes());
     }
 
     /**
@@ -28,10 +29,7 @@ public class PanelVerDatos extends javax.swing.JPanel {
 
         tabbedPane = new com.panin.application.utilities.TabbedPaneCustom();
         jPanel1 = new javax.swing.JPanel();
-        panelClientes1 = new com.panin.application.ventas.PanelClientes();
         jPanel2 = new javax.swing.JPanel();
-
-        jPanel1.add(panelClientes1);
 
         tabbedPane.addTab("Ver Clientes", jPanel1);
 
@@ -67,7 +65,6 @@ public class PanelVerDatos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private com.panin.application.ventas.PanelClientes panelClientes1;
     private com.panin.application.utilities.TabbedPaneCustom tabbedPane;
     // End of variables declaration//GEN-END:variables
 }
