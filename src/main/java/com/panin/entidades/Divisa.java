@@ -91,7 +91,7 @@ public class Divisa {
 
     @Override
     public String toString() {
-        return "Divisa{" + "id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", abreviatura=" + abreviatura + '}';
+        return this.getAbreviatura();
     }
     
     

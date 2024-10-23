@@ -17,6 +17,7 @@ com\panin\application\form\productos\FormVerProductos$1.class
 com\panin\application\form\productos\PanelIngresarCompra$1.class
 com\panin\application\form\insumos\PanelIngresarInsumo$4.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$2.class
+com\panin\application\ventas\PanelVerMetodosDePago.class
 com\panin\application\form\productos\panelMostrarProductos.class
 com\panin\application\ventas\PanelFormularioMetodoPago$3.class
 com\panin\application\form\other\FormCambio.class
@@ -111,10 +112,12 @@ com\panin\application\form\other\FormCambio$CambioLayout.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$2.class
 com\panin\controladores\ControladorConversionDivisa.class
 com\panin\application\form\productos\panelRegistrosCompraProducto.class
+com\panin\application\ventas\PanelVerMetodosDePago$1.class
 com\panin\controladores\ControladorTipoMedida.class
 com\panin\application\utilities\TextoHint.class
 com\panin\application\form\productos\PanelDeProducto$2.class
 com\panin\application\form\other\FormInbox.class
+com\panin\application\ventas\PanelVerMetodosDePago$2.class
 com\panin\application\form\other\formConfiguracion$1.class
 com\panin\entidades\Divisa.class
 com\panin\application\form\other\Card$3.class
