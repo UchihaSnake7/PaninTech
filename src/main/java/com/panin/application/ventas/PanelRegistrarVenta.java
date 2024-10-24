@@ -7,6 +7,8 @@ package com.panin.application.ventas;
 import com.panin.entidades.Cliente;
 import com.panin.entidades.Producto;
 import com.panin.application.utilities.AutoCompleteComboBox;
+import com.panin.controladores.ControladorProductos;
+import java.util.List;
 
 /**
  *
@@ -23,6 +25,16 @@ public class PanelRegistrarVenta extends javax.swing.JPanel {
     }
 
     void init(){
+        
+        ControladorProductos cp = new ControladorProductos();
+        List<Producto> lista = cp.obtenerProductos();
+        
+        for (Producto producto : lista) {
+            
+            autoCompleteComboBox1.addItem(producto);
+            
+        }
+        autoCompleteComboBox1.setEditable(true);
 
     }
     /**
@@ -42,6 +54,7 @@ public class PanelRegistrarVenta extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         comboBoxCliente = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
+        autoCompleteComboBox1 = new com.panin.application.utilities.AutoCompleteComboBox();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Datos de venta");
@@ -112,9 +125,11 @@ public class PanelRegistrarVenta extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(comboBoxCliente, 0, 144, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField1)
+                                .addComponent(comboBoxCliente, 0, 144, Short.MAX_VALUE))
+                            .addComponent(autoCompleteComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,7 +143,9 @@ public class PanelRegistrarVenta extends javax.swing.JPanel {
                 .addComponent(comboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(autoCompleteComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(panelTablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -154,7 +171,8 @@ public class PanelRegistrarVenta extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Producto> comboBoxCliente;
+    private com.panin.application.utilities.AutoCompleteComboBox autoCompleteComboBox1;
+    private javax.swing.JComboBox<Cliente> comboBoxCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

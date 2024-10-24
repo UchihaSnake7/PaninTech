@@ -41,6 +41,7 @@ import com.panin.application.form.productos.FormReporteComprasProductosC;
 import com.panin.application.form.productos.FormVerProductos;
 import com.panin.application.form.productos.PanelNuevoProducto;
 import com.panin.application.form.productos.panelCalcularPrecioProducto;
+import com.panin.application.ventas.PanelRegistrarVenta;
 import com.panin.application.ventas.PanelVerDatos;
 import com.panin.application.ventas.panelCrearDatos;
 
@@ -178,7 +179,7 @@ public class MainForm extends JLayeredPane {
                 
                   switch (subIndex) {
                     case 1: {
-
+                        Application.showForm(new PanelRegistrarVenta());
                         break;
                     }
                     default:
