@@ -47,6 +47,11 @@
       <mapping class="com.panin.entidades.Venta"/>
       <mapping class="com.panin.entidades.VentaMetodoPago"/>
       <mapping class="com.panin.entidades.VentaProductos"/>
+      <mapping class="com.panin.entidades.ProductoConfiguracionVenta"/>
+      <mapping class="com.panin.entidades.CategoriaProducto"/>
+      <mapping class="com.panin.entidades.ConfiguracionVenta"/>
+
+
 
 
 

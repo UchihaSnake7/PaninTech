@@ -33,7 +33,8 @@ import java.util.Collection;
 @NamedQueries({
     @NamedQuery(name = "MetodoPago.findAll", query = "SELECT m FROM MetodoPago m"),
     @NamedQuery(name = "MetodoPago.findById", query = "SELECT m FROM MetodoPago m WHERE m.id = :id"),
-    @NamedQuery(name = "MetodoPago.findByReferencia", query = "SELECT m FROM MetodoPago m WHERE m.referencia = :referencia")})
+    @NamedQuery(name = "MetodoPago.findByReferencia", query = "SELECT m FROM MetodoPago m WHERE m.referencia = :referencia"),
+    @NamedQuery(name = "MetodoPago.findByActivo", query = "SELECT m FROM MetodoPago m WHERE m.activo = :activo")})
 public class MetodoPago implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,6 +52,16 @@ public class MetodoPago implements Serializable {
     @JoinColumn(name = "tipo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TipoMetodoPago tipo;
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    @Column(name = "activo")
+    private boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "metodoPago")
     private Collection<VentaMetodoPago> ventaMetodoPagoCollection;
 
@@ -126,5 +137,5 @@ public class MetodoPago implements Serializable {
     public String toString() {
         return "com.panin.entidades.MetodoPago[ id=" + id + " ]";
     }
-    
+
 }

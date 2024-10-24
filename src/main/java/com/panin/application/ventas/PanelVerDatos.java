@@ -71,6 +71,9 @@ public class PanelVerDatos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void iniciarEnTab(int index){
+        tabbedPane.setSelectedIndex(index);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

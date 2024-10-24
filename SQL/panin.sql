@@ -408,6 +408,10 @@ CREATE TABLE cliente (
   fecha_nacimiento DATE
 );
 
+alter table metodo_pago
+    add activo boolean default true null;
+alter table cliente
+    add activo boolean default true null;
 
 
 

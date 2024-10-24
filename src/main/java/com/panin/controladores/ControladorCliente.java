@@ -28,6 +28,17 @@ public class ControladorCliente {
         return clientes;
     }
 
+    public List<Cliente> obtenerClientesActivos() {
+        Application.session.beginTransaction();
+        List<Cliente> clientes;
+        TypedQuery query = Application.session.getNamedQuery("Cliente.findByActivo");
+        query.setParameter("activo", true);
+        clientes = query.getResultList();
+
+        Application.session.getTransaction().commit();
+        return clientes;
+    }
+
     public Cliente obtenerClienteById(int id) {
         Application.session.beginTransaction();
         Cliente cliente;
@@ -50,6 +61,21 @@ public class ControladorCliente {
         try {
             Application.session.beginTransaction();
             Application.session.merge(cliente);
+
+            Application.session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
+    }
+
+    public boolean delete(Cliente cliente) {
+        try {
+            Application.session.beginTransaction();
+            Application.session.delete(cliente);
 
             Application.session.getTransaction().commit();
             return true;

@@ -40,7 +40,8 @@ import java.util.Date;
     @NamedQuery(name = "Cliente.findByApellido", query = "SELECT c FROM Cliente c WHERE c.apellido = :apellido"),
     @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono"),
     @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :email"),
-    @NamedQuery(name = "Cliente.findByFechaNacimiento", query = "SELECT c FROM Cliente c WHERE c.fechaNacimiento = :fechaNacimiento")})
+    @NamedQuery(name = "Cliente.findByFechaNacimiento", query = "SELECT c FROM Cliente c WHERE c.fechaNacimiento = :fechaNacimiento"),
+    @NamedQuery(name = "Cliente.findByActivo", query = "SELECT c FROM Cliente c WHERE c.activo = :activo")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +72,16 @@ public class Cliente implements Serializable {
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
+    @Column(name = "activo")
+    private boolean activo;
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private Collection<Venta> ventaCollection;
 
@@ -178,5 +189,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "com.panin.entidades.Cliente[ id=" + id + " ]";
     }
-    
+
 }
