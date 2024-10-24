@@ -100,7 +100,7 @@ public class CategoriaProducto implements Serializable {
 
     @Override
     public String toString() {
-        return "com.panin.entidades.CategoriaProducto[ id=" + id + " ]";
+        return descripcion;
     }
     
 }

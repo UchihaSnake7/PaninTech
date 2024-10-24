@@ -51,6 +51,11 @@ public class ConfiguracionVenta implements Serializable {
     public ConfiguracionVenta() {
     }
 
+    public void inicializar(){
+        this.unidadVenta = 1;
+        this.porcentajeGanancia = 0.0;
+    }
+    
     public ConfiguracionVenta(Integer id) {
         this.id = id;
     }

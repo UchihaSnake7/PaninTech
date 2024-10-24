@@ -22,6 +22,7 @@ com\panin\application\ventas\PanelVerMetodosDePago.class
 com\panin\application\form\productos\panelMostrarProductos.class
 com\panin\application\ventas\PanelFormularioMetodoPago$3.class
 com\panin\application\form\other\FormCambio.class
+com\panin\controladores\ControladorCategoriaProducto.class
 com\panin\application\utilities\TableActionCellRender.class
 com\panin\application\form\other\FormCambio$1.class
 com\panin\application\form\productos\panelContenidoReceta$2.class
@@ -158,6 +159,7 @@ com\panin\application\utilities\SearchText.class
 com\panin\application\form\other\formConfiguracion.class
 com\panin\menu\LightDarkMode.class
 com\panin\application\form\insumos\crear\FormCrearInsumoN$1.class
+com\panin\controladores\ControladorConfiguracionVenta.class
 com\panin\application\form\productos\FormReporteComprasProductosC$3.class
 com\panin\application\utilities\PanelAction$2.class
 com\panin\db\ConexionDB.class

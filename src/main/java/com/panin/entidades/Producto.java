@@ -65,7 +65,7 @@ public class Producto implements Serializable {
     @ManyToOne(optional = false)
     private CategoriaProducto categoria;
     @JoinColumn(name = "configuracion_venta", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private ProductoConfiguracionVenta configuracionVenta;
 
     private static final long serialVersionUID = 1L;
