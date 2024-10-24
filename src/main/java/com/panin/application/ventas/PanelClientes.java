@@ -6,37 +6,32 @@ package com.panin.application.ventas;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.panin.application.Application;
-import com.panin.application.form.insumos.crear.PanelDeInsumo;
 import com.panin.application.utilities.SearchHeader2;
 import com.panin.application.utilities.TableActionCellEditor;
 import com.panin.application.utilities.TableActionCellRender;
 import com.panin.application.utilities.TableActionEvent;
+import com.panin.application.ventas.PanelEditarCliente.BotonClickListener;
 import com.panin.controladores.ControladorCliente;
-import com.panin.controladores.ControladorInsumos;
 import com.panin.entidades.Cliente;
-import com.panin.entidades.Insumo;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import static org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event;
-import raven.toast.Notifications;
 
 /**
  *
  * @author USUARIO
  */
-public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader2.BuscadorListener {
+public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.BuscadorListener, PanelEditarCliente.BotonClickListener {
 
     /**
-     * Creates new form PanelVerClientes
+     * Creates new form PanelClientes
      */
-    public PanelVerClientes() {
+    public PanelClientes() {
         initComponents();
-
+        init();
         this.putClientProperty(FlatClientProperties.STYLE, ""
                 + "arc:25;"
                 + "background:$background"
@@ -70,12 +65,10 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
 //        table.setEnabled(false);
         searchHeader21.setBackground(getBackground());
         searchHeader21.setListener(this);
-        init();
+//        init();
         redimensionarLista();
         actualizarLista();
 
-//        panelPrincipal.add(this.panelEditarCliente);
-//        panelEditarCliente.setV   isible(false);
     }
 
     /**
@@ -112,61 +105,60 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
         panelTableLayout.setHorizontalGroup(
             panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTableLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(1, 1, 1)
                 .addGroup(panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1055, Short.MAX_VALUE)))
         );
         panelTableLayout.setVerticalGroup(
             panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchHeader21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(0, 0, 0)
+                .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 854, Short.MAX_VALUE)
+            .addGap(0, 1068, Short.MAX_VALUE)
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelPrincipalLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(panelTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 963, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelPrincipalLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(panelTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(1, 1, 1)
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addGap(1, 1, 1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(81, 81, 81))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,14 +171,17 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
     private com.panin.application.utilities.SearchHeader2 searchHeader21;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
-  private DefaultTableModel modelTable;
+ private DefaultTableModel modelTable;
     private List<Cliente> clientes;
     private PanelEditarCliente panelEditarCliente;
 
     private void init() {
         String[] columnas = new String[]{
             "Codigo", "Cedula", "Nombre", "Apellido", "Telefono", "Email", "Fecha de Nacimiento", "Dirección", "Opciones"};
+        panelEditarCliente = new PanelEditarCliente();
+        panelEditarCliente.setBackground(this.getBackground());
 
+        panelEditarCliente.setListener(this);
         modelTable = new DefaultTableModel(columnas, 0) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false, false, false, true
@@ -199,80 +194,96 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
 
         this.table.setModel(modelTable);
         table.getColumnModel().getColumn(8).setCellRenderer(new TableActionCellRender());
-//        TableActionEvent event = new TableActionEvent() {
-//            @Override
-//            public void onEdit(int row) {
-//                panelEditarCliente = new PanelEditarCliente();
-//                ControladorCliente controladorCliente = new ControladorCliente();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
-//                System.out.println("Editar " + row);
-////                panelEditarCliente.setVisible(true);
-//                panelTable.setVisible(false);
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void onEdit(int row) {
+                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
+                panelEditarCliente2.setListener(panelEditarCliente.getListener());
+                ControladorCliente controladorCliente = new ControladorCliente();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
+                System.out.println("Editar " + row);
+//                panelEditarCliente.setVisible(true);
+                panelTable.setVisible(false);
+                panelEditarCliente2.setVisible(true);
 //                panelPrincipal.remove(panelTable);
-//                cambioDePanel(panelEditarCliente);
-//                panelEditarCliente.iniciar(cliente);
-//            }
-//
-//            @Override
-//
-//            public void onDelete(int row) {
-////                ControladorInsumos controladorInsumo = new ControladorInsumos();
-////                String id = (String) modelTable.getValueAt(row, 0);
-////                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
-////
-////                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
-////                        JOptionPane.YES_NO_OPTION);
-////                if (respuesta == JOptionPane.YES_OPTION) {
-//////                    controladorInsumo.abrirSesion();
-////                    if (controladorInsumo.delete(insumo)) {
-////                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
-////                        modelTable.removeRow(row);
-////                    } else {
-////                        insumo.setActivo(false);
-//////                        controladorInsumo.abrirSesion();
-////                        if (controladorInsumo.update(insumo)) {
-////                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
-////                            actualizarLista();
-////                        } else {
-////                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
-////                        }
-////                    }
-////                } else {
-////                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
-////                }
-//
-////                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//
-//            @Override
-//            public void onView(int row) {
-////                ControladorInsumos controladorInsumo = new ControladorInsumos();
-////                String id = (String) modelTable.getValueAt(row, 0);
-////                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
-////                Application.showForm(new PanelDeInsumo(insumo, false));
-//                System.out.println("ver " + row);
-////                      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//            }
-//        };
+                cambioDePanel(panelEditarCliente2);
+                panelEditarCliente2.iniciar(cliente, true);
+            }
 
-//        table.getColumnModel().getColumn(8).setCellEditor(new TableActionCellEditor(event));
+            @Override
+
+            public void onDelete(int row) {
+//                ControladorInsumos controladorInsumo = new ControladorInsumos();
+//                String id = (String) modelTable.getValueAt(row, 0);
+//                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
+//
+//                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
+//                        JOptionPane.YES_NO_OPTION);
+//                if (respuesta == JOptionPane.YES_OPTION) {
+////                    controladorInsumo.abrirSesion();
+//                    if (controladorInsumo.delete(insumo)) {
+//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
+//                        modelTable.removeRow(row);
+//                    } else {
+//                        insumo.setActivo(false);
+////                        controladorInsumo.abrirSesion();
+//                        if (controladorInsumo.update(insumo)) {
+//                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
+//                            actualizarLista();
+//                        } else {
+//                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
+//                        }
+//                    }
+//                } else {
+//                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
+//                }
+
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void onView(int row) {
+                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
+                panelEditarCliente2.setListener(panelEditarCliente.getListener());
+                ControladorCliente controladorCliente = new ControladorCliente();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
+                System.out.println("view " + row);
+//                panelEditarCliente.setVisible(true);
+                panelTable.setVisible(false);
+                panelEditarCliente2.setVisible(true);
+//                panelPrincipal.remove(panelTable);
+                cambioDePanel(panelEditarCliente2);
+                panelEditarCliente2.iniciar(cliente, false);
+            }
+        };
+
+        table.getColumnModel().getColumn(8).setCellEditor(new TableActionCellEditor(event));
 
     }
 
-    private void actualizarLista() {
-
-        modelTable.setRowCount(0);
-        ControladorCliente controladorCliente = new ControladorCliente();
-        this.clientes = controladorCliente.obtenerClientes();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-//        marcas.sort(Collections.reverseOrder());
-
-        for (Cliente fila : clientes) {
-            String fecha = formatter.format(fila.getFechaNacimiento());
-            modelTable.addRow(new Object[]{fila.getId().toString(), fila.getCedula().toString(), fila.getNombre(), fila.getApellido(), fila.getTelefono(),
-                fila.getEmail(), fecha, fila.getDireccion()});
-        }
+    private void cambioDePanel(javax.swing.JPanel panel) {
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 854, Short.MAX_VALUE)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        panelPrincipalLayout.setVerticalGroup(
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 963, Short.MAX_VALUE)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
     }
 
@@ -297,6 +308,22 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
         columnaCantidad.setPreferredWidth(150);
     }
 
+    private void actualizarLista() {
+
+        modelTable.setRowCount(0);
+        ControladorCliente controladorCliente = new ControladorCliente();
+        this.clientes = controladorCliente.obtenerClientes();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+//        marcas.sort(Collections.reverseOrder());
+
+        for (Cliente fila : clientes) {
+            String fecha = formatter.format(fila.getFechaNacimiento());
+            modelTable.addRow(new Object[]{fila.getId().toString(), fila.getCedula().toString(), fila.getNombre(), fila.getApellido(), fila.getTelefono(),
+                fila.getEmail(), fecha, fila.getDireccion()});
+        }
+
+    }
+
     @Override
     public void onTextoIngresado(String texto) {
         filtarLista(texto);
@@ -316,7 +343,6 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
                 || formatter.format(cliente.getFechaNacimiento()).contains(texto)
                 || cliente.getEmail().contains(texto))
                 .collect(Collectors.toList());
-//        marcas.sort(Collections.reverseOrder());
 
         for (Cliente fila : clienteFiltradas) {
             String fecha = formatter.format(fila.getFechaNacimiento());
@@ -326,26 +352,9 @@ public class PanelVerClientes extends javax.swing.JPanel implements SearchHeader
 
     }
 
-    private void cambioDePanel(javax.swing.JPanel panel) {
-//        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-//        panelPrincipal.setLayout(panelPrincipalLayout);
-//        panelPrincipalLayout.setHorizontalGroup(
-//                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGap(0, 854, Short.MAX_VALUE)
-//                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                                .addGroup(panelPrincipalLayout.createSequentialGroup()
-//                                        .addContainerGap()
-//                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-//        );
-//        panelPrincipalLayout.setVerticalGroup(
-//                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGap(0, 963, Short.MAX_VALUE)
-//                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                                .addGroup(panelPrincipalLayout.createSequentialGroup()
-//                                        .addContainerGap()
-//                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-//        );
+    @Override
+    public void onClick() {
+
+        Application.showForm(new PanelVerDatos());
     }
 }

@@ -1,3 +1,4 @@
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelRegistrarVenta.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConversionDivisa.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\PanelIngresarInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\SearchText.java
@@ -6,6 +7,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\Control
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\VentaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\LightDarkMode.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelEditarCliente.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormVistaProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\VistaProductos.java
@@ -17,6 +19,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\panelCrearDatos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\InsumoRecetas.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\AutoCompleteComboBox.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionCellEditor.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\other\CardDescription.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\menu\ToolBarAccentColor.java
@@ -87,6 +90,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insu
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\TipoMedida.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelMostrarProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelIngresarProducto.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelVerMetodosDePago.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorConfiguracion.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelVerDatosProducto.java
@@ -108,6 +112,7 @@ C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\prod
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\Divisa.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\TextoHint.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\utilities\TableActionCellRender.java
+C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelClientes.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\entidades\ComprasProducto.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\controladores\ControladorComprasProductos.java
 C:\Users\ricke\workspace\PaninTech\src\main\java\com\panin\application\form\PanelLogin.java

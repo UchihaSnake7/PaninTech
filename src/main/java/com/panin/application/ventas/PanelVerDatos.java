@@ -4,6 +4,8 @@
  */
 package com.panin.application.ventas;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author USUARIO
@@ -14,7 +16,19 @@ public class PanelVerDatos extends javax.swing.JPanel {
      * Creates new form PanelVerDatos
      */
     public PanelVerDatos() {
+        PanelVerMetodosDePago panelMetodos = new PanelVerMetodosDePago();
+        PanelClientes panelCliente = new PanelClientes();
         initComponents();
+        jPanel1.add(panelCliente);
+        panelMetodos.setSize(panelCliente.getWidth(), panelCliente.getHeight());
+        
+//        panelMetodos.setLayout(panelCliente.getLayout());
+//        jPanel2.add(new PanelVerMetodosDePago());
+        tabbedPane.removeAll();
+
+        tabbedPane.addTab("Ver Clientes", panelCliente);
+        tabbedPane.addTab("Ver Métodos de Pago", panelMetodos);
+
     }
 
     /**
@@ -28,49 +42,28 @@ public class PanelVerDatos extends javax.swing.JPanel {
 
         tabbedPane = new com.panin.application.utilities.TabbedPaneCustom();
         jPanel1 = new javax.swing.JPanel();
-        panelVerClientes1 = new com.panin.application.ventas.PanelVerClientes();
-        jPanel2 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelVerClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 798, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelVerClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+            .addGap(0, 765, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Ver Clientes", jPanel1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 851, Short.MAX_VALUE)
-        );
-
-        tabbedPane.addTab("Ver Métodos de Pago", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(1, 1, 1)
                 .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addGap(1, 1, 1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,8 +74,6 @@ public class PanelVerDatos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private com.panin.application.ventas.PanelVerClientes panelVerClientes1;
     private com.panin.application.utilities.TabbedPaneCustom tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

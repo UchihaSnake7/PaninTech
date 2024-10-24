@@ -154,7 +154,7 @@ public class MainForm extends JLayeredPane {
             } else if (index == 3) {
 
                 /*
-                Ventas
+                Ventas -Datos Maestros
                  */
                 switch (subIndex) {
                     case 1: {
@@ -169,8 +169,23 @@ public class MainForm extends JLayeredPane {
                     default:
                         throw new IllegalArgumentException("Valor no esperado: " + subIndex);
                 }
+                
+            }else if (index == 4) {
+                
+                /*
+                Ventas - Facturacion
+                */
+                
+                  switch (subIndex) {
+                    case 1: {
 
-            } else if (index == 4) {  //Tasas
+                        break;
+                    }
+                    default:
+                        throw new IllegalArgumentException("Valor no esperado: " + subIndex);
+                }
+                
+            } else if (index == 5) {  //Tasas
                 if (subIndex == 1) {
                     Application.showForm(new formprueba());
                 } else if (subIndex == 2) {
@@ -180,7 +195,7 @@ public class MainForm extends JLayeredPane {
 
                 }
 
-            } else if (index == 5) { //Configuracion
+            } else if (index == 6) { //Configuracion
                 if (subIndex == 1) {
                     Application.showForm(new FormCrearUsuario());
                 }

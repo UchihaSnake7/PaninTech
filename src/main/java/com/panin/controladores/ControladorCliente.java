@@ -28,10 +28,36 @@ public class ControladorCliente {
         return clientes;
     }
 
+    public Cliente obtenerClienteById(int id) {
+        Application.session.beginTransaction();
+        Cliente cliente;
+        TypedQuery query = Application.session.getNamedQuery("Cliente.findById");
+        query.setParameter("id", id);
+        cliente = (Cliente) query.getSingleResult();
+
+        Application.session.getTransaction().commit();
+        return cliente;
+    }
+
     public void crearCliente(Cliente cliente) {
         Application.session.beginTransaction();
 
         Application.session.save(cliente);
         Application.session.getTransaction().commit();
+    }
+
+    public boolean update(Cliente cliente) {
+        try {
+            Application.session.beginTransaction();
+            Application.session.merge(cliente);
+
+            Application.session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
     }
 }
