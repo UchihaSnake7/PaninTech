@@ -21,8 +21,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Collection;
 import com.panin.application.utilities.tipoProducto;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -44,21 +47,33 @@ import jakarta.persistence.ManyToOne;
 
 public class Producto implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "descripcion")
+    private String descripcion;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "precio_produccion")
+    private Double precioProduccion;
+    @Column(name = "precio_venta")
+    private Double precioVenta;
+    @Column(name = "activo")
+    private Boolean activo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private Collection<ProductoConfiguracionVenta> productoConfiguracionVentaCollection;
+    @JoinColumn(name = "categoria", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private CategoriaProducto categoria;
+    @JoinColumn(name = "configuracion_venta", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProductoConfiguracionVenta configuracionVenta;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Column(name = "precio_produccion")
-    private double precioProduccion;
-    @Column(name = "precio_venta")
-    private double precioVenta;
     @Column(name = "ruta_imagen")
     private String rutaImagen;
 
@@ -72,16 +87,6 @@ public class Producto implements Serializable {
     @JoinColumn(name = "id_tipo_medida", referencedColumnName = "id_tipo_medida")
     @ManyToOne
     private TipoMedida idTipoMedida;
-    @Column(name = "activo")
-    private boolean activo;
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
 
     public Producto() {
     }
@@ -103,13 +108,6 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public double getPrecioProduccion() {
         return precioProduccion;
@@ -182,6 +180,64 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return this.descripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+   
+
+    public void setPrecioProduccion(Double precioProduccion) {
+        this.precioProduccion = precioProduccion;
+    }
+
+
+
+    public void setPrecioVenta(Double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+  
+  
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+    public Boolean isActivo(){
+        return activo;
+    }
+
+    @XmlTransient
+    public Collection<ProductoConfiguracionVenta> getProductoConfiguracionVentaCollection() {
+        return productoConfiguracionVentaCollection;
+    }
+
+    public void setProductoConfiguracionVentaCollection(Collection<ProductoConfiguracionVenta> productoConfiguracionVentaCollection) {
+        this.productoConfiguracionVentaCollection = productoConfiguracionVentaCollection;
+    }
+
+    public CategoriaProducto getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaProducto categoria) {
+        this.categoria = categoria;
+    }
+
+    public ProductoConfiguracionVenta getConfiguracionVenta() {
+        return configuracionVenta;
+    }
+
+    public void setConfiguracionVenta(ProductoConfiguracionVenta configuracionVenta) {
+        this.configuracionVenta = configuracionVenta;
     }
 
 }

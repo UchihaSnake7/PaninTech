@@ -5,7 +5,4 @@ public enum tipoProducto {
 	Comprado,
 	Elaborado;
 	
-	
-	
-
 }

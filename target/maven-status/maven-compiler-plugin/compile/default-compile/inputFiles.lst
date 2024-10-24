@@ -8,6 +8,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\C
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\ComprasInsumo.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\ventas\PanelEditarFormularioMetodoDePago.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\TabbedPaneCustom.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\CategoriaProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelCalcularPrecioProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\PanelNuevoProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Venta.java
@@ -36,6 +37,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\utilities\ShadowsRenderer.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\Configuracion.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormCompraProductos.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\ConfiguracionVenta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\UnidadMedida.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\frameConfiguracion.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\other\Model_Card.java
@@ -122,6 +124,7 @@ C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controlador
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\menu\MenuAction.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\panelRegistrosCompraProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\LoginForm.java
+C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\entidades\ProductoConfiguracionVenta.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\application\form\productos\FormAgregarNuevoProducto.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorUsuario.java
 C:\Users\USUARIO\eclipse-workspace\PaninTech\src\main\java\com\panin\controladores\ControladorDivisa.java
