@@ -16,7 +16,9 @@ import com.panin.entidades.MetodoPago;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import raven.toast.Notifications;
 
 /**
  *
@@ -72,6 +74,7 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPrincipal = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         searchHeader21 = new com.panin.application.utilities.SearchHeader2();
         jSeparator1 = new javax.swing.JSeparator();
@@ -105,7 +108,7 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
                         .addComponent(jSeparator1)
                         .addGap(8, 8, 8))
                     .addComponent(jScrollPane1)
-                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(searchHeader21, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                 .addGap(1, 1, 1))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,20 +123,40 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
                 .addGap(54, 54, 54))
         );
 
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 614, Short.MAX_VALUE)
+            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 963, Short.MAX_VALUE)
+            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(2, 2, 2))
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 43, Short.MAX_VALUE))
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,6 +165,7 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel panelPrincipal;
     private com.panin.application.utilities.SearchHeader2 searchHeader21;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
@@ -170,65 +194,65 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
-//                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
-//                panelEditarCliente2.setListener(panelEditarCliente.getListener());
-//                ControladorCliente controladorCliente = new ControladorCliente();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
-//                System.out.println("Editar " + row);
+                PanelEditarFormularioMetodoDePago panelEditarFormularioMetodoDePago = new PanelEditarFormularioMetodoDePago();
+                ControladorMetodoPago controladorMetodoPago = new ControladorMetodoPago();
+                String id = (String) modelTable.getValueAt(row, 0);
+                MetodoPago metodoPago = controladorMetodoPago.obtenerMetodoById(Integer.parseInt(id));
+
 ////                panelEditarCliente.setVisible(true);
-//                panelTable.setVisible(false);
-//                panelEditarCliente2.setVisible(true);
-////                panelPrincipal.remove(panelTable);
-//                cambioDePanel(panelEditarCliente2);
-//                panelEditarCliente2.iniciar(cliente, true);
+                jPanel1.setVisible(false);
+                //                panelEditarCliente2.setVisible(true);
+                remove(jPanel1);
+                cambioDePanel(panelEditarFormularioMetodoDePago);
+                panelEditarFormularioMetodoDePago.iniciar(metodoPago, true);
             }
 
             @Override
 
             public void onDelete(int row) {
-//                ControladorInsumos controladorInsumo = new ControladorInsumos();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
-//
-//                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
-//                        JOptionPane.YES_NO_OPTION);
-//                if (respuesta == JOptionPane.YES_OPTION) {
-////                    controladorInsumo.abrirSesion();
-//                    if (controladorInsumo.delete(insumo)) {
-//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
-//                        modelTable.removeRow(row);
-//                    } else {
-//                        insumo.setActivo(false);
-////                        controladorInsumo.abrirSesion();
-//                        if (controladorInsumo.update(insumo)) {
-//                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
-//                            actualizarLista();
-//                        } else {
-//                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
-//                        }
-//                    }
-//                } else {
-//                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
-//                }
+                ControladorMetodoPago controladorMetodoPago = new ControladorMetodoPago();
+                String id = (String) modelTable.getValueAt(row, 0);
+                MetodoPago metodoPago = controladorMetodoPago.obtenerMetodoById(Integer.parseInt(id));
+
+                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el Metodo de Pago "
+                        + metodoPago.getId() + "-" + metodoPago.getTipo() + "-" + metodoPago.getBanco()
+                        + "? ", "Confirmación",
+                        JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+
+                    if (controladorMetodoPago.delete(metodoPago)) {
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Método de Pago se borró con Éxito!");
+                        modelTable.removeRow(row);
+                    } else {
+                        metodoPago.setActivo(false);
+
+                        if (controladorMetodoPago.update(metodoPago)) {
+                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Método de Pago no se puede borrar, se desactivó");
+                            actualizarLista();
+                        } else {
+                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
+                        }
+                    }
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
+                }
 
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
             @Override
             public void onView(int row) {
-//                PanelEditarCliente panelEditarCliente2 = new PanelEditarCliente();
-//                panelEditarCliente2.setListener(panelEditarCliente.getListener());
-//                ControladorCliente controladorCliente = new ControladorCliente();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
-//                System.out.println("view " + row);
+                PanelEditarFormularioMetodoDePago panelEditarFormularioMetodoDePago = new PanelEditarFormularioMetodoDePago();
+                ControladorMetodoPago controladorMetodoPago = new ControladorMetodoPago();
+                String id = (String) modelTable.getValueAt(row, 0);
+                MetodoPago metodoPago = controladorMetodoPago.obtenerMetodoById(Integer.parseInt(id));
+
 ////                panelEditarCliente.setVisible(true);
-//                panelTable.setVisible(false);
-//                panelEditarCliente2.setVisible(true);
-////                panelPrincipal.remove(panelTable);
-//                cambioDePanel(panelEditarCliente2);
-//                panelEditarCliente2.iniciar(cliente, false);
+                jPanel1.setVisible(false);
+                //                panelEditarCliente2.setVisible(true);
+                remove(jPanel1);
+                cambioDePanel(panelEditarFormularioMetodoDePago);
+                panelEditarFormularioMetodoDePago.iniciar(metodoPago, false);
             }
         };
 
@@ -240,7 +264,7 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
 
         modelTable.setRowCount(0);
         ControladorMetodoPago controladorMetodoPago = new ControladorMetodoPago();
-        this.metodos = controladorMetodoPago.obtenerTodos();
+        this.metodos = controladorMetodoPago.obtenerActivos();
 
         for (MetodoPago fila : metodos) {
             String convertido = saltosDeLinea(fila.getReferencia());
@@ -268,7 +292,7 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
                 )
                 .collect(Collectors.toList());
 
-        for (MetodoPago fila : metodos) {
+        for (MetodoPago fila : metodosFilttados) {
 
             String convertido = saltosDeLinea(fila.getReferencia());
             System.out.println(convertido);
@@ -282,6 +306,30 @@ public class PanelVerMetodosDePago extends javax.swing.JPanel implements SearchH
         String sinSaltos = descripción.replaceAll("\n", "<br> ");
         convertido = "<HTML> " + sinSaltos + " </HTML>";
         return convertido;
+    }
+
+    private void cambioDePanel(javax.swing.JPanel panel) {
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 854, Short.MAX_VALUE)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        panelPrincipalLayout.setVerticalGroup(
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 963, Short.MAX_VALUE)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
     }
 
 }

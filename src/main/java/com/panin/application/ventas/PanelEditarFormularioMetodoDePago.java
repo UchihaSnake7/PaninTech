@@ -5,6 +5,7 @@
 package com.panin.application.ventas;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.panin.application.Application;
 import com.panin.application.utilities.ValidadorFormulario;
 import com.panin.controladores.ControladorBanco;
 import com.panin.controladores.ControladorMetodoPago;
@@ -19,39 +20,39 @@ import raven.toast.Notifications;
  *
  * @author ricke
  */
-public class PanelFormularioMetodoPago extends javax.swing.JPanel {
+public class PanelEditarFormularioMetodoDePago extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelFormularioMetodoPago
      */
-    public PanelFormularioMetodoPago() {
+    public PanelEditarFormularioMetodoDePago() {
         initComponents();
         init();
         panelFormulario.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;"
                 + "arc:20;");
     }
-    
+
     public void init() {
-        
+
         ControladorBanco cb = new ControladorBanco();
         List<Banco> listaBancos = cb.obtenerTodos();
-        
+
         for (Banco b : listaBancos) {
-            
+
             comboBoxBanco.addItem(b);
-            
+
         }
-        
+
         ControladorTipoMetodoPago ctmp = new ControladorTipoMetodoPago();
         List<TipoMetodoPago> listaTipos = ctmp.obtenerTodos();
-        
+
         for (TipoMetodoPago t : listaTipos) {
-            
+
             comboBoxTipoMetodoPago.addItem(t);
-            
+
         }
-        
+
     }
 
     /**
@@ -64,6 +65,7 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
     private void initComponents() {
 
         panelFormulario = new javax.swing.JPanel();
+        jActivo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         comboBoxTipoMetodoPago = new javax.swing.JComboBox<>();
@@ -74,6 +76,10 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
         textAreaDetalles = new javax.swing.JTextArea();
         botonAceptar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        botonAtras = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+
+        jActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Ingrese los datos del metodo de pago");
@@ -112,46 +118,59 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
             }
         });
 
+        botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonAtras.setText("Atrás");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Activo");
+
         javax.swing.GroupLayout panelFormularioLayout = new javax.swing.GroupLayout(panelFormulario);
         panelFormulario.setLayout(panelFormularioLayout);
         panelFormularioLayout.setHorizontalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFormularioLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxTipoMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                        .addComponent(comboBoxBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
             .addGroup(panelFormularioLayout.createSequentialGroup()
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
-                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFormularioLayout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelFormularioLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(panelFormularioLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(botonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(202, 202, 202))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(30, 30, 30)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74))))
+            .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxTipoMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         panelFormularioLayout.setVerticalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +189,17 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
                     .addComponent(comboBoxBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(botonAceptar)
-                .addGap(40, 40, 40))
+                .addGap(20, 20, 20)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jActivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAceptar)
+                    .addComponent(botonAtras))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -182,16 +207,16 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -206,32 +231,86 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
 
-        ValidadorFormulario vf = new ValidadorFormulario(panelFormulario);
-        if (vf.validarFormulario()) {
-            
-            MetodoPago mp = new MetodoPago();
-            
-            mp.setBanco((Banco) comboBoxBanco.getSelectedItem());
-            mp.setTipo((TipoMetodoPago) comboBoxTipoMetodoPago.getSelectedItem());
-            mp.setReferencia(textAreaDetalles.getText());
-            mp.setActivo(true);
-            ControladorMetodoPago cmp = new ControladorMetodoPago();
-            
-            cmp.crearMetodoPago(mp);
-            
-            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Método de pago creado con éxito!");
-            textAreaDetalles.setText("");
+        ControladorMetodoPago controladorMetodoPago = new ControladorMetodoPago();
+        Boolean actualizar = false;
+        if (!comboBoxBanco.getSelectedItem().equals(metodoPago.getBanco())) {
+            metodoPago.setBanco((Banco) comboBoxBanco.getSelectedItem());
+            actualizar = true;
         }
-        
+        if (!comboBoxTipoMetodoPago.getSelectedItem().equals(metodoPago.getTipo())) {
+            metodoPago.setTipo((TipoMetodoPago) comboBoxTipoMetodoPago.getSelectedItem());
+            actualizar = true;
+        }
+        if (!textAreaDetalles.equals(metodoPago.getReferencia())) {
+            metodoPago.setReferencia(textAreaDetalles.getText());
+            actualizar = true;
+        }
+
+        String opcion = (String) jActivo.getSelectedItem();
+        if (!opcion.equals(activo)) {
+            actualizar = true;
+            if (opcion.equals(verdadero)) {
+                metodoPago.setActivo(true);
+            } else {
+                metodoPago.setActivo(false);
+            }
+        }
+        if (actualizar) {
+            if (controladorMetodoPago.update(metodoPago)) {
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Metodo Editado con éxito!");
+            }
+
+        } else {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "No se detectaron cambios");
+        }
 
     }//GEN-LAST:event_botonAceptarActionPerformed
 
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        PanelVerDatos panelVerDatos = new PanelVerDatos();
+        panelVerDatos.iniciarEnTab(1);
+        Application.showForm(panelVerDatos);
+        // TODO :
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
+    public void iniciar(MetodoPago metodoPago, Boolean editar) {
+
+        comboBoxBanco.setSelectedItem(metodoPago.getBanco());
+        comboBoxTipoMetodoPago.setSelectedItem(metodoPago.getTipo());
+        textAreaDetalles.setText(metodoPago.getReferencia());
+
+        comboBoxBanco.setEnabled(editar);
+        comboBoxTipoMetodoPago.setEnabled(editar);
+        textAreaDetalles.setEditable(editar);
+        botonAceptar.show(editar);
+        jActivo.setEnabled(editar);
+        this.metodoPago = metodoPago;
+        if (editar) {
+            jLabel1.setText("Editar Método de Pago");
+        } else {
+            jLabel1.setText("Método de Pago");
+        }
+
+        jActivo.addItem(verdadero);
+        jActivo.addItem(falso);
+
+        if (metodoPago.isActivo()) {
+            jActivo.setSelectedItem(verdadero);
+            activo = verdadero;
+        } else {
+            jActivo.setSelectedItem(falso);
+            activo = falso;
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonAtras;
     private javax.swing.JComboBox<Banco> comboBoxBanco;
     private javax.swing.JComboBox<TipoMetodoPago> comboBoxTipoMetodoPago;
+    private javax.swing.JComboBox<String> jActivo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -240,4 +319,9 @@ public class PanelFormularioMetodoPago extends javax.swing.JPanel {
     private javax.swing.JPanel panelFormulario;
     private javax.swing.JTextArea textAreaDetalles;
     // End of variables declaration//GEN-END:variables
+private MetodoPago metodoPago;
+    private String verdadero = "Activo";
+    private String falso = "Inactivo";
+    private String activo;
+
 }

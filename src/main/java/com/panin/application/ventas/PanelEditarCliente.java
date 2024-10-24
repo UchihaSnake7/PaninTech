@@ -54,6 +54,8 @@ public class PanelEditarCliente extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButtonAtras = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jActivo = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
 
@@ -87,6 +89,10 @@ public class PanelEditarCliente extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setText("Activo");
+
+        jActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,7 +117,8 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,13 +127,14 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                             .addComponent(labelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(labelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jActivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -156,11 +164,15 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jActivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAtras)
                     .addComponent(jButton2))
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -193,7 +205,7 @@ public class PanelEditarCliente extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,11 +245,22 @@ public class PanelEditarCliente extends javax.swing.JPanel {
             cliente.setFechaNacimiento(jDateChooser1.getDate());
             actualizar = true;
         }
+
+        String opcion = (String) jActivo.getSelectedItem();
+        if (!opcion.equals(activo)) {
+            actualizar = true;
+            if (opcion.equals(verdadero)) {
+                cliente.setActivo(true);
+            } else {
+                cliente.setActivo(false);
+            }
+        }
+
         if (actualizar) {
             if (controladorCliente.update(cliente)) {
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Cliente " + cliente.getNombre() + " Editado con éxito!");
             }
-            
+
         } else {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "No se detectaron cambios");
         }
@@ -245,10 +268,12 @@ public class PanelEditarCliente extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jActivo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAtras;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -268,9 +293,12 @@ public class PanelEditarCliente extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 private Cliente cliente;
     private BotonClickListener listener;
-    
+    private String verdadero = "Activo";
+    private String falso = "Inactivo";
+    private String activo;
+
     public void iniciar(Cliente cliente, Boolean editar) {
-        
+
         this.cliente = cliente;
         labelApellido.setText(cliente.getApellido());
         labelNombre.setText(cliente.getNombre());
@@ -279,7 +307,7 @@ private Cliente cliente;
         labelDireccion.setText(cliente.getDireccion().toString());
         labelEmail.setText(cliente.getEmail());
         jDateChooser1.setDate(cliente.getFechaNacimiento());
-        
+
         labelApellido.setEditable(editar);
         labelNombre.setEditable(editar);
         labelCedula.setEditable(editar);
@@ -287,27 +315,39 @@ private Cliente cliente;
         labelDireccion.setEditable(editar);
         labelEmail.setEditable(editar);
         jDateChooser1.setEnabled(editar);
-        
+        jActivo.setEnabled(editar);
+
         if (!editar) {
             jLabel9.setText("Ver Cliente");
             jButton2.show(false);
         }
-        
+
+        jActivo.addItem(verdadero);
+        jActivo.addItem(falso);
+
+        if (cliente.isActivo()) {
+            jActivo.setSelectedItem(verdadero);
+            activo = verdadero;
+        } else {
+            jActivo.setSelectedItem(falso);
+            activo = falso;
+        }
+
     }
-    
+
     public interface BotonClickListener {
-        
+
         void onClick();
     }
-    
+
     public BotonClickListener getListener() {
         return listener;
     }
-    
+
     public void setListener(BotonClickListener listener) {
         this.listener = listener;
     }
-    
+
     private void notificarAtras() {
 //        System.out.println("Notificar " + searchText1.getText());
         if (listener != null) {

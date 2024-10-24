@@ -4,6 +4,7 @@ com\panin\application\form\insumos\crear\PanelDeInsumo$1.class
 com\panin\application\form\insumos\panelRegistrosInsumos$1.class
 com\panin\application\form\other\FormRead.class
 com\panin\entidades\Insumo.class
+com\panin\application\ventas\PanelEditarFormularioMetodoDePago$2.class
 com\panin\application\form\insumos\FormVerInsumos.class
 com\panin\menu\MenuEvent.class
 com\panin\dto\formAgregarInsumoProductoDTO.class
@@ -77,6 +78,7 @@ com\panin\application\form\productos\PanelDeProducto$1.class
 com\panin\application\form\insumos\crear\FormCrearMarcaInsumoN.class
 com\panin\application\form\productos\panelCalcularPrecioProducto$2.class
 com\panin\application\form\productos\PanelIngresarCompra$3.class
+com\panin\application\ventas\PanelEditarFormularioMetodoDePago$1.class
 com\panin\application\ventas\PanelClientes$2.class
 com\panin\application\form\insumos\FormVerInsumos$1.class
 com\panin\entidades\ConversionDivisa.class
@@ -93,12 +95,14 @@ com\panin\entidades\Venta.class
 com\panin\controladores\ControladorBanco.class
 com\panin\menu\PopupSubmenu.class
 com\panin\application\form\other\VistaProductos.class
+com\panin\application\ventas\PanelEditarFormularioMetodoDePago$4.class
 com\panin\application\form\productos\PanelIngresarCompra$6.class
 com\panin\application\utilities\PanelAction$3.class
 com\panin\application\form\insumos\reportecompra\FormReporteMarcasInsumo$1.class
 com\panin\application\form\FormCrearUsuario$CambioLayout.class
 com\panin\application\form\productos\panelCalcularPrecioProducto.class
 com\panin\application\form\productos\PanelIngresarCompra$5.class
+com\panin\application\ventas\PanelEditarFormularioMetodoDePago$3.class
 com\panin\application\ventas\PanelVerDatos.class
 com\panin\application\form\other\FormCambio$3.class
 com\panin\application\form\other\formprueba.class
@@ -206,6 +210,7 @@ com\panin\application\form\productos\PanelIngresarProducto$2.class
 com\panin\application\form\insumos\panelRegistrosInsumos$3.class
 com\panin\application\form\insumos\CardDescription.class
 com\panin\application\form\productos\PanelNuevoProducto$4.class
+com\panin\application\ventas\PanelEditarFormularioMetodoDePago.class
 com\panin\entidades\MetodoPago.class
 com\panin\application\form\insumos\reportecompra\FormReporteComprasInsumos$3.class
 com\panin\application\form\productos\FormAgregarNuevoProducto.class

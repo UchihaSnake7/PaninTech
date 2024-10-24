@@ -16,9 +16,11 @@ import com.panin.entidades.Cliente;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import raven.toast.Notifications;
 
 /**
  *
@@ -214,30 +216,32 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
             @Override
 
             public void onDelete(int row) {
-//                ControladorInsumos controladorInsumo = new ControladorInsumos();
-//                String id = (String) modelTable.getValueAt(row, 0);
-//                Insumo insumo = controladorInsumo.obtenerInsumobyId((Integer.parseInt(id)));
-//
-//                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el insumo " + insumo.getDescripcion() + " ? ", "Confirmación",
-//                        JOptionPane.YES_NO_OPTION);
-//                if (respuesta == JOptionPane.YES_OPTION) {
-////                    controladorInsumo.abrirSesion();
-//                    if (controladorInsumo.delete(insumo)) {
-//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Insumo se borró con Éxito!");
-//                        modelTable.removeRow(row);
-//                    } else {
-//                        insumo.setActivo(false);
-////                        controladorInsumo.abrirSesion();
-//                        if (controladorInsumo.update(insumo)) {
-//                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Insumo no se puede borrar, se desactivó");
-//                            actualizarLista();
-//                        } else {
-//                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
-//                        }
-//                    }
-//                } else {
-//                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
-//                }
+                ControladorCliente controladorCliente = new ControladorCliente();
+                String id = (String) modelTable.getValueAt(row, 0);
+                Cliente cliente = controladorCliente.obtenerClienteById(Integer.parseInt(id));
+
+                int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar el Cliente "
+                        + cliente.getNombre() + " " + cliente.getApellido()
+                        + "? ", "Confirmación",
+                        JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+
+                    if (controladorCliente.delete(cliente)) {
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "El Cliente se borró con Éxito!");
+                        modelTable.removeRow(row);
+                    } else {
+                        cliente.setActivo(false);
+
+                        if (controladorCliente.update(cliente)) {
+                            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "El Cliente no se puede borrar, se desactivó");
+                            actualizarLista();
+                        } else {
+                            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Error interno");
+                        }
+                    }
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Ok");
+                }
 
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
@@ -267,7 +271,7 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
-                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addGap(0, 854, Short.MAX_VALUE)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panelPrincipalLayout.createSequentialGroup()
@@ -276,7 +280,7 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panelPrincipalLayout.setVerticalGroup(
-                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addGap(0, 963, Short.MAX_VALUE)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panelPrincipalLayout.createSequentialGroup()
@@ -312,7 +316,7 @@ public class PanelClientes extends javax.swing.JPanel implements SearchHeader2.B
 
         modelTable.setRowCount(0);
         ControladorCliente controladorCliente = new ControladorCliente();
-        this.clientes = controladorCliente.obtenerClientes();
+        this.clientes = controladorCliente.obtenerClientesActivos();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 //        marcas.sort(Collections.reverseOrder());
 

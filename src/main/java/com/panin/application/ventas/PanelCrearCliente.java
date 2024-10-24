@@ -184,6 +184,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
             cliente.setEmail(labelEmail.getText());
             cliente.setFechaNacimiento(jDateChooser1.getDate());
             cliente.setTelefono(labelTelefono.getText());
+            cliente.setActivo(true);
             controladorCliente.crearCliente(cliente);
             Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Cliente " + cliente.getNombre() + " Creado con éxito!");
             labelApellido.setText("");
